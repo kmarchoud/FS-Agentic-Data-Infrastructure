@@ -9,6 +9,13 @@ import {
   TrendingUp,
   FileText,
   Settings,
+  Target,
+  BarChart2,
+  Link as LinkIcon,
+  Zap,
+  GitBranch,
+  Search,
+  Database,
 } from "lucide-react";
 
 interface NavItem {
@@ -20,6 +27,7 @@ interface NavItem {
 interface NavSection {
   sectionLabel: string;
   items: NavItem[];
+  badge?: "BETA";
 }
 
 const NAV_SECTIONS: NavSection[] = [
@@ -27,11 +35,6 @@ const NAV_SECTIONS: NavSection[] = [
     sectionLabel: "OVERVIEW",
     items: [
       { label: "Morning Brief", href: "/", icon: LayoutDashboard },
-    ],
-  },
-  {
-    sectionLabel: "INTELLIGENCE",
-    items: [
       { label: "Priority Queue", href: "/priorities", icon: AlertTriangle },
       { label: "Client Intelligence", href: "/clients", icon: Users },
       { label: "Flow Intelligence", href: "/flows", icon: TrendingUp },
@@ -39,9 +42,22 @@ const NAV_SECTIONS: NavSection[] = [
     ],
   },
   {
-    sectionLabel: "SYSTEM",
+    sectionLabel: "INTELLIGENCE",
+    badge: "BETA",
+    items: [
+      { label: "IFA Prioritisation", href: "/intelligence/ifa-prioritisation", icon: Target },
+      { label: "Competitive Positioning", href: "/intelligence/competitive-positioning", icon: BarChart2 },
+      { label: "Partnership Intelligence", href: "/intelligence/partnership-intelligence", icon: LinkIcon },
+      { label: "Market Intelligence", href: "/intelligence/market-intelligence", icon: Zap },
+      { label: "Platform Flow", href: "/intelligence/platform-flow", icon: GitBranch },
+      { label: "AI Research", href: "/intelligence/ai-research", icon: Search },
+    ],
+  },
+  {
+    sectionLabel: "SYSTEM INTEGRATIONS",
     items: [
       { label: "Settings", href: "/settings", icon: Settings },
+      { label: "Data Sources", href: "/data-sources", icon: Database },
     ],
   },
 ];
@@ -115,9 +131,32 @@ export function Sidebar() {
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
                 color: "var(--text-tertiary)",
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
               }}
             >
               {section.sectionLabel}
+              {section.badge === "BETA" && (
+                <span
+                  style={{
+                    display: "inline-flex",
+                    padding: "1px 5px",
+                    borderRadius: "4px",
+                    fontSize: "9px",
+                    fontWeight: 600,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    background: "var(--accent-subtle)",
+                    color: "var(--accent)",
+                    border: "1px solid rgba(245, 158, 11, 0.15)",
+                    verticalAlign: "middle",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  BETA
+                </span>
+              )}
             </div>
 
             {/* Nav items */}

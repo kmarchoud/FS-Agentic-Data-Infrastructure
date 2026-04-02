@@ -1406,3 +1406,968 @@ src/
 23. Put the sidebar on a different background than the page — sidebar uses `--bg-page`, separated by its right border only.
 24. Use coloured icon backgrounds (icon circles, icon squares with fills) — icons inherit text colour, nothing more.
 25. Make the notification dot any colour other than amber — it's one of the 3 permitted accent uses.
+
+---
+
+## INTELLIGENCE MODULES — DESIGN EXTENSION
+
+> 6 new Intelligence module pages and a navigation restructure.
+> All decisions consistent with the existing design system above.
+> Light theme. Geist Sans + Geist Mono. CSS variable tokens. Same component patterns.
+
+---
+
+### SECTION A: NAVIGATION RESTRUCTURE
+
+#### New Sidebar Structure
+
+The sidebar nav is restructured into 3 sections:
+
+```
+SECTION 1 — "OVERVIEW"
+  Morning Brief        (LayoutDashboard)    /
+  Priority Queue       (AlertTriangle)      /priorities
+  Client Intelligence  (Users)              /clients
+  Flow Intelligence    (TrendingUp)         /flows
+  RFP Intelligence     (FileText)           /rfp
+
+SECTION 2 — "INTELLIGENCE"  ← NEW
+  IFA Prioritisation   (Target)             /intelligence/ifa-prioritisation
+  Competitive Positioning (BarChart3)       /intelligence/competitive-positioning
+  Partnership Intel    (Link)               /intelligence/partnership-intelligence
+  Market Intelligence  (Zap)               /intelligence/market-intelligence
+  Platform Flow        (GitBranch)          /intelligence/platform-flow
+  AI Research          (Search)             /intelligence/ai-research
+
+SECTION 3 — "SYSTEM"  (renamed)
+  Settings             (Settings)           /settings
+  Data Sources         (Database)           /data-sources
+```
+
+#### Section Label Differentiation
+
+OVERVIEW and SYSTEM labels use the existing spec:
+- 11px, font-medium, uppercase, tracking-[0.06em], text-tertiary
+
+INTELLIGENCE label is identical in style but has a BETA badge inline:
+
+```
+INTELLIGENCE label:
+  Same style as other section labels
+  Gap: 6px between "INTELLIGENCE" text and badge
+
+BETA badge:
+  display: inline-flex
+  padding: 1px 5px
+  border-radius: 4px
+  font-size: 9px
+  font-weight: 600
+  letter-spacing: 0.06em
+  text-transform: uppercase
+  background: var(--accent-subtle)
+  color: var(--accent)
+  border: 1px solid rgba(245, 158, 11, 0.15)
+  vertical-align: middle
+  line-height: 1.4
+
+  The BETA badge sits on the section label only, NOT on individual items.
+  This is cleaner — one signal, not six.
+```
+
+#### Intelligence Nav Items
+
+Same styling as existing nav items in MASTER.md Section 6a. No special treatment — they are navigation items, not feature flags. The BETA badge on the section label is the only indicator that this is a new capability area.
+
+---
+
+### SECTION B: LAYER STATUS INDICATOR SYSTEM
+
+#### Three States
+
+| State | Background | Border | Text | Icon (lucide, 14px) |
+|-------|-----------|--------|------|---------------------|
+| LIVE | `var(--success-subtle)` | `rgba(34,197,94,0.20)` | `var(--success-text)` | `CircleDot` |
+| BUILDING | `rgba(107,114,128,0.08)` | `rgba(107,114,128,0.20)` | `var(--neutral-text)` | `Clock` |
+| LICENSED | `var(--accent-subtle)` | `rgba(245,158,11,0.15)` | `var(--accent)` | `Lock` |
+
+```
+Badge spec:
+  display: inline-flex, align-items: center, gap: 4px
+  padding: 2px 8px
+  border-radius: 9999px (pill)
+  font: badge-text (11px, font-semibold, uppercase, tracking-wide)
+  border: 1px solid [per state]
+  icon: 12px, same colour as text
+```
+
+#### Layer Section Design
+
+Each module page is divided into visible layer sections.
+
+```
+Layer section header:
+  display: flex, justify-content: space-between, align-items: center
+  padding-bottom: 12px
+  border-bottom: 1px solid var(--border)
+  margin-bottom: 20px
+
+  Left: "Layer 1 — Universe & Profile" in section-heading style (14px, font-semibold)
+  Right: Layer status badge
+
+LIVE section:
+  Content renders normally, no overlay.
+
+BUILDING section:
+  Content container: position relative
+  Overlay: position absolute, inset 0, background rgba(248,248,246,0.7),
+    border-radius 8px, display flex, align-items center, justify-content center
+  Overlay content: centred card (bg-card, border, rounded-lg, p-5, max-width 320px)
+    Clock icon (24px, text-tertiary) centred
+    "In development" — body, font-semibold, text-primary, mt-3
+    "Available Q2 2026" — body-sm, text-tertiary, mt-1
+  The greyed content is still visible underneath — it previews what's coming.
+
+LICENSED section:
+  Content area shows a single informative card:
+  Container: bg-card, border 1px var(--border), border-left 3px solid var(--accent),
+    rounded-lg, p-5
+  Lock icon: 20px, var(--accent), mb-3
+  Heading: "Requires licensing" — section-heading
+  Body: "This layer requires commercial data from:" — body-sm, text-secondary, mt-2
+  Provider list: each on its own line with bullet
+    "• Defaqto — IFA fund usage and panel preferences"
+    "• LinkedIn Sales Navigator — people movement signals"
+    body-sm, text-secondary
+  Footer: "Register Interest" — text link in accent colour, body-sm, font-medium, mt-4
+    hover: underline
+
+  This must feel like a considered product roadmap, not a broken feature.
+  Language: "Requires [Provider] licensing" — never "Coming Soon".
+```
+
+---
+
+### SECTION C: MODULE PAGE TEMPLATE
+
+Every Intelligence module follows this structural template.
+
+#### 1. Module Header
+
+```
+Container: padding 24px, border-bottom 1px var(--border)
+
+Left column (flex-1):
+  Module name: page-title style (20px, font-semibold, text-primary, tracking-tight)
+  Description: body-sm (13px), text-secondary, mt-1, max-width 600px
+  "PUBLIC DATA ONLY" badge: inline, mt-2
+    bg: var(--success-subtle)
+    border: 1px solid rgba(34,197,94,0.20)
+    text: var(--success-text)
+    font: body-sm (13px, NOT uppercase — this is a sentence, not a label)
+    padding: 2px 10px
+    border-radius: 9999px
+    Content: "Public data only — no internal access required"
+
+Right column:
+  "Data Sources" ghost button per MASTER.md Section 6h ghost spec
+  icon: Database (16px) left of text
+```
+
+#### 2. Layer Navigation Tabs
+
+```
+Container: border-bottom 1px var(--border), mt-6, mb-6
+  display: flex, gap: 0
+
+Tab — each:
+  padding: 10px 16px
+  display: flex, align-items: center, gap: 8px
+  border-bottom: 2px solid transparent
+  margin-bottom: -1px
+  cursor: pointer
+  transition: color 120ms ease
+
+  Label: body-sm (13px)
+  Status badge: inline, scale 0.9 (slightly smaller than standalone badges)
+
+Tab — default: text-tertiary
+Tab — hover: text-secondary
+Tab — active: text-primary, font-medium, border-bottom-color var(--accent)
+Tab — building/licensed (not active): text-tertiary, opacity 0.8
+  Still clickable — shows the preview/locked state.
+```
+
+#### 3. Layer Content Area
+
+Changes based on active tab. Per-module specs in Section D.
+
+#### 4. Data Freshness Strip
+
+```
+Container: mt-8, pt-3, border-top 1px var(--border-subtle)
+  display: flex, gap: 16px, flex-wrap: wrap
+
+Each source:
+  font: caption (Geist Mono, 11px), text-tertiary
+  Format: "FCA Register: 2h ago"
+  Separator: " · " between sources
+
+  Stale source (>24h): text in var(--warning-text)
+```
+
+---
+
+### SECTION D: PER-MODULE DESIGN SPECIFICATIONS
+
+---
+
+#### MODULE 1: IFA PRIORITISATION
+
+**Route:** `/intelligence/ifa-prioritisation`
+
+**Hero moment:** "From 10,847 registered UK IFAs, here are the 25 most likely to allocate to Keyridge's Global Systematic mandate this quarter — ranked by fit score, enriched with public signals."
+
+##### Layer 1 — Live: Universe & Profile
+
+**Filter bar:**
+```
+Container: bg-card, border 1px var(--border), rounded-lg, p-3, mt-0
+  display: flex, gap: 12px, align-items: center, flex-wrap: wrap
+
+Each filter control:
+  body-sm (13px), text-secondary
+  bg: var(--bg-raised)
+  border: 1px solid var(--border)
+  border-radius: 6px
+  padding: 6px 12px
+  min-width: 140px
+  appearance: none (custom chevron)
+  transition: border-color 120ms ease
+  focus: border-color var(--accent)
+
+Controls:
+  1. Mandate: dropdown — "Global Systematic" default
+     Options: Global Systematic, UK Balanced, Diversified Income, Absolute Return, Strategic Bond
+  2. Region: dropdown — "All UK" default
+     Options: All UK, London, South East, Midlands, North, Scotland, Wales
+  3. Firm type: dropdown — "All" default
+     Options: All, DA Firm, AR Firm, Network
+  4. Min AUM: dropdown — "Any" default
+     Options: Any, £50m+, £250m+, £500m+, £1bn+
+  5. Signals: dropdown — "All" default
+     Options: All, New Signals Only, Leadership Changes, Platform Changes
+```
+
+**Universe stats strip:**
+```
+Container: mt-4, mb-4, display flex, gap 4px, align-items baseline
+  font: body-sm (13px), text-secondary
+
+  "10,847" — font-mono, data-lg, text-primary
+  " IFAs in universe · " — body-sm, text-secondary
+  "847" — font-mono, data-lg, text-primary
+  " match Global Systematic criteria · " — body-sm, text-secondary
+  "23" — font-mono, data-lg, var(--accent)
+  " have new signals this week" — body-sm, text-secondary
+```
+
+**Main ranked table:**
+```
+Same table spec as MASTER.md Section 6f (no outer card, sits on bg-page).
+Columns:
+
+  Rank: 40px, data-sm Geist Mono, text-tertiary, centre-aligned
+  IFA Firm: body-sm font-medium text-primary + type badge inline (gap 6px)
+  Region: body-sm, text-secondary, 100px
+  Est. AUM: data-sm Geist Mono, text-primary, right-aligned, 90px
+  Fit Score: 120px — inline risk bar (60px, 3px height) + score (data-sm Geist Mono)
+    >70: var(--success) fill
+    50-70: var(--warning) fill
+    <50: var(--neutral) fill
+  Key Signal: body-sm, text-secondary, flex-1, min-width 200px, line-clamp-2
+  FCA Status: 80px — 6px dot (success or danger) + "Authorised" caption
+  Action: ghost button "Build Brief", 90px
+
+Row hover: bg-raised
+Row click: expands IFA Detail Panel below the row.
+```
+
+**Mock IFA data (top 8):**
+
+| Rank | Firm | Region | AUM | Score | Signal |
+|------|------|--------|-----|-------|--------|
+| 1 | Paradigm Capital Ltd | London | £2.1bn | 91 | Investment director Sarah Chen moved from Schroders Global 3 weeks ago — opens relationship door |
+| 2 | Attivo Group | Manchester | £1.1bn | 87 | Added systematic equity strategy to approved list per updated website Q4 2025 |
+| 3 | Foster Denovo | London | £3.2bn | 84 | FCA RMAR shows 28% client growth YoY — scaling fast, may need broader fund range |
+| 4 | Progeny Wealth | Leeds | £1.2bn | 82 | Director appointment: new Head of Investments from Jupiter AM (Companies House, 6 weeks ago) |
+| 5 | Informed Financial Planning | Oxford | £890m | 79 | Investment philosophy page updated to emphasise systematic and factor-based approaches |
+| 6 | Atticus Wealth | Bristol | £540m | 76 | Joined Nucleus platform Q3 — expanding fund access, reviewing panel |
+| 7 | Perspective Financial Group | Bristol | £1.8bn | 74 | New client proposition document mentions 'evidence-based investing' — strong mandate fit |
+| 8 | Arbor Asset Management | Edinburgh | £680m | 71 | RMAR revenue up 41% — growing rapidly, underserved by current AM relationships |
+
+**IFA Detail Panel (expanded row):**
+```
+Container: bg-card, border-top 1px var(--border), border-bottom 1px var(--border),
+  p-5, display grid, grid-template-columns: 1fr 1fr 1fr, gap: 24px
+  Animation: fadeSlideIn 0.2s ease-out
+
+Column 1 — Firm Profile:
+  Section label: "FIRM PROFILE" (card-label style)
+  Key-value rows: FCA Number, Registration Date, Permissions,
+    Key Individuals (named), Office Address, Companies House Number
+  body-sm throughout, keys in text-tertiary, values in text-primary
+  All reference numbers in Geist Mono
+
+Column 2 — Intelligence Signals:
+  Section label: "INTELLIGENCE SIGNALS"
+  Each signal: timeline-style (dot + date + description)
+  Date: Geist Mono caption, text-tertiary
+  Source label: inline badge (FCA / CH / Web / Press)
+  Description: body-sm, text-secondary
+
+Column 3 — Mandate Fit Breakdown:
+  Section label: "FIT SCORE BREAKDOWN"
+  Stacked bar showing score components:
+    Philosophy match: X/30
+    Platform overlap: X/25
+    AUM band fit: X/20
+    Growth trajectory: X/15
+    Signal recency: X/10
+  Each: label (body-sm, text-secondary) + bar (3px, coloured by contribution) + score (Geist Mono)
+  Total: section-heading, Geist Mono, text-primary
+
+  "Build Outreach Brief" primary button (bg-accent, text white, body-sm, mt-4)
+```
+
+##### Layer 2 — Building: Relevance Scoring
+
+```
+Greyed preview showing:
+  A more detailed scoring breakdown with:
+  - Philosophy match analysis (word cloud from IFA website)
+  - Platform overlap matrix
+  - Client demographic alignment indicators
+  - Fee tolerance signals
+
+Overlay card: Clock icon + "In development — Available Q2 2026"
+```
+
+##### Layer 3 — Licensed: Readiness Signals
+
+```
+Locked card (accent border-left):
+  Lock icon (20px, accent)
+  "Real-time readiness signals require:"
+  "• Defaqto — adviser fund usage data, panel preferences, research ratings"
+  "• LinkedIn Sales Navigator — people movement signals at scale, relationship mapping"
+  body-sm, text-secondary
+
+  "These signals would increase actionable leads by an estimated 3-4x."
+  body-sm, text-secondary, mt-3, font-style italic
+
+  "Register Interest" — accent text link, font-medium, mt-4
+```
+
+---
+
+#### MODULE 2: COMPETITIVE POSITIONING
+
+**Route:** `/intelligence/competitive-positioning`
+
+**Hero moment:** "Select a mandate. See every fund competing for the same IFAs. Get a battlecard for any competitor in 30 seconds."
+
+##### Layer 1 — Live: Competitive Universe Mapping
+
+**Mandate selector:** Same control as Module 1 (consistent UX). Default: "Global Systematic".
+
+**Peer group table:**
+```
+Same table spec as Section 6f.
+Columns:
+  Fund Name: body-sm, font-medium, text-primary
+    Keyridge row: border-left 2px solid var(--accent) + "YOU" micro badge
+  Asset Manager: body-sm, text-secondary
+  AUM: data-sm, Geist Mono, right-aligned — format "£X.Xbn"
+  IA Sector: body-sm, text-secondary
+  Fee (OCF): data-sm, Geist Mono, right-aligned — format "X.XX%"
+  YTD Perf: data-sm, Geist Mono, right-aligned — coloured by sign
+  Platforms: data-sm, Geist Mono, centre-aligned — count
+  Key Claim: body-sm, text-secondary, max-width 240px, line-clamp-2
+  Action: ghost button "View Brief"
+```
+
+**Mock peer group data (Global Systematic):**
+
+| Fund | Manager | AUM | OCF | YTD | Platforms | Key Claim |
+|------|---------|-----|-----|-----|-----------|-----------|
+| **Keyridge Global Systematic** | Keyridge AM | £4.2bn | 0.65% | +3.1% | 12 | Systematic factor-based, 20yr track record |
+| Schroders QEP Global Core | Schroders | £8.1bn | 0.73% | +4.2% | 31 | QEP systematic approach, ESG integrated |
+| Jupiter Merlin Growth | Jupiter | £5.3bn | 1.42% | +2.8% | 28 | Multi-manager, actively managed allocation |
+| Artemis Global Income | Artemis | £3.7bn | 0.83% | +5.1% | 24 | Income-focused global equity, yield 2.8% |
+| M&G Global Macro Bond | M&G | £2.1bn | 0.91% | +1.9% | 19 | Macro-driven flexible fixed income |
+| Royal London Sustainable World | Royal London | £1.8bn | 0.79% | +3.6% | 22 | ESG-integrated global multi-asset |
+
+**Platform presence callout:**
+```
+Container: bg-accent-subtle, border-left 3px solid var(--accent), rounded-lg, p-4, mt-4
+  body-sm, text-primary:
+  "Keyridge is not listed on Hargreaves Lansdown. 4 of 5 key competitors are."
+  body-sm, text-secondary, mt-1:
+  "HL carries £149bn AUM and grew 3.2% QoQ. This is the highest-priority distribution gap."
+```
+
+**Competitor Brief Panel (slide-over):**
+```
+Container: fixed right, top 0, height 100vh, width 420px, z-index 50
+  background: var(--bg-card)
+  border-left: 1px solid var(--border)
+  box-shadow: -8px 0 24px rgba(0,0,0,0.06)
+  padding: 24px
+  overflow-y: auto
+
+Header: flex, justify-content space-between, items-center
+  Fund name: section-heading (14px, font-semibold)
+  Close: X icon (18px, text-tertiary, hover text-secondary)
+
+Sections (gap-6 between):
+
+  "OVERVIEW" (card-label):
+    Key-value rows: AUM, Fee, YTD, Sector, Platforms
+    data-sm Geist Mono for all values
+
+  "POSITIONING" (card-label):
+    body-sm, text-secondary, line-height 1.6
+    2-3 sentences from factsheet/KIID
+
+  "PERCEIVED STRENGTHS" (card-label):
+    Bulleted list, body-sm, text-secondary
+    Green dot (6px) per item
+
+  "VISIBLE WEAKNESSES" (card-label):
+    Bulleted list, body-sm, text-secondary
+    Amber dot (6px) per item
+
+  "PLATFORM DISTRIBUTION" (card-label):
+    Compact list: platform name + ✓/✗ (success/danger colour)
+
+  "BATTLECARD" section:
+    Container: bg-accent-subtle, border-left 2px solid var(--accent), p-4, rounded-lg
+    Heading: "If they mention [Competitor Name]" — section-heading
+    3 numbered talking points: body-sm, text-primary, line-height 1.6
+    Each point: < 25 words. Punchy. Specific. Data-backed.
+
+    Mock battlecard for Schroders QEP:
+    1. "Our OCF is 0.65% vs their 0.73% — 8bps cheaper with a 20-year systematic track record, 3x longer than QEP."
+    2. "QEP requires Schroders platform relationship — we sit on 12 platforms including Transact and Nucleus independently."
+    3. "Their ESG integration is a passive overlay — ours is embedded in the factor model from construction."
+```
+
+##### Layer 2 — Building: Positioning Intelligence
+
+Greyed preview of fuller competitor briefs with manager commentary, distribution hire signals, mandate pivot detection. Overlay: "In development — Available Q2 2026"
+
+##### Layer 3 — Licensed: IFA Perception Layer
+
+Locked card: Defaqto fund ratings and actual IFA usage data. "Shows exactly how IFAs currently rate and use each competitor fund."
+
+---
+
+#### MODULE 3: PARTNERSHIP INTELLIGENCE
+
+**Route:** `/intelligence/partnership-intelligence`
+
+**Hero moment:** An anatomy of the JPMorgan + True Potential partnership — trigger, people, mandate fit, outcome — and a list of firms with an identical pre-partnership profile today.
+
+##### Layer 1 — Live: Retrospective Partnership Anatomy
+
+**Search bar:**
+```
+Full-width input: bg-card, border 1px var(--border), rounded-lg
+  height: 44px, padding: 0 16px
+  placeholder: "Search known partnerships..." (body-sm, text-tertiary)
+  focus: border-color var(--accent)
+  Autocomplete dropdown: bg-card, border, rounded-lg, shadow-sm, mt-1
+    Suggestions: body-sm, p-3, hover bg-raised
+    "JPMorgan + True Potential"
+    "Schroders + Benchmark Capital"
+    "Columbia Threadneedle + Openwork"
+```
+
+**Default state:** 3 collapsed partnership anatomy cards in a row (grid-cols-3 gap-4).
+
+**Partnership Anatomy Card (full view):**
+```
+Container: bg-card, border 1px var(--border), rounded-lg, p-6
+
+Header:
+  Left: [AM name] × [Distributor name] — page-title style
+  Right: "Announced [date]" — caption, Geist Mono, text-tertiary
+
+4-section anatomy (grid-cols-2 gap-5):
+
+  TRIGGER:
+    Container: border-left 3px solid var(--accent), pl-4
+    Label: "TRIGGER" — card-label style
+    Content: body-sm, text-secondary, line-height 1.6, mt-2
+
+  MANDATE FIT:
+    Container: border-left 3px solid var(--success), pl-4
+    Label: "MANDATE FIT"
+    Content: body-sm, text-secondary
+
+  PEOPLE CATALYST:
+    Container: border-left 3px solid var(--neutral), pl-4
+    Label: "PEOPLE CATALYST"
+    Content: body-sm, text-secondary
+    Source note: "Source: LinkedIn profile, FCA register" — caption, text-tertiary, mt-1
+
+  OUTCOME:
+    Container: border-left 3px solid var(--success), pl-4
+    Label: "OUTCOME"
+    Content: body-sm, text-secondary
+    Key metric in Geist Mono: "£1.2bn AUM estimated at peak"
+```
+
+**Mock anatomy — JPMorgan + True Potential:**
+
+| Section | Content |
+|---------|---------|
+| TRIGGER | True Potential's discretionary service launched 2017 required institutional-grade systematic equity exposure not available in their existing fund panel. |
+| MANDATE FIT | JPMorgan US Equity Income matched True Potential's target demographic (risk-averse, income-seeking) and their then-emerging digital distribution model. |
+| PEOPLE CATALYST | True Potential's CIO David Harrison had a prior relationship with JPMorgan's UK Wholesale team from his previous role at Standard Life Investments (2014-2017). |
+| OUTCOME | True Potential became one of JPMorgan's top 10 UK wholesale distributors by AUM within 24 months. £1.2bn AUM estimated at peak (2021, FT Adviser). |
+
+**Pre-partnership profile matches table:**
+```
+Section heading: "Firms matching this pre-partnership profile today" + count badge "12"
+
+Compact table (same spec as Section 6f):
+  Rank | Firm | Signal | Match Score (risk bar + score)
+
+Mock data (show 6):
+  1. Quilter Financial Planning — "Launching MPS Q1 2026, systematic equity gap identified in factsheet" — 88
+  2. Benchmark Capital — "DPS AUM grew 140% in 2 years, current systematic equity offering thin" — 84
+  3. Perspective Group — "New CIO from institutional AM, expanding product range (FCA register)" — 81
+  4. Ascot Lloyd — "Platform expansion to Nucleus suggests fund panel review underway" — 78
+  5. Sandringham Financial Partners — "Regulation-driven consolidation creating systematic exposure gap" — 75
+  6. Almary Green — "Investment committee minutes mention 'factor-based diversification' as 2026 priority" — 72
+```
+
+##### Layer 2 — Building: Predictive Signals
+
+Greyed preview: broader signal scanning across all 10,847 IFAs. Overlay: "In development — Available Q3 2026"
+
+##### Layer 3 — Licensed: People & Relationship Intelligence
+
+Locked card: LinkedIn Sales Navigator + Defaqto for people movement and fund panel signals at scale.
+
+---
+
+#### MODULE 4: DYNAMIC MARKET INTELLIGENCE
+
+**Route:** `/intelligence/market-intelligence`
+
+**Hero moment:** Bank of England held rates at 4.5% today. The platform shows: which 3 Keyridge mandates are directly relevant, which IFA segments to contact, and what to say — in under 60 seconds.
+
+##### Layer 1 — Live: Macro Event to Mandate Mapping
+
+**Two-column layout:** `grid-cols-[380px_1fr] gap-0`
+
+**Left column — Live Event Feed:**
+```
+Container: border-right 1px var(--border), overflow-y auto, height calc(100vh - 200px)
+  padding: 0
+
+Section heading: "MARKET EVENTS" (card-label) + pulsing green dot (6px, animate-pulse-dot)
+  + "Live" in success-text, caption. Padding: 16px.
+
+Each event item:
+  Container: p-4, border-bottom 1px var(--border-subtle), cursor pointer
+    transition: all 120ms ease
+  Selected: border-left 2px solid var(--accent), bg-raised, pl-[14px]
+  Hover (not selected): bg-raised
+
+  Time: Geist Mono, caption (11px), text-tertiary, mb-1
+  Source badge: per MASTER.md Section 6m source colours
+  Headline: body-sm (13px), text-primary, mt-1, line-height 1.5
+  Relevance: caption, var(--accent), mt-1
+    "Relevant to 3 mandates"
+
+Mock events:
+  08:15 BoE — "Bank of England holds base rate at 4.5%" → 3 mandates
+  09:30 ONS — "UK CPI prints 2.8% — below consensus" → 2 mandates
+  10:05 Reuters — "LGPS consolidation pool expansion announced" → 4 mandates
+  10:45 FT — "Global equity markets rally on Fed dovish signals" → 2 mandates
+  11:20 Citywire — "Multi-asset sector sees £2.1bn outflows in March" → 3 mandates
+```
+
+**Right column — Mapped Intelligence:**
+```
+Container: padding 24px, overflow-y auto
+
+Event summary card (top):
+  bg-card, border, rounded-lg, p-5
+  Headline: section-heading (14px, font-semibold)
+  Context: body-sm, text-secondary, mt-2, line-height 1.6 (2 sentences)
+
+Mandate relevance section (mt-6):
+  Label: "MANDATES AFFECTED" (card-label) + count badge
+  Grid: grid-cols-1 gap-3, mt-3
+
+  Mandate card:
+    bg-card, border 1px var(--border), rounded-lg, p-4
+    Mandate name: body (14px), font-semibold, text-primary
+    Why relevant: body-sm, text-secondary, mt-1, line-height 1.5
+    Opportunity badge: pill — DEFENSIVE (neutral) / OFFENSIVE (success) / NEUTRAL (neutral)
+    "Generate Outreach Brief" ghost button, mt-3
+
+IFA Outreach Intelligence section (mt-6):
+  Label: "IFAS TO CONTACT TODAY" (card-label)
+  Compact table (mt-3):
+    Firm | Reason | Mandate | Action
+    Firm: body-sm, font-medium, text-primary
+    Reason: body-sm, text-secondary, line-clamp-2
+    Mandate: badge (neutral style)
+    Action: "Draft" ghost button (small)
+
+  Mock rows:
+    Paradigm Capital — "Risk-averse client base benefits from rate hold stability; Strategic Bond narrative" — Strategic Bond
+    Foster Denovo — "Last discussed fixed income 8 weeks ago; this event gives natural re-engagement hook" — Strategic Bond
+    Attivo Group — "Investment philosophy updated to emphasise duration sensitivity last month" — Global Systematic
+```
+
+**Outreach Draft Modal:**
+```
+Width: 600px, centred, bg-card, border, rounded-lg, shadow
+  shadow: 0 8px 32px rgba(0,0,0,0.10)
+  Backdrop: rgba(0,0,0,0.3)
+
+Header: p-5, border-bottom 1px var(--border)
+  "Outreach Draft" — section-heading
+  "For: [IFA Name] · Re: [Event] · Mandate: [Name]" — caption, text-tertiary
+  Close X: top-right
+
+Body: p-5
+  Draft text: body-sm, line-height 1.7, bg-raised, border, rounded-md, p-4
+    Editable textarea, min-height 200px
+    font-family: var(--font-sans)
+
+Footer: p-5, border-top 1px var(--border), display flex, gap 3
+  "Copy to clipboard" — ghost button (primary)
+  "Open in email client" — ghost button
+  "Personalise with AI Research" — ghost button, accent text
+
+Disclaimer: caption, text-tertiary, mt-3, text-centre
+  "Review and personalise before sending. This draft is generated from public data."
+```
+
+##### Layer 2 — Building: Mandate to Distribution Opportunity
+
+Greyed preview: connecting macro events to Module 1 IFA priority lists. Overlay: "In development — Available Q2 2026"
+
+##### Layer 3 — Licensed: Client Holdings Intelligence
+
+Locked card: "Maps macro events to specific client portfolios." Requires: Salesforce/DealCloud integration, Portfolio management system access.
+
+---
+
+#### MODULE 5: AI RESEARCH TEAM
+
+**Route:** `/intelligence/ai-research`
+
+**Hero moment:** Type "Who should we target for Global Systematic in the South East?" and receive a ranked list of 8 IFA firms with intelligence briefs in under 10 seconds.
+
+##### Layer 1 — Live: Structured Q&A on Connected Data
+
+**Query input (prominent):**
+```
+Container: mt-2
+
+Input:
+  width: 100%
+  height: 52px
+  bg: var(--bg-card)
+  border: 1px solid var(--border)
+  border-radius: 10px
+  padding: 0 52px 0 20px (right padding for submit button)
+  font: body (14px), text-primary
+  placeholder: "Ask any distribution question..." (text-tertiary)
+  focus: border-color var(--accent), box-shadow: 0 0 0 3px var(--accent-subtle)
+
+Submit button (inside input, right side):
+  position: absolute, right: 6px, top: 50%, transform translateY(-50%)
+  bg: var(--accent), hover: var(--accent-hover)
+  border-radius: 6px
+  padding: 8px 14px
+  display: flex, align-items: center, gap: 6px
+  "Research" — body-sm, font-medium, white
+  Search icon: 14px, white
+```
+
+**Suggested question chips (below input):**
+```
+Container: display flex, gap 2, flex-wrap wrap, mt-3
+
+Each chip:
+  bg: var(--bg-raised)
+  border: 1px solid var(--border)
+  border-radius: 9999px
+  padding: 6px 14px
+  font: body-sm (13px), text-secondary
+  cursor: pointer
+  transition: all 120ms ease
+  hover: bg var(--bg-subtle), border-color var(--border-strong), text-primary
+
+Chips:
+  "Who should we target for Global Systematic in the South East?"
+  "How is Schroders positioned against us for the IA Global sector?"
+  "Which IFAs have had leadership changes in the last 30 days?"
+  "Which platforms carry Artemis but not Keyridge?"
+```
+
+**Query history (left sidebar feel):**
+```
+Container: mt-6, pt-4, border-top 1px var(--border-subtle)
+  Label: "RECENT QUERIES" — card-label style
+
+Each entry: py-2, cursor pointer, hover text-primary
+  Query text: body-sm, text-secondary, line-clamp-1
+  Timestamp: caption, Geist Mono, text-tertiary, mt-0.5
+```
+
+**Result area:**
+```
+Default (no query): centred, mt-12
+  Search icon: 32px, text-tertiary
+  "Ask a distribution question. Get a research-grade answer." — body-sm, text-tertiary, mt-3
+
+Result state: mt-6
+  Query echo: section-heading, text-primary
+  Meta: caption, Geist Mono, text-tertiary, mt-1
+    "Result generated in 8.2s · Sources: FCA Register, Companies House, Fund Factsheets, Industry Press"
+
+  Result content depends on query type:
+
+  TYPE 1 — Ranked list (IFA targeting): same table as Module 1, compact
+    "Download as CSV" ghost button below table
+
+  TYPE 2 — Structured brief (competitor/mandate): card sections
+    Overview / Positioning / Key Signals / Recommended Actions
+    "Copy brief" ghost button + "Export PDF" ghost button
+
+  TYPE 3 — Comparison (platform/benchmark): comparison table, Geist Mono
+
+  Below result:
+    "Refine this query" input: ghost-style, smaller (height 36px), body-sm
+    "Generate outreach brief from this result" — accent ghost button, mt-3
+```
+
+##### Layer 2 — Building: Research Brief Generation
+
+Greyed preview: structured one-page briefs for client meetings. Overlay: "In development — Available Q2 2026"
+
+##### Layer 3 — Licensed: Proactive Intelligence
+
+Locked card: "System monitors sources continuously and pushes relevant intelligence to the right RM without being asked." Overlay: "Building — Available Q4 2026 · Requires: Connected data sources"
+
+---
+
+#### MODULE 6: PLATFORM FLOW INTELLIGENCE
+
+**Route:** `/intelligence/platform-flow`
+
+**Hero moment:** "Keyridge's Global Systematic is not listed on Hargreaves Lansdown. HL's multi-asset category AUM grew £4.2bn in the last quarter."
+
+##### Layer 1 — Live: Market-Level Flow Intelligence
+
+**Top stats strip (4 stats, same StatCard component):**
+
+| Label | Value | Delta | Direction |
+|-------|-------|-------|-----------|
+| IA Global Net Flows QTD | −£2.1bn | ↓ 3 consecutive negative quarters | down |
+| IA Mixed Inv. Flows QTD | +£847m | ↑ vs −£312m prior quarter | up |
+| UK Net Retail Sales Mar | −£1.4bn | ↓ worst month since Oct 2023 | down |
+| Platforms Growing AUM | 8 of 18 | | neutral |
+
+**Two charts (grid-cols-2 gap-4, mt-6):**
+
+Left: "Net Retail Sales by IA Sector — 12M"
+```
+Bar chart per MASTER.md Section 7 item 3.
+Positive bars: success-text at 70% opacity
+Negative bars: danger-text at 70% opacity
+IA sectors on X axis. Net flows on Y axis.
+Reference line at 0.
+
+Mock data (monthly, show last 6 months as bars):
+  IA Global: -£340m, -£280m, -£310m (consistently negative)
+  IA Strategic Bond: +£120m, +£190m, +£240m (growing positive)
+  IA Mixed 40-85%: -£80m, +£40m, +£110m (recovering)
+```
+
+Right: "Major Platform AUM Rankings"
+```
+Bar list per MASTER.md Section 7 item 8.
+Horizontal bars, labels left, values right.
+
+Mock data:
+  Hargreaves Lansdown: £149bn (+3.2% QoQ) — success-text delta
+  Quilter: £104bn (+1.1%) — success-text
+  AJ Bell: £82bn (+2.8%) — success-text
+  Aegon: £58bn (flat) — text-tertiary
+  Transact: £53bn (+4.7%) — success-text
+  Nucleus: £28bn (+6.1%) — success-text
+
+All AUM values: Geist Mono. Deltas: Geist Mono, coloured.
+```
+
+**Platform Distribution Gap Analysis (mt-6):**
+```
+Section heading: "Keyridge Fund Presence vs Competitor Platforms"
+
+Table: same spec as Section 6f.
+Columns: Platform | Global Systematic | UK Balanced | Diversified Income | Abs Return | Strategic Bond | Competitor Count
+
+Cell values: ✓ (success-text) or ✗ (danger-text), centre-aligned
+  ✗ cells in columns where Keyridge funds are missing: bg var(--accent-subtle)
+
+Gap rows (platforms where Keyridge has ≥2 missing funds):
+  Entire row: bg var(--accent-subtle) at 50% opacity
+
+Mock data:
+  Hargreaves Lansdown: ✗ ✗ ✓ ✗ ✓ | 4 competitors
+  Quilter: ✓ ✓ ✓ ✗ ✓ | 3 competitors
+  Transact: ✓ ✓ ✓ ✓ ✓ | 2 competitors
+  Nucleus: ✓ ✗ ✓ ✗ ✓ | 3 competitors
+  AJ Bell: ✗ ✗ ✓ ✗ ✓ | 4 competitors
+  Standard Life: ✓ ✓ ✗ ✗ ✓ | 2 competitors
+  Aviva: ✗ ✓ ✓ ✗ ✓ | 3 competitors
+  Zurich: ✓ ✓ ✓ ✗ ✓ | 2 competitors
+
+Competitor Count: data-sm Geist Mono, right-aligned
+```
+
+**Priority gap callout:**
+```
+Container: bg-accent-subtle, border-left 3px solid var(--accent), rounded-lg, p-4, mt-4
+  body-sm, text-primary:
+  "2 priority platform gaps identified:"
+  body, font-semibold, text-primary, mt-1:
+  "Hargreaves Lansdown and AJ Bell"
+  body-sm, text-secondary, mt-1:
+  "Both growing, both carrying 4 competitors without Keyridge."
+```
+
+##### Layer 2 — Building: Inferred Platform & Manager Signals
+
+Greyed preview: partial flow inference from fund AUM trajectory, platform fund list changes, press signals. Overlay: "In development — Available Q3 2026"
+
+##### Layer 3 — Licensed: Actual Platform Flow Data
+
+```
+Locked card (accent border-left):
+  Lock icon (20px, accent)
+  "Firm-specific, fund-specific, platform-specific flow data requires:"
+  "• Calastone — transaction-level flow data (enterprise pricing)"
+  "• FE fundinfo Finscape / Nexus — 15+ UK retail platforms, fund switches, distributor flows"
+  body-sm, text-secondary
+
+  "This is the most commercially valuable layer. Licensing discussions should begin once the core product is validated."
+  body-sm, text-secondary, mt-3, font-style italic
+
+  "Register Interest" — accent text link, font-medium, mt-4
+```
+
+---
+
+### SECTION E: SHARED INTELLIGENCE COMPONENTS
+
+#### Data Sources Slide-Over Panel
+
+```
+Container: fixed right, top 0, height 100vh, width 420px, z-index 50
+  background: var(--bg-card)
+  border-left: 1px solid var(--border)
+  box-shadow: -8px 0 24px rgba(0,0,0,0.06)
+  overflow-y: auto
+  Backdrop: fixed inset, bg rgba(0,0,0,0.2), cursor pointer (click to close)
+
+Header: p-5, border-bottom 1px var(--border)
+  display: flex, justify-content space-between, items-center
+  "Data Sources — [Module Name]" — section-heading
+  Close: X icon, 18px, text-tertiary, hover text-secondary
+
+Body: p-5
+  Table:
+    Columns: Source | Purpose | Layer | Cost | Legal Status
+    Source: body-sm, font-medium, text-primary
+    Purpose: body-sm, text-secondary
+    Layer: badge — "1" / "2" / "3" with neutral styling
+    Cost: body-sm, text-secondary — "Free" / "Licensed"
+    Legal Status: 6px dot + label
+      Green: dot var(--success) + "Green" body-sm
+      Amber: dot var(--warning) + "Amber" body-sm
+
+Footer: p-5, border-top 1px var(--border)
+  body-sm, text-tertiary, line-height 1.5:
+  "All data collection respects robots.txt. Personal data handled under UK GDPR Legitimate Interests basis."
+```
+
+#### "PUBLIC DATA ONLY" Badge
+
+```
+Appears on every module header. Always visible.
+
+  background: var(--success-subtle)
+  border: 1px solid rgba(34,197,94,0.20)
+  color: var(--success-text)
+  font: body-sm (13px) — NOT uppercase (this is a sentence)
+  padding: 2px 10px
+  border-radius: 9999px
+  display: inline-flex, align-items: center, gap: 4px
+  icon: ShieldCheck (14px, success-text) — optional, left of text
+
+  Text: "Public data only — no internal access required"
+
+  Commercial message: no procurement delay, no security review, no SOC 2.
+```
+
+---
+
+### SECTION F: EMPTY AND LOADING STATES
+
+**Empty state (no data selected / no query):**
+```
+Container: display flex, flex-direction column, align-items centre,
+  justify-content centre, min-height 240px, gap 8px
+
+Icon: lucide, 32px, text-tertiary (module-appropriate icon)
+Prompt: body-sm, text-tertiary
+  Module 1: "Select a mandate to begin"
+  Module 2: "Select a mandate to view competitors"
+  Module 3: "Search a partnership or browse examples"
+  Module 4: "Select an event from the feed"
+  Module 5: "Ask a distribution question"
+  Module 6: "Market-level platform data displayed by default"
+```
+
+**Loading state:**
+```
+Content skeleton: same dimensions as expected content
+  background: var(--bg-raised)
+  border-radius: 4px
+  animation: pulse-dot 2.2s ease-in-out infinite
+  (Same opacity pulse as data source dots — NOT shimmer)
+```
+
+**Error state:**
+```
+Container: inline-flex, items-center, gap 8px, p-3, rounded-lg
+  bg: var(--warning-subtle)
+  border-left: 2px solid var(--warning)
+
+  AlertTriangle icon: 16px, warning-text
+  Text: body-sm, text-secondary
+    "[Source Name] temporarily unavailable"
+  "Retry" — text link, body-sm, font-medium, accent colour
+```
