@@ -26,6 +26,7 @@ interface NavItem {
 
 interface NavSection {
   sectionLabel: string;
+  sectionHref?: string;
   items: NavItem[];
   badge?: "BETA";
 }
@@ -43,6 +44,7 @@ const NAV_SECTIONS: NavSection[] = [
   },
   {
     sectionLabel: "INTELLIGENCE",
+    sectionHref: "/intelligence",
     badge: "BETA",
     items: [
       { label: "IFA Prioritisation", href: "/intelligence/ifa-prioritisation", icon: Target },
@@ -122,22 +124,22 @@ export function Sidebar() {
         {NAV_SECTIONS.map((section) => (
           <div key={section.sectionLabel}>
             {/* Section label */}
-            <div
-              style={{
+            {(() => {
+              const labelColor = section.sectionLabel === "CONNECTED INTELLIGENCE" ? "var(--text-secondary)" : "var(--text-tertiary)";
+              const labelStyle: React.CSSProperties = {
                 padding: "0 16px",
                 margin: "20px 0 4px 0",
                 fontSize: "11px",
                 fontWeight: 500,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                color: section.sectionLabel === "CONNECTED INTELLIGENCE" ? "var(--text-secondary)" : "var(--text-tertiary)",
+                color: labelColor,
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
-              }}
-            >
-              {section.sectionLabel}
-              {section.badge === "BETA" && (
+                textDecoration: "none",
+              };
+              const badgeEl = section.badge === "BETA" && (
                 <span
                   style={{
                     display: "inline-flex",
@@ -156,8 +158,27 @@ export function Sidebar() {
                 >
                   BETA
                 </span>
-              )}
-            </div>
+              );
+              if (section.sectionHref) {
+                return (
+                  <Link
+                    href={section.sectionHref}
+                    style={{ ...labelStyle, cursor: "pointer", transition: "color 120ms ease" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = "var(--text-primary)"; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = labelColor; }}
+                  >
+                    {section.sectionLabel}
+                    {badgeEl}
+                  </Link>
+                );
+              }
+              return (
+                <div style={labelStyle}>
+                  {section.sectionLabel}
+                  {badgeEl}
+                </div>
+              );
+            })()}
 
             {/* Nav items */}
             {section.items.map((item) => {

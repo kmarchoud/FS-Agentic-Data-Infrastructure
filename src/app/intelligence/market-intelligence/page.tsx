@@ -1593,118 +1593,162 @@ function Layer1({
                     letterSpacing: "0.06em",
                     color: "var(--text-tertiary)",
                     fontFamily: "var(--font-sans)",
-                    marginBottom: "12px",
+                    marginBottom: "0",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
                   }}
                 >
                   IFAs to Contact Today
+                  <CountBadge count={selectedEventId === "boe" ? BOE_IFA_ROWS.length : intelligence.ifas.length} />
                 </div>
 
-                {/* Table */}
+                {/* Outreach window indicator */}
                 <div
                   style={{
-                    background: "var(--bg-card)",
-                    border: "1px solid var(--border)",
-                    borderRadius: "8px",
-                    overflow: "hidden",
+                    background: "var(--bg-raised)",
+                    padding: "8px 16px",
+                    borderRadius: "6px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    marginTop: "24px",
+                    marginBottom: "12px",
                   }}
                 >
-                  {/* Header */}
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "160px 1fr 140px 80px",
-                      padding: "8px 12px",
-                      borderBottom: "1px solid var(--border-strong)",
-                      background: "var(--bg-page)",
-                    }}
-                  >
-                    {["Firm", "Reason", "Mandate", "Action"].map((col) => (
-                      <div
-                        key={col}
-                        style={{
-                          fontSize: "11px",
-                          fontWeight: 500,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.06em",
-                          color: "var(--text-tertiary)",
-                          fontFamily: "var(--font-sans)",
-                        }}
-                      >
-                        {col}
-                      </div>
-                    ))}
-                  </div>
+                  <Clock size={12} style={{ color: "var(--text-tertiary)" }} />
+                  <span style={{ fontSize: "11px", color: "var(--text-tertiary)", fontFamily: "var(--font-sans)" }}>
+                    Best outreach window:{" "}
+                    <span style={{ fontFamily: "var(--font-mono)", color: "var(--accent)", fontVariantNumeric: "tabular-nums" }}>
+                      24-48 hours
+                    </span>
+                    . After 48 hours this becomes yesterday&apos;s news.
+                  </span>
+                </div>
 
-                  {/* Rows */}
-                  {intelligence.ifas.map((ifa, i) => (
+                {/* BoE: enhanced table with Last Contact + Priority */}
+                {selectedEventId === "boe" ? (
+                  <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", overflow: "hidden" }}>
                     <div
-                      key={ifa.firm}
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "150px 1fr 160px 90px 90px 80px",
+                        padding: "8px 12px",
+                        borderBottom: "1px solid var(--border-strong)",
+                        background: "var(--bg-page)",
+                      }}
+                    >
+                      {["Firm", "Reason", "Mandate", "Last Contact", "Priority", "Action"].map((col) => (
+                        <div key={col} style={{ fontSize: "11px", fontWeight: 500, textTransform: "uppercase" as const, letterSpacing: "0.06em", color: "var(--text-tertiary)", fontFamily: "var(--font-sans)" }}>
+                          {col}
+                        </div>
+                      ))}
+                    </div>
+                    {BOE_IFA_ROWS.map((ifa, i) => {
+                      const lastContactColor =
+                        ifa.lastContactVariant === "danger" ? "var(--danger-text)"
+                        : ifa.lastContactVariant === "warning" ? "var(--warning-text)"
+                        : "var(--text-tertiary)";
+                      const priorityStyle =
+                        ifa.priorityVariant === "danger"
+                          ? { bg: "var(--danger-subtle)", border: "rgba(239,68,68,0.20)", color: "var(--danger-text)" }
+                          : ifa.priorityVariant === "warning"
+                          ? { bg: "var(--warning-subtle)", border: "rgba(245,158,11,0.20)", color: "var(--warning-text)" }
+                          : { bg: "var(--neutral-subtle)", border: "rgba(107,114,128,0.20)", color: "var(--neutral-text)" };
+                      const mandates = Array.isArray(ifa.mandate) ? ifa.mandate : [ifa.mandate];
+                      return (
+                        <div
+                          key={ifa.firm}
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "150px 1fr 160px 90px 90px 80px",
+                            padding: "10px 12px",
+                            borderBottom: i < BOE_IFA_ROWS.length - 1 ? "1px solid var(--border-subtle)" : "none",
+                            alignItems: "center",
+                            transition: "background 100ms ease",
+                          }}
+                          onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-raised)")}
+                          onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.background = "transparent")}
+                        >
+                          <div style={{ fontSize: "13px", fontWeight: 500, color: "var(--text-primary)", fontFamily: "var(--font-sans)" }}>
+                            {ifa.firm}
+                          </div>
+                          <div style={{ fontSize: "13px", color: "var(--text-secondary)", fontFamily: "var(--font-sans)", lineHeight: 1.4, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" as const, overflow: "hidden", paddingRight: "12px" }}>
+                            {ifa.reason}
+                          </div>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                            {mandates.map((m) => <MandateBadge key={m} label={m} />)}
+                          </div>
+                          <div style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: lastContactColor, fontVariantNumeric: "tabular-nums" }}>
+                            {ifa.lastContact}
+                          </div>
+                          <div>
+                            <span style={{ display: "inline-flex", alignItems: "center", padding: "2px 8px", borderRadius: "9999px", background: priorityStyle.bg, border: `1px solid ${priorityStyle.border}`, color: priorityStyle.color, fontSize: "11px", fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase" as const, fontFamily: "var(--font-sans)" }}>
+                              {ifa.priority}
+                            </span>
+                          </div>
+                          <div>
+                            <GhostButton small onClick={() => setModalState({ firm: ifa.firm, mandate: mandates[0], eventHeadline: selectedEvent.headline })}>
+                              Draft
+                            </GhostButton>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  /* Legacy 4-column table for all other events */
+                  <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", overflow: "hidden" }}>
+                    <div
                       style={{
                         display: "grid",
                         gridTemplateColumns: "160px 1fr 140px 80px",
-                        padding: "10px 12px",
-                        borderBottom:
-                          i < intelligence.ifas.length - 1
-                            ? "1px solid var(--border-subtle)"
-                            : "none",
-                        alignItems: "center",
-                        transition: "background 100ms ease",
+                        padding: "8px 12px",
+                        borderBottom: "1px solid var(--border-strong)",
+                        background: "var(--bg-page)",
                       }}
-                      onMouseEnter={(e) =>
-                        ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-raised)")
-                      }
-                      onMouseLeave={(e) =>
-                        ((e.currentTarget as HTMLDivElement).style.background = "transparent")
-                      }
                     >
-                      <div
-                        style={{
-                          fontSize: "13px",
-                          fontWeight: 500,
-                          color: "var(--text-primary)",
-                          fontFamily: "var(--font-sans)",
-                        }}
-                      >
-                        {ifa.firm}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: "13px",
-                          color: "var(--text-secondary)",
-                          fontFamily: "var(--font-sans)",
-                          lineHeight: 1.4,
-                          display: "-webkit-box",
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: "vertical",
-                          overflow: "hidden",
-                          paddingRight: "12px",
-                        }}
-                      >
-                        {ifa.reason}
-                      </div>
-                      <div>
-                        {Array.isArray(ifa.mandate)
-                          ? ifa.mandate.map((m: string) => <MandateBadge key={m} label={m} />)
-                          : <MandateBadge label={ifa.mandate as string} />
-                        }
-                      </div>
-                      <div>
-                        <GhostButton
-                          small
-                          onClick={() =>
-                            setModalState({
-                              firm: ifa.firm,
-                              mandate: Array.isArray(ifa.mandate) ? ifa.mandate.join(" + ") : ifa.mandate,
-                              eventHeadline: selectedEvent.headline,
-                            })
-                          }
-                        >
-                          Draft
-                        </GhostButton>
-                      </div>
+                      {["Firm", "Reason", "Mandate", "Action"].map((col) => (
+                        <div key={col} style={{ fontSize: "11px", fontWeight: 500, textTransform: "uppercase" as const, letterSpacing: "0.06em", color: "var(--text-tertiary)", fontFamily: "var(--font-sans)" }}>
+                          {col}
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                    {intelligence.ifas.map((ifa, i) => {
+                      const mandates = Array.isArray(ifa.mandate) ? ifa.mandate : [ifa.mandate];
+                      return (
+                        <div
+                          key={ifa.firm}
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "160px 1fr 140px 80px",
+                            padding: "10px 12px",
+                            borderBottom: i < intelligence.ifas.length - 1 ? "1px solid var(--border-subtle)" : "none",
+                            alignItems: "center",
+                            transition: "background 100ms ease",
+                          }}
+                          onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-raised)")}
+                          onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.background = "transparent")}
+                        >
+                          <div style={{ fontSize: "13px", fontWeight: 500, color: "var(--text-primary)", fontFamily: "var(--font-sans)" }}>
+                            {ifa.firm}
+                          </div>
+                          <div style={{ fontSize: "13px", color: "var(--text-secondary)", fontFamily: "var(--font-sans)", lineHeight: 1.4, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" as const, overflow: "hidden", paddingRight: "12px" }}>
+                            {ifa.reason}
+                          </div>
+                          <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                            {mandates.map((m) => <MandateBadge key={m} label={m} />)}
+                          </div>
+                          <div>
+                            <GhostButton small onClick={() => setModalState({ firm: ifa.firm, mandate: mandates[0], eventHeadline: selectedEvent.headline })}>
+                              Draft
+                            </GhostButton>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </motion.div>
           </AnimatePresence>
