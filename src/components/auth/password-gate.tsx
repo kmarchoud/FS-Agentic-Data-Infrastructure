@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const CORRECT_PASSWORD = "Merlin";
+const CORRECT_PASSWORD = "Regulex";
 const STORAGE_KEY = "regulex-auth";
 
 export function PasswordGate({ children }: { children: React.ReactNode }) {

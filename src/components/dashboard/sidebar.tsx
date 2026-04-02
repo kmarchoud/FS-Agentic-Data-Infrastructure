@@ -44,9 +44,9 @@ const NAV_SECTIONS: NavSection[] = [
   },
   {
     sectionLabel: "INTELLIGENCE",
-    sectionHref: "/intelligence",
     badge: "BETA",
     items: [
+      { label: "Overview", href: "/intelligence", icon: LayoutDashboard },
       { label: "IFA Prioritisation", href: "/intelligence/ifa-prioritisation", icon: Target },
       { label: "Competitive Positioning", href: "/intelligence/competitive-positioning", icon: BarChart2 },
       { label: "Partnership Intelligence", href: "/intelligence/partnership-intelligence", icon: LinkIcon },
