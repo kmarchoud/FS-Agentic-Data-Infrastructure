@@ -25,6 +25,7 @@ interface MarketEvent {
   source: string;
   headline: string;
   mandateCount: number;
+  chips: Array<{ label: string; variant: "success" | "danger" | "warning" | "neutral" }>;
 }
 
 interface MandateCard {
@@ -36,7 +37,19 @@ interface MandateCard {
 interface IFARow {
   firm: string;
   reason: string;
-  mandate: string;
+  mandate: string | string[];
+  lastContact?: string;
+  lastContactVariant?: "tertiary" | "warning" | "danger";
+  priority?: string;
+  priorityVariant?: "warning" | "danger" | "neutral";
+}
+
+interface FundImpact {
+  fund: string;
+  impact: string;
+  direction: "↑" | "↓" | "→" | "⚠";
+  why: string;
+  whatToSay: string;
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -48,6 +61,10 @@ const EVENTS: MarketEvent[] = [
     source: "BoE",
     headline: "Bank of England holds base rate at 4.5%",
     mandateCount: 3,
+    chips: [
+      { label: "Strat. Bond ↑↑", variant: "success" },
+      { label: "Abs. Return ↓", variant: "danger" },
+    ],
   },
   {
     id: "ons",
@@ -55,6 +72,10 @@ const EVENTS: MarketEvent[] = [
     source: "ONS",
     headline: "UK CPI prints 2.8% — below consensus",
     mandateCount: 2,
+    chips: [
+      { label: "Strat. Bond ↑↑", variant: "success" },
+      { label: "Abs. Return ↓", variant: "danger" },
+    ],
   },
   {
     id: "reuters",
@@ -62,6 +83,10 @@ const EVENTS: MarketEvent[] = [
     source: "Reuters",
     headline: "LGPS consolidation pool expansion announced",
     mandateCount: 4,
+    chips: [
+      { label: "Global Syst. ↑↑", variant: "success" },
+      { label: "Abs. Return →", variant: "neutral" },
+    ],
   },
   {
     id: "ft",
@@ -69,6 +94,10 @@ const EVENTS: MarketEvent[] = [
     source: "FT",
     headline: "Global equity markets rally on Fed dovish signals",
     mandateCount: 2,
+    chips: [
+      { label: "UK Balanced ↑↑", variant: "success" },
+      { label: "Abs. Return ↓", variant: "danger" },
+    ],
   },
   {
     id: "citywire",
@@ -76,6 +105,10 @@ const EVENTS: MarketEvent[] = [
     source: "Citywire",
     headline: "Multi-asset sector sees £2.1bn outflows in March",
     mandateCount: 3,
+    chips: [
+      { label: "UK Balanced ⚠", variant: "warning" },
+      { label: "Strat. Bond ↑", variant: "success" },
+    ],
   },
 ];
 
@@ -266,6 +299,246 @@ const MANDATE_DATA: Record<string, { context: string; mandates: MandateCard[]; i
     ],
   },
 };
+
+// ─── Fund Impact Data ────────────────────────────────────────────────────────
+
+const FUND_IMPACT_DATA: Record<string, FundImpact[]> = {
+  boe: [
+    {
+      fund: "Strategic Bond",
+      impact: "POSITIVE HIGH",
+      direction: "↑",
+      why: "Duration 4.2yr benefits from rate stability. +180bps vs benchmark since rate pause began Q3 2025.",
+      whatToSay: "Our duration positioning anticipated this pause. Strategic Bond has outperformed by 180bps since rates stabilised — this event validates the thesis.",
+    },
+    {
+      fund: "Diversified Income",
+      impact: "POSITIVE MODERATE",
+      direction: "↑",
+      why: "Income yield 4.1% increasingly attractive vs cash at 4.5%. Rate stability supports distribution payments.",
+      whatToSay: "Rate stability protects your clients' income distributions. Our 4.1% yield is increasingly competitive vs cash alternatives.",
+    },
+    {
+      fund: "UK Balanced",
+      impact: "POSITIVE LOW",
+      direction: "↑",
+      why: "60% equity component benefits from lower discount rates in stable rate environment.",
+      whatToSay: "Stable rates support equity valuations. Clients holding UK Balanced are in a good position heading into Q2.",
+    },
+    {
+      fund: "Global Systematic",
+      impact: "NEUTRAL",
+      direction: "→",
+      why: "Systematic factor model explicitly avoids duration bets. Rate-neutral by design.",
+      whatToSay: "Our systematic approach avoids duration risk by design. This is when factor diversification proves its value.",
+    },
+    {
+      fund: "Absolute Return",
+      impact: "WATCH",
+      direction: "↓",
+      why: "Cash+3% objective increasingly difficult with rates unchanged. YTD -0.4% exposed.",
+      whatToSay: "Worth a call to discuss how we're navigating the rate environment. I want to be transparent about near-term challenges.",
+    },
+  ],
+  ons: [
+    {
+      fund: "Strategic Bond",
+      impact: "POSITIVE HIGH",
+      direction: "↑",
+      why: "Disinflation narrative directly supports fixed income. Real yield improves as inflation falls.",
+      whatToSay: "CPI below consensus strengthens the fixed income case. Strategic Bond duration is positioned perfectly for continued disinflation.",
+    },
+    {
+      fund: "Diversified Income",
+      impact: "POSITIVE MODERATE",
+      direction: "↑",
+      why: "Real yield on 4.1% income improves as inflation falls toward target. Income client purchasing power recovering.",
+      whatToSay: "Your clients' real income is improving. Strong moment to reinforce the income story with clients worried about inflation erosion.",
+    },
+    {
+      fund: "UK Balanced",
+      impact: "POSITIVE LOW",
+      direction: "↑",
+      why: "Lower inflation boosts real returns. UK equity valuations supported by easing cost pressures.",
+      whatToSay: "The inflation story is moving in the right direction for UK equity. UK Balanced clients benefit on both equity and bond sides.",
+    },
+    {
+      fund: "Global Systematic",
+      impact: "NEUTRAL",
+      direction: "→",
+      why: "Factor model macro-neutral. CPI variance does not create tracking error in systematic strategy.",
+      whatToSay: "Our macro-neutral positioning means clients aren't exposed to inflation surprise risk. Consistent factor exposure regardless of macro.",
+    },
+    {
+      fund: "Absolute Return",
+      impact: "WATCH",
+      direction: "↓",
+      why: "If rates follow inflation down, cash+3% target becomes harder. Objective under increasing pressure.",
+      whatToSay: "Good moment to review absolute return expectations with clients. Happy to walk through positioning on a call.",
+    },
+  ],
+  reuters: [
+    {
+      fund: "Global Systematic",
+      impact: "POSITIVE HIGH",
+      direction: "↑",
+      why: "LGPS pools actively reviewing external systematic equity exposure. Evidence-based governance aligns directly with systematic investment approach.",
+      whatToSay: "LGPS pools are rebuilding manager panels now. Our 20-year systematic track record fits pool investment committee requirements precisely.",
+    },
+    {
+      fund: "UK Balanced",
+      impact: "POSITIVE MODERATE",
+      direction: "↑",
+      why: "Multi-asset mandates in demand within pooling frameworks for liability-matching.",
+      whatToSay: "LGPS consolidation creates balanced mandate opportunities. We can support with a pool-specific pitch for your territory.",
+    },
+    {
+      fund: "Strategic Bond",
+      impact: "POSITIVE MODERATE",
+      direction: "↑",
+      why: "Fixed income mandates for liability matching within pool portfolios in high demand.",
+      whatToSay: "Pools need fixed income for liability matching. Strategic Bond's duration profile fits pool liability frameworks well.",
+    },
+    {
+      fund: "Diversified Income",
+      impact: "POSITIVE LOW",
+      direction: "↑",
+      why: "Income mandates applicable to pools with current pension payment obligations.",
+      whatToSay: "Income generation is relevant to pools with current pensioners. A smaller but real opportunity worth flagging.",
+    },
+    {
+      fund: "Absolute Return",
+      impact: "NEUTRAL",
+      direction: "→",
+      why: "Absolute return strategies receive mixed reception in LGPS governance frameworks.",
+      whatToSay: "LGPS pools tend to prefer clear-factor strategies. Absolute return may not be the lead conversation here.",
+    },
+  ],
+  ft: [
+    {
+      fund: "UK Balanced",
+      impact: "POSITIVE HIGH",
+      direction: "↑",
+      why: "60% equity exposure captures significant upside. YTD +5.7% vs benchmark +4.2% — outperforming in a rising market.",
+      whatToSay: "UK Balanced is outperforming the benchmark in the rally. Strong moment to reinforce confidence with clients.",
+    },
+    {
+      fund: "Global Systematic",
+      impact: "POSITIVE MODERATE",
+      direction: "↑",
+      why: "Factor model captured quality and momentum in rally. YTD +3.1% vs benchmark +4.8% — lag reflects defensive factor tilt, not failure.",
+      whatToSay: "Our systematic factors captured the rally. The benchmark lag reflects factor diversification — we don't concentrate in growth. Worth framing proactively.",
+    },
+    {
+      fund: "Diversified Income",
+      impact: "NEUTRAL",
+      direction: "→",
+      why: "Income focus means lower equity beta — less upside in rally but stable income maintained throughout.",
+      whatToSay: "Income strategy isn't designed to chase equity rallies — and that's the point. Clients chose income over growth and it's delivering.",
+    },
+    {
+      fund: "Strategic Bond",
+      impact: "WATCH",
+      direction: "↓",
+      why: "Rate expectations embedded in equity rally may signal less rate cutting — modest pressure on fixed income duration.",
+      whatToSay: "The rally signals some reflation expectations which could pressure fixed income. Watching closely — nothing alarming yet.",
+    },
+    {
+      fund: "Absolute Return",
+      impact: "RISK",
+      direction: "↓",
+      why: "Strategy designed to be market-neutral — lagging equity beta in strong rally. YTD -0.4% more visible against strong equity backdrop.",
+      whatToSay: "Absolute return strategies don't participate fully in equity rallies — that's the trade-off for downside protection. Worth reinforcing with clients.",
+    },
+  ],
+  citywire: [
+    {
+      fund: "UK Balanced",
+      impact: "RISK HIGH",
+      direction: "⚠",
+      why: "Directly in IA Mixed Investment sector experiencing £2.1bn outflows. Client redemption risk elevated. YTD +5.7% is the defence — use it now.",
+      whatToSay: "Sector under redemption pressure. Contact IFAs holding UK Balanced before they hear the outflow data from competitors. Our performance is the story.",
+    },
+    {
+      fund: "Absolute Return",
+      impact: "RISK HIGH",
+      direction: "⚠",
+      why: "Absolute return outflows accelerating as clients seek pure equity or pure cash. Middle-ground strategies under structural pressure.",
+      whatToSay: "This is the most urgent retention conversation. Prioritise IFAs with Absolute Return exposure this week — proactive beats reactive.",
+    },
+    {
+      fund: "Diversified Income",
+      impact: "RISK MODERATE",
+      direction: "⚠",
+      why: "Income funds adjacent to mixed investment sector seeing sympathy selling. Outflow risk moderate.",
+      whatToSay: "Proactive touch with Diversified Income relationships this week. Our performance is not negative — that distinction needs making explicitly.",
+    },
+    {
+      fund: "Global Systematic",
+      impact: "RISK MODERATE",
+      direction: "⚠",
+      why: "IA Global also seeing outflows. Systematic strategies not immune to sector-level sentiment. YTD +3.1% is the counter-narrative.",
+      whatToSay: "Systematic equity is in the same outflow environment. Performance is our defence — +3.1% YTD needs to be front and centre.",
+    },
+    {
+      fund: "Strategic Bond",
+      impact: "POSITIVE CONTRAST",
+      direction: "↑",
+      why: "Fixed income bucking the mixed investment outflow trend. Inflows into strategic bond as investors de-risk from mixed assets.",
+      whatToSay: "Strategic Bond is one of few areas seeing inflows. Clients rotating out of mixed assets may be receptive — strong positioning story.",
+    },
+  ],
+};
+
+// ─── BoE IFA Rows ─────────────────────────────────────────────────────────────
+
+const BOE_IFA_ROWS: IFARow[] = [
+  {
+    firm: "Paradigm Capital",
+    reason: "Income-focused client base. Strategic Bond narrative aligns with their investment philosophy.",
+    mandate: "Strategic Bond",
+    lastContact: "3d ago",
+    lastContactVariant: "tertiary",
+    priority: "HIGH",
+    priorityVariant: "warning",
+  },
+  {
+    firm: "Foster Denovo",
+    reason: "Last discussed fixed income 8 weeks ago. Rate hold creates natural re-engagement hook.",
+    mandate: ["Strategic Bond", "Diversified Income"],
+    lastContact: "56d ago",
+    lastContactVariant: "danger",
+    priority: "URGENT",
+    priorityVariant: "danger",
+  },
+  {
+    firm: "Attivo Group",
+    reason: "Added systematic equity to approved list Q4. Rate-neutral positioning differentiates Global Systematic.",
+    mandate: "Global Systematic",
+    lastContact: "8d ago",
+    lastContactVariant: "tertiary",
+    priority: "HIGH",
+    priorityVariant: "warning",
+  },
+  {
+    firm: "Progeny Wealth",
+    reason: "New Head of Investments from Jupiter. Rate hold validates income mandate timing — strong hook.",
+    mandate: "Diversified Income",
+    lastContact: "18d ago",
+    lastContactVariant: "tertiary",
+    priority: "MODERATE",
+    priorityVariant: "neutral",
+  },
+  {
+    firm: "Perspective Financial",
+    reason: "RMAR shows income-focused client growth. Rate stability directly supports their proposition.",
+    mandate: "Diversified Income",
+    lastContact: "34d ago",
+    lastContactVariant: "warning",
+    priority: "MODERATE",
+    priorityVariant: "neutral",
+  },
+];
 
 const SOURCE_COLOURS: Record<string, { bg: string; text: string; border: string }> = {
   BoE: {
@@ -670,6 +943,310 @@ function OutreachModal({
   );
 }
 
+// ─── Fund Impact Table ───────────────────────────────────────────────────────
+
+function getImpactBadgeStyle(impact: string): { bg: string; border: string; color: string; fontWeight?: number } {
+  if (impact === "POSITIVE HIGH") return { bg: "var(--success-subtle)", border: "rgba(34,197,94,0.20)", color: "var(--success-text)" };
+  if (impact === "POSITIVE MODERATE") return { bg: "var(--success-subtle)", border: "rgba(34,197,94,0.15)", color: "var(--success-text)", fontWeight: 500 };
+  if (impact === "POSITIVE LOW") return { bg: "rgba(34,197,94,0.05)", border: "rgba(34,197,94,0.12)", color: "var(--success-text)" };
+  if (impact === "POSITIVE CONTRAST") return { bg: "var(--success-subtle)", border: "rgba(34,197,94,0.20)", color: "var(--success-text)" };
+  if (impact === "NEUTRAL") return { bg: "var(--neutral-subtle)", border: "rgba(107,114,128,0.20)", color: "var(--neutral-text)" };
+  if (impact === "WATCH") return { bg: "var(--warning-subtle)", border: "rgba(245,158,11,0.20)", color: "var(--warning-text)" };
+  if (impact === "RISK HIGH") return { bg: "var(--danger-subtle)", border: "rgba(239,68,68,0.30)", color: "var(--danger-text)", fontWeight: 600 };
+  if (impact === "RISK MODERATE") return { bg: "var(--danger-subtle)", border: "rgba(239,68,68,0.20)", color: "var(--danger-text)" };
+  if (impact === "RISK") return { bg: "var(--danger-subtle)", border: "rgba(239,68,68,0.20)", color: "var(--danger-text)" };
+  return { bg: "var(--neutral-subtle)", border: "rgba(107,114,128,0.20)", color: "var(--neutral-text)" };
+}
+
+function getDirectionStyle(dir: string): string {
+  if (dir === "↑") return "var(--success-text)";
+  if (dir === "↓") return "var(--danger-text)";
+  if (dir === "⚠") return "var(--warning-text)";
+  return "var(--text-tertiary)";
+}
+
+function FundImpactTable({ eventId, eventHeadline }: { eventId: string; eventHeadline: string }) {
+  const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const [expandedWhy, setExpandedWhy] = useState<string | null>(null);
+  const [copiedRow, setCopiedRow] = useState<string | null>(null);
+
+  const impacts = FUND_IMPACT_DATA[eventId] ?? [];
+
+  const handleCopy = (fund: string, text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedRow(fund);
+      setTimeout(() => setCopiedRow(null), 2000);
+    });
+  };
+
+  return (
+    <div
+      style={{
+        background: "var(--bg-card)",
+        border: "1px solid var(--border)",
+        borderRadius: "8px",
+        padding: "16px",
+        marginTop: "16px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: "12px",
+        }}
+      >
+        <span
+          style={{
+            fontSize: "14px",
+            fontWeight: 600,
+            color: "var(--text-primary)",
+            letterSpacing: "-0.006em",
+            fontFamily: "var(--font-sans)",
+          }}
+        >
+          Fund Impact Analysis
+        </span>
+        <span
+          style={{
+            fontSize: "13px",
+            color: "var(--text-secondary)",
+            fontFamily: "var(--font-sans)",
+            maxWidth: "260px",
+            textAlign: "right",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {eventHeadline}
+        </span>
+      </div>
+
+      {/* Table header */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "35% 18% 8% 1fr",
+          padding: "6px 8px",
+          borderBottom: "1px solid var(--border-strong)",
+        }}
+      >
+        {["Fund", "Impact", "Dir", "Why"].map((col) => (
+          <div
+            key={col}
+            style={{
+              fontSize: "11px",
+              fontWeight: 500,
+              textTransform: "uppercase" as const,
+              letterSpacing: "0.06em",
+              color: "var(--text-tertiary)",
+              fontFamily: "var(--font-sans)",
+            }}
+          >
+            {col}
+          </div>
+        ))}
+      </div>
+
+      {/* Rows */}
+      {impacts.map((row, i) => {
+        const isExpanded = expandedRow === row.fund;
+        const isWhyExpanded = expandedWhy === row.fund;
+        const badgeStyle = getImpactBadgeStyle(row.impact);
+
+        return (
+          <div key={row.fund}>
+            <div
+              onClick={() => setExpandedRow(isExpanded ? null : row.fund)}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "35% 18% 8% 1fr",
+                padding: "10px 8px",
+                borderBottom: i < impacts.length - 1 && !isExpanded ? "1px solid var(--border-subtle)" : "none",
+                alignItems: "start",
+                cursor: "pointer",
+                transition: "background 100ms ease",
+                borderRadius: isExpanded ? "4px 4px 0 0" : "4px",
+              }}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.background = "var(--bg-raised)")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.background = "transparent")}
+            >
+              {/* Fund name */}
+              <div
+                style={{
+                  fontSize: "13px",
+                  fontWeight: 500,
+                  color: "var(--text-primary)",
+                  fontFamily: "var(--font-sans)",
+                }}
+              >
+                {row.fund}
+              </div>
+
+              {/* Impact badge */}
+              <div>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    padding: "2px 6px",
+                    borderRadius: "9999px",
+                    background: badgeStyle.bg,
+                    border: `1px solid ${badgeStyle.border}`,
+                    color: badgeStyle.color,
+                    fontSize: "11px",
+                    fontWeight: badgeStyle.fontWeight ?? 600,
+                    letterSpacing: "0.04em",
+                    textTransform: "uppercase" as const,
+                    fontFamily: "var(--font-sans)",
+                    whiteSpace: "nowrap" as const,
+                  }}
+                >
+                  {row.impact}
+                </span>
+              </div>
+
+              {/* Direction */}
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "13px",
+                  color: getDirectionStyle(row.direction),
+                  textAlign: "center",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                {row.direction}
+              </div>
+
+              {/* Why */}
+              <div style={{ display: "flex", alignItems: "flex-start", gap: "6px" }}>
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--text-secondary)",
+                    fontFamily: "var(--font-sans)",
+                    lineHeight: 1.5,
+                    flex: 1,
+                    display: isWhyExpanded ? "block" : "-webkit-box",
+                    WebkitLineClamp: isWhyExpanded ? undefined : 2,
+                    WebkitBoxOrient: isWhyExpanded ? undefined : ("vertical" as const),
+                    overflow: isWhyExpanded ? "visible" : "hidden",
+                  }}
+                >
+                  {row.why}
+                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setExpandedWhy(isWhyExpanded ? null : row.fund);
+                  }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "2px",
+                    color: "var(--text-tertiary)",
+                    flexShrink: 0,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    {isWhyExpanded
+                      ? <polyline points="18 15 12 9 6 15" />
+                      : <polyline points="6 9 12 15 18 9" />}
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* "What to Say" amber panel */}
+            {isExpanded && (
+              <div
+                style={{
+                  background: "var(--accent-subtle)",
+                  borderLeft: "2px solid var(--accent)",
+                  padding: "12px 16px",
+                  borderRadius: "0 4px 4px 4px",
+                  marginBottom: i < impacts.length - 1 ? "1px" : 0,
+                  borderBottom: i < impacts.length - 1 ? "1px solid var(--border-subtle)" : "none",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    textTransform: "uppercase" as const,
+                    letterSpacing: "0.06em",
+                    color: "var(--text-tertiary)",
+                    fontFamily: "var(--font-sans)",
+                    marginBottom: "6px",
+                  }}
+                >
+                  What to Say
+                </div>
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: "var(--text-primary)",
+                    fontFamily: "var(--font-sans)",
+                    lineHeight: 1.6,
+                    flex: 1,
+                  }}
+                >
+                  {row.whatToSay}
+                </div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "10px" }}>
+                  <button
+                    onClick={() => handleCopy(row.fund, row.whatToSay)}
+                    style={{
+                      background: "transparent",
+                      color: "var(--text-secondary)",
+                      fontSize: "12px",
+                      fontWeight: 500,
+                      padding: "4px 10px",
+                      borderRadius: "6px",
+                      border: "none",
+                      cursor: "pointer",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      fontFamily: "var(--font-sans)",
+                      transition: "background 120ms ease",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "var(--bg-raised)")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLButtonElement).style.background = "transparent")}
+                  >
+                    <Copy size={12} strokeWidth={1.5} />
+                    {copiedRow === row.fund ? "Copied!" : "Copy talking point"}
+                  </button>
+                  <a
+                    href="/intelligence/ai-research"
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "11px",
+                      color: "var(--accent)",
+                      textDecoration: "none",
+                      letterSpacing: "0.01em",
+                    }}
+                    onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.textDecoration = "underline")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.textDecoration = "none")}
+                  >
+                    Personalise →
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── Layer 1 ─────────────────────────────────────────────────────────────────
 
 function Layer1({
@@ -822,6 +1399,32 @@ function Layer1({
                 >
                   Relevant to {event.mandateCount} mandates
                 </div>
+                <div style={{ display: "flex", gap: "4px", marginTop: "4px" }}>
+                  {event.chips.map((chip) => {
+                    const chipStyles: Record<string, { bg: string; color: string }> = {
+                      success: { bg: "var(--success-subtle)", color: "var(--success-text)" },
+                      danger: { bg: "var(--danger-subtle)", color: "var(--danger-text)" },
+                      warning: { bg: "var(--warning-subtle)", color: "var(--warning-text)" },
+                      neutral: { bg: "var(--neutral-subtle)", color: "var(--neutral-text)" },
+                    };
+                    const s = chipStyles[chip.variant];
+                    return (
+                      <span
+                        key={chip.label}
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "11px",
+                          padding: "1px 6px",
+                          borderRadius: "3px",
+                          background: s.bg,
+                          color: s.color,
+                        }}
+                      >
+                        {chip.label}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             );
           })}
@@ -876,6 +1479,9 @@ function Layer1({
                   {intelligence.context}
                 </div>
               </div>
+
+              {/* Fund Impact Table */}
+              <FundImpactTable eventId={selectedEventId} eventHeadline={selectedEvent.headline} />
 
               {/* Mandates Affected */}
               <div style={{ marginTop: "24px" }}>
@@ -1077,7 +1683,10 @@ function Layer1({
                         {ifa.reason}
                       </div>
                       <div>
-                        <MandateBadge label={ifa.mandate} />
+                        {Array.isArray(ifa.mandate)
+                          ? ifa.mandate.map((m: string) => <MandateBadge key={m} label={m} />)
+                          : <MandateBadge label={ifa.mandate as string} />
+                        }
                       </div>
                       <div>
                         <GhostButton
@@ -1085,7 +1694,7 @@ function Layer1({
                           onClick={() =>
                             setModalState({
                               firm: ifa.firm,
-                              mandate: ifa.mandate,
+                              mandate: Array.isArray(ifa.mandate) ? ifa.mandate.join(" + ") : ifa.mandate,
                               eventHeadline: selectedEvent.headline,
                             })
                           }

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { TrendingDown, TrendingUp, ArrowDownLeft, ArrowUpRight, AlertTriangle } from "lucide-react";
+import { TrendingDown, TrendingUp, ArrowDownLeft, ArrowUpRight, AlertTriangle, Layers } from "lucide-react";
 import { TopBar } from "@/components/dashboard/topbar";
+import { ConnectedDataStrip } from "@/components/dashboard/connected-data-strip";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -184,6 +185,7 @@ export default function FlowsPage() {
   return (
     <div style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
       <TopBar title="Flow Intelligence" />
+      <ConnectedDataStrip />
 
       <main style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "24px" }}>
 

@@ -956,3 +956,357 @@ export const suggestedQueries: string[] = [
   "Which IFAs mention factor-based investing on their websites?",
   "Compare our platform distribution with Schroders QEP",
 ];
+
+// ---------------------------------------------------------------------------
+// FUND IMPACT TYPES & DATA — Section I
+// ---------------------------------------------------------------------------
+
+export type ImpactLevel = "POSITIVE_HIGH" | "POSITIVE_MODERATE" | "POSITIVE_LOW" | "NEUTRAL" | "WATCH" | "RISK" | "RISK_HIGH" | "RISK_MODERATE" | "POSITIVE_CONTRAST";
+export type FundImpact = { fundName: string; impactLevel: ImpactLevel; direction: "up" | "down" | "neutral" | "warning"; why: string; whatToSay: string };
+export type IFAOutreachRow = { firmName: string; reason: string; mandateRelevant: string; lastContactDays: number; priority: "URGENT" | "HIGH" | "MODERATE" };
+export type MarketEventWithImpact = { id: string; time: string; source: string; headline: string; context: string; fundImpacts: FundImpact[]; ifaOutreach: IFAOutreachRow[]; topPositive: string; topConcern: string };
+
+export const marketEventsWithImpact: MarketEventWithImpact[] = [
+  {
+    id: "evt-1",
+    time: "08:15",
+    source: "BoE",
+    headline: "Bank of England holds base rate at 4.5%",
+    context: "The MPC voted 6-3 to maintain the base rate at 4.5%, with three members favouring a 25bp cut. Markets had priced in a 40% probability of a cut. Sterling strengthened 0.3% against the dollar on the announcement.",
+    fundImpacts: [
+      { fundName: "Strategic Bond", impactLevel: "POSITIVE_HIGH", direction: "up", why: "Duration 4.2yr benefits from rate stability. +180bps vs benchmark since rate pause began Q3 2025.", whatToSay: "Our duration positioning anticipated this pause. Strategic Bond has outperformed by 180bps since rates stabilised — this event validates the thesis." },
+      { fundName: "Diversified Income", impactLevel: "POSITIVE_MODERATE", direction: "up", why: "Income yield 4.1% increasingly attractive vs cash at 4.5%. Rate stability supports distribution payments.", whatToSay: "Rate stability protects your clients' income distributions. Our 4.1% yield is increasingly competitive vs cash alternatives." },
+      { fundName: "UK Balanced", impactLevel: "POSITIVE_LOW", direction: "up", why: "60% equity component benefits from lower discount rates in stable rate environment.", whatToSay: "Stable rates support equity valuations. Clients holding UK Balanced are in a good position heading into Q2." },
+      { fundName: "Global Systematic", impactLevel: "NEUTRAL", direction: "neutral", why: "Systematic factor model explicitly avoids duration bets. Rate-neutral by design.", whatToSay: "Our systematic approach avoids duration risk by design. This is when factor diversification proves its value." },
+      { fundName: "Absolute Return", impactLevel: "WATCH", direction: "down", why: "Cash+3% objective increasingly difficult with rates unchanged. YTD -0.4% exposed.", whatToSay: "Worth a call to discuss how we're navigating the rate environment. I want to be transparent about near-term challenges." },
+    ],
+    ifaOutreach: [],
+    topPositive: "Strat. Bond ↑↑",
+    topConcern: "Abs. Return ↓",
+  },
+  {
+    id: "evt-2",
+    time: "09:30",
+    source: "ONS",
+    headline: "UK CPI prints 2.8% — below consensus",
+    context: "UK Consumer Price Index came in at 2.8% year-on-year for February, below the consensus estimate of 3.0%. Core CPI also surprised to the downside at 3.5% vs 3.7% expected. This strengthens the case for rate cuts later in 2026.",
+    fundImpacts: [
+      { fundName: "Strategic Bond", impactLevel: "POSITIVE_HIGH", direction: "up", why: "Disinflation narrative directly supports fixed income. Real yield improves as inflation falls.", whatToSay: "CPI below consensus strengthens the fixed income case. Strategic Bond duration is positioned perfectly for continued disinflation." },
+      { fundName: "Diversified Income", impactLevel: "POSITIVE_MODERATE", direction: "up", why: "Real yield on 4.1% income improves as inflation falls toward target. Income client purchasing power recovering.", whatToSay: "Your clients' real income is improving. Strong moment to reinforce the income story with clients worried about inflation erosion." },
+      { fundName: "UK Balanced", impactLevel: "POSITIVE_LOW", direction: "up", why: "Lower inflation boosts real returns. UK equity valuations supported by easing cost pressures.", whatToSay: "The inflation story is moving in the right direction for UK equity. UK Balanced clients benefit on both equity and bond sides." },
+      { fundName: "Global Systematic", impactLevel: "NEUTRAL", direction: "neutral", why: "Factor model macro-neutral. CPI variance does not create tracking error in systematic strategy.", whatToSay: "Our macro-neutral positioning means clients aren't exposed to inflation surprise risk. Consistent factor exposure regardless of macro." },
+      { fundName: "Absolute Return", impactLevel: "WATCH", direction: "down", why: "If rates follow inflation down, cash+3% target becomes harder. Objective under increasing pressure.", whatToSay: "Good moment to review absolute return expectations with clients. Happy to walk through positioning on a call." },
+    ],
+    ifaOutreach: [],
+    topPositive: "Strat. Bond ↑↑",
+    topConcern: "Abs. Return ↓",
+  },
+  {
+    id: "evt-3",
+    time: "10:05",
+    source: "Reuters",
+    headline: "LGPS consolidation pool expansion announced",
+    context: "The government confirmed plans to accelerate Local Government Pension Scheme consolidation, with 8 regional pools expected to manage over £500bn by 2030. This creates opportunities for managers with institutional-grade systematic strategies.",
+    fundImpacts: [
+      { fundName: "Global Systematic", impactLevel: "POSITIVE_HIGH", direction: "up", why: "LGPS pools actively reviewing external systematic equity exposure. Evidence-based governance aligns directly with systematic investment approach.", whatToSay: "LGPS pools are rebuilding manager panels now. Our 20-year systematic track record fits pool investment committee requirements precisely." },
+      { fundName: "UK Balanced", impactLevel: "POSITIVE_MODERATE", direction: "up", why: "Multi-asset mandates in demand within pooling frameworks for liability-matching.", whatToSay: "LGPS consolidation creates balanced mandate opportunities. We can support with a pool-specific pitch for your territory." },
+      { fundName: "Strategic Bond", impactLevel: "POSITIVE_MODERATE", direction: "up", why: "Fixed income mandates for liability matching within pool portfolios in high demand.", whatToSay: "Pools need fixed income for liability matching. Strategic Bond's duration profile fits pool liability frameworks well." },
+      { fundName: "Diversified Income", impactLevel: "POSITIVE_LOW", direction: "up", why: "Income mandates applicable to pools with current pension payment obligations.", whatToSay: "Income generation is relevant to pools with current pensioners. A smaller but real opportunity worth flagging." },
+      { fundName: "Absolute Return", impactLevel: "NEUTRAL", direction: "neutral", why: "Absolute return strategies receive mixed reception in LGPS governance frameworks.", whatToSay: "LGPS pools tend to prefer clear-factor strategies. Absolute return may not be the lead conversation here." },
+    ],
+    ifaOutreach: [],
+    topPositive: "Global Sys. ↑↑",
+    topConcern: "Abs. Return →",
+  },
+  {
+    id: "evt-4",
+    time: "10:45",
+    source: "FT",
+    headline: "Global equity markets rally on Fed dovish signals",
+    context: "US markets rose 1.8% overnight after Federal Reserve Chair signalled openness to rate cuts in H2 2026. European markets followed with gains of 0.9-1.2%. The move favours growth and quality factor tilts.",
+    fundImpacts: [
+      { fundName: "UK Balanced", impactLevel: "POSITIVE_HIGH", direction: "up", why: "60% equity exposure captures significant upside. YTD +5.7% vs benchmark +4.2% — outperforming in a rising market.", whatToSay: "UK Balanced is outperforming the benchmark in the rally. Strong moment to reinforce confidence with clients." },
+      { fundName: "Global Systematic", impactLevel: "POSITIVE_MODERATE", direction: "up", why: "Factor model captured quality and momentum in rally. YTD +3.1% vs benchmark +4.8% — lag reflects defensive factor tilt, not failure.", whatToSay: "Our systematic factors captured the rally. The benchmark lag reflects factor diversification — we don't concentrate in growth. Worth framing proactively." },
+      { fundName: "Diversified Income", impactLevel: "NEUTRAL", direction: "neutral", why: "Income focus means lower equity beta — less upside in rally but stable income maintained throughout.", whatToSay: "Income strategy isn't designed to chase equity rallies — and that's the point. Clients chose income over growth and it's delivering." },
+      { fundName: "Strategic Bond", impactLevel: "WATCH", direction: "down", why: "Rate expectations embedded in equity rally may signal less rate cutting — modest pressure on fixed income duration.", whatToSay: "The rally signals some reflation expectations which could pressure fixed income. Watching closely — nothing alarming yet." },
+      { fundName: "Absolute Return", impactLevel: "RISK", direction: "down", why: "Strategy designed to be market-neutral — lagging equity beta in strong rally. YTD -0.4% more visible against strong equity backdrop.", whatToSay: "Absolute return strategies don't participate fully in equity rallies — that's the trade-off for downside protection. Worth reinforcing with clients." },
+    ],
+    ifaOutreach: [],
+    topPositive: "UK Balanced ↑↑",
+    topConcern: "Abs. Return ↓",
+  },
+  {
+    id: "evt-5",
+    time: "11:20",
+    source: "Citywire",
+    headline: "Multi-asset sector sees £2.1bn outflows in March",
+    context: "The IA Mixed Investment 40-85% sector recorded £2.1bn net outflows in March, the third consecutive month of negative flows. Advisers are increasingly moving to risk-graded model portfolios and systematic strategies.",
+    fundImpacts: [
+      { fundName: "UK Balanced", impactLevel: "RISK_HIGH", direction: "warning", why: "Directly in IA Mixed Investment sector experiencing £2.1bn outflows. Client redemption risk elevated. YTD +5.7% is the defence — use it now.", whatToSay: "Sector under redemption pressure. Contact IFAs holding UK Balanced before they hear the outflow data from competitors. Our performance is the story." },
+      { fundName: "Absolute Return", impactLevel: "RISK_HIGH", direction: "warning", why: "Absolute return outflows accelerating as clients seek pure equity or pure cash. Middle-ground strategies under structural pressure.", whatToSay: "This is the most urgent retention conversation. Prioritise IFAs with Absolute Return exposure this week — proactive beats reactive." },
+      { fundName: "Diversified Income", impactLevel: "RISK_MODERATE", direction: "warning", why: "Income funds adjacent to mixed investment sector seeing sympathy selling. Outflow risk moderate.", whatToSay: "Proactive touch with Diversified Income relationships this week. Our performance is not negative — that distinction needs making explicitly." },
+      { fundName: "Global Systematic", impactLevel: "RISK_MODERATE", direction: "warning", why: "IA Global also seeing outflows. Systematic strategies not immune to sector-level sentiment. YTD +3.1% is the counter-narrative.", whatToSay: "Systematic equity is in the same outflow environment. Performance is our defence — +3.1% YTD needs to be front and centre." },
+      { fundName: "Strategic Bond", impactLevel: "POSITIVE_CONTRAST", direction: "up", why: "Fixed income bucking the mixed investment outflow trend. Inflows into strategic bond as investors de-risk from mixed assets.", whatToSay: "Strategic Bond is one of few areas seeing inflows. Clients rotating out of mixed assets may be receptive — strong positioning story." },
+    ],
+    ifaOutreach: [],
+    topPositive: "Strat. Bond ↑",
+    topConcern: "UK Balanced ⚠",
+  },
+];
+
+// IFA Outreach Intelligence — BoE Rate Hold (Section I3)
+export const boeIfaOutreach: IFAOutreachRow[] = [
+  { firmName: "Paradigm Capital", reason: "Income-focused client base. Strategic Bond narrative aligns with their investment philosophy.", mandateRelevant: "Strategic Bond", lastContactDays: 3, priority: "HIGH" },
+  { firmName: "Foster Denovo", reason: "Last discussed fixed income 8 weeks ago. Rate hold creates natural re-engagement hook.", mandateRelevant: "Strategic Bond, Diversified Income", lastContactDays: 56, priority: "URGENT" },
+  { firmName: "Attivo Group", reason: "Added systematic equity to approved list Q4. Rate-neutral positioning differentiates Global Systematic.", mandateRelevant: "Global Systematic", lastContactDays: 8, priority: "HIGH" },
+  { firmName: "Progeny Wealth", reason: "New Head of Investments from Jupiter. Rate hold validates income mandate timing — strong hook.", mandateRelevant: "Diversified Income", lastContactDays: 18, priority: "MODERATE" },
+  { firmName: "Perspective Financial", reason: "RMAR shows income-focused client growth. Rate stability directly supports their proposition.", mandateRelevant: "Diversified Income", lastContactDays: 34, priority: "MODERATE" },
+];
+
+// ---------------------------------------------------------------------------
+// OVERVIEW PAGE TYPES & DATA — Section H
+// ---------------------------------------------------------------------------
+
+export type OverviewStat = { label: string; value: number; valueFormat: string; delta: string; deltaDirection: "up" | "down" | "neutral"; icon: string };
+export type SignalDot = { module: string; text: string };
+export type SignalDay = { day: string; signals: SignalDot[] };
+export type HeatmapCell = { competitorCount: number; keyridgePresent: boolean };
+export type HeatmapRow = { mandate: string; abbreviation: string; cells: Record<string, HeatmapCell> };
+export type ModuleCard = { icon: string; name: string; colour: string; stat: string; signal: string; timestamp: string; route: string };
+export type RecentSignal = { module: string; colour: string; text: string; timestamp: string };
+export type IFAScatterFirm = { id: string; name: string; fitScore: number; signalRecencyDays: number; estimatedAUM_m: number; isUniverse: boolean; signal?: string };
+
+// H2: Headline Stats Strip
+export const overviewStats: OverviewStat[] = [
+  { label: "IFA SIGNALS", value: 23, valueFormat: "integer", delta: "+8 vs last week", deltaDirection: "up", icon: "Target" },
+  { label: "MARKET EVENTS", value: 8, valueFormat: "integer", delta: "Linked to 3 mandates each avg", deltaDirection: "neutral", icon: "Zap" },
+  { label: "COMPETITIVE ALERTS", value: 12, valueFormat: "integer", delta: "2 new today", deltaDirection: "neutral", icon: "BarChart2" },
+  { label: "UK IFA UNIVERSE", value: 10847, valueFormat: "comma", delta: "847 match your mandates", deltaDirection: "neutral", icon: "Users" },
+];
+
+// H4 Left: Signal Stream 7-Day Timeline
+export const signalStream: SignalDay[] = [
+  {
+    day: "Mon",
+    signals: [
+      { module: "IFA Prioritisation", text: "Paradigm Capital: investment director joined" },
+      { module: "IFA Prioritisation", text: "Attivo Group: approved list updated" },
+      { module: "IFA Prioritisation", text: "Foster Denovo: RMAR filing shows growth" },
+      { module: "Market Intelligence", text: "BoE rate decision preview" },
+      { module: "Market Intelligence", text: "UK gilt yields shift" },
+      { module: "Competitive Positioning", text: "Schroders QEP: fee reduction rumour" },
+      { module: "Competitive Positioning", text: "Jupiter Merlin: outflow data published" },
+      { module: "Platform Flow", text: "Transact: new fund listings announced" },
+    ],
+  },
+  {
+    day: "Tue",
+    signals: [
+      { module: "IFA Prioritisation", text: "Progeny Wealth: Head of Investments appointment" },
+      { module: "IFA Prioritisation", text: "Informed Financial Planning: philosophy update" },
+      { module: "Market Intelligence", text: "US CPI preview analysis" },
+      { module: "Market Intelligence", text: "LGPS consultation response published" },
+      { module: "Market Intelligence", text: "ECB rate guidance shift" },
+      { module: "Partnership Intelligence", text: "Quilter MPS panel gap identified" },
+    ],
+  },
+  {
+    day: "Wed",
+    signals: [
+      { module: "IFA Prioritisation", text: "Arbor Asset Management: revenue up 41%" },
+      { module: "IFA Prioritisation", text: "Chase de Vere: Head of Research from Morningstar" },
+      { module: "IFA Prioritisation", text: "Kingswood Group: CIO hire from BlackRock" },
+      { module: "IFA Prioritisation", text: "Succession Wealth: acquisition panel review" },
+      { module: "Market Intelligence", text: "UK CPI prints 2.8% below consensus" },
+      { module: "Market Intelligence", text: "BoE holds base rate at 4.5%" },
+      { module: "Competitive Positioning", text: "Artemis Global Income: launched on AJ Bell" },
+      { module: "Platform Flow", text: "HL AUM up 3.2% QoQ" },
+      { module: "Platform Flow", text: "Nucleus fund listing changes" },
+    ],
+  },
+  {
+    day: "Thu",
+    signals: [
+      { module: "IFA Prioritisation", text: "Tilney S&W: DFM expansion" },
+      { module: "IFA Prioritisation", text: "Mattioli Woods: systematic strategy plans" },
+      { module: "IFA Prioritisation", text: "Evelyn Partners: new investment proposition" },
+      { module: "IFA Prioritisation", text: "Brewin Dolphin: factor-based interest" },
+      { module: "IFA Prioritisation", text: "Wren Sterling: IC restructured" },
+      { module: "Market Intelligence", text: "LGPS consolidation pool expansion" },
+      { module: "Market Intelligence", text: "Global equity rally on Fed dovish signals" },
+      { module: "Market Intelligence", text: "Multi-asset sector £2.1bn outflows" },
+      { module: "Competitive Positioning", text: "Schroders QEP: new distribution hire" },
+      { module: "Competitive Positioning", text: "Royal London: platform expansion" },
+      { module: "AI Research", text: "Research query: South East targeting for GS" },
+    ],
+  },
+  {
+    day: "Fri",
+    signals: [
+      { module: "IFA Prioritisation", text: "Canaccord: MPS range systematic gap" },
+      { module: "IFA Prioritisation", text: "Raymond James: UK distribution head" },
+      { module: "IFA Prioritisation", text: "Sanlam: parent systematic allocation push" },
+      { module: "Market Intelligence", text: "Week-end macro summary" },
+      { module: "Market Intelligence", text: "Sector flow data published" },
+      { module: "Partnership Intelligence", text: "Benchmark Capital DPS growth signal" },
+      { module: "Platform Flow", text: "AJ Bell quarterly data" },
+    ],
+  },
+  {
+    day: "Sat",
+    signals: [
+      { module: "IFA Prioritisation", text: "Openwork: fund review cycle starting Q2" },
+      { module: "Market Intelligence", text: "Weekend FT editorial: multi-asset future" },
+      { module: "Market Intelligence", text: "Asia market overnight: factor rotation" },
+    ],
+  },
+  {
+    day: "Sun",
+    signals: [
+      { module: "IFA Prioritisation", text: "Quilter: MPS factsheet gap confirmed" },
+      { module: "IFA Prioritisation", text: "Fidelity: fund selection committee Q2" },
+      { module: "Market Intelligence", text: "Pre-market briefing: week ahead" },
+    ],
+  },
+];
+
+// H4 Right: Competitive Pressure Heatmap — 5 mandates × 8 platforms
+// Data derived from platformPresence + explicit HL column from MASTER.md H4
+export const competitorHeatmap: HeatmapRow[] = [
+  {
+    mandate: "Global Systematic",
+    abbreviation: "GS",
+    cells: {
+      "HL": { competitorCount: 4, keyridgePresent: false },
+      "Quilter": { competitorCount: 3, keyridgePresent: true },
+      "Transact": { competitorCount: 2, keyridgePresent: true },
+      "Nucleus": { competitorCount: 3, keyridgePresent: true },
+      "AJ Bell": { competitorCount: 4, keyridgePresent: false },
+      "St Life": { competitorCount: 2, keyridgePresent: true },
+      "Aviva": { competitorCount: 3, keyridgePresent: false },
+      "Zurich": { competitorCount: 2, keyridgePresent: true },
+    },
+  },
+  {
+    mandate: "UK Balanced",
+    abbreviation: "UKB",
+    cells: {
+      "HL": { competitorCount: 3, keyridgePresent: false },
+      "Quilter": { competitorCount: 2, keyridgePresent: true },
+      "Transact": { competitorCount: 1, keyridgePresent: true },
+      "Nucleus": { competitorCount: 2, keyridgePresent: false },
+      "AJ Bell": { competitorCount: 3, keyridgePresent: false },
+      "St Life": { competitorCount: 1, keyridgePresent: true },
+      "Aviva": { competitorCount: 2, keyridgePresent: true },
+      "Zurich": { competitorCount: 1, keyridgePresent: true },
+    },
+  },
+  {
+    mandate: "Diversified Income",
+    abbreviation: "DI",
+    cells: {
+      "HL": { competitorCount: 3, keyridgePresent: true },
+      "Quilter": { competitorCount: 2, keyridgePresent: true },
+      "Transact": { competitorCount: 2, keyridgePresent: true },
+      "Nucleus": { competitorCount: 1, keyridgePresent: true },
+      "AJ Bell": { competitorCount: 3, keyridgePresent: true },
+      "St Life": { competitorCount: 2, keyridgePresent: false },
+      "Aviva": { competitorCount: 2, keyridgePresent: true },
+      "Zurich": { competitorCount: 1, keyridgePresent: true },
+    },
+  },
+  {
+    mandate: "Absolute Return",
+    abbreviation: "AR",
+    cells: {
+      "HL": { competitorCount: 5, keyridgePresent: false },
+      "Quilter": { competitorCount: 3, keyridgePresent: false },
+      "Transact": { competitorCount: 2, keyridgePresent: true },
+      "Nucleus": { competitorCount: 3, keyridgePresent: false },
+      "AJ Bell": { competitorCount: 4, keyridgePresent: false },
+      "St Life": { competitorCount: 2, keyridgePresent: false },
+      "Aviva": { competitorCount: 3, keyridgePresent: false },
+      "Zurich": { competitorCount: 2, keyridgePresent: false },
+    },
+  },
+  {
+    mandate: "Strategic Bond",
+    abbreviation: "SB",
+    cells: {
+      "HL": { competitorCount: 4, keyridgePresent: true },
+      "Quilter": { competitorCount: 3, keyridgePresent: true },
+      "Transact": { competitorCount: 2, keyridgePresent: true },
+      "Nucleus": { competitorCount: 1, keyridgePresent: true },
+      "AJ Bell": { competitorCount: 3, keyridgePresent: true },
+      "St Life": { competitorCount: 2, keyridgePresent: true },
+      "Aviva": { competitorCount: 2, keyridgePresent: true },
+      "Zurich": { competitorCount: 1, keyridgePresent: true },
+    },
+  },
+];
+
+// H5: Module Activity Cards
+export const moduleCards: ModuleCard[] = [
+  { icon: "Target", name: "IFA Prioritisation", colour: "#3B82F6", stat: "847 IFAs match Global Systematic", signal: "Paradigm Capital: new investment director 3d ago", timestamp: "3h ago", route: "/intelligence/ifa-prioritisation" },
+  { icon: "BarChart2", name: "Competitive Positioning", colour: "#F59E0B", stat: "5 competitor funds in IA Global sector", signal: "Schroders QEP: new distribution hire on LinkedIn", timestamp: "1d ago", route: "/intelligence/competitive-positioning" },
+  { icon: "Link", name: "Partnership Intelligence", colour: "#8B5CF6", stat: "12 firms match True Potential pre-partnership profile", signal: "Quilter: launching MPS Q1 2026 — panel gap identified", timestamp: "2d ago", route: "/intelligence/partnership-intelligence" },
+  { icon: "Zap", name: "Market Intelligence", colour: "#16A34A", stat: "8 market events mapped to mandates today", signal: "BoE rate hold: Strategic Bond thesis validated", timestamp: "5h ago", route: "/intelligence/market-intelligence" },
+  { icon: "GitBranch", name: "Platform Flow", colour: "#EA580C", stat: "2 priority platform gaps identified", signal: "HL: 4 competitors in Global Systematic, no Keyridge", timestamp: "6h ago", route: "/intelligence/platform-flow" },
+  { icon: "Search", name: "AI Research", colour: "#0EA5E9", stat: "Ask any distribution question", signal: "Most asked: 'Who to target for Global Systematic in South East?'", timestamp: "1d ago", route: "/intelligence/ai-research" },
+];
+
+// H6: Recent Signals Feed
+export const recentSignals: RecentSignal[] = [
+  { module: "IFA", colour: "#3B82F6", text: "Paradigm Capital: investment director joined from Schroders", timestamp: "3h ago" },
+  { module: "Market", colour: "#16A34A", text: "BoE held rates — Strategic Bond thesis validated, 3 IFAs to call", timestamp: "5h ago" },
+  { module: "Platform", colour: "#EA580C", text: "Hargreaves Lansdown AUM up 3.2% QoQ — Keyridge absent from Global Systematic panel", timestamp: "6h ago" },
+  { module: "Competitive", colour: "#F59E0B", text: "Schroders QEP: new distribution hire suggests IA Global push", timestamp: "1d ago" },
+  { module: "IFA", colour: "#3B82F6", text: "Foster Denovo: RMAR shows 28% client growth — scaling fast", timestamp: "1d ago" },
+  { module: "Partnership", colour: "#8B5CF6", text: "Quilter launching MPS Q1 — systematic equity gap in current panel", timestamp: "2d ago" },
+  { module: "Market", colour: "#16A34A", text: "LGPS consolidation announced — 4 mandates directly relevant", timestamp: "2d ago" },
+  { module: "IFA", colour: "#3B82F6", text: "Progeny Wealth: new Head of Investments from Jupiter (Companies House)", timestamp: "3d ago" },
+  { module: "Competitive", colour: "#F59E0B", text: "Artemis Global: launched on AJ Bell — Keyridge absent from same platform", timestamp: "4d ago" },
+  { module: "Platform", colour: "#EA580C", text: "Transact AUM up 4.7% QoQ — growing faster than market, worth prioritising", timestamp: "5d ago" },
+];
+
+// H3: IFA Opportunity Scatter — named firms + universe
+function seededRandom(seed: number): () => number {
+  let s = seed;
+  return () => {
+    s = (s * 16807 + 0) % 2147483647;
+    return (s - 1) / 2147483646;
+  };
+}
+
+function generateUniverseFirms(): IFAScatterFirm[] {
+  const rng = seededRandom(42);
+  const firms: IFAScatterFirm[] = [];
+  const regions = ["London", "South East", "Midlands", "North West", "Yorkshire", "Scotland", "South West", "East Anglia", "Wales", "North East"];
+  for (let i = 0; i < 175; i++) {
+    const fitScore = Math.round(5 + rng() * 60);
+    const signalRecencyDays = Math.round(14 + rng() * 76);
+    const estimatedAUM_m = Math.round(50 + rng() * 1950);
+    const region = regions[Math.floor(rng() * regions.length)];
+    firms.push({
+      id: `universe-${i + 1}`,
+      name: `${region} Advisory ${i + 1}`,
+      fitScore,
+      signalRecencyDays,
+      estimatedAUM_m,
+      isUniverse: true,
+    });
+  }
+  return firms;
+}
+
+const namedScatterFirms: IFAScatterFirm[] = ifaRankings.map((ifa) => ({
+  id: ifa.id,
+  name: ifa.name,
+  fitScore: ifa.fitScore,
+  signalRecencyDays: ifa.id === "ifa-1" ? 3 : ifa.id === "ifa-2" ? 8 : ifa.id === "ifa-3" ? 12 : ifa.id === "ifa-4" ? 18 : Math.round(7 + Math.abs(ifa.fitScore - 91) * 0.8),
+  estimatedAUM_m: parseFloat(ifa.estAUM.replace(/[£bn,m]/g, "")) * (ifa.estAUM.includes("bn") ? 1000 : 1),
+  isUniverse: false,
+  signal: ifa.signal,
+}));
+
+export const ifaScatterData: IFAScatterFirm[] = [...namedScatterFirms, ...generateUniverseFirms()];

@@ -9,6 +9,7 @@ import {
   CalendarDays,
   MessageSquare,
   FileText,
+  Layers,
 } from "lucide-react";
 import {
   AreaChart as RechartsAreaChart,
@@ -24,6 +25,7 @@ import {
 } from "recharts";
 
 import { TopBar } from "@/components/dashboard/topbar";
+import { ConnectedDataStrip } from "@/components/dashboard/connected-data-strip";
 import { Badge } from "@/components/ui/badge";
 import { Tabs } from "@/components/ui/tabs";
 import {
@@ -1470,6 +1472,7 @@ function ClientsPageInner() {
       }}
     >
       <TopBar title="Client Intelligence" />
+      <ConnectedDataStrip />
 
       <motion.div
         initial={{ opacity: 0, y: 6 }}

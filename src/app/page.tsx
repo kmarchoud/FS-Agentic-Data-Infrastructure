@@ -9,9 +9,11 @@ import {
   AlertTriangle,
   Calendar,
   ShieldAlert,
+  Layers,
 } from "lucide-react";
 
 import { TopBar } from "@/components/dashboard/topbar";
+import { ConnectedDataStrip } from "@/components/dashboard/connected-data-strip";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { DataSourceStrip } from "@/components/dashboard/data-source-strip";
 import { ClientCard } from "@/components/dashboard/client-card";
@@ -346,6 +348,7 @@ export default function MorningBriefPage() {
   return (
     <>
       <TopBar title="Morning Brief" />
+      <ConnectedDataStrip />
 
       <motion.div
         initial={{ opacity: 0, y: 6 }}

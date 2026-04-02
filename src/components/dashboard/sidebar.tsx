@@ -32,7 +32,7 @@ interface NavSection {
 
 const NAV_SECTIONS: NavSection[] = [
   {
-    sectionLabel: "OVERVIEW",
+    sectionLabel: "CONNECTED INTELLIGENCE",
     items: [
       { label: "Morning Brief", href: "/", icon: LayoutDashboard },
       { label: "Priority Queue", href: "/priorities", icon: AlertTriangle },
@@ -130,7 +130,7 @@ export function Sidebar() {
                 fontWeight: 500,
                 letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                color: "var(--text-tertiary)",
+                color: section.sectionLabel === "CONNECTED INTELLIGENCE" ? "var(--text-secondary)" : "var(--text-tertiary)",
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",

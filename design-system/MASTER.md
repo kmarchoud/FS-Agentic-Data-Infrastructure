@@ -2371,3 +2371,625 @@ Container: inline-flex, items-center, gap 8px, p-3, rounded-lg
     "[Source Name] temporarily unavailable"
   "Retry" — text link, body-sm, font-medium, accent colour
 ```
+
+---
+
+## CONNECTED INTELLIGENCE, OVERVIEW PAGE & MARKET INTELLIGENCE EXTENSION
+
+---
+
+### SECTION G: CONNECTED INTELLIGENCE — EXISTING MODULE REFRAME
+
+The five existing modules (Morning Brief, Priority Queue, Client Intelligence, Flow Intelligence, RFP Intelligence) are the "Connected Intelligence" layer — what the product becomes when internal data is connected to the public intelligence layer.
+
+#### G1: Navigation Section Rename
+
+Rename the sidebar OVERVIEW section label to: **CONNECTED INTELLIGENCE**
+
+```
+Label treatment:
+  Text: "CONNECTED INTELLIGENCE"
+  Font: 11px, font-weight 500, uppercase, letter-spacing 0.06em
+  Colour: var(--text-secondary) — slightly stronger than text-tertiary
+    This is the ONE section label that uses text-secondary instead of text-tertiary.
+    It signals importance without breaking the visual pattern.
+  All other section labels remain text-tertiary.
+  The label fits within 240px sidebar at 11px with 0.06em tracking.
+```
+
+#### G2: Connected Data Strip
+
+Every Connected Intelligence page gets a persistent strip below the top bar.
+
+```
+Container:
+  width: 100%
+  height: 36px
+  background: var(--bg-subtle)
+  border-bottom: 1px solid var(--border)
+  padding: 0 24px
+  display: flex, align-items: center, justify-content: space-between
+
+Left side:
+  display: flex, align-items: center, gap: 8px
+
+  "CONNECTED:" label:
+    font: 11px, font-weight 500, uppercase, tracking 0.06em
+    colour: var(--text-tertiary)
+    margin-right: 4px
+
+  6 system pills, each:
+    display: flex, align-items: center, gap: 6px
+    padding: 2px 8px
+    background: var(--bg-card)
+    border: 1px solid var(--border)
+    border-radius: 4px
+
+    Dot: 5px circle, background var(--success), NO animation (static)
+    Text: Geist Mono, 11px, var(--text-secondary), tabular-nums
+
+  Systems:
+    Salesforce CRM
+    Aladdin PMS
+    Bloomberg
+    LSEG
+    Morningstar
+    Outlook
+
+  Gap between pills: gap-2 (8px)
+
+Right side:
+  "Why does this view require connected data? →"
+  font: 11px, var(--text-tertiary)
+  hover: var(--text-secondary)
+  cursor: pointer
+  transition: color 120ms ease
+  Opens Connected Data Explainer (G3)
+```
+
+**Strip placement:** Between topbar and page content on Connected Intelligence pages ONLY. Never shown on Intelligence module pages (those are public data only).
+
+#### G3: Connected Data Explainer Panel
+
+```
+Slide-over: fixed right, top 0, height 100vh, width 400px, z-index 50
+  background: var(--bg-card)
+  border-left: 1px solid var(--border)
+  box-shadow: -8px 0 24px rgba(0,0,0,0.06)
+  padding: 24px
+  overflow-y: auto
+  Animation: same as Data Sources panel (Framer Motion x 400→0, 200ms easeOut)
+  Backdrop: fixed inset, bg rgba(0,0,0,0.2)
+
+Header:
+  "Why this view requires connected data" — section-heading (14px, font-semibold)
+  Close X: 18px, text-tertiary, hover text-secondary, top-right
+
+Body (mt-6):
+  Intro: body-sm, text-secondary, line-height 1.6
+  "The Morning Brief you're viewing combines three data layers simultaneously:"
+
+  3 numbered sections (mt-5 between each):
+
+  Section 1:
+    Number: "1" — data-xl (24px), Geist Mono, var(--accent), float left, mr-4
+    Title: "External Intelligence (Public Data)" — body (14px), font-semibold, text-primary
+    Description: body-sm, text-secondary, line-height 1.6, mt-1
+      "Market events, IFA signals, competitor moves, platform changes — surfaced automatically from public sources. This layer is always on."
+    Badge: "Public data only" — success-subtle badge (same as module headers)
+    mt-2
+
+  Section 2:
+    Number: "2"
+    Title: "Relationship Layer (CRM)"
+    Description: "Which clients you manage, when you last spoke to them, what was said, what was promised. Without this, the Morning Brief cannot prioritise your specific book."
+    Badge: "Salesforce CRM" — neutral badge (neutral-subtle bg, neutral-text)
+
+  Section 3:
+    Number: "3"
+    Title: "Performance Layer (PMS + Market Data)"
+    Description: "How your funds are performing vs benchmark, which client holdings are affected by market events. Without this, fund impact analysis is generic, not specific to your mandates."
+    Badge: "Aladdin PMS · Bloomberg" — neutral badge
+
+  Divider: 1px var(--border), my-6
+
+  Closing text: body-sm, text-secondary
+    "Start with public intelligence. Add connected layers when you're ready."
+
+  Buttons (mt-4, flex, gap-3):
+    "Explore Intelligence Modules →" — primary button (bg-accent, white, body-sm, font-medium, px-4 py-2, rounded-md)
+    "Request Integration Setup" — ghost button
+```
+
+#### G4: Module-Level "This View Is Connected" Indicator
+
+```
+On each Connected Intelligence page header, next to the page title:
+
+Container: display flex, align-items: center, gap: 6px, ml-3
+  Icon: Layers (lucide, 14px, var(--text-tertiary))
+  Text: "Connected intelligence" — caption (11px), var(--text-tertiary)
+
+Subtle. Signals the page category without dominating the header.
+Equivalent of a "Pro" badge on a SaaS feature.
+```
+
+---
+
+### SECTION H: INTELLIGENCE OVERVIEW PAGE
+
+**Route:** `/intelligence`
+
+This page must achieve three things in under 10 seconds:
+1. Show the scale of data being watched continuously
+2. Show what is actionable right now, specifically
+3. Create the feeling that this is a different category of product
+
+#### H1: Page Header
+
+```
+Left:
+  "Intelligence Overview" — page-title (20px, font-semibold, text-primary)
+  Below: body-sm, text-secondary
+    "47 signals detected across your distribution universe in the last 7 days"
+    "47" — Geist Mono, text-primary, font-semibold (inline)
+
+Right:
+  Date range compact tabs: "7D / 30D / 90D"
+  Same tab style as layer tabs: underline, body-sm
+  Default active: 7D
+  Active: text-primary, font-medium, border-bottom 2px var(--accent)
+  Default: text-tertiary
+```
+
+#### H2: Headline Stats Strip
+
+```
+4 stat cards (grid-cols-4 gap-4, mt-6):
+Same StatCard component, standard variant.
+
+Card 1 — IFA SIGNALS:
+  Value: 23 (data-xl, Geist Mono)
+  Delta: "+8 vs last week" (success delta)
+  Icon: Target (16px)
+
+Card 2 — MARKET EVENTS:
+  Value: 8 (data-xl, Geist Mono)
+  Delta: "Linked to 3 mandates each avg" (caption, text-tertiary)
+  Icon: Zap (16px)
+
+Card 3 — COMPETITIVE ALERTS:
+  Value: 12 (data-xl, Geist Mono)
+  Delta: "2 new today" (warning-text, Geist Mono)
+  Icon: BarChart2 (16px)
+
+Card 4 — UK IFA UNIVERSE:
+  Value: 10,847 (data-xl, Geist Mono)
+  Delta: "847 match your mandates" — caption, text-tertiary,
+    "847" in var(--accent)
+  Icon: Users (16px)
+```
+
+#### H3: Hero Visualisation — IFA Opportunity Scatter
+
+```
+Container: bg-card, border 1px var(--border), border-radius 8px, p-6, mt-6
+  Height: 380px
+
+Title row (inside container, above chart):
+  Left: "IFA Opportunity Map" — section-heading (14px, font-semibold)
+    Sub: "Each bubble = one IFA firm · Size = estimated AUM · Colour = opportunity signal strength"
+    caption, text-tertiary
+  Right: Mandate filter dropdown (compact, "Global Systematic" default)
+
+Scatter plot:
+
+X axis: Mandate Fit Score (0 → 100)
+  Label: "Mandate Fit →" (Geist Mono, 11px, text-tertiary)
+  Ticks: 0, 25, 50, 75, 100
+  Axis line: 1px var(--border-strong)
+
+Y axis: Signal Recency (INVERTED — 0 at top = most recent)
+  Label: "Signal Recency ↑" (Geist Mono, 11px, text-tertiary)
+  Values: 0d, 7d, 14d, 21d, 30d+
+  Axis line: hidden
+
+Grid: horizontal only, var(--border-subtle), opacity 0.6
+
+Quadrant zones (subtle background tinting, NOT divider lines):
+  Top-left (high fit + very recent): bg var(--accent) at 3% opacity
+    Label: "Act Now" — card-label style, var(--accent)
+  Top-right (lower fit + recent): no tint
+    Label: "Monitor" — card-label style, text-tertiary
+  Bottom-left (high fit + older): no tint
+    Label: "Qualify" — card-label style, text-tertiary
+  Bottom-right: no label, no tint
+
+Bubble properties:
+  Size: diameter = 8 + (sqrt(AUM_millions) / sqrt(max_AUM)) * 44
+    Min: 12px, Max: 52px
+  Colour:
+    Fit > 80 AND Signal < 7d: var(--accent) — HOT (amber)
+    Fit > 70 AND Signal < 14d: var(--warning) — WARM
+    Fit > 55 AND Signal < 30d: var(--neutral) — WATCH
+    Otherwise: var(--border-strong) — UNIVERSE (very muted)
+  Opacity: 70% fill
+  Stroke: 2px white (#FFFFFF)
+
+Key labelled bubbles (always show labels):
+  Paradigm Capital: fit 91, signal 3d, £2.1bn — amber, top-left
+    Label: "Paradigm Capital" body-sm font-semibold below bubble
+    Sub: "New signal: 3d ago" caption var(--accent)
+  Attivo Group: fit 87, signal 8d, £1.1bn
+  Foster Denovo: fit 84, signal 12d, £3.2bn
+  Progeny Wealth: fit 82, signal 18d, £1.2bn
+
+200+ unlabelled small grey dots: var(--border-strong) at 40% opacity
+  Size: 6-10px. Represent the full IFA universe.
+  The amber/warm labelled bubbles POP against the grey field.
+
+Hover tooltip:
+  bg-card, border var(--border-strong), rounded-lg (8px), p-3, shadow-sm
+  Line 1: firm name — body-sm, font-semibold
+  Line 2: type badge + region — caption
+  Line 3: "Fit Score: 91/100" — Geist Mono, data-sm
+  Line 4: "Latest signal: [text]" — caption, text-secondary
+  Line 5: "Est. AUM: £2.1bn" — Geist Mono, caption
+  Button: "View in IFA Prioritisation →" ghost, xs
+
+Below chart (inside container):
+  body-sm, text-secondary:
+  "23 actionable opportunities identified this week. Top recommendation: "
+  "Paradigm Capital" — font-semibold, text-primary
+  " — act within "
+  "48 hours" — Geist Mono, var(--accent)
+  "."
+```
+
+#### H4: Two-Column Section (50/50)
+
+```
+Container: grid-cols-2 gap-6, mt-6
+
+LEFT — Signal Stream 7-Day Timeline:
+  Container: bg-card, border 1px var(--border), rounded-lg, p-5
+  Height: 320px
+
+  Title: "Intelligence Signal Stream" — section-heading
+  Sub: "All signals detected across 6 modules, last 7 days" — caption, text-tertiary
+
+  Horizontal timeline: 7 columns (Mon → Sun)
+    Day label: caption, Geist Mono, text-tertiary, centred above column
+    Each signal = 10px coloured dot, stacked vertically, 4px gap
+    Max 8 visible per day, then "+X more" in caption
+
+  Module colour coding:
+    IFA Prioritisation:        #3B82F6 (blue)
+    Competitive Positioning:   var(--accent) (#F59E0B, amber)
+    Partnership Intelligence:  #8B5CF6 (violet)
+    Market Intelligence:       #16A34A (emerald)
+    Platform Flow:             #EA580C (orange)
+    AI Research:               #0EA5E9 (sky)
+
+  Dot: fill at 80% opacity
+  Hover: tooltip with signal summary
+
+  Mock distribution (total 47):
+    Mon: 8 (3 IFA, 2 Market, 2 Competitive, 1 Platform)
+    Tue: 6 (2 IFA, 3 Market, 1 Partnership)
+    Wed: 9 (4 IFA, 2 Market, 1 Competitive, 2 Platform)
+    Thu: 11 (5 IFA, 3 Market, 2 Competitive, 1 AI)
+    Fri: 7 (3 IFA, 2 Market, 1 Partnership, 1 Platform)
+    Sat: 3 (1 IFA, 2 Market)
+    Sun: 3 (2 IFA, 1 Market)
+
+  Legend below: single row, coloured dot + module name in caption, gap-4
+
+RIGHT — Competitive Pressure Heatmap:
+  Container: bg-card, border 1px var(--border), rounded-lg, p-5
+  Height: 320px
+
+  Title: "Competitor Presence by Platform" — section-heading
+  Sub: "Number of competing funds per platform per mandate" — caption, text-tertiary
+
+  Matrix:
+    Rows: 5 mandates (abbreviated): GS / UKB / DI / AR / SB
+    Columns: 8 platforms: HL / Quilter / Transact / Nucleus / AJ Bell / St Life / Aviva / Zurich
+    Column headers: caption, Geist Mono, text-tertiary
+
+  Each cell (32px × 32px):
+    Corner indicator (6px dot, top-right):
+      Green (var(--success)): Keyridge listed
+      Red (var(--danger)): Keyridge NOT listed
+
+    Cell background (heatmap):
+      0 competitors: var(--success-subtle)
+      1-2: var(--warning) at 8%
+      3-4: var(--warning-subtle)
+      5+: var(--danger-subtle)
+
+    Content: competitor count, data-sm, Geist Mono, text-primary, centred
+
+  Mock data (HL column — most alarming):
+    GS: 4 competitors, NO Keyridge (red dot, warning-subtle bg)
+    UKB: 3 competitors, NO Keyridge (red dot)
+    DI: 3 competitors, ✓ Keyridge (green dot)
+    AR: 5 competitors, NO Keyridge (red dot, danger-subtle bg)
+    SB: 4 competitors, ✓ Keyridge (green dot)
+
+  Below matrix:
+    "2 priority gaps: Hargreaves Lansdown and AJ Bell" — body-sm, text-primary
+    "Hargreaves Lansdown carries 4 competitors in Global Systematic — Keyridge is not listed."
+    body-sm, text-secondary. "4 competitors" in Geist Mono, var(--danger-text).
+    "View Platform Flow →" ghost link, caption, var(--accent)
+```
+
+#### H5: Module Activity Cards (3×2 grid)
+
+```
+Container: grid-cols-3 gap-4, mt-6
+6 cards, one per Intelligence module.
+
+Each card: bg-card, border 1px var(--border), rounded-lg, p-4
+  hover: border-color var(--border-strong), transition 150ms
+
+Row 1: flex, items-center, gap-2
+  Icon: lucide, 18px, module colour
+  Name: body (14px), font-semibold, text-primary
+  "LIVE" badge: right-aligned, success status badge (xs)
+
+Row 2: mt-3
+  Stat: data-lg (14px), Geist Mono, font-medium, text-primary
+
+Row 3: mt-2
+  Signal: body-sm (13px), text-secondary, line-clamp-1
+  Timestamp: caption, Geist Mono, text-tertiary, right-aligned (float or flex)
+
+Row 4: mt-3
+  "Open module →" — caption (11px), var(--accent), hover underline
+  cursor-pointer, links to module route
+
+Mock data per card:
+
+IFA Prioritisation (Target, #3B82F6):
+  Stat: "847 IFAs match Global Systematic"
+  Signal: "Paradigm Capital: new investment director 3d ago"
+
+Competitive Positioning (BarChart2, #F59E0B):
+  Stat: "5 competitor funds in IA Global sector"
+  Signal: "Schroders QEP: new distribution hire on LinkedIn"
+
+Partnership Intelligence (Link, #8B5CF6):
+  Stat: "12 firms match True Potential pre-partnership profile"
+  Signal: "Quilter: launching MPS Q1 2026 — panel gap identified"
+
+Market Intelligence (Zap, #16A34A):
+  Stat: "8 market events mapped to mandates today"
+  Signal: "BoE rate hold: Strategic Bond thesis validated"
+
+Platform Flow (GitBranch, #EA580C):
+  Stat: "2 priority platform gaps identified"
+  Signal: "HL: 4 competitors in Global Systematic, no Keyridge"
+
+AI Research (Search, #0EA5E9):
+  Stat: "Ask any distribution question"
+  Signal: "Most asked: 'Who to target for Global Systematic in South East?'"
+```
+
+#### H6: Recent Signals Feed
+
+```
+Container: mt-6, mb-8
+
+Title: "Recent Signals" — section-heading
+"See all →" link — caption, var(--accent), right-aligned, hover underline
+
+10 rows, compact:
+  Each: flex, items-center, gap-3, py-3, border-bottom 1px var(--border-subtle)
+  Hover: bg-raised, transition 100ms
+
+  Module dot: 10px circle, module colour at 80% opacity
+  Module badge: caption, text-tertiary, bg-raised, px-1.5 py-0.5, rounded, min-width 100px
+  Signal text: body-sm, text-secondary, flex-1
+  Timestamp: caption, Geist Mono, text-tertiary, flex-shrink-0
+
+Mock signals (10):
+  1. IFA · "Paradigm Capital: investment director joined from Schroders" · 3h ago
+  2. Market · "BoE held rates — Strategic Bond thesis validated, 3 IFAs to call" · 5h ago
+  3. Platform · "Hargreaves Lansdown AUM up 3.2% QoQ — Keyridge absent from Global Systematic panel" · 6h ago
+  4. Competitive · "Schroders QEP: new distribution hire suggests IA Global push" · 1d ago
+  5. IFA · "Foster Denovo: RMAR shows 28% client growth — scaling fast" · 1d ago
+  6. Partnership · "Quilter launching MPS Q1 — systematic equity gap in current panel" · 2d ago
+  7. Market · "LGPS consolidation announced — 4 mandates directly relevant" · 2d ago
+  8. IFA · "Progeny Wealth: new Head of Investments from Jupiter (Companies House)" · 3d ago
+  9. Competitive · "Artemis Global: launched on AJ Bell — Keyridge absent from same platform" · 4d ago
+  10. Platform · "Transact AUM up 4.7% QoQ — growing faster than market, worth prioritising" · 5d ago
+```
+
+---
+
+### SECTION I: MARKET INTELLIGENCE — FUND IMPACT DATA
+
+Complete fund impact data for all 5 market events across all 5 Keyridge funds.
+
+#### I1: Fund Impact Data — 5 Events × 5 Funds
+
+**EVENT 1: BoE holds base rate at 4.5% (08:15)**
+
+| Fund | Impact | Dir | Why | What to Say |
+|------|--------|-----|-----|-------------|
+| Strategic Bond | POSITIVE HIGH | ↑ | Duration 4.2yr benefits from rate stability. +180bps vs benchmark since rate pause began Q3 2025. | Our duration positioning anticipated this pause. Strategic Bond has outperformed by 180bps since rates stabilised — this event validates the thesis. |
+| Diversified Income | POSITIVE MODERATE | ↑ | Income yield 4.1% increasingly attractive vs cash at 4.5%. Rate stability supports distribution payments. | Rate stability protects your clients' income distributions. Our 4.1% yield is increasingly competitive vs cash alternatives. |
+| UK Balanced | POSITIVE LOW | ↑ | 60% equity component benefits from lower discount rates in stable rate environment. | Stable rates support equity valuations. Clients holding UK Balanced are in a good position heading into Q2. |
+| Global Systematic | NEUTRAL | → | Systematic factor model explicitly avoids duration bets. Rate-neutral by design. | Our systematic approach avoids duration risk by design. This is when factor diversification proves its value. |
+| Absolute Return | WATCH | ↓ | Cash+3% objective increasingly difficult with rates unchanged. YTD -0.4% exposed. | Worth a call to discuss how we're navigating the rate environment. I want to be transparent about near-term challenges. |
+
+**EVENT 2: UK CPI prints 2.8% — below consensus (09:30)**
+
+| Fund | Impact | Dir | Why | What to Say |
+|------|--------|-----|-----|-------------|
+| Strategic Bond | POSITIVE HIGH | ↑ | Disinflation narrative directly supports fixed income. Real yield improves as inflation falls. | CPI below consensus strengthens the fixed income case. Strategic Bond duration is positioned perfectly for continued disinflation. |
+| Diversified Income | POSITIVE MODERATE | ↑ | Real yield on 4.1% income improves as inflation falls toward target. Income client purchasing power recovering. | Your clients' real income is improving. Strong moment to reinforce the income story with clients worried about inflation erosion. |
+| UK Balanced | POSITIVE LOW | ↑ | Lower inflation boosts real returns. UK equity valuations supported by easing cost pressures. | The inflation story is moving in the right direction for UK equity. UK Balanced clients benefit on both equity and bond sides. |
+| Global Systematic | NEUTRAL | → | Factor model macro-neutral. CPI variance does not create tracking error in systematic strategy. | Our macro-neutral positioning means clients aren't exposed to inflation surprise risk. Consistent factor exposure regardless of macro. |
+| Absolute Return | WATCH | ↓ | If rates follow inflation down, cash+3% target becomes harder. Objective under increasing pressure. | Good moment to review absolute return expectations with clients. Happy to walk through positioning on a call. |
+
+**EVENT 3: LGPS consolidation pool expansion (10:05)**
+
+| Fund | Impact | Dir | Why | What to Say |
+|------|--------|-----|-----|-------------|
+| Global Systematic | POSITIVE HIGH | ↑ | LGPS pools actively reviewing external systematic equity exposure. Evidence-based governance aligns directly with systematic investment approach. | LGPS pools are rebuilding manager panels now. Our 20-year systematic track record fits pool investment committee requirements precisely. |
+| UK Balanced | POSITIVE MODERATE | ↑ | Multi-asset mandates in demand within pooling frameworks for liability-matching. | LGPS consolidation creates balanced mandate opportunities. We can support with a pool-specific pitch for your territory. |
+| Strategic Bond | POSITIVE MODERATE | ↑ | Fixed income mandates for liability matching within pool portfolios in high demand. | Pools need fixed income for liability matching. Strategic Bond's duration profile fits pool liability frameworks well. |
+| Diversified Income | POSITIVE LOW | ↑ | Income mandates applicable to pools with current pension payment obligations. | Income generation is relevant to pools with current pensioners. A smaller but real opportunity worth flagging. |
+| Absolute Return | NEUTRAL | → | Absolute return strategies receive mixed reception in LGPS governance frameworks. | LGPS pools tend to prefer clear-factor strategies. Absolute return may not be the lead conversation here. |
+
+**EVENT 4: Global equity markets rally — Fed dovish (10:45)**
+
+| Fund | Impact | Dir | Why | What to Say |
+|------|--------|-----|-----|-------------|
+| UK Balanced | POSITIVE HIGH | ↑ | 60% equity exposure captures significant upside. YTD +5.7% vs benchmark +4.2% — outperforming in a rising market. | UK Balanced is outperforming the benchmark in the rally. Strong moment to reinforce confidence with clients. |
+| Global Systematic | POSITIVE MODERATE | ↑ | Factor model captured quality and momentum in rally. YTD +3.1% vs benchmark +4.8% — lag reflects defensive factor tilt, not failure. | Our systematic factors captured the rally. The benchmark lag reflects factor diversification — we don't concentrate in growth. Worth framing proactively. |
+| Diversified Income | NEUTRAL | → | Income focus means lower equity beta — less upside in rally but stable income maintained throughout. | Income strategy isn't designed to chase equity rallies — and that's the point. Clients chose income over growth and it's delivering. |
+| Strategic Bond | WATCH | ↓ | Rate expectations embedded in equity rally may signal less rate cutting — modest pressure on fixed income duration. | The rally signals some reflation expectations which could pressure fixed income. Watching closely — nothing alarming yet. |
+| Absolute Return | RISK | ↓ | Strategy designed to be market-neutral — lagging equity beta in strong rally. YTD -0.4% more visible against strong equity backdrop. | Absolute return strategies don't participate fully in equity rallies — that's the trade-off for downside protection. Worth reinforcing with clients. |
+
+**EVENT 5: Multi-asset sector £2.1bn outflows March (11:20)**
+
+| Fund | Impact | Dir | Why | What to Say |
+|------|--------|-----|-----|-------------|
+| UK Balanced | RISK HIGH | ⚠ | Directly in IA Mixed Investment sector experiencing £2.1bn outflows. Client redemption risk elevated. YTD +5.7% is the defence — use it now. | Sector under redemption pressure. Contact IFAs holding UK Balanced before they hear the outflow data from competitors. Our performance is the story. |
+| Absolute Return | RISK HIGH | ⚠ | Absolute return outflows accelerating as clients seek pure equity or pure cash. Middle-ground strategies under structural pressure. | This is the most urgent retention conversation. Prioritise IFAs with Absolute Return exposure this week — proactive beats reactive. |
+| Diversified Income | RISK MODERATE | ⚠ | Income funds adjacent to mixed investment sector seeing sympathy selling. Outflow risk moderate. | Proactive touch with Diversified Income relationships this week. Our performance is not negative — that distinction needs making explicitly. |
+| Global Systematic | RISK MODERATE | ⚠ | IA Global also seeing outflows. Systematic strategies not immune to sector-level sentiment. YTD +3.1% is the counter-narrative. | Systematic equity is in the same outflow environment. Performance is our defence — +3.1% YTD needs to be front and centre. |
+| Strategic Bond | POSITIVE CONTRAST | ↑ | Fixed income bucking the mixed investment outflow trend. Inflows into strategic bond as investors de-risk from mixed assets. | Strategic Bond is one of few areas seeing inflows. Clients rotating out of mixed assets may be receptive — strong positioning story. |
+
+#### I2: Fund Impact Table Component Spec
+
+```
+Component: FundImpactTable
+Props: eventId: string
+
+Container: bg-card, border 1px var(--border), rounded-lg, p-4, mt-4
+Title: "Fund Impact Analysis" — section-heading
+  Right-aligned: event headline in body-sm, text-secondary
+
+Table: 5 rows (one per fund)
+
+Columns:
+  Fund (35% width): body-sm, font-medium, text-primary
+  Impact (15%): impact badge
+    POSITIVE HIGH: bg var(--success-subtle), border rgba(34,197,94,0.20), text var(--success-text)
+    POSITIVE MODERATE: bg var(--success-subtle), text var(--success-text) at 80% opacity
+    POSITIVE LOW: bg rgba(34,197,94,0.05), text var(--success-text) at 60% opacity
+    POSITIVE CONTRAST: bg var(--success-subtle), text var(--success-text), border-style dashed
+    NEUTRAL: bg var(--neutral-subtle), border rgba(107,114,128,0.20), text var(--neutral-text)
+    WATCH: bg var(--warning-subtle), border rgba(245,158,11,0.20), text var(--warning-text)
+    RISK: bg var(--danger-subtle), border rgba(239,68,68,0.20), text var(--danger-text)
+    RISK HIGH: bg var(--danger-subtle), border var(--danger) at 30%, text var(--danger-text), font-weight 600
+    RISK MODERATE: bg var(--danger-subtle), text var(--danger-text) at 80% opacity
+    All: badge-text (11px, font-semibold, uppercase, tracking-wide), rounded-full, px-2 py-0.5
+
+  Direction (8%): Geist Mono, data-sm, centred
+    ↑: var(--success-text)
+    →: var(--text-tertiary)
+    ↓: var(--danger-text)
+    ⚠: var(--warning-text)
+
+  Why (42%): body-sm, text-secondary, line-clamp-2
+    Expand chevron (ChevronDown/Up, 14px, text-tertiary) far right
+    Click toggles full text
+
+Row dividers: 1px var(--border-subtle)
+Row hover: bg-raised
+
+"What to say" expandable section (below selected row):
+  Container: bg-accent-subtle, border-left 2px solid var(--accent), p-4, rounded-r-lg, mt-1
+  Label: "If [prospect] asks about [event]:" — card-label style
+  Text: body-sm, text-primary, line-height 1.6
+    The <25 word talking point from the data
+  "Copy talking point" — ghost button, xs, right-aligned
+  "Personalise →" — link to /intelligence/ai-research, caption, var(--accent)
+```
+
+#### I3: IFA Outreach Intelligence — BoE Rate Hold
+
+```
+Section heading: "IFAS TO CONTACT TODAY" (card-label) + count badge "5"
+
+Outreach window indicator (above table):
+  Container: bg-raised, px-4 py-2, rounded-md, display flex, items-center, gap-2
+  Clock icon: 12px, text-tertiary
+  Text: caption, text-tertiary
+    "Best outreach window: "
+    "24-48 hours" — Geist Mono, var(--accent)
+    ". After 48 hours this becomes yesterday's news."
+
+Table (mt-3): 5 rows
+
+Columns: Firm | Reason | Mandate | Last Contact | Priority | Action
+
+Row 1: Paradigm Capital
+  Reason: "Income-focused client base. Strategic Bond narrative aligns with their investment philosophy."
+  Mandate: Strategic Bond (badge)
+  Last Contact: 3d ago (text-tertiary — recent, good)
+  Priority: HIGH (warning badge)
+  Action: [Draft] ghost button
+
+Row 2: Foster Denovo
+  Reason: "Last discussed fixed income 8 weeks ago. Rate hold creates natural re-engagement hook."
+  Mandate: Strategic Bond + Diversified Income (2 badges)
+  Last Contact: 56d ago (danger-text — overdue)
+  Priority: URGENT (danger badge)
+  Action: [Draft] ghost button
+
+Row 3: Attivo Group
+  Reason: "Added systematic equity to approved list Q4. Rate-neutral positioning differentiates Global Systematic."
+  Mandate: Global Systematic (badge)
+  Last Contact: 8d ago (text-tertiary)
+  Priority: HIGH (warning badge)
+  Action: [Draft] ghost button
+
+Row 4: Progeny Wealth
+  Reason: "New Head of Investments from Jupiter. Rate hold validates income mandate timing — strong hook."
+  Mandate: Diversified Income (badge)
+  Last Contact: 18d ago (text-tertiary)
+  Priority: MODERATE (neutral badge)
+  Action: [Draft] ghost button
+
+Row 5: Perspective Financial
+  Reason: "RMAR shows income-focused client growth. Rate stability directly supports their proposition."
+  Mandate: Diversified Income (badge)
+  Last Contact: 34d ago (warning-text)
+  Priority: MODERATE (neutral badge)
+  Action: [Draft] ghost button
+```
+
+#### I4: Event Card Visual Update
+
+```
+Updated event item in left-side feed:
+
+After headline, add fund impact chip row:
+  Container: display flex, gap 4px, mt-1
+  Max 2 chips: most positive + most concerning impact
+
+  Chip spec:
+    font: caption (11px), Geist Mono
+    padding: 1px 6px
+    border-radius: 3px
+    display: inline-flex, items-center, gap: 2px
+
+    Positive chip: bg var(--success-subtle), text var(--success-text)
+      Content: "[Fund] ↑↑" for HIGH, "[Fund] ↑" for MODERATE
+    Negative chip: bg var(--danger-subtle), text var(--danger-text)
+      Content: "[Fund] ↓" for WATCH/RISK
+    Warning chip: bg var(--warning-subtle), text var(--warning-text)
+      Content: "[Fund] ⚠" for RISK HIGH
+
+  Mock for BoE event:
+    "Strat. Bond ↑↑" (success) + "Abs. Return ↓" (danger)
+
+  Mock for Multi-asset outflows event:
+    "UK Balanced ⚠" (warning) + "Strat. Bond ↑" (success)
+```

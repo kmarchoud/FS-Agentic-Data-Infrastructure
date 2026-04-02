@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FileText, Clock, BarChart2, Zap, LayoutList, Columns } from "lucide-react";
+import { FileText, Clock, BarChart2, Zap, LayoutList, Columns, Layers } from "lucide-react";
 import { TopBar } from "@/components/dashboard/topbar";
+import { ConnectedDataStrip } from "@/components/dashboard/connected-data-strip";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -126,6 +127,7 @@ export default function RFPPage() {
   return (
     <div style={{ background: "var(--bg-page)", minHeight: "100vh" }}>
       <TopBar title="RFP Intelligence" />
+      <ConnectedDataStrip />
 
       <main style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "24px" }}>
 

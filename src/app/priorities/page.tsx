@@ -2,8 +2,9 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Clock, TrendingDown, ChevronDown, ChevronUp } from "lucide-react";
+import { AlertTriangle, Clock, TrendingDown, ChevronDown, ChevronUp, Layers } from "lucide-react";
 import { TopBar } from "@/components/dashboard/topbar";
+import { ConnectedDataStrip } from "@/components/dashboard/connected-data-strip";
 import { Badge } from "@/components/ui/badge";
 import { RiskBar } from "@/components/ui/risk-bar";
 import { clients } from "@/lib/mock-data";
@@ -459,6 +460,7 @@ export default function PrioritiesPage() {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "var(--bg-page)" }}>
       <TopBar title="Priority Queue" />
+      <ConnectedDataStrip />
 
       <motion.div
         initial={{ opacity: 0, y: 6 }}
