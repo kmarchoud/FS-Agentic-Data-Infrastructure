@@ -108,7 +108,12 @@ def icp_filter(firm):
     # Permission requirements
     has_advises = perms.get("advises_on_investments", False)
     has_retail = perms.get("retail_clients", False)
+    # CIS check: either the boolean flag OR "Unit" in investment_types
+    # "Unit" means the firm can deal in unit trusts/OEICs (collective investments)
     has_cis = perms.get("collective_investment_schemes", False)
+    if not has_cis:
+        inv_types = [t.lower() for t in perms.get("investment_types", [])]
+        has_cis = any("unit" in t for t in inv_types)
     all_perms = has_advises and has_retail and has_cis
 
     # Soft exclude: name pattern + missing permissions
@@ -183,7 +188,11 @@ def score_permissions(firm):
         score += 20
     if perms.get("retail_clients", False):
         score += 20
-    if perms.get("collective_investment_schemes", False):
+    has_cis_perm = perms.get("collective_investment_schemes", False)
+    if not has_cis_perm:
+        inv_types = [t.lower() for t in perms.get("investment_types", [])]
+        has_cis_perm = any("unit" in t for t in inv_types)
+    if has_cis_perm:
         score += 20
     if perms.get("pension_transfers", False):
         score += 15

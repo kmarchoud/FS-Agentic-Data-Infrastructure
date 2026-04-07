@@ -1,21 +1,633 @@
 rank,priority_score,firm_name,frn,category,size_tier,town,postcode,phone,website,adviser_count,pimfa_member,data_confidence,size_score,permission_score,fund_distribution_score,signal_score,mandate_fit_multi_asset_cautious,mandate_fit_multi_asset_balanced,mandate_fit_multi_asset_growth,mandate_fit_multi_asset_income,mandate_fit_uk_equity_income,mandate_fit_global_equity,mandate_fit_corporate_bond,mandate_fit_uk_equity,top_mandate_category,vouchedfor_specialisms,platform_mentions,risk_profiling_tool,has_keyridge_mention
-1,38.0,Aviva Investors Global Services Limited,119178,dfm,tier_3,London,EC3M 4AE,+4402078096000,https://www.avivainvestors.com,1467,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-2,38.0,Invesco Asset Management Limited,122674,dfm,tier_3,Henley-on-Thames,RG9 1HH,+441491416032,http://www.invesco.co.uk/,605,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-3,38.0,Octopus Investments Limited,194779,dfm,tier_3,London,EC1N 2HT,+4408003162295,https://octopusinvestments.com/,287,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-4,38.0,AXA Investment Managers GS Limited,188523,dfm,tier_3,London,EC2N 4BQ,+442070031000,www.axa-im.co.uk,251,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-5,37.0,JPMorgan Asset Management (UK) Limited,119337,dfm,tier_3,London,EC4Y 0JP,+440800204020,https://am.jpmorgan.com/gb/en/asset-management/gim/welcome,1169,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-6,37.0,Sapia Partners LLP,550103,dfm,tier_3,London,SE1 2AQ,+442073975450,https://iqeq.com/sapia/,931,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-7,37.0,Sturgeon Ventures LLP,452811,dfm,tier_3,London,SW6 4TJ,+442031674625,www.sturgeonventures.com,597,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-8,37.0,DWS Investments UK Limited,429806,dfm,tier_3,LONDON,EC4M 5SB,+4402075458000,https://www.dws.com/en-gb/,431,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-9,37.0,Frank Investments Limited,627697,dfm,tier_3,London,WC1V 7BD,+442039949775,www.frankinvestments.co.uk,221,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-10,35.6,Downing LLP,545025,dfm,tier_3,London,EC3R 6AF,+4402038625984,www.downing.co.uk,126,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-11,34.6,Puma Investment Management Limited,590919,dfm,tier_3,London,SW1A 1LD,+442074084050,www.pumainvestments.co.uk,88,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-12,34.6,Prosper Capital LLP,453007,dfm,tier_3,Guildford,GU2 7QY,+4407825226818,www.prospercapital.co.uk,77,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-13,34.6,Sapphire Capital Partners LLP,565716,dfm,tier_3,Belfast,BT9 5JU,+442890597213,www.sapphirecapitalpartners.co.uk,56,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-14,34.6,Resonance Impact Investment Limited,588462,dfm,tier_3,Launceston,PL15 9LR,+4407740112395,www.resonance.ltd.uk,50,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-15,32.2,Frogmore Real Estate Partners Fund Managers Ltd,505190,dfm,tier_3,London,W1U 1PF,+4402070166025,www.frogmore.co.uk,20,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-16,31.6,Enterprise Investment Partners LLP,604439,ifa,tier_3,London,EC2V 5BT,+442078430471,https://www.kin-group.com/,122,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-17,29.8,Mansford Capital Limited,221138,dfm,tier_3,London,W1G 0PW,+4402078380111,https://www.mansford.com/,17,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-18,29.8,PASSION CAPITAL INVESTMENTS II LLP,760022,dfm,tier_3,London,SE1 3XJ,+447977449176,www.passioncapital.com,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-19,26.8,Tritax Securities LLP,489702,ifa,tier_3,London,W1F 9QZ,+4402072901616,www.tritax.co.uk,16,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
-20,23.8,Obdios Capital Limited,795673,ifa,tier_4,Richmond,TW9 2BS,+447538000201,,2,False,0.25,11,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+1,46.0,LGT Wealth Management UK LLP,471048,dfm,tier_2,London,EC3V 3NR,+442032078000,www.lgtwm.com,427,True,0.375,60,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+2,46.0,Killik & Co LLP,462016,dfm,tier_2,London,W1K 3HN,+4402073370400,www.killik.com,391,True,0.375,60,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+3,46.0,SEI Investments (Europe) Ltd,191713,dfm,tier_2,London,EC2A 1AH,+442038108000,www.seic.com,213,True,0.375,60,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+4,45.0,Ruffer LLP,229135,dfm,tier_2,London,SW1E 5JL,+4402079638100,www.ruffer.co.uk,255,True,0.375,60,95,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+5,43.6,James Hambro & Partners LLP,513246,dfm,tier_3,London,SW1Y 5JG,+4402038173500,www.jameshambro.com,155,True,0.375,52,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+6,43.6,Fiske Plc,124279,dfm,tier_3,London,EC2V 7AN,+4402074484700,www.fiskeplc.com,116,True,0.375,52,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+7,43.6,City Asset Management Plc,122483,dfm,tier_3,London,EC2N 3AR,+4402073242920,www.city-asset.co.uk,89,True,0.375,52,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+8,43.6,Bordier & Cie (UK) PLC,114324,dfm,tier_3,London,SW1Y 6QY,+442076676600,www.bordieruk.com,75,True,0.375,52,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+9,43.6,Whitechurch Securities Limited,114318,dfm,tier_3,Bristol,BS6 6PH,+4401174521206,www.whitechurch.co.uk,61,True,0.375,52,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+10,43.6,BRI Wealth Management PLC,122499,dfm,tier_3,Coventry,CV5 9RL,+4401676523550,www.brigroup.co.uk,56,True,0.375,52,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+11,42.6,HAWKSMOOR INVESTMENT MANAGEMENT LIMITED,472929,dfm,tier_3,Exeter,EX1 1QA,+441392410180,www.hawksmoorim.co.uk,97,True,0.375,52,95,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+12,42.6,Oberon Investments Limited,124885,dfm,tier_3,London,SW1Y 6BN,+4402031795300,www.oberoninvestments.com,96,True,0.375,52,95,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+13,42.6,R C Brown Investment Management Plc,146002,dfm,tier_3,Bristol,BS1 6DG,+4401179256073,www.rcbim.co.uk,52,True,0.375,52,95,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+14,40.2,Dowgate Wealth Limited,926137,dfm,tier_3,London,EC4A 1BW,+442039037723,dowgatewealth.co.uk,47,True,0.375,44,95,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+15,38.8,Hymans Robertson Investment Services LLP,927111,dfm,tier_3,London,EC2Y 5EA,+442070826000,https://www.hymansinvestmentservices.co.uk/,14,True,0.375,36,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+16,38.0,Goldman Sachs International,142888,dfm,tier_3,London,EC4A 4AU,+442077741000,https://www.goldmansachs.com/,11195,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+17,38.0,"JPMorgan Chase Bank, National Association",124491,dfm,tier_3,London,E14 5JP,+442034936310,www.jpmorganchase.com,10510,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+18,38.0,Morgan Stanley & Co. International Plc,165935,dfm,tier_3,London,E14 4QA,+4402074258000,www.morganstanley.com,9601,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+19,38.0,Barclays Capital Securities Limited,124431,dfm,tier_3,London,E14 5HP,+4402071161000,www.barclays.com,8298,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+20,38.0,"Citibank, N.A.",124704,dfm,tier_3,London,E14 5LB,+440800005500,www.citibank.com,7840,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+21,38.0,RBC Europe Limited,124543,dfm,tier_3,,EC2N 4AA,+442076534000,www.rbccm.com,3481,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+22,38.0,LEGAL & GENERAL (PORTFOLIO MANAGEMENT SERVICES) LIMITED,146786,dfm,tier_3,London,EC2R 5AA,+4402031242000,www.legalandgeneral.com,2720,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+23,38.0,BlackRock Investment Management (UK) Limited,119293,dfm,tier_3,London,EC2N 2DL,+4402077433000,www.blackrock.com,2317,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+24,38.0,BlackRock Advisors (UK) Limited,119186,dfm,tier_3,London,EC2N 2DL,+4402077433000,www.blackrock.com,2246,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+25,38.0,BlackRock International Limited,178638,dfm,tier_3,Edinburgh,EH3 5PP,+4401314727200,,1958,False,0.25,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+26,38.0,The On-Line Partnership Limited,192638,dfm,tier_3,Horsham,RH12 1RD,+4401403214200,www.inpartnership.net,1879,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+27,38.0,Mercer Limited,121935,dfm,tier_3,London,EC3R 5BU,+442076266000,https://www.mercer.com/en-gb/,1822,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+28,38.0,Aviva Investors Global Services Limited,119178,dfm,tier_3,London,EC3M 4AE,+4402078096000,https://www.avivainvestors.com,1467,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+29,38.0,abrdn Investments Limited,121891,dfm,tier_3,London,EC2M 4AG,+4402074636000,www.aberdeeninvestments.com,1441,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+30,38.0,BARCLAYS INVESTMENT SOLUTIONS LIMITED,155595,dfm,tier_3,London,E14 5HP,+4402071161000,www.barclays.com,1413,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+31,38.0,Schroder Investment Management Limited,119348,dfm,tier_3,London,EC2Y 5AU,+442076586000,http://www.schroders.com/,1387,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+32,38.0,Goldman Sachs Asset Management International,147212,dfm,tier_3,London,EC4A 4AU,+4402077741000,www.gsam.com,1299,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+33,38.0,abrdn Investment Management Limited,188406,dfm,tier_3,London,EC2M 4AG,+442074636000,www.aberdeeninvestments.com,1205,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+34,38.0,LEGAL & GENERAL INVESTMENT MANAGEMENT LIMITED,119272,dfm,tier_3,London,EC2R 5AA,+4402031242000,www.lgim.com,1169,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+35,38.0,RAYMOND JAMES WEALTH MANAGEMENT LIMITED,124412,dfm,tier_3,London,EC2Y 9LY,+4402077398200,www.charles-stanley.co.uk,1165,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+36,38.0,Evelyn Partners Investment Management Services Limited,165169,dfm,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,1027,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+37,38.0,Investec Wealth & Investment Limited,124537,dfm,tier_3,London,EC2V 7QN,+442073990000,www.rathbones.com/investec-wealth-and-investment-part-of-rathbones-group,1021,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+38,38.0,FIL Investments International,122170,dfm,tier_3,Tadworth,KT20 6RP,+4401732361144,www.fidelity.co.uk,979,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+39,38.0,Schroder Investment Management North America Limited,144543,dfm,tier_3,London,EC2Y 5AU,+4402076586000,www.schroders.com,967,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+40,38.0,Evelyn Partners Securities,124255,dfm,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,926,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+41,38.0,Scottish Widows Schroder Personal Wealth Limited,830170,dfm,tier_3,London,EC2V 7HN,+4408081092071,www.spw.com,918,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+42,38.0,HSBC Global Asset Management (UK) Limited,122335,dfm,tier_3,London,E14 5HQ,+442380722582,http://www.assetmanagement.hsbc.com/uk,907,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+43,38.0,Evelyn Partners Investment Management LLP,580531,dfm,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,864,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+44,38.0,TrinityBridge Limited,119329,dfm,tier_3,London,W1U 2RY,+448005884064,www.trinitybridge.com,853,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+45,38.0,AFH Independent Financial Services Limited,216704,dfm,tier_3,Bromsgrove,B60 4JE,+441527577775,www.afhwm.co.uk,851,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+46,38.0,Quilter Cheviot Limited,124259,dfm,tier_3,London,EC4V 4AB,+442071504000,,846,False,0.25,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+47,38.0,Towers Watson Limited,432886,dfm,tier_3,Reigate,RH2 9PQ,+4401737241144,www.wtwco.com,805,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+48,38.0,Evelyn Partners Discretionary Investment Management Limited,147103,dfm,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,727,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+49,38.0,Insight Investment Management (Global) Limited,119308,dfm,tier_3,,EC4V 4LA,+442071634000,http://www.insightinvestment.com/,725,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+50,38.0,Columbia Threadneedle Management Limited,119230,dfm,tier_3,London,EC4N 6AG,+442074645000,www.columbiathreadneedle.com,723,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+51,38.0,UBS Asset Management (UK) Ltd,119319,dfm,tier_3,London,EC2M 2QS,+4402075678000,www.ubs.com,714,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+52,38.0,IG Markets Limited,195355,dfm,tier_3,London,EC4R 2YA,+442078960011,http://www.ig.com/,692,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+53,38.0,PIMCO Europe Ltd,149303,dfm,tier_3,London,W1U 3AH,+442036401629,www.pimco.com,687,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+54,38.0,Redmayne-Bentley LLP,499510,dfm,tier_3,Leeds,LS1 4AP,+4401132436941,www.redmayne.co.uk,664,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+55,38.0,Morgan Stanley Investment Management Limited,121920,dfm,tier_3,London,E14 4QA,+442074258000,www.morganstanley.com,654,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+56,38.0,Invesco Asset Management Limited,122674,dfm,tier_3,Henley-on-Thames,RG9 1HH,+441491416032,http://www.invesco.co.uk/,605,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+57,38.0,FIL Pensions Management,144345,dfm,tier_3,Tadworth,KT20 6RP,+4401732361144,www.fidelity.co.uk,601,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+58,38.0,Baring Asset Management Limited,170601,dfm,tier_3,London,EC4M 7BF,+442076286000,www.barings.com,572,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+59,38.0,W H Ireland Limited,140773,dfm,tier_3,London,EC4R 0DR,+4402072201666,www.whirelandplc.com,540,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+60,38.0,Canaccord Genuity Wealth Limited,194927,dfm,tier_3,London,EC2V 7QR,+4402075234500,https://www.canaccord-wealth.com,537,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+61,38.0,RAYMOND JAMES INVESTMENT SERVICES LIMITED,194713,dfm,tier_3,London,EC2Y 9LY,+442037983000,https://www.raymondjames.uk.com/,534,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+62,38.0,Evelyn Partners Investment Services Limited,131816,dfm,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,530,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+63,38.0,Baring International Investment Limited,122628,dfm,tier_3,London,EC4M 7BF,+4402076286000,www.barings.com,524,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+64,38.0,Peel Hunt LLP,530083,dfm,tier_3,London,EC2M 2AT,+4402074188900,www.peelhunt.com,502,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+65,38.0,Hargreaves Lansdown Asset Management Limited,115248,dfm,tier_3,Bristol,BS1 5HL,+4401179009000,www.hl.co.uk,474,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+66,38.0,Thornbridge Investment Management LLP,713859,dfm,tier_3,London,EC2N 2HE,+442039724510,http://www.thornbridge.com/,444,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+67,38.0,JUPITER INVESTMENT MANAGEMENT LIMITED,171847,dfm,tier_3,London,SW1E 6SQ,+442038171000,http://www.jupiteram.com/,436,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+68,38.0,Julius Baer International Limited,139179,dfm,tier_3,London,EC1N 8SS,+442034818100,https://www.juliusbaer.com/uk/en/,425,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+69,38.0,Capital International Limited,119193,dfm,tier_3,London,W2 1GL,+442078645000,www.capitalgroup.com,416,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+70,38.0,LGT Wealth Management Limited,466684,dfm,tier_3,London,EC3V 3NR,+4402032078000,https://www.lgtwm.com/uk-en/,404,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+71,38.0,Mattioli Woods Limited,220743,dfm,tier_3,Leicester,LE1 6RU,+441162408700,www.mattioliwoods.com,392,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+72,38.0,J.M. FINN & CO.LTD,450754,dfm,tier_3,London,EC2R 7AH,+4402076001660,www.jmfinn.com,369,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+73,38.0,ST. JAMES'S PLACE INVESTMENT MANAGEMENT LIMITED,155241,dfm,tier_3,Bristol,BS32 4AQ,+4401179330000,www.rowan-dartington.co.uk,369,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+74,38.0,Fisher Investments Europe Limited,191609,dfm,tier_3,London,E14 5AX,+4408001444731,https://www.fisherinvestments.com/en-gb,367,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+75,38.0,Franklin Templeton Investment Management Limited,121779,dfm,tier_3,London,EC4N 6HL,+442070738500,www.franklintempleton.co.uk,366,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+76,38.0,Newton Investment Management Limited,119331,dfm,tier_3,London,EC4V 4LA,+442071639000,www.newtonim.com,352,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+77,38.0,Walker Crips Investment Management Limited,226344,dfm,tier_3,London,EC4V 4BJ,+4402031008000,www.walkercrips.co.uk,338,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+78,38.0,BNY Mellon Investment Management EMEA Limited,119196,dfm,tier_3,London,EC4V 4LA,+4402071635566,www.bny.com,328,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+79,38.0,Brooks Macdonald Asset Management Limited,184918,dfm,tier_3,London,EC3A 2BJ,+4402074996424,www.brooksmacdonald.com,327,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+80,38.0,Wealth At Work Limited,417367,dfm,tier_3,Liverpool,L3 9SJ,+441512553400,www.wealthatwork.co.uk,322,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+81,38.0,Interactive Investor Services Limited,141282,dfm,tier_3,Manchester,M3 3NW,+443456076001,www.ii.co.uk,312,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+82,38.0,Octopus Investments Limited,194779,dfm,tier_3,London,EC1N 2HT,+4408003162295,https://octopusinvestments.com/,287,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+83,38.0,CLEARBRIDGE INVESTMENT MANAGEMENT LIMITED,119289,dfm,tier_3,Edinburgh,EH3 8BH,+441312295252,www.clearbridgeinvestments.co.uk,287,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+84,38.0,Sarasin & Partners LLP,475111,dfm,tier_3,London,W1U 7DY,+442070387000,www.sarasinandpartners.com,280,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+85,38.0,AXA Investment Managers GS Limited,188523,dfm,tier_3,London,EC2N 4BQ,+442070031000,www.axa-im.co.uk,251,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+86,38.0,Rothschild & Co Wealth Management UK Limited,218613,dfm,tier_3,London,EC4N 8AL,+442072805000,https://www.rothschildandco.com/en/wealth-management/united-kingdom/,242,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+87,38.0,BELLECAPITAL UK LIMITED,140948,dfm,tier_3,London,W1J 8ED,+442070723180,www.bellecapital.com,219,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+88,38.0,HANDELSBANKEN WEALTH & ASSET MANAGEMENT LIMITED,197340,dfm,tier_3,London,EC2V 5HA,+4402070451320,wealthandasset.handelsbanken.co.uk,219,False,0.375,45,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+89,37.0,J.P. Morgan Securities plc,155240,dfm,tier_3,London,E14 5JP,+442034936310,www.jpmorgan.com/,12048,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+90,37.0,Citibank Europe plc,211646,dfm,tier_3,London,E14 5LB,+440800005500,www.citigroup.com,4279,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+91,37.0,Goldman Sachs International Bank,124659,dfm,tier_3,London,EC4A 4AU,+442077741000,https://www.goldmansachs.com/,3312,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+92,37.0,JEFFERIES INTERNATIONAL LIMITED,139253,dfm,tier_3,London,EC2N 4JL,+442070298000,www.jefferies.com,2542,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+93,37.0,JPMorgan Asset Management (UK) Limited,119337,dfm,tier_3,London,EC4Y 0JP,+440800204020,https://am.jpmorgan.com/gb/en/asset-management/gim/welcome,1169,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+94,37.0,Marex Financial,442767,dfm,tier_3,London,EC2M 3TQ,+442076556000,www.marex.com,1061,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+95,37.0,Sapia Partners LLP,550103,dfm,tier_3,London,SE1 2AQ,+442073975450,https://iqeq.com/sapia/,931,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+96,37.0,ADM Investor Services International Limited,148474,dfm,tier_3,London,EC3R 7AG,+4402077168161,www.admisi.com,671,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+97,37.0,Sturgeon Ventures LLP,452811,dfm,tier_3,London,SW6 4TJ,+442031674625,www.sturgeonventures.com,597,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+98,37.0,Evelyn Partners Asset Management Limited,223074,dfm,tier_3,London,EC2V 7BG,+442071314000,usa.evelyn.com,532,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+99,37.0,NINETY ONE UK LIMITED,122420,dfm,tier_3,London,EC2V 7EL,+442039382000,www.ninetyone.com,449,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+100,37.0,Threadneedle International Limited,143014,dfm,tier_3,London,EC4N 6AG,+442074645000,www.columbiathreadneedle.com,437,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+101,37.0,DWS Investments UK Limited,429806,dfm,tier_3,LONDON,EC4M 5SB,+4402075458000,https://www.dws.com/en-gb/,431,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+102,37.0,"VANGUARD ASSET MANAGEMENT, LTD.",527839,dfm,tier_3,London,EC4N 8AF,+442037535600,www.vanguardinvestor.co.uk,431,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+103,37.0,Panmure Liberum Capital Limited,465050,dfm,tier_3,London,EC2Y 9LY,+4402031002000,www.panmureliberum.com,399,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+104,37.0,Renaissance Capital Limited,186891,dfm,tier_3,London,W1H 6DU,+4402070057777,www.rencap.com,327,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+105,37.0,Amundi (UK) Limited,114503,dfm,tier_3,London,EC2R 5BJ,+442070749300,https://www.amundi.co.uk,305,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+106,37.0,ITI Capital Limited,171487,dfm,tier_3,London,EC2R 8AY,+4402075628000,www.iticapital.com,304,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+107,37.0,"William Blair International, Ltd",189068,dfm,tier_3,London,EC2N 4BQ,+4402078684440,www.williamblair.com,303,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+108,37.0,GAM London Limited,122330,dfm,tier_3,London,EC2M 7GB,+4402074939990,www.gam.com,297,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+109,37.0,SHORE CAPITAL STOCKBROKERS LIMITED,124784,dfm,tier_3,London,SW1A 1LD,+442074084050,https://www.shorecap.co.uk/,284,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+110,37.0,RBC Global Asset Management (UK) Limited,189154,dfm,tier_3,London,EC2N 4AA,+4402076534000,https://www.rbcgam.com/en/landing,283,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+111,37.0,MET Facilities LLP,587084,dfm,tier_3,London,NW11 8RQ,+442072808873,www.metfacilities.com,281,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+112,37.0,Atomos Investments Limited,122588,dfm,tier_3,London,SE1 9PG,+4403301656600,www.atomos.co.uk,252,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+113,37.0,Frank Investments Limited,627697,dfm,tier_3,London,WC1V 7BD,+442039949775,www.frankinvestments.co.uk,221,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+114,37.0,Stratos Markets Limited,217689,dfm,tier_3,London,EC2N 1AR,+4402073984050,www.fxcm.com/uk/www.tradu.com/uk,218,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+115,37.0,Lazard Asset Management Limited,121839,dfm,tier_3,London,W1U 3PZ,+4402075882721,www.lazardnet.com,217,False,0.375,45,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+116,37.0,Tindle Wealth Management Limited,826467,dfm,tier_3,London,SW1P 3JT,+442038580637,www.tindlewealth.com,7,True,0.375,30,100,10,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+117,35.6,Forvis Mazars Financial Planning Limited,182644,dfm,tier_3,London,EC4M 7AU,+4402070634000,www.forvismazars.com/uk/en,196,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+118,35.6,Artemis Investment Management LLP,523180,dfm,tier_3,London,SW1A 1LD,+4402073996000,www.artemisfunds.com,185,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+119,35.6,W1M Investment Management Limited,116404,dfm,tier_3,London,SW1Y 6AH,+442074847496,www.w1m.com,175,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+120,35.6,TAM Asset Management Ltd,208243,dfm,tier_3,London,EC3V 1AB,+4402075497650,https://www.tamassetmanagement.com/,169,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+121,35.6,Shackleton Advisers Limited,163291,dfm,tier_3,London,EC3V 0BT,+4401273204999,www.shackletonadvisers.co.uk,165,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+122,35.6,Columbia Threadneedle REP AM Limited,119283,dfm,tier_3,London,EC4N 6AG,+442074645000,www.rep.columbiathreadneedle.com,162,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+123,35.6,W1M Wealth Management Limited,120776,dfm,tier_3,London,SW1Y 6AH,+4402046172000,https://www.w1m.com,158,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+124,35.6,Momentum Global Investment Management Limited,232357,dfm,tier_3,London,SE1 2AQ,+442074897223,www.momentum.co.uk,153,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+125,35.6,Thesis Asset Management Limited,114354,dfm,tier_3,Chichester,PO19 1UP,+441243753415,www.thesisam.com,151,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+126,35.6,W1M Asset Management Limited,143286,dfm,tier_3,London,SW1Y 6AH,+4402046172000,https://www.w1m.com/,138,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+127,35.6,Financial Administration Services Limited,122169,dfm,tier_3,Tadworth,KT20 6RP,+4401732361144,www.fidelity.co.uk,137,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+128,35.6,Titan Private Wealth Limited,226392,dfm,tier_3,Harrogate,HG3 1RY,+441423534100,www.titanprivatewealth.com,134,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+129,35.6,Downing LLP,545025,dfm,tier_3,London,EC3R 6AF,+4402038625984,www.downing.co.uk,126,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+130,35.6,J & E Davy (UK) Limited,172140,dfm,tier_3,Belfast,BT1 5GB,+442890310655,www.DavyUK.co.uk,126,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+131,35.6,Credo Capital Limited,192204,dfm,tier_3,London,NW1 5DX,+4402079688300,www.credogroup.com,124,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+132,35.6,Courtiers Investment Services Limited,124995,dfm,tier_3,Henley-on-Thames,RG9 2AU,+4401491578368,www.courtiers.co.uk,116,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+133,35.6,Dart Capital Limited,137569,dfm,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,104,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+134,35.6,SMITH & PINCHING FINANCIAL SERVICES LIMITED,186616,dfm,tier_3,Norwich,NR3 2RY,+441603789966,www.smith-pinching.co.uk,96,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+135,35.6,MASECO LLP,489718,dfm,tier_3,London,WC2B 4BA,+442070430455,www.masecoprivatewealth.com,96,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+136,35.6,KW Investment Management Limited,506600,dfm,tier_3,London,EC2N 2HG,+4402072030730,www.kingswood-group.com,94,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+137,35.6,Tavistock Private Client Limited,210782,dfm,tier_3,Cambridge,CB25 0NW,+4401223869030,www.tavistockinvestments.com,93,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+138,35.6,Dolfin Financial (UK) Ltd,552894,dfm,tier_3,London,EC2V 7BG,+442089345387,,93,False,0.25,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+139,35.6,IM ASSET MANAGEMENT LIMITED,402770,dfm,tier_3,Sheffield,S1 4FS,+4403701500900,www.shackletonadvisers.co.uk,91,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+140,35.6,EQ Investors Limited,539422,dfm,tier_3,London,EC3R 6DL,+442074887110,www.eqinvestors.co.uk,90,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+141,35.6,GHC CAPITAL MARKETS LTD.,152998,dfm,tier_3,Leicester,LE1 5BD,+4401162045500,www.ghcl.co.uk,82,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+142,35.6,MHA Wealth Limited,143715,dfm,tier_3,Northampton,NN4 7HD,+441604621421,www.mha.co.uk,82,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+143,35.6,Cooper Parry Wealth Limited,197193,dfm,tier_3,Derby,DE74 2SA,+4401332411163,www.cooperparrywealth.com,80,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+144,35.6,David Booler & Company,146287,dfm,tier_3,Leicester,LE19 1SA,+441162407070,www.boolers.co.uk,77,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+145,35.6,Kotak Mahindra (UK) Limited,171837,dfm,tier_3,London,EC3N 1LS,+442079776900,,74,False,0.25,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+146,35.6,AlTi Wealth Management (UK) Limited,541713,dfm,tier_3,London,SW1E 5BY,+442071951400,https://alti-global.com/,73,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+147,35.6,First Equity Limited,124394,dfm,tier_3,London,EC2M 5QQ,+4402073742212,www.firstequitylimited.com,70,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+148,35.6,Saltus Partners LLP,402531,dfm,tier_3,London,W1T 1HJ,+4402074990200,www.saltus.co.uk,69,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+149,35.6,JOHNSTON CAMPBELL LIMITED,432503,dfm,tier_3,Belfast,BT7 2JB,+4402890221010,www.amberriver.com,68,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+150,35.6,Amati Global Investors Limited,198024,dfm,tier_3,Edinburgh,EH3 7AL,+4401315039100,www.amatiglobal.com,68,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+151,35.6,Church House Investments Limited,190548,dfm,tier_3,Sherborne,DT9 4JW,+4401935382620,www.ch-investments.co.uk,67,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+152,35.6,Fairstone Private Wealth Limited,457558,dfm,tier_3,Sunderland,SR3 3XN,+442076658560,www.fairstone.co.uk/private-wealth,66,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+153,35.6,HFMC Asset Management Limited,194722,dfm,tier_3,London,EC1M 4NA,+4402074004700,www.hfmcam.com,65,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+154,35.6,Verso Investment Management LLP,517235,dfm,tier_3,London,EC4N 6HL,+4402073803300,http://www.versoim.com/,64,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+155,35.6,Gale and Phillipson Investment Services Ltd,431387,dfm,tier_3,London,EC2V 6DN,+441748825971,www.you-asset.co.uk,64,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+156,35.6,Artorius Wealth Management Limited,677055,dfm,tier_3,Manchester,M15 4PS,+4401617110730,artorius.com,64,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+157,35.6,Shipman Wealth Management Ltd,456896,dfm,tier_3,Exeter,EX5 2FN,+448081754433,www.amberriver.com/sw,63,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+158,35.6,NLP Financial Management Limited,221468,dfm,tier_3,London,NW3 5JJ,+4402074725555,www.nlpfm.co.uk,62,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+159,35.6,Anderson Strathern Asset Management Limited,552925,dfm,tier_3,Edinburgh,EH3 8BP,+4401312707700,www.andersonstrathernAM.co.uk,61,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+160,35.6,Castlefield Investment Partners LLP,432488,dfm,tier_3,Manchester,M1 2HY,+441612334890,www.castlefield.com,61,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+161,35.6,Lumin Wealth Management Limited,580185,dfm,tier_3,St Albans,AL1 3RD,+4401727893333,www.luminwealth.co.uk,59,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+162,35.6,OCM WEALTH MANAGEMENT LIMITED,418826,dfm,tier_3,Northampton,NN4 7AA,+441604621467,www.ocmwealthmanagement.co.uk,59,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+163,35.6,Charteris Treasury Portfolio Managers Limited,114952,dfm,tier_3,Croydon,CR0 2LX,+4402072209780,www.charteris.co.uk,59,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+164,35.6,Peregrine & Black Investment Management Limited,757727,dfm,tier_3,London,W1J 8BA,+442037501801,www.peregrineblack.com,57,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+165,35.6,CANTAB ASSET MANAGEMENT LTD,449269,dfm,tier_3,Cambridge,CB1 2JH,+4402075234500,www.cantabam.com,54,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+166,35.6,McInroy & Wood Ltd,121926,dfm,tier_3,Haddington,EH41 3SF,+4401620825867,http://www.mcinroy-wood.co.uk/,54,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+167,35.6,HARBOUR ROCK CAPITAL LIMITED,754580,dfm,tier_3,Rochester,ME2 4FD,+441634930600,http://www.harbourrockcapital.co.uk/,52,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+168,35.6,HOTTINGER & CO. LIMITED,208737,dfm,tier_3,London,SW1Y 5AA,+442072273400,http://www.hottinger.co.uk/,51,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+169,35.6,Pilling & Co Stockbrokers Ltd,652114,dfm,tier_3,Manchester,M2 4AF,+441618326581,www.pilling.co.uk,50,False,0.375,37,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+170,35.0,UBS AG,186958,ifa,tier_3,London,EC2M 2QS,+442075678000,www.UBS.com,9015,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+171,35.0,Evelyn Partners Financial Planning Limited,136414,ifa,tier_3,London,EC2V 7BG,+442071314000,evelyn.com,1894,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+172,35.0,Best Practice IFA Group Limited,223112,ifa,tier_3,Horsham,RH12 4QP,+441403334455,www.bestpractice.co.uk,1073,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+173,35.0,Cantor Fitzgerald Europe,149380,ifa,tier_3,London,EC2N 4AY,+4402078947000,www.cantor.com/global/europe/,950,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+174,35.0,Foster Denovo Limited,462728,ifa,tier_3,London,EC3R 8HL,+4402074692800,www.fosterdenovo.com,409,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+175,35.0,WINTERFLOOD SECURITIES LIMITED,141455,ifa,tier_3,London,EC4R 3GA,+4402031000000,www.winterflood.com,387,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+176,35.0,NFU Mutual Select Investments Limited,582519,ifa,tier_3,,CV37 7BJ,+441789204211,,351,False,0.25,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+177,35.0,Capita Pension Solutions Limited,142484,ifa,tier_3,London,W2 6BD,+4402077094500,https://www.capita.com/expertise/pensions,282,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+178,35.0,STIFEL EUROPE LIMITED,178733,ifa,tier_3,London,EC2V 6ET,+4402077107600,https://stifelinstitutional.com,212,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+179,35.0,CG Wealth Planning Limited,594155,ifa,tier_3,London,EC2V 7QR,+4402075234500,https://www.canaccord-wealth.com,201,False,0.375,45,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+180,34.6,Liontrust Investment Partners LLP,518552,dfm,tier_3,London,WC2R 0EZ,+4402074121700,www.liontrust.co.uk,187,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+181,34.6,Partners Capital LLP,475743,dfm,tier_3,London,W8 5EH,+4402079385200,https://partners-cap.com/,155,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+182,34.6,Kession Capital Limited,582160,dfm,tier_3,London,EC2A 4BX,+442074952348,kession.com,139,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+183,34.6,Shard Capital Partners LLP,538762,dfm,tier_3,,EC3M 7DQ,+442071869900,www.shardcapital.com,131,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+184,34.6,Blackfriars Asset Management Limited,180892,dfm,tier_3,London,EC4N 6HL,+4402073322273,www.blackfriarsam.com,131,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+185,34.6,River Global Investors LLP,453087,dfm,tier_3,London,EC2R 5AL,+4402033275100,www.river.global,123,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+186,34.6,J.P. MORGAN PERSONAL INVESTING LIMITED,552016,dfm,tier_3,London,E14 5JP,+442035981515,https://www.personalinvesting.jpmorgan.com,121,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+187,34.6,Alpha Real Property Investment Advisers LLP,534723,dfm,tier_3,London,WC2R 0DT,+4402073914789,www.time-investments.com,111,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+188,34.6,Natixis Investment Managers UK Limited,190258,dfm,tier_3,London,EC4R 2YA,+442034056000,http://www.im.natixis.com/,110,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+189,34.6,Sanlam Investments UK Limited,459237,dfm,tier_3,London,"EC4N 6AF,",+442031164000,www.sanlam.co.uk,109,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+190,34.6,Hartmann Capital Limited,192815,dfm,tier_3,London,EC2M 7LD,+4402074569100,www.hartmanncapital.com,108,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+191,34.6,GLOBAL INVESTMENT STRATEGY UK LIMITED,437558,dfm,tier_3,London,EC1A 4HD,+442070489400,www.gisukltd.com,97,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+192,34.6,Saxo Capital Markets UK Ltd,551422,dfm,tier_3,London,E14 5DA,+4402071512100,https://www.home.saxo/en-gb/,89,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+193,34.6,Puma Investment Management Limited,590919,dfm,tier_3,London,SW1A 1LD,+442074084050,www.pumainvestments.co.uk,88,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+194,34.6,HENDERSON ROWE LIMITED,401809,dfm,tier_3,London,W1J 6BR,+4402079072200,www.hendersonrowe.com,86,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+195,34.6,Delancey Real Estate Asset Management Ltd,312105,dfm,tier_3,London,W1T 3JJ,+4402074481463,www.delancey.com,82,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+196,34.6,Prosper Capital LLP,453007,dfm,tier_3,Guildford,GU2 7QY,+4407825226818,www.prospercapital.co.uk,77,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+197,34.6,Keith Bayley Rogers & Co Limited,197385,dfm,tier_3,London,SW1H 0HW,+4402074644090,www.kbrl.co.uk,76,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+198,34.6,ARBION LIMITED,513138,dfm,tier_3,London,W2 2ET,+442072986060,www.arbion.com,75,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+199,34.6,Saranac Partners Limited,763601,dfm,tier_3,London,SW1A 1ER,+442075095700,http://www.saranacpartners.com/,75,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+200,34.6,Savills Investment Management LLP,615368,dfm,tier_3,London,W1G 0JD,+442074998644,www.savillsim.com,74,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+201,34.6,SARASIN ASSET MANAGEMENT LIMITED,163584,dfm,tier_3,London,W1U 7DY,+4402070387000,www.sarasinassetmanagement.com,71,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+202,34.6,Schroder Wealth Management (US) Limited,781869,dfm,tier_3,London,EC2Y 5AU,+442076586000,https://www.schroders.com/en/us/wealth-management/,67,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+203,34.6,Brown Advisory Limited,475370,dfm,tier_3,London,W1S 1JY,+442033018746,www.brownadvisory.com,65,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+204,34.6,Nemesis Asset Management LLP,211205,dfm,tier_3,London,W1K 5JH,+4402078589940,www.nemesisam.com,60,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+205,34.6,"Guinness Atkinson Asset Management, Inc",223051,dfm,tier_3,London,SW1P 3HZ,+4402072225703,www.gafunds.com,59,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+206,34.6,HANSON ASSET MANAGEMENT LTD,525784,dfm,tier_3,London,SW1A 1RE,+4402075293737,www.hansonam.com,57,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+207,34.6,Barratt & Cooke Limited,428789,dfm,tier_3,Norwich,NR1 3DW,+4401603624236,www.barrattandcooke.co.uk,57,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+208,34.6,Sapphire Capital Partners LLP,565716,dfm,tier_3,Belfast,BT9 5JU,+442890597213,www.sapphirecapitalpartners.co.uk,56,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+209,34.6,Heptagon Capital LLP,403304,dfm,tier_3,London,W1K 4HS,+4402070701800,www.heptagon-capital.com,55,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+210,34.6,Crossbridge Capital LLP,480069,dfm,tier_3,London,W1K 7TF,+4402031790907,https://www.crossbridgecapital.com/,55,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+211,34.6,Sun Global Investments Limited,474277,dfm,tier_3,London,W1W 5QA,+4402072906930,www.sunglobal.co.uk,54,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+212,34.6,Optiva Securities Limited,181192,dfm,tier_3,London,EC3R 6DP,+442039814173,www.optivasecurities.com,51,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+213,34.6,Resonance Impact Investment Limited,588462,dfm,tier_3,Launceston,PL15 9LR,+4407740112395,www.resonance.ltd.uk,50,False,0.375,37,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+214,34.0,GFI Securities Limited,184801,ifa,tier_3,London,E14 5RD,+4402074221000,http://www.gfigroup.co.uk,1083,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+215,34.0,Canaccord Genuity Limited,182011,ifa,tier_3,London,EC2V 7QR,+4402075238000,www.cgf.com,1011,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+216,34.0,KROLL SECURITIES LTD.,466588,ifa,tier_3,London,SE1 9SG,+4402070890927,www.kroll.com,775,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+217,34.0,Numis Securities Limited,144822,ifa,tier_3,London,EC2Y 9DB,+4402072601000,www.dbnumis.com,695,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+218,34.0,Panmure Liberum Limited,403721,ifa,tier_3,London,EC2Y 9LY,+4402031002000,www.panmureliberum.com,635,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+219,34.0,StoneX Financial Ltd,446717,ifa,tier_3,London,EC2Y 5ET,+442035806000,https://www.stonex.com,585,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+220,34.0,Daiwa Corporate Advisory Limited,175853,ifa,tier_3,London,EC4N 7DA,+4402078560999,www.dcadvisory.com,540,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+221,34.0,KHEPRI ADVISERS LIMITED,692447,ifa,tier_3,London,WC2A 1DT,+442033765900,www.khepri.com,484,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+222,34.0,SINGER CAPITAL MARKETS SECURITIES LIMITED,453676,ifa,tier_3,London,EC2N 2AX,+4402074963000,www.singercm.com,400,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+223,34.0,Affinity Financial Awareness Limited,409160,ifa,tier_3,Liverpool,L3 9SJ,+448000492011,www.affinityadvise.co.uk,346,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+224,34.0,PIPER SANDLER LTD.,191657,ifa,tier_3,London,EC2V 7AD,+4402077968400,http://www.pipersandler.com/,293,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+225,34.0,Houlihan Lokey UK Limited,792919,ifa,tier_3,London,W1J 5HD,+4402078393355,www.hl.com,290,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+226,34.0,Campbell Lutyens & Co. Ltd,196462,ifa,tier_3,London,SW1Y 5AN,+4402074397191,www.campbell-lutyens.com,233,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+227,34.0,Cavendish Securities PLC,416932,ifa,tier_3,London,EC1A 7BL,+4402072200500,www.cavendish.com,233,False,0.375,45,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+228,33.2,GATE CAPITAL GROUP LTD.,189170,dfm,tier_3,London,WC2H 9JQ,+442070788085,http://www.gatecapitalgroup.com/,49,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+229,33.2,FINANCIAL EXPRESS INVESTMENTS LTD,209967,dfm,tier_3,London,W1F 9NN,+4402075347600,www.fefundinfo.com,49,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+230,33.2,MFM Investment Ltd,629539,dfm,tier_3,London,N1 9HS,+442037456990,www.moneyfarm.com,49,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+231,33.2,D B Wood Limited,209530,dfm,tier_3,Newark,NG24 1XG,+4401636233200,www.amberriverdbwood.com,49,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+232,33.2,P1 Investment Services Limited,752005,dfm,tier_3,Exeter,EX5 1GB,+441392953079,www.p1-im.co.uk,49,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+233,33.2,LGT Wealth Management US Limited,585547,dfm,tier_3,London,EC3V 3NR,+4402032078000,www.lgtwm-us.com,48,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+234,33.2,A & J WEALTH MANAGEMENT LIMITED,428590,dfm,tier_3,Maidenhead,SL6 3RX,+4401628480200,https://www.afhwm.co.uk/cookham,46,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+235,33.2,Titan Pensions & Investments Limited,143390,dfm,tier_3,Kettering,NN14 1FN,+4401536462700,www.titanpi.co.uk,46,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+236,33.2,GBIM Limited,593265,dfm,tier_3,Salisbury,SP1 2BP,+441722424444,www.gbim.co.uk,45,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+237,33.2,Birchwood Investment Management Limited,114617,dfm,tier_3,Welwyn,AL6 9EN,+441438840888,www.birchwoodinvestment.com,45,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+238,33.2,Johnston Financial Limited,131706,dfm,tier_3,Edinburgh,EH12 9DT,+4401315564540,www.amberriver.com/jf,45,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+239,33.2,Wise Investments Ltd,230553,dfm,tier_3,Chipping Norton,OX7 5QR,+4401608695100,www.wiseinvestment.co.uk,44,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+240,33.2,Tideway Investment Partners LLP,496214,dfm,tier_3,London,EC3A 4AF,+442031436100,www.tidewayinvestment.co.uk,43,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+241,33.2,Connor Broadley Ltd,468321,dfm,tier_3,London,W1J 5HG,+4402076478810,www.connorbroadley.co.uk,43,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+242,33.2,MM Wealth Ltd,148496,dfm,tier_3,Cambridge,CB3 0NA,+4401223233331,www.mmwealth.co.uk,42,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+243,33.2,WEALTH SOLUTIONS (UK) LTD,478217,dfm,tier_3,Birmingham,B15 1JD,+4401214465815,www.amberriver.com/midlands,42,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+244,33.2,Hedley & Company Stockbrokers Limited,471207,dfm,tier_3,Blackburn,BB1 3NU,+441254699333,hedleyandco.co.uk,41,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+245,33.2,M&G Wealth Investments LLP,229445,dfm,tier_3,London,EC3M 5AG,+4402081624929,www.mandg.com/wealth/mps,40,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+246,33.2,Leodis Wealth Limited,707896,dfm,tier_3,Leeds,LS12 6AJ,+441134878660,www.amberriver.com,40,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+247,33.2,Cobens Group Limited,484450,dfm,tier_3,Maidstone,ME15 6LG,+442071188777,www.cobensgroup.co.uk,40,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+248,33.2,MPL Wealth Management Limited,180309,dfm,tier_3,London,WC1N 2LR,+4402078314711,https://www.mplwealthmanagement.co.uk,39,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+249,33.2,Titan Asset Management Ltd,568089,dfm,tier_3,London,W1U 1QU,+4408000480150,www.titanwh.com,39,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+250,33.2,Y Tree Limited,967369,dfm,tier_3,London,W1D 5EU,+4402039288444,www.y-tree.com,39,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+251,33.2,DRUMNOR INVESTMENTS LIMITED,613500,dfm,tier_3,Dundee,DD1 4BU,+441382755800,www.drumnor.co.uk,38,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+252,33.2,MB Capital Limited,504272,dfm,tier_3,London,EC3A 8AA,+4402071399100,www.mbcapital.co.uk,38,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+253,33.2,ARIA PRIVATE CLIENTS LIMITED,527557,dfm,tier_3,Guildford,GU2 8XG,+441483917644,www.ariaprivateclients.com,38,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+254,33.2,J. EDWARD SELLARS AND PARTNERS LIMITED,116320,dfm,tier_3,Clevedon,BS21 6TZ,+4401934875910,https://www.jesellars.co.uk/,36,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+255,33.2,Cerno Capital Partners LLP,465408,dfm,tier_3,London,W1S 3ED,+4402070364117,https://cernocapital.com/,36,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+256,33.2,Hay Hill Wealth Management Limited,453682,dfm,tier_3,London,W1K 7QB,+442045306830,www.hayhillwealth.com,35,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+257,33.2,FACET INVESTMENT MANAGEMENT LTD,131372,dfm,tier_3,London,W1K 3JN,,,35,False,0.125,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+258,33.2,Odd Asset Management Ltd,660915,dfm,tier_3,London,SW1P 3JS,+4402038972302,www.tyndallim.co.uk,34,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+259,33.2,Netwealth Investments Limited,706988,dfm,tier_3,London,WC1A 2SL,+4402037954747,www.netwealth.com,34,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+260,33.2,ASCOT WEALTH MANAGEMENT LTD,551744,dfm,tier_3,Ascot,SL5 0ER,+4401344851250,www.ascotwm.com,33,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+261,33.2,Investment Quorum Limited,232088,dfm,tier_3,London,EC4N 7HR,+442073371390,www.investmentquorum.com,32,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+262,33.2,Clarity Limited,185468,dfm,tier_3,Woking,GU21 6HR,+4408003687511,www.clarityglobal.com,32,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+263,33.2,Tanager Wealth Management LLP,610237,dfm,tier_3,London,EC4V 3BJ,+4402039656330,www.tanagerwealth.com,31,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+264,33.2,YOU Asset Management Limited,543459,dfm,tier_3,London,EC2V 6DN,+443452415347,www.YOU-Asset.co.uk,31,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+265,33.2,Premier Financial Management Ltd,189921,dfm,tier_3,Marlow,SL7 1DP,+4401628769122,amberriverpremier.com,31,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+266,33.2,Odey Wealth Management (UK) Limited,451361,dfm,tier_3,London,EC2V 7BG,,,31,False,0.125,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+267,33.2,Sparrows Capital Limited,607414,dfm,tier_3,London,EC4M 7JN,+442037144624,www.sparrowscapital.com,30,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+268,33.2,T. Bailey Asset Management Limited,190291,dfm,tier_3,Nottingham,NG12 4DG,+4401156660470,https://tbaileyam.co.uk/,30,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+269,33.2,CPN Investment Management LLP,579506,dfm,tier_3,Chichester,PO19 1TD,+4401243780077,www.cpngroup.co.uk,30,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+270,33.2,Brunswick Investment Management Limited,618199,dfm,tier_3,Norwich,NR6 5AQ,+441603895350,www.brunswickim.com,30,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+271,33.2,Doherty Pension & Investment Consultancy Limited,186761,dfm,tier_3,Belfast,BT1 2BE,+4402890533350,www.dohertypic.com,30,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+272,33.2,Hugh Davies Associates Limited,125569,dfm,tier_3,Cheltenham,GL52 3PB,+4401242514563,www.amberriver.com/hda,30,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+273,33.2,PHILIP T ENGLISH INTERNATIONAL FINANCIAL SERVICES LIMITED,125041,dfm,tier_3,Banbury,OX16 2SB,+4401295660571,www.philiptenglish.com,29,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+274,33.2,SDB Strategic Planners Limited,116337,dfm,tier_3,Newcastle-under-Lyme,ST5 8BQ,+4401782712233,www.courtiers.co.uk,29,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+275,33.2,Schroders Investment Portfolio Services Limited,230690,dfm,tier_3,Horsham,RH12 4QP,+441403334477,www.schroders.com/en-gb/uk/intermediary/investment-solutions,29,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+276,33.2,Philip J Milton & Company Plc,181768,dfm,tier_3,Barnstaple,EX31 1RP,+441271344300,www.miltonpj.net,28,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+277,33.2,IPS Capital LLP,471375,dfm,tier_3,London,EC3M 1AE,+442074696830,www.ipscap.com,28,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+278,33.2,Lincoln Private Investment Office LLP,613327,dfm,tier_3,London,SW1W 0DH,+4402039097500,www.lpio.co.uk,28,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+279,33.2,Reyker Securities Plc,115308,dfm,tier_3,London,EC2V 7BG,+4402073972586,https://www.evelyn.com/services/restructuring-and-recovery-services/reyker-securities-plc/,28,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+280,33.2,DOUGLAS STEERS & COMPANY LIMITED,705132,dfm,tier_3,Colchester,CO7 7RS,+443455000909,www.douglassteers.co.uk,28,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+281,33.2,WM Thomson & Sons,131596,dfm,tier_3,Dundee,DD1 1LN,+4401382201534,,28,False,0.25,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+282,33.2,Foundation Investment Management Limited,612117,dfm,tier_3,Altrincham,WA15 8AB,+4401619277222,,28,False,0.25,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+283,33.2,MAUNBY INVESTMENT MANAGEMENT LIMITED,114428,dfm,tier_3,Ripon,HG4 1BN,+441423523553,www.maunby.com,27,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+284,33.2,Beacon Wealth Management Limited,526604,dfm,tier_3,Kimbolton,PE28 0HW,+4401480869466,www.beaconwm.co.uk,27,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+285,33.2,Quartet Capital Partners LLP,502242,dfm,tier_3,Richmond,TW9 1TJ,+4402089392920,www.quartet-im.com,27,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+286,33.2,THOMSON TYNDALL LTD,917403,dfm,tier_3,London,SW1P 3JT,+4402071003667,www.thomsontyndall.com,27,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+287,33.2,Bentley Reid & Co (UK) Limited,572096,dfm,tier_3,London,SW1H 9BU,+4402072228081,www.bentleyreid.com,26,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+288,33.2,VINTAGE ASSET MANAGEMENT LIMITED,489408,dfm,tier_3,London,W1H 1PN,+4402079893110,www.vintageassetmanagement.co.uk,26,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+289,33.2,Blackadders Wealth Management LLP,738512,dfm,tier_3,Dundee,DD1 1AG,+4401382342223,www.blackadderswm.co.uk,26,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+290,33.2,St Johns Asset Management Limited,441074,dfm,tier_3,Bromsgrove,B60 4JE,+441527577775,,26,False,0.25,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+291,33.2,Mole Valley Asset Management Ltd,613008,dfm,tier_3,Dorking,RH4 1RY,+4401306776999,mvam.com,25,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+292,33.2,Barker Poland Asset Management LLP,499311,dfm,tier_3,London,EC4V 4BJ,+442031008308,www.barkerpoland.co.uk,25,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+293,33.2,Cartlidge Morland Wealth Management LLP,810083,dfm,tier_3,London,EC2R 5BJ,+442077095560,www.cartlidgemorland.com,25,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+294,33.2,Campbell & McConnachie Limited,789217,dfm,tier_3,Lossiemouth,IV31 6PD,+441343812534,www.amberriver.com/cm,25,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+295,33.2,Throgmorton Capital Management Limited,827982,dfm,tier_3,Cheadle,SK8 3FS,+4401612496171,www.throgmortoncm.co.uk,24,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+296,33.2,PLANHAPPY INVESTMENT MANAGEMENT LTD,833492,dfm,tier_3,Stockton-on-Tees,TS18 3TA,+441642525511,www.planhappy.co.uk,22,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+297,33.2,Capel Court Limited,154146,dfm,tier_3,Colchester,CO4 5NE,+4401275813700,https://capelcourt.cliftonwp.co.uk/,22,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+298,33.2,Satis Asset Management Limited,761140,dfm,tier_3,London,SW1Y 5JG,+4402038409970,www.satiswealth.com,22,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+299,33.2,IFPC Limited,144197,dfm,tier_3,St. Albans,AL1 3SN,+4401727837128,www.ifpc.co.uk,21,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+300,33.2,Edison Wealth Management Limited,467771,dfm,tier_3,London,SW1Y 4JH,+4402072872225,www.edisonwm.com,21,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+301,33.2,AMR Financial Management Limited,165172,dfm,tier_3,Harpenden,AL5 3QE,+441582461588,www.amrinvest.co.uk,21,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+302,33.2,Chancery Financial Planning LLP,611272,dfm,tier_3,London,EC4Y 1BN,+4402072423336,www.amberriverchancery.com,21,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+303,33.2,Equilibrium Investment Management LLP,776977,dfm,tier_3,Cheshire,SK9 3DF,+441614862250,www.equilibrium.co.uk,20,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+304,33.2,Casterbridge Wealth Limited,727583,dfm,tier_3,Salisbury,SP1 2AP,+441722466110,casterbridgewealth.co.uk,20,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+305,33.2,Mirabaud & Cie (Europe) S.A. (UK branch),984831,dfm,tier_3,London,SW1E 5DH,+4402031677400,https://www.mirabaud.com/en/wealth-management,20,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+306,33.2,Heronsgate Capital LLP,933757,dfm,tier_3,London,EC4V 4EG,+442070990130,https://www.heronsgatecapital.com,20,False,0.375,29,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+307,32.6,Gallagher (Administration & Investment) Limited,115057,ifa,tier_3,London,EC2V 7AF,+4402074291000,www.ajg.com/uk,198,False,0.375,37,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+308,32.6,AJ Bell Securities Limited,155593,ifa,tier_3,Salford,M5 3EE,+4403454089100,https://www.ajbell.co.uk/,159,False,0.375,37,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+309,32.6,Prydis Wealth Limited,432014,ifa,tier_3,Exeter,EX5 1GB,+4401392432431,www.prydis.com,119,False,0.375,37,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+310,32.6,Ellis Bates Financial Solutions Limited,114394,ifa,tier_3,Harrogate,HG1 1JD,+4401423520052,https://www.ellisbates.com/,101,False,0.375,37,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+311,32.6,Verso Wealth Management Limited,153871,ifa,tier_3,London,EC4N 6HL,+441513759848,www.versowm.com,90,False,0.375,37,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+312,32.2,INDUSTRIAL COMMON OWNERSHIP FINANCE LIMITED,171201,dfm,tier_3,Bristol,BS8 2SB,+4408004647262,www.coopfinance.coop,48,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+313,32.2,ALDER INVESTMENT MANAGEMENT LIMITED,122428,dfm,tier_3,London,EC2V 8AE,+442076016200,www.alder-investment.co.uk,47,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+314,32.2,1OAK Capital Limited,501453,dfm,tier_3,London,W1J 5DB,+442070167979,https://1oakgroup.com/,46,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+315,32.2,Orbis Portfolio Management (Europe) LLP,485836,dfm,tier_3,London,NW1 6QG,+442070422000,,46,False,0.25,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+316,32.2,Albert E Sharp LLP,488822,dfm,tier_3,Stratford-upon-Avon,CV37 6PA,+4401789404000,www.albertesharp.com,45,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+317,32.2,Ravenscroft Investments (UK) Limited,609277,dfm,tier_3,Peterborough,PE1 1XX,+441733315155,www.ravenscroftuk.com,45,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+318,32.2,SI Capital Ltd,230687,dfm,tier_3,Godalming,GU7 1HL,+4401483413500,www.sicapital.co.uk,44,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+319,32.2,Oxford Investment Opportunity Network Limited,564525,dfm,tier_3,Oxford,OX1 4EH,+4401865261480,https://www.oxfordinnovationfinance.co.uk/,43,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+320,32.2,Hassium Asset Management LLP,458250,dfm,tier_3,London,W1K 7PY,+4407768575575,www.hassium.co.uk,42,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+321,32.2,AURA HEXAA LLP,537080,dfm,tier_3,London,W1J 7NJ,+442046026673,www.aurahexaa.com,42,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+322,32.2,J. STERN & CO LLP,588344,dfm,tier_3,London,SW1Y 5AA,+4402034781800,www.jsternco.com,40,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+323,32.2,Olympia Wealth Management Ltd,562785,dfm,tier_3,London,EC4N 6NP,+442045405182,https://olympia-wealth.com/en/,40,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+324,32.2,Synergy Financial Products Limited,312416,dfm,tier_3,St. Albans,AL1 2RD,+4401727734300,www.sfpl.co.uk,39,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+325,32.2,Umbra Capital Partners LLP,917090,dfm,tier_3,London,W1F 9EL,+442074601030,www.umbracapital.com,39,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+326,32.2,EGR WEALTH LIMITED,537582,dfm,tier_3,London,EC3N 3AX,+442035061099,www.egrwealth.com,38,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+327,32.2,Alquity Investment Management Limited,463991,dfm,tier_3,London,EC1N 6SN,+4402075777850,www.alquity.com,38,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+328,32.2,VenCap International plc,122451,dfm,tier_3,Oxford,OX2 0JJ,+441865799300,www.vencap.com,37,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+329,32.2,CBH Wealth UK Limited,514546,dfm,tier_3,London,W1S 3LG,+4402076471300,www.cbhbank.com/uk,36,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+330,32.2,Blankstone Sington Limited,143694,dfm,tier_3,Manchester,M3 5EN,+4401618319999,,36,False,0.25,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+331,32.2,LGB & CO. LIMITED,442833,dfm,tier_3,London,SE1 7TY,+4402075189890,www.lgbco.com,34,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+332,32.2,Eighteen48 Partners Limited,823699,dfm,tier_3,,SW3 1JJ,+442036701855,www.eighteen48.com,33,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+333,32.2,RF Trustee Co. Limited,122229,dfm,tier_3,London,WC2N 6DF,+4402036966700,,33,False,0.25,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+334,32.2,Titan Investment Solutions Limited,781720,dfm,tier_3,London,W1U 1QU,+4408000480150,www.titanwh.com,32,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+335,32.2,Investengine (UK) Limited,801128,dfm,tier_3,London,SE1 0BS,+442080519501,investengine.com,32,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+336,32.2,WINGATE WEALTH MANAGEMENT LIMITED,478923,dfm,tier_3,Caterham,CR3 6PB,+441883332261,www.wingatefp.com,31,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+337,32.2,Clerville Investment Management LLP,475069,dfm,tier_3,London,W1S 2XJ,+4402072906680,www.clerville.co.uk,31,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+338,32.2,Oakham Wealth Management Ltd,431206,dfm,tier_3,London,W14 8TS,+4402034052600,www.oakhamwealth.com,30,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+339,32.2,Nevastar Finance Ltd,228525,dfm,tier_3,London,SW1Y 6BN,+442072903232,www.nevastar.com,30,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+340,32.2,Swiss Finance Corporation Limited,142903,dfm,tier_3,London,W1K 3JB,+4402074120500,www.sfc-uk.com,29,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+341,32.2,Blue Horizon Asset Management Limited,570942,dfm,tier_3,London,W1J 7NW,+442038327900,https://blue-horizon.com/,29,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+342,32.2,Innvotec Limited,122365,dfm,tier_3,London,W1W 6XH,+442076306990,www.innvotec.co.uk,29,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+343,32.2,Navera Investment Management Limited,923827,dfm,tier_3,London,SE1 9HA,+442037408350,www.naverainvestment.com,29,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+344,32.2,VAR Capital Limited,718558,dfm,tier_3,London,W1S 2PD,+442070960790,www.varcapital.com,25,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+345,32.2,Tribe Impact Capital LLP,756411,dfm,tier_3,London,SW1Y 6LX,+4402037457073,www.tribeimpactcapital.com,25,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+346,32.2,True Capital Limited,725992,dfm,tier_3,London,SW1E 6NF,+4401628760000,www.true.global,25,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+347,32.2,Clear Capital Markets Ltd,706689,dfm,tier_3,London,EC2M 2DD,+4402038696083,http://www.clearcapitalmarkets.co.uk,25,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+348,32.2,ASSET INTELLIGENCE PORTFOLIO MANAGEMENT LTD,842662,dfm,tier_3,Leicester,LE4 7SL,+442081448370,www.asset-intelligence.com,23,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+349,32.2,Wren Investment Office Limited,816265,dfm,tier_3,London,SW1V 1PX,+442038765699,http://www.wreninvestmentoffice.com/,22,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+350,32.2,Stonewood Wealth Management LLP,613665,dfm,tier_3,Manchester,M1 4PB,+4401932832210,www.stonewoodwealth.com,22,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+351,32.2,NS ASSET MANAGEMENT UK LTD,170942,dfm,tier_3,London,W1K 7QD,+4402075295350,www.nspgroup.com,22,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+352,32.2,Bowmore Asset Management Limited,626431,dfm,tier_3,London,EC3V 9DU,+4402036179206,bowmoream.com,22,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+353,32.2,King & Shaxson Asset Management Limited,823315,dfm,tier_3,London,EC3M 6AL,+4402074265950,https://www.kingandshaxsonethical.co.uk/home.aspx,21,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+354,32.2,I F MACKINNON & COMPANY LLP,231328,dfm,tier_3,Cowes,PO31 8AZ,+4401983282925,www.ifmackinnon.co.uk,21,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+355,32.2,Frogmore Real Estate Partners Fund Managers Ltd,505190,dfm,tier_3,London,W1U 1PF,+4402070166025,www.frogmore.co.uk,20,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+356,32.2,Binary Capital Limited,507900,dfm,tier_3,London,NW3 1QA,+442039435085,binarycapital.co.uk,20,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+357,32.2,Farley & Thompson LLP,461601,dfm,tier_3,Bournemouth,BH1 2NU,+4401202295000,www.farleyandthompson.co.uk,20,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+358,32.2,Latitude Investment Management LLP,774437,dfm,tier_3,London,SW1A 1RE,+442070879273,www.latitudeim.com,20,False,0.375,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+359,32.2,London Stone Securities Limited,479827,dfm,tier_3,Ashton-on-Ribble,PR2 2YP,+442036971700,,20,False,0.25,29,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+360,31.6,Zeus Capital Limited,224621,ifa,tier_3,Manchester,M2 4WQ,+4401618311512,www.zeuscapital.co.uk,180,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+361,31.6,Talbot Capital Ltd,489839,ifa,tier_3,London,EC4R 0EU,+442039830660,www.talbotcapital.co.uk,157,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+362,31.6,Singer Capital Markets Advisory LLP,568323,ifa,tier_3,London,EC2N 2AX,+442074963000,http://www.SingerCM.com/,156,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+363,31.6,GE Vernova Financial Services Limited,194522,ifa,tier_3,London,W6 8PW,+447770815869,,140,False,0.25,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+364,31.6,Enterprise Investment Partners LLP,604439,ifa,tier_3,London,EC2V 5BT,+442078430471,https://www.kin-group.com/,122,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+365,31.6,Pello Capital Limited,449720,ifa,tier_3,London,EC2V 7BG,,,99,False,0.125,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+366,31.6,S. P. Angel Corporate Finance LLP,516932,ifa,tier_3,London,W1S 2PP,+4402034700470,www.spangel.co.uk,92,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+367,31.6,Titan Settlement & Custody Ltd,533039,ifa,tier_3,London,W1U 1QU,+442070814042,www.titansettlementandcustody.com,91,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+368,31.6,Shore Capital and Corporate Limited,146629,ifa,tier_3,London,SW1A 1LD,+442074084050,https://www.shorecap.co.uk/,90,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+369,31.6,Allenby Capital Limited,489795,ifa,tier_3,London,EC3A 6AB,+4402033285656,www.allenbycapital.com,88,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+370,31.6,Rothschild & Co Equity Markets Solutions Limited,950811,ifa,tier_3,London,EC4N 8AL,+442072805000,www.rothschildandco.com,81,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+371,31.6,H & P Advisory Limited,805667,ifa,tier_3,London,W1G 9DQ,+442079078500,www.hannam.partners,77,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+372,31.6,Fenchurch Advisory Partners LLP,596952,ifa,tier_3,London,EC2N 4AY,+442073822222,www.fenchurchadvisory.com,75,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+373,31.6,ALBR CAPITAL LIMITED,456804,ifa,tier_3,London,EC2V 6EE,+4402073999400,www.albrcapital.com,71,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+374,31.6,Ashberg Limited,516496,ifa,tier_3,London,W1H 6DU,+442037451320,www.ashbergmfo.com,63,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+375,31.6,Marechale Capital PLC,190270,ifa,tier_3,London,EC2M 1JH,+4402076285582,www.marechalecapital.com,63,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+376,31.6,Onyx Capital Advisory Limited,822509,ifa,tier_3,London,SW7 4ES,+4402039812790,https://www.onyxcapitalgroup.com/,60,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+377,31.6,Mercia Fund Management Limited,524856,ifa,tier_3,Henley-in-Arden,B95 5AA,+443302231430,www.mercia.co.uk,60,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+378,31.6,Spayne Lindsay & Co. LLP,401042,ifa,tier_3,London,WC2N 5LR,+442078083240,https://spaynelindsay.com/,57,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+379,31.6,Stonehage Fleming Advisory Limited,194929,ifa,tier_3,London,SW1Y 4JU,+442070870000,www.stonehagefleming.com,55,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+380,31.6,Asset Risk Consultants (UK) Limited,652972,ifa,tier_3,London,EC4A 1BR,+442039462860,www.assetrisk.com,53,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+381,31.6,Arlingclose Limited,417722,ifa,tier_3,London,WC2R 1AT,+447702788303,www.arlingclose.com,53,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+382,31.6,FUTURE PLANET CAPITAL (VENTURES) LIMITED,148549,ifa,tier_3,Manchester,M3 3AA,+442031310105,www.futureplanetcapital.com,53,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+383,31.6,Aurum Funds Limited,180770,ifa,tier_3,London,W1T 4DF,+4402075891130,www.aurumfunds.com,52,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+384,31.6,Trevally Capital Advisers Ltd,196124,ifa,tier_3,London,WC2N 6DF,+4402038899600,https://www.trevallycapitaladvisers.co.uk/,52,False,0.375,37,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+385,30.8,VWM Consulting Limited,401041,dfm,tier_3,Glasgow,G2 4EU,+4401412294004,www.vwmwealth.com,19,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+386,30.8,MIO Partners (UK) Limited,474928,dfm,tier_3,London,W1B 4DB,+4402045791109,www.miopartners.com,19,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+387,30.8,Altorfer Financial Management Limited,147392,dfm,tier_3,Waltham Cross,EN8 7AF,+441992654654,www.altorfer.co.uk,19,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+388,30.8,Fowler Drew Limited,402423,dfm,tier_3,London,EC4N 7HR,+4402077362434,www.fowlerdrew.co.uk,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+389,30.8,Mountstone Partners Limited,583147,dfm,tier_3,London,W1F 9RU,+4402036179162,www.mountstonepartners.com,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+390,30.8,Charlwood IFA Limited,226338,dfm,tier_3,Bournemouth,BH4 9AE,+4401202768512,www.charlwoodifa.com,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+391,30.8,EBI PORTFOLIOS LTD,581079,dfm,tier_3,Aldridge,WS9 8TZ,+4401922472226,ebi.co.uk,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+392,30.8,North Capital Management Limited,713442,dfm,tier_3,Edinburgh,EH3 6DH,+441312850860,www.northcapital.co.uk,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+393,30.8,Oakglen Wealth Limited,961763,dfm,tier_3,London,W1F 9LD,+442045831118,www.oakglenwealth.com,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+394,30.8,Dennehy Wealth Limited,114360,dfm,tier_3,Bromley,BR7 5AB,+4402084671666,www.dennehywealth.co.uk,18,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+395,30.8,IronMarket Ltd,620330,dfm,tier_3,Newcastle,ST5 9QA,+4401782461563,www.net-worthntwrk.com/,17,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+396,30.8,Sorbus Partners LLP,588466,dfm,tier_3,Stafford,ST16 2LZ,+441785503010,www.sorbus.com,17,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+397,30.8,AB Investment Solutions Limited,705062,dfm,tier_3,Bath,BA1 1RG,+4402081525120,www.alphabetapartners.co.uk,17,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+398,30.8,Scott Capital Partners LLP,957221,dfm,tier_3,London,SW1Y 4JH,+442045742828,www.scottcp.com,17,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+399,30.8,TPIO Limited,835577,dfm,tier_3,Bishop's Stortford,CM23 1JG,+442081297536,https://thefabric.uk/private-office/,16,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+400,30.8,Henry Spain Investment Services Limited,811723,dfm,tier_3,Market Harborough,LE16 7AF,+4401858898023,https://www.henryspain.co.uk/,16,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+401,30.8,Laver Wealth Management Limited,153989,dfm,tier_3,Weston-super-Mare,BS23 1YE,+441934645511,www.laverwealth.co.uk,16,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+402,30.8,CS Managers Ltd,830853,dfm,tier_3,Edinburgh,EH2 4HQ,+441316247709,www.csmanagers.com,15,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+403,30.8,Keith Montgomery Associates Limited,136684,dfm,tier_3,Chippenham,SN14 7EL,+441249782871,www.montgomeryassociates.co.uk,15,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+404,30.8,Castlebay Investment Partners LLP,624445,dfm,tier_3,Glasgow,G3 7NB,+441412127930,www.castlebayinvestments.com,15,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+405,30.8,42 Wealth Management Ltd,732318,dfm,tier_3,Lichfield,WS13 6QA,+4401543395902,www.42wealth.com,15,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+406,30.8,Two10 Investment Services Limited,947852,dfm,tier_3,Preston,PR3 3JA,+4401772970470,two10investmentservices.co.uk,15,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+407,30.8,Capital Financial Markets Limited,760840,dfm,tier_3,St Albans,AL3 4PQ,+4402036970560,www.capitalfinancialmarkets.co.uk,14,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+408,30.8,Leo Alexander Wealth & Financial Management Limited,624042,dfm,tier_3,Sheffield,S10 3AA,+4401142903697,www.lawfm.co.uk,14,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+409,30.8,IBOSS Asset Management Limited,697866,dfm,tier_3,Harrogate,HG2 8PB,+4401423878840,https://www.ibossam.com/,14,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+410,30.8,OMBA Advisory & Investments Limited,775647,dfm,tier_3,London,SE1 9PG,+442031768400,www.ombainvestments.com,13,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+411,30.8,MCM Bespoke Investment Services Limited,489807,dfm,tier_3,,NR1 1RY,+441603440424,http://www.mcm-bespoke.com,13,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+412,30.8,TIML Ltd,670184,dfm,tier_3,London,W1S 1HN,+442030516450,www.tacitim.com,13,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+413,30.8,8AM Global Limited,937456,dfm,tier_3,Andover,SP11 9AQ,+4407887913867,www.8amglobal.com,13,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+414,30.8,Chelsea Financial Services Plc,114493,dfm,tier_3,London,SW6 2JS,+4402073847300,www.chelseafs.co.uk,13,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+415,30.8,London Wealth Management Limited,479377,dfm,tier_3,London,WC2H 8EE,+4402033262955,www.londonwm.co.uk,12,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+416,30.8,Pembroke Asset Management LLP,229257,dfm,tier_3,Bristol,BS8 3AU,+4401179735291,www.pembrokeam.co.uk,12,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+417,30.8,4 Shires Asset Management Ltd,557959,dfm,tier_3,Gillingham,SP8 4QW,+4401747824600,www.4-shires.com,12,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+418,30.8,A J BUCKLEY ASSET MANAGEMENT LIMITED,154371,dfm,tier_3,Alresford,SO24 9EE,+4401428774070,www.ajbwealth.co.uk,12,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+419,30.8,Daintree Wealth Management Limited,828483,dfm,tier_3,Manchester,M4 4BE,+441614649720,http://www.daintreewm.com/,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+420,30.8,Inspire Wealth Ltd,461089,dfm,tier_3,Plymouth,PL6 8LR,+4401752651012,www.inspire-wealth.co.uk,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+421,30.8,HERITAGE CAPITAL MANAGEMENT LIMITED,150453,dfm,tier_3,London,SW1H 9NQ,+4402077992110,www.heritage-capital.co.uk,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+422,30.8,City House Investors Limited,443586,dfm,tier_3,North Yorkshire,HG3 1QZ,+4403448580581,https://www.cityhouseinvestors.co.uk/,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+423,30.8,Simply Ethical Financial Services Ltd,511220,dfm,tier_3,Isleworth,TW7 4PU,+4402089453786,www.simplyethical.com,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+424,30.8,WKM WEALTH LIMITED,915218,dfm,tier_3,Leicester,LE19 1SX,+4401164030138,www.wkmwealth.co.uk,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+425,30.8,MWC Group UK,973440,dfm,tier_3,Nottinghamshire,NG23 6LG,+447769343556,www.mwcgroup.ch,11,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+426,30.8,Brilliance Financial Planning Ltd,489357,dfm,tier_3,Aylesbury,HP22 6EQ,+4402070998605,www.brilliancefp.com,10,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+427,30.8,ACTIVUS WEALTH LTD,624196,dfm,tier_3,Harpenden,AL5 4EP,+442036579115,www.activuswealth.co.uk,10,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+428,30.8,William Highbourne Wealth Management Limited,917125,dfm,tier_3,Devon,EX8 2SH,+441395207350,www.williamhighbourne.com,10,False,0.375,21,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+429,30.2,Pharon Independent Financial Advisers Limited,138169,ifa,tier_3,Canterbury,CT2 8GT,+4401227819824,www.pharon.co.uk,45,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+430,30.2,Donre Advisory Limited,513993,ifa,tier_3,Brighton,BN1 4EA,,,41,False,0.125,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+431,30.2,AES Financial Services Ltd,464494,ifa,tier_3,London,W1U 7NG,+442030517999,www.aesinternational.com,37,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+432,30.2,Collins Sarri Statham Investments Limited,483868,ifa,tier_3,London,N10 3DU,+4402080576380,www.css-investments.com,36,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+433,30.2,Old Mill Financial Planning Limited,967142,ifa,tier_3,Somerset,BA20 1SH,+441935426181,www.om.uk,36,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+434,30.2,Financial Relationships LLP,483315,ifa,tier_3,London,EC1A 2AY,+4402070027715,www.financialrelationships.co.uk,28,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+435,30.2,Torevell & Partners Limited,183210,ifa,tier_3,Manchester,M2 3WQ,+4401612816400,www.torevellpartners.co.uk,23,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+436,30.2,Ermin Fosse Financial Management LLP,197438,ifa,tier_3,Cirencester,GL7 2PP,+441285649200,www.erminfosse.co.uk,20,False,0.375,29,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+437,29.8,VICTORIA CAPITAL (UK) LIMITED,401049,dfm,tier_3,Haywards Heath,RH16 2AB,+442072927103,www.victoriaprivateinvestment.com,19,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+438,29.8,S&T Asset Management LLP,501695,dfm,tier_3,Manchester,SK6 7AA,+441614846789,,18,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+439,29.8,Cadro Technologies Limited,968400,dfm,tier_3,London,W1J 6BD,+4402038362302,www.cadro.com,18,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+440,29.8,VINCO WEALTH MANAGEMENT LIMITED,770606,dfm,tier_3,Worcester,WR1 1HB,+442039500200,www.vincowealth.co.uk,18,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+441,29.8,Mansford Capital Limited,221138,dfm,tier_3,London,W1G 0PW,+4402078380111,https://www.mansford.com/,17,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+442,29.8,Patronus Partners Limited,653541,dfm,tier_3,London,EC4N 7HR,+4402038185301,www.patronuspartners.com,17,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+443,29.8,ALLX Ltd,625263,dfm,tier_3,Harrow,HA1 1LJ,+447738064405,www.allxgroup.com,17,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+444,29.8,PK Wealth Limited,669243,dfm,tier_3,Richmond,TW9 2RD,+442083349953,www.pkgroup.co.uk,17,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+445,29.8,WHITMAN ASSET MANAGEMENT LIMITED,916792,dfm,tier_3,London,W1U 3AB,+442078467460,https://whitman.co.uk,17,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+446,29.8,Tamsel (UK) Limited,515793,dfm,tier_3,London,SW1A 1LP,+4402031671224,,16,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+447,29.8,Clarion Investment Management Limited,584493,dfm,tier_3,Alderley Edge,SK9 7DZ,+4401625466360,,16,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+448,29.8,PASSION CAPITAL INVESTMENTS II LLP,760022,dfm,tier_3,London,SE1 3XJ,+447977449176,www.passioncapital.com,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+449,29.8,GPIM Limited,811340,dfm,tier_3,London,EC2R 5BJ,+442038838780,http://www.gpimlimited.com/,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+450,29.8,Zeus Investment Management Limited,816962,dfm,tier_3,London,EC2N 1AR,+442038295000,https://zeuscapital.co.uk/investment-management/,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+451,29.8,Williams Investment Management LLP,403210,dfm,tier_3,Harrogate,HG1 5PR,+4401423705123,www.williams-im.com,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+452,29.8,BriceAmery Capital Ltd,489602,dfm,tier_3,London,EC2M 4YJ,+442079938151,www.briceamery.com,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+453,29.8,Topstone Capital Limited,912923,dfm,tier_3,London,W1J 8DS,+4402039473720,www.topstonecap.com,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+454,29.8,Ptarmigan Capital Limited,940407,dfm,tier_3,London,W1G 0PH,+442030341135,https://ptarmigancapital.co.uk/,15,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+455,29.8,Sarus Select Capital Ltd,709689,dfm,tier_3,London,W1W 5PF,+442070973812,https://sarusselectcapital.co.uk/,14,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+456,29.8,CubicStone Capital Management Limited,770616,dfm,tier_3,London,WC2N 5DA,+442071938470,http://www.cubicstone.co.uk/,14,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+457,29.8,Brompton Asset Management Limited,942254,dfm,tier_3,London,SW1X 7QA,+4402070450600,www.bromptonam.com,14,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+458,29.8,Zodiac Partners Ltd,806702,dfm,tier_3,London,EC3A 7LN,+4402083966888,www.zodiacpartners.co.uk,13,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+459,29.8,Acoro Capital Partners LLP,478269,dfm,tier_3,London,SW19 3QY,+4402078317755,www.acorocapital.com,13,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+460,29.8,Ekins Guinness LLP,750788,dfm,tier_3,Whitchurch,RG28 7RR,+441264738989,www.ekinsguinness.com,13,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+461,29.8,Thome Asset Management & Asset Controlling,416226,dfm,tier_3,Salisbury,SP4 0DW,+4401722782950,www.tamac.com,12,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+462,29.8,KMG Investment Management Limited,610230,dfm,tier_3,Gatwick,RH6 0PA,+4401342840157,,12,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+463,29.8,Crescent Capital NI Limited,173325,dfm,tier_3,Lisburn,BT27 6YQ,+4402890233633,www.crescentcapital.co.uk,12,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+464,29.8,MONOGRAM CAPITAL MANAGEMENT LTD,820474,dfm,tier_3,London,W1C 1AX,+447711128457,,12,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+465,29.8,Intrinsic Capital London Limited,1018622,dfm,tier_3,London,W1S 4JJ,+442033624470,www.intrinsic.london,12,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+466,29.8,Causeway Securities Limited,749440,dfm,tier_3,Belfast,BT1 6PA,+442895921143,www.causeway-securities.com,12,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+467,29.8,BLU Family Office Limited,796721,dfm,tier_3,Richmond,TW9 1QH,+4402081661223,https://www.blu-im.com/,12,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+468,29.8,INVESTEC INTERNATIONAL PRIVATE OFFICE LIMITED,780642,dfm,tier_3,London,EC2V 7QP,+442075974000,,12,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+469,29.8,Hilbert Investment Solutions Ltd,698380,dfm,tier_3,London,EC3M 7DQ,+442033181742,www.hilbert-is.com,11,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+470,29.8,Rometsch & Moor Limited,188757,dfm,tier_3,London,EC3V 3DG,+4402076263077,www.rometschandmoor.com,11,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+471,29.8,TRADESLIDE TRADING TECH LTD,586466,dfm,tier_3,London,E14 5AB,+442037691554,www.darwinex.com,11,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+472,29.8,NGEN Capital Ltd,615732,dfm,tier_3,London,W1S 4PW,+447713743432,http://www.ngencap.com/,11,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+473,29.8,SANFORD DELAND ASSET MANAGEMENT LTD,924563,dfm,tier_3,Leeds,LS1 5HD,+4401133501820,http://www.sanford-deland.com/,11,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+474,29.8,Meltemi Investment Management Limited,225825,dfm,tier_3,London,SW3 2ND,+442037958147,www.meltemi.biz,10,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+475,29.8,ALPCOT CAPITAL MANAGEMENT LIMITED,455367,dfm,tier_3,London,W1S 3HB,+4402075180530,,10,False,0.25,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+476,29.8,Hundle & Partners Limited,911947,dfm,tier_3,London,W1S 4HZ,+442045515751,www.hundle.co,10,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+477,29.8,Wealthfusion Limited,914259,dfm,tier_3,London,W1H 6DU,+4402081547030,www.wealthfusion.co.uk,10,False,0.375,21,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+478,29.2,Jamieson Corporate Finance LLP,402740,ifa,tier_3,London,SW1Y 4LR,+442033103737,www.jamiesoncf.com,48,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+479,29.2,Maxis Investments Ltd,441316,ifa,tier_3,London,EC2N 2AX,+442077263300,http://www.maxisinvestments.co.uk/,42,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+480,29.2,Moore Kingston Smith Corporate Finance Limited,198042,ifa,tier_3,London,EC2A 2AP,+4402075663588,https://mooreks.co.uk/,40,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+481,29.2,TURNER POPE INVESTMENTS (TPI) LTD,739104,ifa,tier_3,London,W1J 5PA,+4402036570050,www.turnerpope.com,37,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+482,29.2,Chrystal Capital Partners LLP,514725,ifa,tier_3,London,W1J 8NR,+4402078504760,www.chrystalcapital.com,34,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+483,29.2,QMPF Llp,596081,ifa,tier_3,Edinburgh,EH3 8BL,+4401312222600,www.qmpf.co.uk,33,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+484,29.2,SPARK Advisory Partners Limited,182762,ifa,tier_3,London,EC1M 4BH,+4402033683550,http://www.sparkadvisorypartners.com,30,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+485,29.2,Beaumont Cornish Limited,184753,ifa,tier_3,London,W1J 8BA,+442076283396,www.b-cornish.co.uk,29,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+486,29.2,Harbour Litigation Funding Ltd,493877,ifa,tier_3,London,SW1Y 6DN,+442038299320,www.harbourlitigationfunding.com,27,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+487,29.2,Illiquidx Limited,708666,ifa,tier_3,London,W14 8NS,+442078320163,www.illiquidx.com,26,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+488,29.2,First Sentinel Corporate Finance Limited,760668,ifa,tier_3,London,SW1A 1RD,+442038555551,https://first-sentinel.com,26,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+489,29.2,Tifosy Limited,717605,ifa,tier_3,London,SW1Y 4JH,+442078717668,www.tifosy.com,25,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+490,29.2,Gildencrest Capital Limited,564741,ifa,tier_3,London,E14 5AA,+442030484764,www.gildencrestcapital.co.uk,24,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+491,29.2,Abundance Investment Ltd,525432,ifa,tier_3,London,WC1H 9BB,+442034758666,www.abundanceinvestment.com,23,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+492,29.2,Fraser Finance Limited,171483,ifa,tier_3,London,SW1Y 5JG,+442079307797,www.fraserfinance.com,22,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+493,29.2,Kinmont Limited,188821,ifa,tier_3,London,W1S 2LG,+4402070879100,www.kinmontadvisory.co.uk,22,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+494,29.2,Gryphon Emerging Markets Limited,189433,ifa,tier_3,London,SW1Y 5ES,+4402072682070,www.gryphco.com,21,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+495,29.2,Dupoin UK Ltd,622574,ifa,tier_3,Manchester,M2 3AW,+441618832515,www.dupoin.co.uk,21,False,0.375,29,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+496,29.0,Lacomp Ltd,115020,dfm,tier_3,Bagshot,GU19 5AH,+4401276475123,www.lacomp.co.uk,9,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+497,29.0,Arnold Stansby & Co. Limited,569888,dfm,tier_3,Manchester,M2 5JJ,+4401618328554,www.arnold-stansby.com,9,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+498,29.0,PLAIN ENGLISH FINANCE LTD.,564876,dfm,tier_3,London,SO17 1XS,+447775892474,www.plainenglishfinance.co.uk,9,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+499,29.0,Ark Investment Management Ltd,670081,dfm,tier_3,London,W1G 0JR,+442036512746,www.arkim.co.uk,8,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+500,29.0,DJWM Limited,556371,dfm,tier_3,London,N3 1SR,+442082015132,www.invfit.co.uk,8,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+501,29.0,Accredo Financial Services Limited,647122,dfm,tier_3,Manchester,M12 6JH,+4401733595450,www.accredofinancialservices.com,8,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+502,29.0,Everys Financial Services Limited,998644,dfm,tier_3,Cirencester,GL7 5JB,+441285283800,www.execapman.com,8,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+503,29.0,Quorum Capital Limited,601037,dfm,tier_3,London,WC1N 3AX,+4402071860898,www.quorumcapital.co.uk,7,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+504,29.0,Baron & Grant Investment Management Limited,930300,dfm,tier_3,Derbyshire,DE12 8JW,+441283387070,www.baronandgrant.com,7,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+505,29.0,Callanish Capital Ltd,955992,dfm,tier_3,London,SW1X 0BD,+4402038783589,www.callanishcapital.co.uk,7,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+506,29.0,J H Lowson & Company Limited,582104,dfm,tier_3,Lancaster,LA1 1LU,+440152469831,www.lowco.uk,6,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+507,29.0,Artless Wealth Ltd,925231,dfm,tier_3,Colchester,CO4 3ZQ,+441379777762,www.artlesswealth.com,6,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+508,29.0,MOYES Financial Planning Limited,571590,dfm,tier_3,Colchester,CO2 8JX,+4401206266939,www.moyes.investments,6,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+509,29.0,Capital Trust Financial Management LTD,176498,dfm,tier_3,Coleraine,BT52 1NB,+4402870358500,,5,False,0.25,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+510,29.0,Kinetic Private Investments Limited,954553,dfm,tier_3,Newcastle Upon Tyne,NE13 8BR,+441913002082,www.kpi.co.uk,5,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+511,29.0,BARRAS CAPITAL MANAGEMENT PLC,992232,dfm,tier_3,Chelmsford,CM1 1HT,+443332248069,www.barrascapital.com,5,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+512,29.0,Safran (South West) Limited,610305,dfm,tier_3,Exeter,EX1 1QT,+4401392277111,www.randalls.co.uk,5,False,0.375,15,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+513,28.0,INDEPENDENT ADVICE LTD,524535,dfm,tier_3,Bolton,BL6 6PG,+4401204559696,hjscott.co.uk,9,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+514,28.0,Welrex Ltd,829695,dfm,tier_3,London,W1K 6WE,+443330069989,www.welrex.com,9,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+515,28.0,Tacconis Advisors & Co LLP,457637,dfm,tier_3,London,SE1 3FZ,+4402074073911,https://www.tacpartners.com/,9,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+516,28.0,S A B SECURITIES LIMITED,225986,dfm,tier_3,Harrow,HA1 3SZ,+442045706125,www.sabsecurities.co.uk,9,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+517,28.0,MIDDLETON PRIVATE CAPITAL LTD.,804197,dfm,tier_3,Worksop,S80 3LL,+4401909261071,www.middletonprivatecapital.co.uk,9,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+518,28.0,WealthTek LLP,832264,dfm,tier_3,London,W1U 7EU,,,9,False,0.125,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+519,28.0,Realm Investment Management Limited,803673,dfm,tier_3,London,SW1V 1PX,+447753628837,www.realmim.com,8,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+520,28.0,FAIRMONT INVESTMENT MANAGEMENT LIMITED,777461,dfm,tier_3,London,W1G 0PW,+442036030601,www.fairmontim.com,8,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+521,28.0,Mayfair Capital Limited,766642,dfm,tier_3,London,W1S 1HS,+442037954964,http://www.mayfair-capital.co.uk/,8,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+522,28.0,Miller & Co Investment Management Ltd,166062,dfm,tier_3,Aberdeen,AB15 4ZT,+4401224622812,,8,False,0.25,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+523,28.0,Hemera Capital Management LLP,507603,dfm,tier_3,London,W1K 5EH,+4402031784705,https://www.hemera-capital.com/,7,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+524,28.0,LONGLEY ASSET MANAGEMENT LIMITED,400040,dfm,tier_3,London,SW15 1AE,+4402072947326,www.lamasset.com,7,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+525,28.0,Beryllus Capital (UK) Limited,966180,dfm,tier_3,London,W1J 8ED,+442036572122,www.berylluscapital.com,7,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+526,28.0,InCred Global Wealth Limited,996981,dfm,tier_3,London,W1J 8BA,+442039886250,www.incredwealth.uk,7,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+527,28.0,Veritycorp Ltd,992520,dfm,tier_3,London,W1U 7LL,+442037276159,www.verity.capital,7,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+528,28.0,Royal Exchange Investment Management Ltd,1042599,dfm,tier_3,London,EC4N 7AF,+442038974405,www.royalexchangeinvest.com,7,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+529,28.0,UCAP Asset Management (UK) Ltd,915248,dfm,tier_3,London,W1J 6BD,+447971602374,,7,False,0.25,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+530,28.0,Asset Capital Management UK Limited,777162,dfm,tier_3,London,EC1Y 1AA,+442036213100,www.euro.capital,6,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+531,28.0,Eriswell Capital Management LLP,481871,dfm,tier_3,Hersham,KT12 4RQ,+4401932240121,www.eriswell.com,6,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+532,28.0,GWM Asset Management Limited,737512,dfm,tier_3,Harpenden,AL5 4US,+442030304141,www.gwmam.co.uk,6,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+533,28.0,Clarity Advice & Management Ltd,820107,dfm,tier_3,Tonbridge,TN9 1BE,+447977594349,https://www.clarityam.com/,6,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+534,28.0,Wieldmore Investment Management Limited,917602,dfm,tier_3,London,N5 2EF,+442045830583,https://www.wieldmore.com,6,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+535,28.0,Enigma Strategy Limited,926961,dfm,tier_3,London,W1J 5BF,+4402039839499,www.enigmastrategy.com,6,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+536,28.0,City Capital Markets Ltd,482324,dfm,tier_3,Welwyn Garden City,AL8 7SR,+4401707800992,,6,False,0.25,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+537,28.0,Monument Asset Management Limited,171447,dfm,tier_3,London,SE1 3TQ,+4402031008153,,6,False,0.25,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+538,28.0,Moai Wealth Limited,188586,dfm,tier_3,Bristol,BS8 2QW,+441174712765,www.moaiwealth.co.uk,5,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+539,28.0,Kendar Advisors Ltd,841556,dfm,tier_3,London,SW3 3NP,+442033072222,http://www.kendaradvisors.com/,5,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+540,28.0,New Horizon Global Advisory Ltd,927966,dfm,tier_3,London,E14 5EU,+447719987302,https://newhorizon-global.com/,5,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+541,28.0,PARADIGM INVESTMENT PARTNERS LTD.,975897,dfm,tier_3,London,W1J 8DZ,+4402039988075,paradigmig.com,5,False,0.375,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+542,28.0,GK Wealth Ltd,912883,dfm,tier_3,London,W1J 8NR,+442071188818,,5,False,0.25,15,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+543,27.8,Vobis Limited,656022,ifa,tier_3,Leeds,LS1 5SH,+443300021601,www.vobiset.com,19,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+544,27.8,BPH Wealth Management LLP,476417,ifa,tier_3,Harpenden,AL5 4ES,+4401582461122,https://bphwealth.co.uk/,19,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+545,27.8,FIRST GLOBAL (UK) LTD.,190780,ifa,tier_3,Harrow,HA2 7SE,+4402089044942,https://www.firstglobalsec.com/,18,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+546,27.8,FOGWILL & JONES ASSET MANAGEMENT LIMITED,433208,ifa,tier_3,Sheffield,S8 0TB,+4401142588899,www.fogwillandjones.co.uk,16,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+547,27.8,Tier One Capital Wealth Management Limited,588633,ifa,tier_3,Newcastle upon Tyne,NE13 6DS,+4401912170007,www.tieronecapital.co.uk,16,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+548,27.8,Financial Framework Wealth & Estate Planning Limited,843450,ifa,tier_3,Otley,LS21 3JP,+441943663143,www.financialframework.co.uk,15,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+549,27.8,SW FINANCIAL PLANNING LIMITED,222033,ifa,tier_3,Ivybridge,PL21 9GD,+4401752205205,www.swlaw.co.uk,13,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+550,27.8,Featherstone Partners Limited,799741,ifa,tier_3,Yattendon,RG18 0UE,+441635778888,http://www.featherstonepartners.co.uk/,13,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+551,27.8,DW 2020 Limited,921450,ifa,tier_3,Carlisle,CA1 2RW,+4401228530913,www.doddwealthcare.co.uk,13,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+552,27.8,Michael Davey Financial Management Limited,115088,ifa,tier_3,London,EC2M 5UL,+4402075882378,www.mdfm.co.uk,12,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+553,27.8,MGP Investment Management Limited,150126,ifa,tier_3,Manchester,M15 4NJ,+4401618398229,http://mgp-investments.com/,12,False,0.375,21,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+554,27.8,Alington Ruthin Stockbrokers and Investment Management Limited,944965,dfm,tier_3,Denbighshire,LL15 1HF,+441824707953,www.alingtonruthin.com,3,False,0.375,11,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+555,27.8,N. Roditi and Co. Limited,938144,dfm,tier_3,London,NW3 1HL,+442074312012,,2,False,0.25,11,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+556,27.0,Accrue Investment Management Ltd,226033,dfm,tier_3,Bath,BA1 1HE,+4401225303333,www.accrueinvest.co.uk,8,False,0.375,15,90,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+557,26.8,CROWD FOR ANGELS (UK) LIMITED,176508,ifa,tier_3,London,SE8 3DX,+4402074372413,https://crowdforangels.com/,17,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+558,26.8,Tritax Securities LLP,489702,ifa,tier_3,London,W1F 9QZ,+4402072901616,www.tritax.co.uk,16,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+559,26.8,XPRIME MARKETS LIMITED,531771,ifa,tier_3,Whitstable,CT5 1HP,+442039518060,xprime.co.uk,15,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+560,26.8,Communications Equity Associates International LLP,441587,ifa,tier_3,London,EC2V 6EE,+4402072804886,www.ceaworldwide.com,14,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+561,26.8,Gneiss Energy Limited,963725,ifa,tier_3,London,W1K 7DA,+442039836792,www.gneissenergy.com,14,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+562,26.8,CheckRisk LLP,490575,ifa,tier_3,Sherborne,DT9 4QG,+447788976768,https://www.checkrisk.co.uk,13,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+563,26.8,UNLU SECURITIES UK LIMITED,817231,ifa,tier_3,London,W1K 5JH,+4402046136874,https://www.unluco.uk,12,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+564,26.8,BRIGHT HARBOUR ADVISORY LLP,613572,ifa,tier_3,London,EC1M 4NB,+442078706400,www.brightharbour.co,12,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+565,26.8,WiseAlpha Technologies Limited,751087,ifa,tier_3,London,E14 5AB,+4402039272790,www.wisealpha.com,12,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+566,26.8,SteelRock Capital Limited,563329,ifa,tier_3,London,W1H 7QD,+4402079418186,www.steelrockcapital.com,12,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+567,26.8,MILKSTONE LIMITED,479172,ifa,tier_3,Salford,M3 5DY,+4401618509899,www.milkstone.co.uk,11,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+568,26.8,ALCHEMY PRIME LIMITED,612233,ifa,tier_3,London,EC1V 8AR,+442070978794,www.alchemyprime.uk,11,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+569,26.8,SRP Risk & Finance LLP,499724,ifa,tier_3,London,W1W 5PF,+4407802855991,www.s-r-p.co.uk,11,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+570,26.8,LGT Bank AG,959424,ifa,tier_3,Vaduz,FL9490,+4232351122,www.lgt.com,11,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+571,26.8,Ashik Shah & Co Limited,221553,ifa,tier_3,London,W1W 7TL,+4402039876248,www.ashikshah.com,10,False,0.375,21,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+572,26.8,Oakcean Capital Limited,985840,dfm,tier_3,London,W1K 3HZ,+447385238883,www.oakceancapital.com,4,False,0.375,11,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+573,26.8,Fund Analytics Investment Management LLP,447203,dfm,tier_3,London,SW1W 0AF,+4407889704888,www.fundanalytics.com,4,False,0.375,11,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+574,26.8,KVASIR Technologies Ltd,918008,dfm,tier_3,LONDON,EC3R 8HL,+447973460394,https://kvasir.ai/,3,False,0.375,11,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+575,26.8,Novara Wealth Ltd,984287,dfm,tier_3,London,EC2R 6DA,+442074594850,www.odinwh.com,3,False,0.375,11,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+576,26.8,Fabian J.A. Finlay M.C.S.I.,122528,dfm,tier_3,London,W2 2SN,+442072622488,,2,False,0.25,11,95,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+577,26.6,Alpha Investment Office Limited,1019537,dfm,tier_3,London,EC4R 0AA,+442034750330,www.alphaio.co.uk,1,False,0.375,7,100,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+578,26.0,F.H. MANNING FINANCIAL SERVICES LIMITED,114341,ifa,tier_3,Horncastle,LN9 6DX,+4401507527383,www.fhmanning.co.uk,9,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+579,26.0,Annandale Financial Services LLP,587094,ifa,tier_3,Dumfries,DG1 2AA,+4401387267523,www.annandalefinancial.co.uk,9,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+580,26.0,HANNAH CONSULTANCY LTD.,182082,ifa,tier_3,Halesowen,B63 3US,+441216021602,,9,False,0.25,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+581,26.0,WDFS Limited,147518,ifa,tier_3,London,W1G 8DA,+4402074869893,,9,False,0.25,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+582,26.0,Struan Financial Management Limited,435492,ifa,tier_3,Ringwood,BH24 2EQ,+4401425483266,www.struanfm.co.uk,8,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+583,26.0,CRADLE OVERSEAS PENSIONS LIMITED,626364,ifa,tier_3,Calne,SN11 9QY,+441249811116,https://www.cradleltd.co.uk/,8,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+584,26.0,Renaissance Financial Ltd,933488,ifa,tier_3,Brighton,BN1 3TE,+4401273031777,www.renaissancefinancial.co.uk,8,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+585,26.0,BLUE RIVER WEALTH MANAGEMENT LIMITED,487904,ifa,tier_3,Lymm,WA13 9SD,+441925873020,www.blueriverwealth.com,7,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+586,26.0,1291 GROUP UK LTD.,223376,ifa,tier_3,,TR19 6AS,+4403330124751,www.ukassetmanager.com,6,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+587,26.0,JPM Asset Management Limited,453251,ifa,tier_3,Reading,RG6 1PT,+4401184181818,www.jpmasset.co.uk,5,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+588,26.0,DBL Asset Management LLP,468821,ifa,tier_3,Wilmslow,SK9 5EQ,+4401625529499,www.dbl-am.com,5,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+589,26.0,Financial Options (N.E.) Limited,928946,ifa,tier_3,Aberdeenshire,AB43 9AR,+441346510536,https://financialoptionsneltd.com,5,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+590,26.0,Arborheath Ltd,937373,ifa,tier_3,Berkshire,RG2 9PS,+4407867508539,www.arborheath.co.uk,5,False,0.375,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+591,26.0,415 LLP,479512,ifa,tier_3,Wantage,OX12 9AB,+4401235225415,,5,False,0.25,15,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+592,25.8,HRANDP Ltd,1019373,dfm,tier_3,London,W1F 9RU,,www.harrisroseandpartners.com,2,False,0.25,11,90,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+593,25.0,Salonica Capital Limited,720217,ifa,tier_3,London,WC2B 5BL,+4402070998888,www.salonica-group.com,9,False,0.375,15,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+594,25.0,Sequence Advisers LLP,768168,ifa,tier_3,London,WC2E 8PS,+442034057203,www.sequenceadvisers.co.uk,7,False,0.375,15,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+595,25.0,Laidlaw & Company International Limited,537165,ifa,tier_3,London,W1J 8DZ,+4402073993391,www.laidlawltd.com,6,False,0.375,15,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+596,25.0,Theisen Securities Limited,145280,ifa,tier_3,Oxted,RH8 0DT,+441883716066,www.theisensecurities.com,5,False,0.375,15,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+597,24.8,Magill & Company Limited,144104,ifa,tier_4,Fareham,PO14 3ER,+4401329842707,wealthmanager.co.uk,4,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+598,24.8,N2 ASSET MANAGEMENT LIMITED,837211,ifa,tier_4,Cobham,KT11 3NE,+441932216050,www.n2-am.com,4,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+599,24.8,D Scott Financial Limited,934787,ifa,tier_4,Bideford,EX39 3BT,+4401237870999,www.dscottfinancial.co.uk,4,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+600,24.8,EVA Capital Management Limited,934844,ifa,tier_4,Worcester,WR1 1EE,+44190521763,www.evacapital.co.uk,4,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+601,24.8,Need Financial Planning Ltd,977136,ifa,tier_4,Kent,CT10 1NQ,+441843228800,www.needfp.co.uk,4,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+602,24.8,FINANCIAL CONNECTIONS WEALTH MANAGEMENT LIMITED,844316,ifa,tier_4,Warwick,CV34 6FA,+441926567222,http://www.fcwm.co.uk/,3,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+603,24.8,Millward Wealth Management Limited,919164,ifa,tier_4,Rugby,CV22 6HX,+447865666044,www.millwardwealth.com,3,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+604,24.8,Edmund Nigel Wallen (T/A KL & EW Financial Services),925897,ifa,tier_4,Plymouth,PL7 5DQ,+447764303510,,3,False,0.25,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+605,24.8,Square Mile Asset Management Limited,585160,ifa,tier_4,London,EC2N 2AT,+4402036033888,www.sm-asset.com,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+606,24.8,Framling Wealth Ltd,914109,ifa,tier_4,Cambridge,CB25 0EP,+447775744643,www.framlingwealth.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+607,24.8,Donna Malone Financial Advice Limited,914115,ifa,tier_4,Stourbridge,DY9 0HT,+447788992348,www.donnamalone.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+608,24.8,Expert Independent Financial Planning Limited,914522,ifa,tier_4,Harrow,HA1 1BD,+447702570828,www.expertifp.com,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+609,24.8,Garwood Wealth Management Limited,941828,ifa,tier_4,Fareham,PO16 7AN,+441329640154,www.garwoodwealthmanagement.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+610,24.8,Engage Wealth Management Limited,942618,ifa,tier_4,Brighton,BN1 4BH,+4401273076587,www.engagewm.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+611,24.8,CSM Financial Solutions Limited,942693,ifa,tier_4,Berkshire,RG17 9QB,+447760665656,https://csmfinancialsolutions.co.uk/,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+612,24.8,Brookway Financial Ltd,968578,ifa,tier_4,Doncaster,DN5 0TY,+447836522773,www.brookway.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+613,24.8,Bluebell Financial Management Limited,990457,ifa,tier_4,Honiton,EX14 9QA,+447944992682,www.bluebellfinancialmanagement.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+614,24.8,Cove Financial Planning (Leeds) Limited,1018948,ifa,tier_4,Leeds,LS1 2JP,+441138805515,www.covefp.co.uk,2,False,0.375,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+615,24.8,BOSTON DIRECT MANAGEMENT UK LTD,772349,ifa,tier_4,Lincoln,LN6 9EA,+447971608104,,2,False,0.25,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+616,24.8,Enlightened Finance Limited,556365,ifa,tier_4,Rickmansworth,WD3 4AB,+4407703329808,,2,False,0.25,11,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+617,23.8,Atlanticomnium (UK) Limited,579244,ifa,tier_4,London,EC2M 7GB,+4407973960203,https://atlanti.ch/,4,False,0.375,11,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+618,23.8,Courtville Partners LLP,618176,ifa,tier_4,London,W1T 4TQ,+4402033270561,www.courtville.co.uk,4,False,0.375,11,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+619,23.8,Obdios Capital Limited,795673,ifa,tier_4,Richmond,TW9 2BS,+447538000201,,2,False,0.25,11,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+620,23.6,Firmus Wealth Management Limited,841810,ifa,tier_4,Stoke-on-Trent,ST4 3EL,+441782343424,www.firmusfs.co.uk,1,False,0.375,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+621,23.6,Forecast Financial Planning Limited,916120,ifa,tier_4,Lymington,SO41 0JD,+4401590636472,www.forecastfp.co.uk,1,False,0.375,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+622,23.6,UNA VITA FINANCIAL PLANNING LIMITED,930699,ifa,tier_4,Oswestry,SY11 2BA,+441691320022,www.unavita.co.uk,1,False,0.375,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+623,23.6,Ethical Adviser(UK) Ltd,923809,ifa,tier_4,West Midlands,B72 1JF,+447940521997,www.ethicaladviser.co.uk,1,False,0.375,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+624,23.6,Freedom Financial Planning Ltd,924298,ifa,tier_4,County Antrim,BT37 0UW,+442890229798,www.freedom-financial.co.uk,1,False,0.375,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+625,23.6,Echo Wealth Management Limited,943133,ifa,tier_4,GLASGOW,G3 7RH,+447813693022,www.echowealth.co.uk,1,False,0.375,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+626,23.6,Andrew Reid,914010,ifa,tier_4,Falkirk,FK1 5HU,+447738121049,,1,False,0.25,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+627,23.6,D Bragg Financial Solutions Ltd,927912,ifa,tier_4,Kent,DA5 2DB,+447786210552,,1,False,0.25,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+628,23.6,David Williams Financial Solutions Limited,922829,ifa,tier_4,Harleston,IP20 9LB,+441379855405,,1,False,0.25,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+629,23.6,Fairhall Investments Ltd,925160,ifa,tier_4,Wiltshire,SN25 3PQ,+4407710412849,,1,False,0.25,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+630,23.6,Faramond UK Limited,938619,ifa,tier_4,Newcastle upon Tyne,NE3 2YB,+447966297106,,1,False,0.25,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+631,23.6,First Avenue Financial Ltd,940694,ifa,tier_4,West Sussex,BN43 5GJ,+441273454384,,1,False,0.25,7,85,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
+632,22.6,MGY Management Services Limited,956001,ifa,tier_4,London,W1G 0PW,+442037505300,,1,False,0.25,7,80,0,50,30,20,20,30,20,20,20,20,multi_asset_cautious,,,,False
