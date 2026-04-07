@@ -1,0 +1,37 @@
+Platform,Confirmed Present,Available to Buy,Name In Use,Predecessor Name Used,Fund Count,Notable,Source URL,Checked Date,Notes
+Hargreaves Lansdown,True,True,WS Keyridge,False,13,"Full fund range. New WS Keyridge name adopted. Available in ISA, SIPP, Fund & Share Account.","https://www.hl.co.uk/funds/fund-discounts,-prices--and--factsheets/search-results/w/ws-keyridge-portfolio-iii-c-gbp-income/invest",2026-04-06,13+ fund lines confirmed publicly. Invest buttons visible without login.
+Fidelity Fundsnetwork,True,True,WS Keyridge,False,8,"ISINs visible in URLs. Factsheets with charges, dividends, key documents. New name adopted.",https://www.fidelity.co.uk/factsheet-data/factsheet/GB00B78SPK99-ws-keyridge-global-equity-c-acc/key-statistics,2026-04-06,8+ fund lines confirmed with full factsheet pages.
+Interactive Investor,True,True,WS Keyridge,False,10,Broad fund range. SEDOLs in URLs. New name adopted.,https://www.ii.co.uk/funds/ws-keyridge-asia-pacific-c-acc/B719QW8,2026-04-06,10+ fund lines confirmed publicly.
+Aj Bell,True,True,WS Canlife / LF Canlife,True,4,Still using old WS Canlife name. Rename not yet reflected.,https://www.ajbell.co.uk/market-research/FUND:B9BQJ24,2026-04-06,4+ fund lines confirmed. Old naming persists.
+Standard Life,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,No evidence found. Proprietary fund focus. Login required for fund search.
+Aegon,partially_confirmed,unknown,WS Canlife / LF Canlife,True,1,Referenced in platform PDF. Full list behind adviser login.,,2026-04-06,WS Canlife Sterling Liquidity referenced in Aegon platform documentation.
+Aviva,True,True,WS Canlife / LF Canlife,True,9,Still using oldest LF Canlife naming. Pension wrapper only.,,2026-04-06,9+ fund lines confirmed. Oldest naming variant (LF Canlife) still in use.
+Quilter,partially_confirmed,unknown,WS Keyridge,False,0,Formal name-change notice published Jan 2026 (effective 18 Feb 2026) confirms full fund range present.,,2026-04-06,Adviser-only access. Name change notice confirms presence but individual fund list not publicly visible.
+Transact,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Adviser-only. No public fund index.
+Nucleus,login_required,unknown,WS Keyridge,False,0,Canada Life listed as provider but no fund pages indexed.,,2026-04-06,Cannot confirm without adviser login.
+Zurich,partially_confirmed,unknown,WS Canlife / LF Canlife,True,2,Insurer share classes (LS4/LS5) visible on Trustnet — suggests Zurich pension exposure.,,2026-04-06,Indirect evidence only. Insurer-specific share classes suggest pension wrapper distribution.
+Scottish Widows,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Fund supermarket confirmed operational. JS-rendered/login-gated.
+Lv,False,False,WS Keyridge,False,0,Closed proprietary fund range. Third-party OEICs appear out of scope.,,2026-04-06,LV= does not appear to carry third-party funds.
+Parmenion,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Adviser-only discretionary platform. No public fund universe pages.
+True Potential,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Vertically integrated. Fund universe not publicly searchable.
+Elevate,login_required,unknown,WS Keyridge,False,0,Open-architecture platform — presence plausible but unconfirmed.,,2026-04-06,Adviser-only abrdn platform.
+Mg Wealth,login_required,unknown,WS Keyridge,False,0,"Domain mgwealth.co.uk belongs to a small IFA, not M&G plc.",,2026-04-06,Correct M&G adviser platform domain needs clarification.
+Novia Wealthtime,login_required,unknown,WS Keyridge,False,0,"6,000+ fund lines from 300+ managers — presence plausible.",,2026-04-06,Rebranded to Wealthtime Nov 2023. No public fund pages.
+James Hay,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,SIPP specialist. Adviser-only.
+7Im,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Proprietary DFM platform. Fund list not publicly indexed.
+Raymond James,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,No public fund pages indexed.
+Curtis Banks,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,SIPP specialist. Adviser-only.
+Hubwise,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,B2B custody platform. Fund list behind login.
+Fundment,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Newer adviser platform. No public fund index.
+Investacc,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Adviser-only.
+Praemium,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Managed account platform. Adviser-only.
+Seccl,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,B2B custody tech platform.
+Copia Capital,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,DFM platform. No indexed pages found.
+Charles Stanley Direct,True,True,WS Canlife / LF Canlife,True,15,Largest confirmed presence. 15+ fund lines. Mix of LF Canlife and WS Canlife naming. WS Keyridge rebrand not yet reflected.,https://www.charles-stanley-direct.co.uk/ViewFund?Sedol=B8SC7T1,2026-04-06,Publicly accessible factsheet pages with SEDOLs.
+Bestinvest,True,True,WS Canlife / LF Canlife,True,2,,,2026-04-06,2 funds confirmed. Old LF Canlife naming.
+Brooks Macdonald,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,DFM. Fund list not publicly indexed.
+Vanguard,False,False,WS Keyridge,False,0,Vanguard-only fund range. Third-party funds not carried.,,2026-04-06,Near-certain absence.
+Tatton,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,DFM. No public fund search pages.
+Pershing,partially_confirmed,unknown,WS Canlife / LF Canlife,True,1,FundsLibrary factsheet branded for Pershing found — indirect indicator of distribution via Pershing custody.,,2026-04-06,G share class (institutional/platform) visible. Indirect evidence.
+Ardan International,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Offshore bond wrapper. Fund list behind login.
+Utmost International,login_required,unknown,WS Keyridge,False,0,,,2026-04-06,Offshore bond wrapper. No indexed pages.

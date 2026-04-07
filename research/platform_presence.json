@@ -1,0 +1,362 @@
+{
+  "hargreaves_lansdown": {
+    "confirmed_present": true,
+    "funds_found": ["WS Keyridge Portfolio III C Inc", "WS Keyridge Portfolio IV C Inc", "WS Keyridge Portfolio V C Acc", "WS Keyridge Portfolio VI C Acc", "WS Keyridge Global Equity C Acc", "WS Keyridge UK Equity Income C Acc", "WS Keyridge UK Equity Income C Inc", "WS Keyridge North American C Acc", "WS Keyridge DRM III C Inc", "WS Keyridge Diversified Monthly Income C Inc", "WS Keyridge Sterling Liquidity I Acc", "WS Keyridge Sterling Liquidity I Inc", "WS Keyridge Corporate Bond C Inc"],
+    "predecessor_name_used": false,
+    "available_to_buy": true,
+    "notable": "Full fund range. New WS Keyridge name adopted. Available in ISA, SIPP, Fund & Share Account.",
+    "source_url": "https://www.hl.co.uk/funds/fund-discounts,-prices--and--factsheets/search-results/w/ws-keyridge-portfolio-iii-c-gbp-income/invest",
+    "checked_date": "2026-04-06",
+    "notes": "13+ fund lines confirmed publicly. Invest buttons visible without login."
+  },
+  "fidelity_fundsnetwork": {
+    "confirmed_present": true,
+    "funds_found": ["WS Keyridge Global Equity C Acc", "WS Keyridge Sterling Liquidity I Acc", "WS Keyridge UK Equity C Acc", "WS Keyridge UK Equity and Bond Income C Acc", "WS Keyridge Corporate Bond C Inc", "WS Keyridge DRM III C Acc", "WS Keyridge Short Duration Corporate Bond C Inc", "WS Keyridge European C Acc"],
+    "predecessor_name_used": false,
+    "available_to_buy": true,
+    "notable": "ISINs visible in URLs. Factsheets with charges, dividends, key documents. New name adopted.",
+    "source_url": "https://www.fidelity.co.uk/factsheet-data/factsheet/GB00B78SPK99-ws-keyridge-global-equity-c-acc/key-statistics",
+    "checked_date": "2026-04-06",
+    "notes": "8+ fund lines confirmed with full factsheet pages."
+  },
+  "interactive_investor": {
+    "confirmed_present": true,
+    "funds_found": ["WS Keyridge Asia Pacific C Acc", "WS Keyridge Global Macro Bond C Acc", "WS Keyridge Global Equity C Acc", "WS Keyridge Corporate Bond C Acc", "WS Keyridge Corporate Bond C Inc", "WS Keyridge Portfolio VII C Acc", "WS Keyridge European C Acc", "WS Keyridge Portfolio III C Inc", "WS Keyridge North American C Acc", "WS Keyridge DRM VI C Acc"],
+    "predecessor_name_used": false,
+    "available_to_buy": true,
+    "notable": "Broad fund range. SEDOLs in URLs. New name adopted.",
+    "source_url": "https://www.ii.co.uk/funds/ws-keyridge-asia-pacific-c-acc/B719QW8",
+    "checked_date": "2026-04-06",
+    "notes": "10+ fund lines confirmed publicly."
+  },
+  "aj_bell": {
+    "confirmed_present": true,
+    "funds_found": ["WS Canlife Portfolio V C Acc", "WS Canlife Portfolio VI C Acc", "WS Canlife Diversified Monthly Income C Inc", "WS Canlife Sterling Liquidity I Acc"],
+    "predecessor_name_used": true,
+    "available_to_buy": true,
+    "notable": "Still using old WS Canlife name. Rename not yet reflected.",
+    "source_url": "https://www.ajbell.co.uk/market-research/FUND:B9BQJ24",
+    "checked_date": "2026-04-06",
+    "notes": "4+ fund lines confirmed. Old naming persists."
+  },
+  "standard_life": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "No evidence found. Proprietary fund focus. Login required for fund search."
+  },
+  "aegon": {
+    "confirmed_present": "partially_confirmed",
+    "funds_found": ["WS Canlife Sterling Liquidity"],
+    "predecessor_name_used": true,
+    "available_to_buy": "unknown",
+    "notable": "Referenced in platform PDF. Full list behind adviser login.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "WS Canlife Sterling Liquidity referenced in Aegon platform documentation."
+  },
+  "aviva": {
+    "confirmed_present": true,
+    "funds_found": ["LF Canlife Portfolio III", "LF Canlife Portfolio IV", "LF Canlife Portfolio V", "LF Canlife Portfolio VI", "LF Canlife Portfolio VII", "LF Canlife UK Equity Income", "LF Canlife Corporate Bond", "LF Canlife Diversified Monthly Income", "LF Canlife Sterling Liquidity"],
+    "predecessor_name_used": true,
+    "available_to_buy": true,
+    "notable": "Still using oldest LF Canlife naming. Pension wrapper only.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "9+ fund lines confirmed. Oldest naming variant (LF Canlife) still in use."
+  },
+  "quilter": {
+    "confirmed_present": "partially_confirmed",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": "Formal name-change notice published Jan 2026 (effective 18 Feb 2026) confirms full fund range present.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Adviser-only access. Name change notice confirms presence but individual fund list not publicly visible."
+  },
+  "transact": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Adviser-only. No public fund index."
+  },
+  "nucleus": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": "Canada Life listed as provider but no fund pages indexed.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Cannot confirm without adviser login."
+  },
+  "zurich": {
+    "confirmed_present": "partially_confirmed",
+    "funds_found": ["Canlife Keyridge LS4", "Canlife Keyridge LS5"],
+    "predecessor_name_used": true,
+    "available_to_buy": "unknown",
+    "notable": "Insurer share classes (LS4/LS5) visible on Trustnet — suggests Zurich pension exposure.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Indirect evidence only. Insurer-specific share classes suggest pension wrapper distribution."
+  },
+  "scottish_widows": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Fund supermarket confirmed operational. JS-rendered/login-gated."
+  },
+  "lv": {
+    "confirmed_present": false,
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": false,
+    "notable": "Closed proprietary fund range. Third-party OEICs appear out of scope.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "LV= does not appear to carry third-party funds."
+  },
+  "parmenion": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Adviser-only discretionary platform. No public fund universe pages."
+  },
+  "true_potential": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Vertically integrated. Fund universe not publicly searchable."
+  },
+  "elevate": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": "Open-architecture platform — presence plausible but unconfirmed.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Adviser-only abrdn platform."
+  },
+  "mg_wealth": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": "Domain mgwealth.co.uk belongs to a small IFA, not M&G plc.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Correct M&G adviser platform domain needs clarification."
+  },
+  "novia_wealthtime": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": "6,000+ fund lines from 300+ managers — presence plausible.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Rebranded to Wealthtime Nov 2023. No public fund pages."
+  },
+  "james_hay": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "SIPP specialist. Adviser-only."
+  },
+  "7im": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Proprietary DFM platform. Fund list not publicly indexed."
+  },
+  "raymond_james": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "No public fund pages indexed."
+  },
+  "curtis_banks": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "SIPP specialist. Adviser-only."
+  },
+  "hubwise": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "B2B custody platform. Fund list behind login."
+  },
+  "fundment": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Newer adviser platform. No public fund index."
+  },
+  "investacc": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Adviser-only."
+  },
+  "praemium": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Managed account platform. Adviser-only."
+  },
+  "seccl": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "B2B custody tech platform."
+  },
+  "copia_capital": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "DFM platform. No indexed pages found."
+  },
+  "charles_stanley_direct": {
+    "confirmed_present": true,
+    "funds_found": ["LF Canlife Portfolio III", "LF Canlife Portfolio IV", "LF Canlife Portfolio V", "LF Canlife Portfolio VI", "LF Canlife Portfolio VII", "LF Canlife UK Equity", "LF Canlife UK Equity Income", "LF Canlife UK Equity and Bond Income", "LF Canlife Diversified Monthly Income", "LF Canlife Sterling Liquidity", "LF Canlife UK Government Bond", "LF Canlife Managed 0-35%", "LF Canlife Managed 20-60%", "LF Canlife Managed 40-85%", "LF Canlife Corporate Bond"],
+    "predecessor_name_used": true,
+    "available_to_buy": true,
+    "notable": "Largest confirmed presence. 15+ fund lines. Mix of LF Canlife and WS Canlife naming. WS Keyridge rebrand not yet reflected.",
+    "source_url": "https://www.charles-stanley-direct.co.uk/ViewFund?Sedol=B8SC7T1",
+    "checked_date": "2026-04-06",
+    "notes": "Publicly accessible factsheet pages with SEDOLs."
+  },
+  "bestinvest": {
+    "confirmed_present": true,
+    "funds_found": ["LF Canlife UK Equity C", "LF Canlife Corporate Bond B"],
+    "predecessor_name_used": true,
+    "available_to_buy": true,
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "2 funds confirmed. Old LF Canlife naming."
+  },
+  "brooks_macdonald": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "DFM. Fund list not publicly indexed."
+  },
+  "vanguard": {
+    "confirmed_present": false,
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": false,
+    "notable": "Vanguard-only fund range. Third-party funds not carried.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Near-certain absence."
+  },
+  "tatton": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "DFM. No public fund search pages."
+  },
+  "pershing": {
+    "confirmed_present": "partially_confirmed",
+    "funds_found": ["LF Canlife Managed 20%-60% G Acc"],
+    "predecessor_name_used": true,
+    "available_to_buy": "unknown",
+    "notable": "FundsLibrary factsheet branded for Pershing found — indirect indicator of distribution via Pershing custody.",
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "G share class (institutional/platform) visible. Indirect evidence."
+  },
+  "ardan_international": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Offshore bond wrapper. Fund list behind login."
+  },
+  "utmost_international": {
+    "confirmed_present": "login_required",
+    "funds_found": [],
+    "predecessor_name_used": false,
+    "available_to_buy": "unknown",
+    "notable": null,
+    "source_url": null,
+    "checked_date": "2026-04-06",
+    "notes": "Offshore bond wrapper. No indexed pages."
+  }
+}
