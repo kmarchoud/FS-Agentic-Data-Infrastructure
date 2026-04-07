@@ -1,0 +1,2 @@
+{"frn": "Firm/954314/Individuals", "source": "fca_api", "phase": "api_call", "error_type": "timeout", "error_message": "curl timed out after 30s", "timestamp": "2026-04-07T12:13:18.697105"}
+{"frn": "Firm/1018974/Address", "source": "fca_api", "phase": "api_call", "error_type": "timeout", "error_message": "curl timed out after 30s", "timestamp": "2026-04-07T13:34:50.823989"}

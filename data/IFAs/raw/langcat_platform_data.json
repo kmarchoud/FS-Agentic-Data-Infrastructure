@@ -1,0 +1,480 @@
+{
+  "metadata": {
+    "compiled_date": "2026-03-31",
+    "sources": [
+      "The Lang Cat - Analyser platform (langcatanalyser.com)",
+      "The Lang Cat - State of the Platform Nation 2024/25 (thelangcat.co.uk)",
+      "The Lang Cat - State of the Advice Nation 2024/25 and 2025/26 (thelangcat.co.uk)",
+      "Fundscape Platform Press Release Q4 2025 (fundscape.co.uk)",
+      "Defaqto Engage 2025 - full year adviser recommendations data",
+      "FE fundinfo Platform Platinum Ratings 2026",
+      "Platforum UK Adviser Platforms reports 2024/2025",
+      "NextWealth Adviser Tech Stack / Platform Shakeout reports 2024/2025",
+      "Investment Trends 2025 UK Adviser Technology & Business Report",
+      "Money Marketing / IFA Magazine / Professional Adviser news reporting",
+      "FCA Retail Intermediary Market Data 2024 (fca.org.uk)",
+      "Parmenion annual results 2024"
+    ],
+    "data_access_notes": {
+      "lang_cat_sotpn": "Full 'State of the Platform Nation' report is paywalled - available free to subscribers of Lang Cat Analyser 'Everything' plan (~£300+VAT standalone). Only publicly available extracts and press releases captured here.",
+      "lang_cat_sotan": "Full 'State of the Advice Nation' report requires registration/subscription.",
+      "fundscape": "Quarterly platform press releases are freely available as PDFs. Full Fundscape Platform Report requires subscription.",
+      "platforum": "Public blog posts and free extracts available. Full UK Adviser Platforms: Market Overview quarterly report is paywalled.",
+      "nextwealth": "Sample PDFs publicly available. Full reports require purchase.",
+      "investment_trends": "Report available for purchase. Some statistics released in press.",
+      "fca_data": "FCA retail intermediary market data for 2024 is fully open/public via fca.org.uk. Contains firm-level stats but does NOT break down platform usage or platform market share by platform name - focuses on firm count, adviser headcount, revenue, and capital requirements.",
+      "defaqto_engage": "Annual rankings press released publicly. Full data behind paywall."
+    }
+  },
+
+  "market_overview": {
+    "total_advised_platform_aum_end_2024": {
+      "value_bn": 616.23,
+      "currency": "GBP",
+      "period": "Q4 2024",
+      "yoy_growth_pct": 12.54,
+      "source": "Lang Cat State of the Platform Nation 2024/25 / Q4 2024 Platform Market Scorecard"
+    },
+    "total_advised_platform_aum_end_2025": {
+      "value_bn": 991,
+      "currency": "GBP",
+      "period": "End 2025",
+      "yoy_growth_pct": 13.6,
+      "note": "Platforum figure; Fundscape records adviser platforms specifically reaching ~£784bn by end-2025 within broader platform universe of £1.3trn",
+      "source": "Platforum UK Adviser Platforms 2025; Fundscape Q4 2025 Platform Press Release"
+    },
+    "total_all_platforms_aum_end_2025": {
+      "value_tn": 1.3,
+      "currency": "GBP",
+      "period": "End 2025 (Q4 2025)",
+      "note": "All platform types (advised, D2C, workplace). Largest single-year gain in Fundscape records (£178bn increase in year).",
+      "source": "Fundscape Platform Press Release Q4 2025"
+    },
+    "total_platform_gross_flows_2025": {
+      "value_bn": 191,
+      "currency": "GBP",
+      "note": "All platforms; adviser-specific gross flows £97bn. Surpassed 2021 highs.",
+      "source": "Fundscape Q4 2025"
+    },
+    "advised_platform_gross_flows_Q4_2024": {
+      "value_bn": 20.92,
+      "currency": "GBP",
+      "note": "Record quarter for advised platforms as at reporting date",
+      "source": "Lang Cat Q4 2024 Platform Market Scorecard"
+    },
+    "total_investment_advice_revenue_2024": {
+      "value_bn": 5.7,
+      "currency": "GBP",
+      "yoy_growth_pct": 6.2,
+      "source": "FCA Retail Intermediary Market Data 2024"
+    },
+    "number_of_platforms_in_analysis": {
+      "lang_cat": 19,
+      "fundscape": 18,
+      "note": "Coverage estimated at ~98% of platform universe (Fundscape)"
+    }
+  },
+
+  "platform_rankings": {
+    "lang_cat_analyser_most_popular_2025": {
+      "description": "Platforms most frequently viewed/compared on Lang Cat Analyser tool by financial advisers and paraplanners during 2025. Reflects due diligence activity, not AUM.",
+      "source": "Lang Cat Analyser data, reported in Money Marketing and Professional Paraplanner Jan 2025",
+      "url": "https://www.moneymarketing.co.uk/news/the-lang-cat-reveals-most-popular-adviser-platforms-for-2025/",
+      "rankings": [
+        {"rank": 1, "platform": "Transact", "notes": "Retained top spot for multiple years running"},
+        {"rank": 2, "platform": "Quilter", "notes": ""},
+        {"rank": 3, "platform": "AJ Bell Investcentre", "notes": ""},
+        {"rank": 4, "platform": "Fundment", "notes": "Moved up from 5th; traded places with Aviva"},
+        {"rank": 5, "platform": "Aviva Platform", "notes": "Dropped from 4th (inferred from Fundment swap)"},
+        {"rank": 6, "platform": "Aberdeen Wrap (abrdn)", "notes": "Retained 6th"},
+        {"rank": 7, "platform": "Fidelity Adviser Solutions (FundsNetwork)", "notes": "Rose one place"},
+        {"rank": 8, "platform": "Scottish Widows Platform", "notes": "New entry at 8; was 19th in 2024"},
+        {"rank": 9, "platform": "Nucleus", "notes": ""},
+        {"rank": 10, "platform": "Aegon Retirement Choices", "notes": ""}
+      ],
+      "key_selection_criteria_2025": [
+        "Flexible ISAs (top of 'decision-making zone')",
+        "Full straight-through processing for ISAs",
+        "Junior ISAs availability",
+        "Onshore bond availability (rose 2 places in ranking; record sales in 2024)",
+        "Offshore bond availability (rose 2 places)",
+        "Origo transfer service membership (amid transfer delay concerns)",
+        "SIPPs, ISAs, GIAs (hygiene due diligence)",
+        "Target market criteria",
+        "Price competitiveness"
+      ]
+    },
+
+    "defaqto_engage_recommendations_full_year_2025": {
+      "description": "Share of adviser platform recommendations by value, processed through Defaqto Engage financial planning tool. ~£57bn of annual recommendations tracked. >30% of UK advisers use Defaqto Engage.",
+      "source": "Defaqto Engage / Money Marketing, Professional Adviser Jan 2026",
+      "url": "https://www.moneymarketing.co.uk/news/aviva-tops-adviser-platform-recommendations-in-2025/",
+      "period": "Full year 2025",
+      "rankings": [
+        {"rank": 1, "platform": "Aviva", "share_pct": 29, "notes": "Took top spot from Quilter for full-year 2025"},
+        {"rank": 2, "platform": "Quilter", "share_pct": 28, "notes": "Was top for H1 2025"},
+        {"rank": 3, "platform": "Fidelity Adviser Solutions", "share_pct": 9, "notes": ""},
+        {"rank": 4, "platform": "Transact", "share_pct": 7, "notes": ""},
+        {"rank": 5, "platform": "AJ Bell Investcentre", "share_pct": 6, "notes": ""},
+        {"rank": 5, "platform": "Elevate (Standard Life/Phoenix)", "share_pct": 6, "notes": ""},
+        {"rank": 7, "platform": "Aberdeen Wrap", "share_pct": 5, "notes": ""},
+        {"rank": 8, "platform": "Scottish Widows Platform", "share_pct": 4, "notes": ""},
+        {"rank": 9, "platform": "Aegon Retirement Choices", "share_pct": 3, "notes": "Dropped from 6th in 2024"},
+        {"rank": 10, "platform": "True Potential", "share_pct": 2, "notes": ""}
+      ],
+      "notes": "Substantial gap between top 2 (Aviva 29%, Quilter 28%) and rest of market. Combined top 2 = 57% of recommendations value."
+    },
+
+    "defaqto_engage_recommendations_H1_2025": {
+      "description": "Share of adviser platform recommendations by value, H1 2025 only",
+      "source": "Defaqto Engage / IFA Magazine, Professional Adviser mid-2025",
+      "url": "https://ifamagazine.com/quilter-remains-most-recommended-adviser-platform-but-aviva-narrows-gap/",
+      "period": "H1 2025",
+      "rankings": [
+        {"rank": 1, "platform": "Quilter", "share_pct": null, "notes": "Most recommended by value H1 2025"},
+        {"rank": 2, "platform": "Aviva", "share_pct": 26, "notes": "Grew from 24% to 26%; 1 ppt behind Quilter"},
+        {"rank": 3, "platform": "AJ Bell Investcentre", "share_pct": null, "notes": "Overtook Transact in H1"},
+        {"rank": 4, "platform": "Transact", "share_pct": null, "notes": "Dropped to 4th in H1"},
+        {"rank": 7, "platform": "Aegon Retirement Choices", "share_pct": null, "notes": "Dropped from 6th in 2024 to 7th in H1"}
+      ]
+    },
+
+    "fe_fundinfo_platform_platinum_ratings_2026": {
+      "description": "Annual platform ratings assessing 8 key areas: price competitiveness, reach of proposition, penetration/conversion rate, case size, transaction processing experience, client reporting experience, remote support experience, platform features & due diligence.",
+      "source": "FE fundinfo / IFA Magazine, Portfolio Adviser Jan 2026",
+      "url": "https://ifamagazine.com/quilter-ranked-highest-for-the-third-year-in-fe-fundinfos-platform-platinum-ratings-2026/",
+      "rankings": [
+        {"rank": 1, "platform": "Quilter", "notes": "Highest rated 3rd consecutive year"},
+        {"rank": 2, "platform": "Transact", "notes": ""},
+        {"rank": 3, "platform": "Aviva Wrap", "notes": ""},
+        {"rank": 4, "platform": "Fidelity Adviser Solutions", "notes": ""},
+        {"rank": 5, "platform": "Aberdeen Wrap", "notes": ""},
+        {"rank": 6, "platform": "Hubwise", "notes": ""},
+        {"rank": 7, "platform": "Nucleus", "notes": "Fastest riser - jumped 8 places year-on-year"},
+        {"rank": 8, "platform": "AJ Bell Investcentre", "notes": ""},
+        {"rank": 9, "platform": "Scottish Widows Platform", "notes": ""},
+        {"rank": 10, "platform": "Parmenion", "notes": ""}
+      ],
+      "notes": "Four platforms received Platinum rating for 10 consecutive years (not named in public release)"
+    },
+
+    "fundscape_net_flows_ranking_2025_full_year": {
+      "description": "Net inflows to advised platforms, full year 2025",
+      "source": "Fundscape Platform Press Release Q4 2025",
+      "url": "https://fundscape.co.uk/wp-content/uploads/2026/03/Fundscape-Platform-Press-Release-Q425.pdf",
+      "rankings": [
+        {"rank": 1, "platform": "Quilter", "net_flows_bn": 8.7, "notes": "Just under half of ALL retail advised platform net flows for year. Captured >1/3 of all net flows in Q4 alone."},
+        {"rank": 2, "platform": "Aviva", "net_flows_bn": null, "notes": "Consistently strong quarterly flows"},
+        {"rank": 3, "platform": "Transact", "net_flows_bn": null, "notes": "Consistently strong quarterly flows"}
+      ],
+      "additional_notes": "Top 5 adviser platforms accounted for 129% of annual net flows (meaning smaller platforms experienced net outflows). Aggregate net flows of top 3 in Q4 2025 were more than double combined net flows of all other platforms."
+    },
+
+    "lang_cat_q4_2024_scorecard_top_platforms": {
+      "description": "Gross and net sales for advised platforms Q4 2024",
+      "source": "Lang Cat Q4 2024 Platform Market Scorecard",
+      "url": "https://thelangcat.co.uk/report/q4-2024-platform-market-scorecard/",
+      "quarter": "Q4 2024",
+      "top_performers": [
+        {"platform": "Quilter", "gross_sales_bn": 3.70, "net_sales_bn": 1.92, "rank_gross": 1, "rank_net": 1},
+        {"platform": "Aviva", "gross_sales_bn": null, "net_sales_bn": null, "rank_gross": 2, "rank_net": 2},
+        {"platform": "Transact", "gross_sales_bn": null, "net_sales_bn": null, "rank_gross": 3, "rank_net": 3}
+      ],
+      "notes": "Q4 2024 was record new business quarter for advised platforms at £20.92bn gross"
+    }
+  },
+
+  "market_concentration": {
+    "top_6_by_aum_gross_flow_share": {
+      "platforms": ["Quilter", "abrdn (Aberdeen)", "Transact", "AJ Bell", "Fidelity", "Aviva"],
+      "share_of_gross_flows_pct": 60,
+      "period": "Two years to end 2023",
+      "source": "Lang Cat State of the Platform Nation 2024/25 / IFA Magazine",
+      "url": "https://ifamagazine.com/six-largest-advised-platforms-take-60-of-new-business-finds-the-lang-cat/",
+      "notes": "Clear correlation between platform size and share of new business. Gap between largest platforms and smaller rivals growing. 'Breaking into the big players club organically is becoming increasingly challenging.'"
+    },
+    "top_3_dominance_q4_2025": {
+      "platforms": ["Quilter", "Aviva", "Transact"],
+      "note": "Aggregate net flows of these three in Q4 2025 were more than double the combined net flows of all other platforms. Top 5 platforms accounted for 129% of all annual net flows (meaning smaller platforms net negative).",
+      "source": "Fundscape Q4 2025; Platforum"
+    },
+    "market_structure_trend": "Increasingly polarised. Large platforms consolidating flows. Smaller platforms under pressure. Net outflows rising across the industry despite record gross flows."
+  },
+
+  "platform_specific_data": {
+    "Quilter": {
+      "aum_notes": "Overtook abrdn to become largest advised platform by AUA (occurred mid-2023). Largest advised platform by net flows in 2025.",
+      "net_flows_2025_bn": 8.7,
+      "gross_flows_Q4_2024_bn": 3.70,
+      "net_flows_Q4_2024_bn": 1.92,
+      "defaqto_recommendations_share_2025_pct": 28,
+      "defaqto_rank_H1_2025": 1,
+      "defaqto_rank_FY_2025": 2,
+      "lang_cat_analyser_rank_2025": 2,
+      "fe_fundinfo_platinum_rank_2026": 1,
+      "notes": "Clear standout in net flows. Captured just under half of all retail advised net flows in 2025. WealthSelect MPS now available on Transact. Strong service ratings."
+    },
+    "Aviva": {
+      "defaqto_recommendations_share_2025_pct": 29,
+      "defaqto_rank_FY_2025": 1,
+      "defaqto_rank_H1_2025": 2,
+      "lang_cat_analyser_rank_2025": 5,
+      "fe_fundinfo_platinum_rank_2026": 3,
+      "notes": "Took top recommendation spot for full year 2025. Narrowing gap with Quilter. Strong net flows."
+    },
+    "Transact": {
+      "defaqto_recommendations_share_2025_pct": 7,
+      "defaqto_rank_FY_2025": 4,
+      "lang_cat_analyser_rank_2025": 1,
+      "fe_fundinfo_platinum_rank_2026": 2,
+      "notes": "Most popular on Lang Cat Analyser (due diligence/comparison activity) but lower recommendation share by value vs Quilter/Aviva. Strong net flows, consistently top 3. Premium/high-quality perception among advisers."
+    },
+    "AJ_Bell_Investcentre": {
+      "aum_platform_bn": 89.5,
+      "aum_period": "FY2024",
+      "aum_growth_yoy_pct": 17,
+      "defaqto_recommendations_share_2025_pct": 6,
+      "defaqto_rank_FY_2025": 5,
+      "lang_cat_analyser_rank_2025": 3,
+      "fe_fundinfo_platinum_rank_2026": 8,
+      "notes": "Strong AUM growth. Rose to 3rd on Analyser. Overtook Transact in H1 2025 Defaqto recommendations."
+    },
+    "Fidelity_Adviser_Solutions": {
+      "defaqto_recommendations_share_2025_pct": 9,
+      "defaqto_rank_FY_2025": 3,
+      "lang_cat_analyser_rank_2025": 7,
+      "fe_fundinfo_platinum_rank_2026": 4,
+      "notes": "Third by recommendations value. One of the top 6 by AUM."
+    },
+    "abrdn_Aberdeen_Wrap": {
+      "aum_total_bn": 506.7,
+      "aum_period": "Q3 2024",
+      "aum_note": "Total abrdn AuMA (not just advised platform). Net outflows improving.",
+      "defaqto_recommendations_share_2025_pct": 5,
+      "defaqto_rank_FY_2025": 7,
+      "lang_cat_analyser_rank_2025": 6,
+      "fe_fundinfo_platinum_rank_2026": 5,
+      "notes": "Was largest advised platform by AUM until overtaken by Quilter. One of top 6 by AUM. Experiencing net outflows."
+    },
+    "Scottish_Widows_Platform": {
+      "defaqto_recommendations_share_2025_pct": 4,
+      "defaqto_rank_FY_2025": 8,
+      "lang_cat_analyser_rank_2025": 8,
+      "fe_fundinfo_platinum_rank_2026": 9,
+      "notes": "Biggest mover on Lang Cat Analyser - jumped from 19th to 8th in 2025. Strong entry into top 10 across multiple rankings."
+    },
+    "Nucleus": {
+      "defaqto_rank_FY_2025": null,
+      "lang_cat_analyser_rank_2025": 9,
+      "fe_fundinfo_platinum_rank_2026": 7,
+      "notes": "Fastest riser in FE fundinfo 2026 ratings - jumped 8 places. Climbed in multiple rankings. Popular among smaller/independent firms."
+    },
+    "Aegon_Retirement_Choices": {
+      "defaqto_recommendations_share_2025_pct": 3,
+      "defaqto_rank_FY_2025": 9,
+      "lang_cat_analyser_rank_2025": 10,
+      "notes": "Dropped from 6th in 2024 Defaqto to 7th in H1 2025, 9th FY 2025. Declining in adviser preference rankings."
+    },
+    "Elevate_Standard_Life": {
+      "defaqto_recommendations_share_2025_pct": 6,
+      "defaqto_rank_FY_2025": 5,
+      "lang_cat_analyser_rank_2025": null,
+      "notes": "Tied with AJ Bell at 6% of recommendations. Part of Phoenix Group (Standard Life brand). Not in Lang Cat Analyser top 10 for 2025."
+    },
+    "Parmenion": {
+      "aum_bn": 13.1,
+      "aum_period": "End 2024",
+      "aum_growth_yoy_bn": 2,
+      "number_of_advice_firms": 1373,
+      "number_of_firms_period": "End 2024",
+      "new_firms_added_2024": 149,
+      "fe_fundinfo_platinum_rank_2026": 10,
+      "revenue_2024_mn": 50.2,
+      "operating_profit_2024_mn": 17.5,
+      "notes": "Specialist platform known for integrated risk-profiled MPS/DFM proposition. Recommended by more UK advisers than any other wrap platform (Investment Trends 2025). Top service rating in Platforum survey of 1,900+ advisers. Popular with smaller/independent advice firms that want integrated investment solution. Platform Switch Service launched to facilitate bulk transfers.",
+      "target_market_profile": "Independent/smaller advice firms seeking integrated risk-profiled investment solutions. All-in-one platform + investment proposition model. Not in Defaqto top 10 by recommendations value - suggests high usage among smaller firms making lower-value but numerous recommendations."
+    },
+    "Fundment": {
+      "lang_cat_analyser_rank_2025": 4,
+      "notes": "Rose from 5th to 4th on Lang Cat Analyser. Topped Defaqto 2026 Platform Service Ratings in adviser survey. Newer platform gaining traction."
+    },
+    "True_Potential": {
+      "defaqto_recommendations_share_2025_pct": 2,
+      "defaqto_rank_FY_2025": 10,
+      "notes": "Primarily tied to own restricted adviser network. Lower presence in independent adviser market."
+    },
+    "Hubwise": {
+      "fe_fundinfo_platinum_rank_2026": 6,
+      "notes": "B2B technology platform / custodian often used as white-label infrastructure. In FE fundinfo top 10."
+    },
+    "Zurich": {
+      "notes": "Not prominent in 2025 public rankings. No data found in top 10 of any major ranking."
+    },
+    "James_Hay": {
+      "notes": "SIPP specialist. Now part of Nucleus Financial Group following merger. Merged entity competing with broader platform propositions."
+    },
+    "Novia": {
+      "notes": "Not in top 10 rankings found. White-label/B2B focus."
+    },
+    "7IM": {
+      "notes": "Investment manager/platform hybrid. Not prominent in public 2025 adviser platform rankings."
+    },
+    "Praemium": {
+      "notes": "Not in top 10 rankings found in public data. International/portfolio management focus."
+    },
+    "Wealthtime": {
+      "notes": "Smaller/newer platform. Not in top 10 rankings in public data."
+    },
+    "Hargreaves_Lansdown_Adviser": {
+      "notes": "HL's advised platform proposition. Not prominent in 2025 adviser platform rankings found. HL primarily known as D2C/direct platform."
+    }
+  },
+
+  "adviser_firm_and_platform_usage_patterns": {
+    "number_of_platforms_per_adviser": {
+      "average_platforms_recalled": 5.5,
+      "note": "Average number of platforms recalled by advisers when prompted in 2025. Up from 5.3 in 2024.",
+      "source": "Investment Trends 2025 UK Adviser Technology & Business Report"
+    },
+    "platform_consolidation_trend": {
+      "advisers_using_2_or_fewer_platforms_pct": 65,
+      "advisers_using_2_or_fewer_platforms_pct_2018": 55,
+      "source": "Investment Trends 2025; Platforum",
+      "note": "Nearly two-thirds of advisers now use just two or fewer platforms, up from 55% in 2018. Trend toward fewer, deeper platform relationships."
+    },
+    "typical_firm_platform_range": {
+      "value": "5-10 platforms",
+      "note": "Typical advice firm uses between 5 and 10 different platforms in the market (though consolidating). Most firms run more than one platform relationship.",
+      "source": "Lang Cat research extract"
+    },
+    "platform_switching_trend": {
+      "advisers_changed_platform_due_to_poor_service_2024_pct": 45,
+      "advisers_changed_platform_due_to_poor_service_2023_pct": 36,
+      "source": "Lang Cat / Parmenion joint research 2024",
+      "url": "https://ifamagazine.com/91-of-advisers-say-poor-service-from-platforms-impacts-their-business-parmenion-lang-cat-research-reveals/"
+    },
+    "poor_service_impact": {
+      "advisers_apologised_to_client_on_behalf_of_platform_12m_pct": 88,
+      "advisers_impacted_by_poor_service_daily_pct": 91,
+      "source": "Lang Cat / Parmenion joint research 2024"
+    },
+    "firm_size_and_platform_behaviour": {
+      "large_firms_50plus_advisers": {
+        "notes": "Large firms (50+ advisers) approach platform selection differently and more strategically. Growing share of sector - now >50% of all advisers work in these firms vs 44% eight years ago. More likely to consolidate to preferred panel of 1-3 platforms and negotiate commercial terms. More likely to have own in-house/white-label platform (24% of firms with £250m+ AUA have own platform).",
+        "source": "Platforum; NextWealth Platform Shakeout 2024/2025"
+      },
+      "small_sme_firms": {
+        "notes": "Even smaller advice firms are limiting platform range. Consolidation to fewer platforms for efficiency and risk management. More reliant on third-party platforms. Parmenion model (integrated platform + investment solution) particularly appeals to smaller independents who want to outsource investment management.",
+        "source": "Platforum; NextWealth"
+      },
+      "consolidator_networks": {
+        "notes": "Consolidators (e.g. Perspective, with 13 acquisitions Jul 2024-Jul 2025) typically standardise onto preferred platforms post-acquisition, driving further concentration of flows to top platforms.",
+        "source": "Platforum"
+      }
+    },
+    "outsourced_vs_own_platform": {
+      "using_fully_outsourced_platform_2021_pct": 56,
+      "using_fully_outsourced_platform_2024_pct": 47,
+      "firms_with_own_platform_at_250m_aua_threshold_pct": 24,
+      "source": "NextWealth Adviser Tech Stack 2024"
+    }
+  },
+
+  "fca_retail_intermediary_market_data_2024": {
+    "source_url": "https://www.fca.org.uk/data/retail-intermediary-market-data-2024",
+    "interactive_analysis_url": "https://www.fca.org.uk/data/retail-intermediary-market-data-2024/retail-intermediary-market-interactive-analysis-2024",
+    "data_basis": "Retail Mediation Activities Return (RMAR) submitted by firms for periods ending within 2024",
+    "publication_date": "18 November 2025",
+    "licence": "Open Government Licence",
+    "key_statistics": {
+      "total_retail_investment_adviser_posts_2024": 37441,
+      "total_retail_investment_adviser_posts_2023": 37618,
+      "change_yoy": -177,
+      "independent_advice_firms_2024": 4292,
+      "independent_advice_firms_change_yoy_pct": -5,
+      "restricted_advice_firms_2024": 584,
+      "restricted_advice_firms_2023": 632,
+      "restricted_advice_firms_change_yoy_pct": -7,
+      "pct_firms_providing_independent_advice": 87,
+      "pct_firms_providing_restricted_advice": 12,
+      "pct_firms_providing_both": 1.4,
+      "firms_with_capital_req_under_5k_2024": 1977,
+      "firms_with_capital_req_over_100k_2024": 1449,
+      "firms_with_capital_req_over_100k_change_yoy_pct": 2,
+      "total_investment_advice_revenue_2024_bn": 5.7,
+      "total_investment_advice_revenue_growth_yoy_pct": 6.2
+    },
+    "platform_usage_data": "NOT AVAILABLE in FCA RMAR data. FCA retail intermediary data covers firm counts, adviser headcount, revenue, and capital requirements. It does NOT provide platform-by-platform usage statistics, market share by platform, or breakdown of which platforms are used by which firm types."
+  },
+
+  "advisory_platform_service_quality_survey_data": {
+    "investment_trends_2025": {
+      "source": "Investment Trends 2025 UK Adviser Technology & Business Report (16th edition)",
+      "methodology": "In-depth study of 883 financial advisers, Jan-Feb 2025",
+      "top_platform_selection_criteria": [
+        {"criterion": "Strong online functionality", "pct": 58},
+        {"criterion": "Streamlined admin", "pct": 47},
+        {"criterion": "Reduced paperwork", "pct": 32},
+        {"criterion": "Seamless integration (priority)", "pct": 50},
+        {"criterion": "AI-based tools for efficiency", "pct": 41}
+      ],
+      "parmenion_most_recommended_wrap": "Recommended by more UK advisers than any other wrap platform"
+    },
+    "platforum_2025_service_survey": {
+      "source": "Platforum survey of 1,900+ advisers",
+      "result": "Parmenion achieved top service rating"
+    }
+  },
+
+  "gated_paywalled_reports": [
+    {
+      "report": "Lang Cat State of the Platform Nation 2024/25",
+      "url": "https://thelangcat.co.uk/report/state-of-the-platform-nation-2024-25/",
+      "content": "Annual guide to UK platform market with full platform-by-platform data, market share tables, AUM per platform, flow data, service analysis",
+      "access": "Free to Lang Cat Analyser 'Everything' subscribers; ~£300+VAT standalone",
+      "priority": "HIGH - most comprehensive public platform data"
+    },
+    {
+      "report": "Lang Cat State of the Advice Nation 2025/26",
+      "url": "https://thelangcat.co.uk/report/state-of-the-advice-nation-2025-26/",
+      "content": "Annual adviser survey (1,600 adviser panel) covering firm characteristics, platform usage, business concerns, M&A intentions",
+      "access": "Registration required",
+      "priority": "HIGH - firm-type and size analysis"
+    },
+    {
+      "report": "Platforum UK Adviser Platforms: Market Overview (quarterly)",
+      "url": "https://www.platforum.co.uk/adviser-platforms",
+      "content": "Quarterly platform data, User Leaderboard, individual platform profiles, adviser usage patterns by firm size",
+      "access": "Subscription",
+      "priority": "HIGH"
+    },
+    {
+      "report": "Fundscape Platform Report (quarterly)",
+      "url": "https://fundscape.co.uk/press-releases/",
+      "content": "Full platform AUM table with all 18 platforms, net/gross flows per platform, market share %",
+      "access": "Press releases free (summary only); full reports subscription",
+      "priority": "MEDIUM - press releases provide enough for top platforms"
+    },
+    {
+      "report": "NextWealth Platform Shakeout 2025",
+      "url": "https://nextwealth.co.uk/research/platform-shakeout-2025/",
+      "content": "Platform usage by firm size, in-house vs outsourced platform trends, adviser behaviour by AUA band",
+      "access": "Paid / some free extracts via sponsors (Embark)",
+      "priority": "MEDIUM"
+    },
+    {
+      "report": "Investment Trends 2025 UK Adviser Technology & Business Report",
+      "url": "https://investmenttrends.com/resource/2025-uk-adviser-technology-and-business-report/",
+      "content": "883 adviser survey; platform preferences, tech stack, business performance",
+      "access": "Paid",
+      "priority": "MEDIUM"
+    },
+    {
+      "report": "NextWealth Financial Advice Business Benchmarks 2024",
+      "url": "https://nextwealth.co.uk/wp-content/uploads/2024/09/NextWealth_FABB-2024_Report-1.pdf",
+      "content": "Business benchmarks by firm size, revenue, platform relationships",
+      "access": "PDF available (partial sample public)",
+      "priority": "MEDIUM"
+    }
+  ]
+}
