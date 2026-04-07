@@ -1,22 +1,31 @@
+{"frn": "149380", "firm_name": "Cantor Fitzgerald Europe", "exclusion_reason": "too_large_institutional:950_individuals"}
 {"frn": "169586", "firm_name": "Waystone Financial Investments Limited", "exclusion_reason": "hard_exclude_frn:169586"}
+{"frn": "136414", "firm_name": "Evelyn Partners Financial Planning Limited", "exclusion_reason": "too_large_institutional:1894_individuals"}
+{"frn": "223112", "firm_name": "Best Practice IFA Group Limited", "exclusion_reason": "too_large_institutional:1073_individuals"}
 {"frn": "596682", "firm_name": "Cambridge Mercantile Risk Management (UK) Ltd", "exclusion_reason": "hard_exclude_name:mercantile risk"}
 {"frn": "579310", "firm_name": "Asset Match Limited", "exclusion_reason": "hard_exclude_name:asset match"}
 {"frn": "775330", "firm_name": "RISKSAVE TECHNOLOGIES LTD", "exclusion_reason": "hard_exclude_name:risksave"}
 {"frn": "650205", "firm_name": "Crowdcube Capital Limited", "exclusion_reason": "hard_exclude_name:crowdcube"}
+{"frn": "403721", "firm_name": "Panmure Liberum Limited", "exclusion_reason": "too_large_institutional:635_individuals"}
 {"frn": "540892", "firm_name": "Harris Williams & Co. Ltd", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
+{"frn": "446717", "firm_name": "StoneX Financial Ltd", "exclusion_reason": "too_large_institutional:585_individuals"}
+{"frn": "144822", "firm_name": "Numis Securities Limited", "exclusion_reason": "too_large_institutional:695_individuals"}
 {"frn": "542574", "firm_name": "OANDA Europe Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "189495", "firm_name": "CAPITAL PLUS PARTNERS LIMITED", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "431844", "firm_name": "Caxton Payments Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "179391", "firm_name": "Clarksons Futures Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
+{"frn": "175853", "firm_name": "Daiwa Corporate Advisory Limited", "exclusion_reason": "too_large_institutional:540_individuals"}
 {"frn": "484589", "firm_name": "BTIG Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "593052", "firm_name": "Ragnar Capital Partners LLP", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "209819", "firm_name": "RFC AMBRIAN LIMITED", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "219675", "firm_name": "Strata Technology Partners LLP", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "602082", "firm_name": "Currency Solutions Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "580056", "firm_name": "Abans Global Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
+{"frn": "182011", "firm_name": "Canaccord Genuity Limited", "exclusion_reason": "too_large_institutional:1011_individuals"}
 {"frn": "671108", "firm_name": "Lumon Risk Management Ltd", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "966305", "firm_name": "Convera UK Financial Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "467766", "firm_name": "Cavendish Capital Markets Limited", "exclusion_reason": "soft_exclude_name:capital markets_missing_permissions"}
+{"frn": "466588", "firm_name": "KROLL SECURITIES LTD.", "exclusion_reason": "too_large_institutional:775_individuals"}
 {"frn": "595861", "firm_name": "WG Partners LLP", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "492519", "firm_name": "Guardian Stockbrokers Ltd", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "656427", "firm_name": "Smart Currency Options Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
@@ -26,9 +35,11 @@
 {"frn": "950964", "firm_name": "Privalgo Markets Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "809084", "firm_name": "ISTAR CAPITAL LTD", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "781077", "firm_name": "Argentex LLP", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
+{"frn": "186958", "firm_name": "UBS AG", "exclusion_reason": "too_large_institutional:9015_individuals"}
 {"frn": "207972", "firm_name": "Resolution Partners Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "966723", "firm_name": "Bound Rates Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "764562", "firm_name": "ATLANTIC CAPITAL MARKETS LTD", "exclusion_reason": "soft_exclude_name:capital markets_missing_permissions"}
+{"frn": "184801", "firm_name": "GFI Securities Limited", "exclusion_reason": "too_large_institutional:1083_individuals"}
 {"frn": "514394", "firm_name": "IUR CAPITAL LIMITED", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "623190", "firm_name": "SYNERGY MARKETS LTD", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "300028", "firm_name": "Kimberworth Insurance Bureau Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
@@ -177,23 +188,69 @@
 {"frn": "1021751", "firm_name": "Bondsmith Savings Ltd", "exclusion_reason": "missing_permissions:advises_on_investments"}
 {"frn": "1030811", "firm_name": "One Planet Capital Limited", "exclusion_reason": "missing_permissions:advises_on_investments,collective_investment_schemes"}
 {"frn": "509909", "firm_name": "Plus500UK Ltd", "exclusion_reason": "missing_permissions:advises_on_investments,collective_investment_schemes"}
+{"frn": "119337", "firm_name": "JPMorgan Asset Management (UK) Limited", "exclusion_reason": "too_large_institutional:1169_individuals"}
+{"frn": "550103", "firm_name": "Sapia Partners LLP", "exclusion_reason": "too_large_institutional:931_individuals"}
+{"frn": "452811", "firm_name": "Sturgeon Ventures LLP", "exclusion_reason": "too_large_institutional:597_individuals"}
+{"frn": "830170", "firm_name": "Scottish Widows Schroder Personal Wealth Limited", "exclusion_reason": "too_large_institutional:918_individuals"}
+{"frn": "195355", "firm_name": "IG Markets Limited", "exclusion_reason": "too_large_institutional:692_individuals"}
+{"frn": "124543", "firm_name": "RBC Europe Limited", "exclusion_reason": "too_large_institutional:3481_individuals"}
+{"frn": "530083", "firm_name": "Peel Hunt LLP", "exclusion_reason": "too_large_institutional:502_individuals"}
+{"frn": "149303", "firm_name": "PIMCO Europe Ltd", "exclusion_reason": "too_large_institutional:687_individuals"}
+{"frn": "144543", "firm_name": "Schroder Investment Management North America Limited", "exclusion_reason": "too_large_institutional:967_individuals"}
+{"frn": "119348", "firm_name": "Schroder Investment Management Limited", "exclusion_reason": "too_large_institutional:1387_individuals"}
+{"frn": "119308", "firm_name": "Insight Investment Management (Global) Limited", "exclusion_reason": "too_large_institutional:725_individuals"}
+{"frn": "580531", "firm_name": "Evelyn Partners Investment Management LLP", "exclusion_reason": "too_large_institutional:864_individuals"}
+{"frn": "194927", "firm_name": "Canaccord Genuity Wealth Limited", "exclusion_reason": "too_large_institutional:537_individuals"}
+{"frn": "146786", "firm_name": "LEGAL & GENERAL (PORTFOLIO MANAGEMENT SERVICES) LIMITED", "exclusion_reason": "too_large_institutional:2720_individuals"}
+{"frn": "124255", "firm_name": "Evelyn Partners Securities", "exclusion_reason": "too_large_institutional:926_individuals"}
+{"frn": "119230", "firm_name": "Columbia Threadneedle Management Limited", "exclusion_reason": "too_large_institutional:723_individuals"}
+{"frn": "122170", "firm_name": "FIL Investments International", "exclusion_reason": "too_large_institutional:979_individuals"}
+{"frn": "121935", "firm_name": "Mercer Limited", "exclusion_reason": "too_large_institutional:1822_individuals"}
+{"frn": "121920", "firm_name": "Morgan Stanley Investment Management Limited", "exclusion_reason": "too_large_institutional:654_individuals"}
+{"frn": "155595", "firm_name": "BARCLAYS INVESTMENT SOLUTIONS LIMITED", "exclusion_reason": "too_large_institutional:1413_individuals"}
+{"frn": "147212", "firm_name": "Goldman Sachs Asset Management International", "exclusion_reason": "too_large_institutional:1299_individuals"}
+{"frn": "124412", "firm_name": "RAYMOND JAMES WEALTH MANAGEMENT LIMITED", "exclusion_reason": "too_large_institutional:1165_individuals"}
+{"frn": "165169", "firm_name": "Evelyn Partners Investment Management Services Limited", "exclusion_reason": "too_large_institutional:1027_individuals"}
+{"frn": "119186", "firm_name": "BlackRock Advisors (UK) Limited", "exclusion_reason": "too_large_institutional:2246_individuals"}
+{"frn": "194713", "firm_name": "RAYMOND JAMES INVESTMENT SERVICES LIMITED", "exclusion_reason": "too_large_institutional:534_individuals"}
+{"frn": "147103", "firm_name": "Evelyn Partners Discretionary Investment Management Limited", "exclusion_reason": "too_large_institutional:727_individuals"}
+{"frn": "119319", "firm_name": "UBS Asset Management (UK) Ltd", "exclusion_reason": "too_large_institutional:714_individuals"}
+{"frn": "216704", "firm_name": "AFH Independent Financial Services Limited", "exclusion_reason": "too_large_institutional:851_individuals"}
+{"frn": "499510", "firm_name": "Redmayne-Bentley LLP", "exclusion_reason": "too_large_institutional:664_individuals"}
+{"frn": "432886", "firm_name": "Towers Watson Limited", "exclusion_reason": "too_large_institutional:805_individuals"}
 {"frn": "179466", "firm_name": "LaSalle Investment Management", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "188406", "firm_name": "abrdn Investment Management Limited", "exclusion_reason": "too_large_institutional:1205_individuals"}
+{"frn": "192638", "firm_name": "The On-Line Partnership Limited", "exclusion_reason": "too_large_institutional:1879_individuals"}
+{"frn": "131816", "firm_name": "Evelyn Partners Investment Services Limited", "exclusion_reason": "too_large_institutional:530_individuals"}
+{"frn": "122335", "firm_name": "HSBC Global Asset Management (UK) Limited", "exclusion_reason": "too_large_institutional:907_individuals"}
+{"frn": "119272", "firm_name": "LEGAL & GENERAL INVESTMENT MANAGEMENT LIMITED", "exclusion_reason": "too_large_institutional:1169_individuals"}
 {"frn": "119328", "firm_name": "M&G Investment Management Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "119329", "firm_name": "TrinityBridge Limited", "exclusion_reason": "too_large_institutional:853_individuals"}
+{"frn": "122628", "firm_name": "Baring International Investment Limited", "exclusion_reason": "too_large_institutional:524_individuals"}
+{"frn": "144345", "firm_name": "FIL Pensions Management", "exclusion_reason": "too_large_institutional:601_individuals"}
+{"frn": "170601", "firm_name": "Baring Asset Management Limited", "exclusion_reason": "too_large_institutional:572_individuals"}
+{"frn": "124659", "firm_name": "Goldman Sachs International Bank", "exclusion_reason": "too_large_institutional:3312_individuals"}
 {"frn": "599417", "firm_name": "PATRIZIA Infrastructure Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "593186", "firm_name": "HOBART CAPITAL MARKETS LLP", "exclusion_reason": "soft_exclude_name:capital markets_missing_permissions"}
 {"frn": "454319", "firm_name": "Inflexion Private Equity Partners LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "197336", "firm_name": "INTEGRA CAPITAL LIMITED", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "225360", "firm_name": "La Française Group UK Finance Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "442767", "firm_name": "Marex Financial", "exclusion_reason": "too_large_institutional:1061_individuals"}
 {"frn": "146311", "firm_name": "AMT Futures Limited", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "480992", "firm_name": "Goodman Operator (UK) Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "159367", "firm_name": "CBRE Indirect Investment Services Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "222963", "firm_name": "Apax Partners LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "455547", "firm_name": "Ares Management Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "119178", "firm_name": "Aviva Investors Global Services Limited", "exclusion_reason": "too_large_institutional:1467_individuals"}
 {"frn": "184333", "firm_name": "LUNARO FINANCIAL SERVICES LIMITED", "exclusion_reason": "missing_permissions:collective_investment_schemes"}
 {"frn": "592556", "firm_name": "Bain Capital Private Equity (Europe), LLP", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "124259", "firm_name": "Quilter Cheviot Limited", "exclusion_reason": "too_large_institutional:846_individuals"}
 {"frn": "601017", "firm_name": "Actis UK Advisers Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "738808", "firm_name": "BC Partners LLP", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "122674", "firm_name": "Invesco Asset Management Limited", "exclusion_reason": "too_large_institutional:605_individuals"}
+{"frn": "178638", "firm_name": "BlackRock International Limited", "exclusion_reason": "too_large_institutional:1958_individuals"}
 {"frn": "790168", "firm_name": "Brunel Pension Partnership Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "139253", "firm_name": "JEFFERIES INTERNATIONAL LIMITED", "exclusion_reason": "too_large_institutional:2542_individuals"}
 {"frn": "1012848", "firm_name": "Morrison Infrastructure (UK) Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "208716", "firm_name": "The Fund Incubator Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "849840", "firm_name": "Camco Management Limited", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -205,6 +262,7 @@
 {"frn": "416900", "firm_name": "DTZ Investment Management Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "807367", "firm_name": "Entrepreneurs First Investment Manager LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "217457", "firm_name": "EPIC Investment Partners (UK) Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "223074", "firm_name": "Evelyn Partners Asset Management Limited", "exclusion_reason": "too_large_institutional:532_individuals"}
 {"frn": "604090", "firm_name": "Fair Oaks Capital Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "519772", "firm_name": "Midmar Capital LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "473797", "firm_name": "Octopus Renewables Limited", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -281,8 +339,10 @@
 {"frn": "808170", "firm_name": "Capital D Management LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "124520", "firm_name": "TP ICAP Markets Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "139200", "firm_name": "Tradition (UK) Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "142888", "firm_name": "Goldman Sachs International", "exclusion_reason": "too_large_institutional:11195_individuals"}
 {"frn": "147543", "firm_name": "TRADITION FINANCIAL SERVICES LTD.", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "154234", "firm_name": "TP ICAP Broking Limited", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
+{"frn": "165935", "firm_name": "Morgan Stanley & Co. International Plc", "exclusion_reason": "too_large_institutional:9601_individuals"}
 {"frn": "174863", "firm_name": "Kyte Broking Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "179213", "firm_name": "King & Shaxson Limited", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "184256", "firm_name": "Britannic Energy Trading Limited", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
@@ -311,6 +371,7 @@
 {"frn": "193027", "firm_name": "Marex Spectron International Limited", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "796070", "firm_name": "A&M CAPITAL ADVISORS EUROPE, LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "224359", "firm_name": "Autonomy Capital Research LLP", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "124491", "firm_name": "JPMorgan Chase Bank, National Association", "exclusion_reason": "too_large_institutional:10510_individuals"}
 {"frn": "784063", "firm_name": "EBURY PARTNERS MARKETS LTD", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "124341", "firm_name": "TP ICAP MTF LIMITED", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "484392", "firm_name": "Chenavari Credit Partners LLP", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -392,6 +453,7 @@
 {"frn": "220908", "firm_name": "IAM INVEST Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "189955", "firm_name": "ICG MANAGER LIMITED", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "575376", "firm_name": "Evercore ISI International Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "124537", "firm_name": "Investec Wealth & Investment Limited", "exclusion_reason": "too_large_institutional:1021_individuals"}
 {"frn": "148967", "firm_name": "Shinkin International Ltd.", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "416499", "firm_name": "SBI International Limited", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "660818", "firm_name": "Sound Point Capital Management UK LLP", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -443,6 +505,7 @@
 {"frn": "176763", "firm_name": "Columbia Threadneedle (EM) Investments Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "583157", "firm_name": "Lindisfarne Partners LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "515393", "firm_name": "Lombard Odier Asset Management (Europe) Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "140773", "firm_name": "W H Ireland Limited", "exclusion_reason": "too_large_institutional:540_individuals"}
 {"frn": "195764", "firm_name": "Troy Asset Management Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "586570", "firm_name": "Triton Investments Advisers LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "122429", "firm_name": "Walter Scott & Partners Limited", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -563,6 +626,7 @@
 {"frn": "458459", "firm_name": "COHEN & STEERS UK LIMITED", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "189316", "firm_name": "Conning Asset Management Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "472780", "firm_name": "TD Execution Services Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "124431", "firm_name": "Barclays Capital Securities Limited", "exclusion_reason": "too_large_institutional:8298_individuals"}
 {"frn": "580379", "firm_name": "BANCTRUST INVESTMENT BANK LIMITED", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "586463", "firm_name": "GBM SECURITIES LIMITED", "exclusion_reason": "soft_exclude_name:securities limited_missing_permissions"}
 {"frn": "582907", "firm_name": "Bell Rock Capital Management LLP", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -577,6 +641,7 @@
 {"frn": "229350", "firm_name": "CVC Advisers Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "568940", "firm_name": "Better Society Capital Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "229284", "firm_name": "BGB WESTON LIMITED", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "119293", "firm_name": "BlackRock Investment Management (UK) Limited", "exclusion_reason": "too_large_institutional:2317_individuals"}
 {"frn": "192163", "firm_name": "BDCM UK LIMITED", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "171195", "firm_name": "BLUE PLANET INVESTMENT MANAGEMENT LTD.", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "628282", "firm_name": "BNF Capital Limited", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -625,6 +690,7 @@
 {"frn": "448384", "firm_name": "Sussex Partners UK Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "446483", "firm_name": "Investcorp Credit Management EU Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "164689", "firm_name": "Swiss Investment Corporation Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "121891", "firm_name": "abrdn Investments Limited", "exclusion_reason": "too_large_institutional:1441_individuals"}
 {"frn": "460224", "firm_name": "Acadian Asset Management (UK) Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "630983", "firm_name": "Acanthus Capital Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "615256", "firm_name": "Two Sigma International Limited", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -773,6 +839,7 @@
 {"frn": "1007814", "firm_name": "Robeco Institutional Asset Management UK Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "1007903", "firm_name": "Sentinel Regulatory Services Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "1007925", "firm_name": "Galaxy Digital UK Limited", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "124704", "firm_name": "Citibank, N.A.", "exclusion_reason": "too_large_institutional:7840_individuals"}
 {"frn": "976744", "firm_name": "Point72 Europe (London) LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "977764", "firm_name": "Mediobanca - Banca Di Credito Finanziario S.P.A.", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "978417", "firm_name": "Hamburg Commercial Bank AG", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -882,6 +949,8 @@
 {"frn": "989311", "firm_name": "UniCredit Bank GmbH", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "472219", "firm_name": "Realstar Capital LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "564058", "firm_name": "Graham Capital LLP", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "148474", "firm_name": "ADM Investor Services International Limited", "exclusion_reason": "too_large_institutional:671_individuals"}
+{"frn": "155240", "firm_name": "J.P. Morgan Securities plc", "exclusion_reason": "too_large_institutional:12048_individuals"}
 {"frn": "754244", "firm_name": "Valeur Capital Limited", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "810629", "firm_name": "Arlington Capital Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "810979", "firm_name": "Bregal Milestone LLP", "exclusion_reason": "missing_permissions:retail_clients"}
@@ -1076,6 +1145,7 @@
 {"frn": "1004078", "firm_name": "Gravis Advisory Ltd", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "915004", "firm_name": "PHOENIX COURT GROUP LIMITED", "exclusion_reason": "missing_permissions:retail_clients,collective_investment_schemes"}
 {"frn": "989193", "firm_name": "UniCredit S.p.A", "exclusion_reason": "missing_permissions:retail_clients"}
+{"frn": "211646", "firm_name": "Citibank Europe plc", "exclusion_reason": "too_large_institutional:4279_individuals"}
 {"frn": "988727", "firm_name": "Landesbank Hessen-Thüringen Girozentrale", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "976870", "firm_name": "NYL Investments UK LLP", "exclusion_reason": "missing_permissions:retail_clients"}
 {"frn": "979551", "firm_name": "Sackville Capital Ltd", "exclusion_reason": "missing_permissions:retail_clients"}

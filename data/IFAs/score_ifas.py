@@ -132,6 +132,14 @@ def icp_filter(firm):
             missing.append("collective_investment_schemes")
         return False, f"missing_permissions:{','.join(missing)}"
 
+    # Headcount filter: firms with >500 approved persons are institutional
+    # asset managers, banks, or platforms — not IFA distribution targets.
+    # Largest genuine IFA networks (Foster Denovo 409, LGT 427, Killik 391)
+    # are below 500. Anything above is almost certainly institutional.
+    individual_count = firm.get("individual_count", 0) or 0
+    if individual_count > 500:
+        return False, f"too_large_institutional:{individual_count}_individuals"
+
     return True, None
 
 
