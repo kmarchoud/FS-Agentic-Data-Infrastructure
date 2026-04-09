@@ -1,48 +1,24 @@
-# Regulex Intelligence
+# FS Agentic Data Infrastructure
 
-Distribution intelligence dashboard prototype for UK multi-asset managers. Built for Meridian Asset Management (fictional £14.8bn AUM firm).
+Distribution intelligence platform for Keyridge Asset Management.
+Data is organised by use case. Shared reference data lives in /shared.
 
-Designed for senior distribution professionals — Heads of Distribution, senior RMs, CCOs — at mid-market UK asset managers.
+## Use Cases
+- UC4: IFA Prioritisation — uc4_ifa_prioritisation/
+- UC2: Competitor Mandate Intelligence — uc2_competitor_intelligence/
+- UC1: Partnership Intelligence — uc1_partnership_intelligence/
+- UC3: Platform Flow Intelligence — uc3_platform_flow_intelligence/
+- UC5: Dynamic Market Intelligence — uc5_market_intelligence/
 
-## Getting Started
+## Shared Data
+- FCA Register: shared/fca_register/
+- Keyridge Fund Data: shared/keyridge_funds/
+- IA Sector Classifications: shared/ia_sectors/
+- PIMFA Members: shared/pimfa/
 
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-No environment variables required — all data is mocked.
-
-## Pages
-
-- **Morning Brief** (`/`) — Daily overview with priority clients, market intelligence, and key metrics
-- **Priority Queue** (`/priorities`) — Ranked client urgency with composite scoring and silent account alerts
-- **Client Intelligence** (`/clients`) — Deep client profiles with engagement analytics, timelines, and pre-meeting briefs
-- **Flow Intelligence** (`/flows`) — AUM flow analysis, mandate fit scanning, and account movement tracking
-- **RFP Intelligence** (`/rfp`) — Pipeline management with win rate insights and data source automation
-
-## Tech Stack
-
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS
-- Recharts
-- Lucide React
-- shadcn/ui components
-
-## Deployment
-
-For deployment to a subdomain of regulex.io (e.g., demo.regulex.io):
-
-1. Push to GitHub
-2. Connect the repo to [Vercel](https://vercel.com)
-3. Set custom domain: `demo.regulex.io`
-4. No environment variables needed
-
-```bash
-npm run build
-```
-
-The build output is a static Next.js app ready for any Node.js hosting platform.
+## Status
+UC4: Data collection complete. Brief generation pending.
+UC2: Competitor fund collection pending.
+UC1: Platform data collected. News monitoring pending.
+UC3: Pending. Requires IA monthly flow data collection.
+UC5: Pending. Requires macro feed setup.
