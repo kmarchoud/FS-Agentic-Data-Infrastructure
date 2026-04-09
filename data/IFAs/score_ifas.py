@@ -21,10 +21,13 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 ENRICHED_DIR = BASE_DIR / "enriched"
-INPUT_FILE = ENRICHED_DIR / "ifa_enriched.jsonl"
-OUTPUT_JSONL = ENRICHED_DIR / "ifa_ranked.jsonl"
-OUTPUT_CSV = ENRICHED_DIR / "ifa_ranked.csv"
-OUTPUT_REPORT = ENRICHED_DIR / "scoring_report.md"
+INPUT_FILE = ENRICHED_DIR / "base_universe.jsonl"
+OUTPUT_JSONL = ENRICHED_DIR / "keyridge_ranked.jsonl"
+OUTPUT_CSV = ENRICHED_DIR / "keyridge_ranked.csv"
+OUTPUT_REPORT = ENRICHED_DIR / "keyridge_scoring_report.md"
+
+# Only score these firm types — skip institutional/DFM/other
+SCOREABLE_TYPES = {"ifa", "wealth_manager"}
 
 
 def load_jsonl(path):
@@ -37,8 +40,8 @@ def score_firm_size(firm):
     """0-100. Adviser count, reviews, geographic reach, Companies House."""
     score = 0
 
-    # Adviser count (primary signal)
-    ac = firm.get("adviser_count", 0) or 0
+    # Adviser count (use VouchedFor count, fall back to FCA individual count)
+    ac = firm.get("adviser_count_vf", 0) or firm.get("individual_count", 0) or 0
     if ac >= 100:    score += 35
     elif ac >= 50:   score += 30
     elif ac >= 20:   score += 24
@@ -82,30 +85,26 @@ def score_firm_size(firm):
 
 def score_permissions(firm):
     """0-100. FCA permissions depth. Baseline 50 for non-enriched firms."""
-    perms = firm.get("permissions", {})
+    has_data = firm.get("has_permissions_data", False)
 
-    # Non-enriched firms: all VouchedFor firms are FCA authorised advisers
-    if not perms:
-        # Baseline: they're on VouchedFor so they advise retail clients
-        base = 50
-        # Boost if IFA (not restricted)
-        types = firm.get("adviser_types", [])
+    if not has_data:
+        # No FCA permissions data — use baseline
+        base = 40
+        types = firm.get("adviser_types", []) or []
         if "ifa" in types:
-            base += 10  # Independent = broader permissions
+            base += 10
+        if firm.get("assigned_type") == "ifa":
+            base += 10
         return base
 
     score = 0
-    if perms.get("advises_on_investments"):     score += 20
-    if perms.get("retail_clients"):             score += 20
-    if perms.get("arranges_investments"):        score += 15
-    if perms.get("pension_transfers"):           score += 15
-    if perms.get("manages_investments"):          score += 10
-    if perms.get("professional_clients"):         score += 10
-
-    # Investment types depth
-    inv_types = perms.get("investment_types", [])
-    if any("unit" in t.lower() for t in inv_types):
-        score += 10  # Can deal in unit trusts/OEICs
+    if firm.get("advises_on_investments"):       score += 20
+    if firm.get("retail_clients"):               score += 20
+    if firm.get("collective_investment_schemes"): score += 15
+    if firm.get("pension_transfers"):             score += 15
+    if firm.get("manages_investments"):            score += 10
+    if firm.get("life_policies"):                  score += 5
+    if firm.get("professional_clients"):           score += 5
 
     return min(score, 100)
 
@@ -135,7 +134,8 @@ def score_fund_distribution(firm):
         score += 10
 
     # Postcode (basic data completeness)
-    if firm.get("postcode") or firm.get("address", {}).get("postcode"):
+    addr = firm.get("address")
+    if firm.get("postcode") or (isinstance(addr, dict) and addr.get("postcode")):
         score += 5
 
     return min(score, 100)
@@ -257,7 +257,7 @@ def calculate_data_confidence(firm):
     fields = [
         bool(firm.get("fca_enriched")),
         bool(firm.get("phone")),
-        bool(firm.get("postcode") or firm.get("address", {}).get("postcode")),
+        bool(firm.get("postcode") or (firm.get("address") if isinstance(firm.get("address"), dict) else {}).get("postcode")),
         bool(firm.get("website")),
         bool(firm.get("companies_house")),
         bool(firm.get("permissions")),
@@ -279,8 +279,25 @@ def assign_size_tier(size_score):
 def main():
     print(f"IFA Scoring Engine v2 — {datetime.now().isoformat()}")
 
-    firms = load_jsonl(INPUT_FILE)
-    print(f"Loaded {len(firms)} firms")
+    all_firms = load_jsonl(INPUT_FILE)
+    print(f"Loaded {len(all_firms)} firms from base universe")
+
+    # Filter to scoreable types (IFAs + wealth managers)
+    firms = [f for f in all_firms if f.get("assigned_type", "") in SCOREABLE_TYPES]
+
+    # Exclude institutional firms by headcount (>500 = banks/asset managers)
+    EXCLUDE_NAMES = {"goldman sachs", "jpmorgan", "lloyds bank", "barclays", "hsbc",
+                     "citibank", "morgan stanley", "ubs", "credit suisse", "deutsche bank",
+                     "blackrock", "schroders", "legal & general", "aviva investors",
+                     "abrdn", "vanguard", "invesco", "fidelity international"}
+    before = len(firms)
+    firms = [f for f in firms if
+             (f.get("individual_count", 0) or 0) <= 500 and
+             not any(ex in (f.get("firm_name") or "").lower() for ex in EXCLUDE_NAMES)]
+    excluded_institutional = before - len(firms)
+
+    print(f"Scoring {len(firms)} firms (types: {', '.join(SCOREABLE_TYPES)})")
+    print(f"Excluded {len(all_firms) - before} non-target types + {excluded_institutional} institutional = {len(all_firms) - len(firms)} total excluded")
 
     # Score all firms
     scored = []
@@ -301,7 +318,7 @@ def main():
     scored.sort(key=lambda f: (
         -f["priority_score"],
         -f["size_score"],
-        -(f.get("adviser_count", 0) or 0),
+        -(f.get("adviser_count_vf", 0) or f.get("individual_count", 0) or 0),
     ))
 
     # Assign ranks
@@ -328,9 +345,8 @@ def main():
             "advises_retail", "pension_transfers", "manages_investments",
         ])
         for firm in scored:
-            perms = firm.get("permissions", {})
-            addr = firm.get("address", {})
-            pc = firm.get("postcode") or addr.get("postcode", "")
+            ac = firm.get("adviser_count_vf", 0) or firm.get("individual_count", 0) or 0
+            pc = firm.get("postcode", "") or ""
             web = firm.get("website", "") or ""
             w.writerow([
                 firm["rank"],
@@ -338,14 +354,14 @@ def main():
                 firm["firm_name"],
                 firm.get("frn", ""),
                 firm["size_tier"],
-                firm.get("adviser_count", 0),
+                ac,
                 firm.get("total_reviews", 0),
                 firm.get("top_rated_advisers", 0),
-                "|".join(firm.get("adviser_types", [])),
+                "|".join(firm.get("adviser_types") or []),
                 firm.get("phone", ""),
                 pc,
                 web,
-                len(firm.get("cities", [])),
+                len(firm.get("cities") or []),
                 firm["data_confidence"],
                 firm["size_score"],
                 firm["permission_score"],
@@ -354,10 +370,10 @@ def main():
                 firm["top_mandate_score"],
                 firm.get("fca_status", ""),
                 firm.get("companies_house", ""),
-                firm.get("fca_enriched", False),
-                perms.get("retail_clients", ""),
-                perms.get("pension_transfers", ""),
-                perms.get("manages_investments", ""),
+                firm.get("has_permissions_data", False),
+                firm.get("retail_clients", ""),
+                firm.get("pension_transfers", ""),
+                firm.get("manages_investments", ""),
             ])
     print(f"Wrote CSV to {OUTPUT_CSV}")
 
@@ -399,7 +415,7 @@ def main():
         f.write(f"\n## Data Quality\n\n")
         f.write(f"- Firms with FCA number: {sum(1 for s in scored if s.get('frn'))}\n")
         f.write(f"- Firms with phone: {sum(1 for s in scored if s.get('phone'))}\n")
-        f.write(f"- Firms with postcode: {sum(1 for s in scored if s.get('postcode') or s.get('address',{}).get('postcode'))}\n")
+        f.write(f"- Firms with postcode: {sum(1 for s in scored if s.get('postcode'))}\n")
         f.write(f"- Firms with website: {sum(1 for s in scored if s.get('website'))}\n")
         f.write(f"- Firms with Companies House: {sum(1 for s in scored if s.get('companies_house'))}\n")
 
@@ -411,7 +427,8 @@ def main():
     print("-" * 85)
     for s in scored[:15]:
         types = "|".join(s.get("adviser_types", []))[:14]
-        print(f"{s['rank']:<4} {s['priority_score']:<6} {s['size_tier']:<7} {s.get('adviser_count',0):<5} {s.get('total_reviews',0):<6} {s['firm_name'][:37]:<38} {types:<15}")
+        ac = s.get('adviser_count_vf',0) or s.get('individual_count',0) or 0
+        print(f"{s['rank']:<4} {s['priority_score']:<6} {s['size_tier']:<7} {ac:<5} {s.get('total_reviews',0):<6} {s['firm_name'][:37]:<38} {types:<15}")
 
 
 if __name__ == "__main__":
