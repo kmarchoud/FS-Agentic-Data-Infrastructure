@@ -26,8 +26,49 @@ OUTPUT_JSONL = ENRICHED_DIR / "keyridge_ranked.jsonl"
 OUTPUT_CSV = ENRICHED_DIR / "keyridge_ranked.csv"
 OUTPUT_REPORT = ENRICHED_DIR / "keyridge_scoring_report.md"
 
-# Only score these firm types — skip institutional/DFM/other
+# Only score these firm types
 SCOREABLE_TYPES = {"ifa", "wealth_manager"}
+
+# ── ICP FILTER ────────────────────────────────────────────────────────────────
+
+# Exclude firms whose NAME contains these (case insensitive)
+EXCLUDE_NAME_PATTERNS = {
+    "investment management", "asset management", "fund management",
+    "investment managers", "capital management", "investment company",
+    "goldman sachs", "jpmorgan", "lloyds bank", "barclays", "hsbc",
+    "citibank", "morgan stanley", "ubs", "credit suisse", "deutsche bank",
+    "blackrock", "schroders", "legal & general", "aviva investors",
+    "abrdn", "vanguard", "invesco", "fidelity international",
+    "jupiter investment", "franklin templeton", "newton investment",
+    "bny mellon", "fisher investments europe", "axa investment",
+    "clearbridge investment", "union bancaire", "forvis mazars",
+    "interactive investor", "ucits",
+}
+
+# Exclude these assigned_types entirely
+EXCLUDE_TYPES = {"institution", "institutional_adviser", "other", "platform"}
+
+
+def passes_icp_filter(firm):
+    """Returns True if the firm should be scored for Keyridge."""
+    # Type check
+    if firm.get("assigned_type", "") in EXCLUDE_TYPES:
+        return False, "excluded_type"
+
+    if firm.get("assigned_type", "") not in SCOREABLE_TYPES:
+        return False, "not_scoreable_type"
+
+    # Name pattern check
+    name_lower = (firm.get("firm_name") or "").lower()
+    for pattern in EXCLUDE_NAME_PATTERNS:
+        if pattern in name_lower:
+            return False, f"excluded_name:{pattern}"
+
+    # Headcount check (>500 = institutional)
+    if (firm.get("individual_count", 0) or 0) > 500:
+        return False, "too_large"
+
+    return True, None
 
 
 def load_jsonl(path):
@@ -282,24 +323,22 @@ def main():
     all_firms = load_jsonl(INPUT_FILE)
     print(f"Loaded {len(all_firms)} firms from base universe")
 
-    # Filter to scoreable types (IFAs + wealth managers)
-    firms = [f for f in all_firms if f.get("assigned_type", "") in SCOREABLE_TYPES]
+    # ── ICP FILTER ──
+    firms = []
+    excluded_reasons = {}
+    for firm in all_firms:
+        passes, reason = passes_icp_filter(firm)
+        if passes:
+            firms.append(firm)
+        else:
+            excluded_reasons[reason] = excluded_reasons.get(reason, 0) + 1
 
-    # Exclude institutional firms by headcount (>500 = banks/asset managers)
-    EXCLUDE_NAMES = {"goldman sachs", "jpmorgan", "lloyds bank", "barclays", "hsbc",
-                     "citibank", "morgan stanley", "ubs", "credit suisse", "deutsche bank",
-                     "blackrock", "schroders", "legal & general", "aviva investors",
-                     "abrdn", "vanguard", "invesco", "fidelity international"}
-    before = len(firms)
-    firms = [f for f in firms if
-             (f.get("individual_count", 0) or 0) <= 500 and
-             not any(ex in (f.get("firm_name") or "").lower() for ex in EXCLUDE_NAMES)]
-    excluded_institutional = before - len(firms)
+    total_excluded = len(all_firms) - len(firms)
+    print(f"ICP filter: {len(firms)} pass, {total_excluded} excluded")
+    for reason, count in sorted(excluded_reasons.items(), key=lambda x: -x[1])[:10]:
+        print(f"  {count:>5}  {reason}")
 
-    print(f"Scoring {len(firms)} firms (types: {', '.join(SCOREABLE_TYPES)})")
-    print(f"Excluded {len(all_firms) - before} non-target types + {excluded_institutional} institutional = {len(all_firms) - len(firms)} total excluded")
-
-    # Score all firms
+    # ── SCORE ALL FIRMS ──
     scored = []
     for firm in firms:
         result = calculate_priority_score(firm)
@@ -312,18 +351,53 @@ def main():
         firm["top_mandate_score"] = result["top_mandate_score"]
         firm["data_confidence"] = calculate_data_confidence(firm)
         firm["size_tier"] = assign_size_tier(result["size_score"])
+
+        # ── FIX 2: VouchedFor data penalty ──
+        has_vf = (firm.get("total_reviews", 0) or 0) > 0 or (firm.get("adviser_count_vf", 0) or 0) > 0
+        firm["scored_without_vouchedfor"] = not has_vf
+
+        if not has_vf:
+            # Penalty: reduce score by 25%
+            firm["priority_score"] = round(firm["priority_score"] * 0.75, 1)
+            # Cap tier at tier_3
+            if firm["size_tier"] in ("tier_1", "tier_2"):
+                firm["size_tier"] = "tier_3"
+
+        # ── FIX 3: Restricted network flag ──
+        types = firm.get("adviser_types") or []
+        is_restricted = "fa_restricted" in types or firm.get("assigned_type") == "fa_restricted"
+        firm["restricted_network"] = is_restricted
+
         scored.append(firm)
 
-    # Sort: priority desc, then size desc, then adviser_count desc
-    scored.sort(key=lambda f: (
+    # ── SORT: independent first, then restricted ──
+    independent = [f for f in scored if not f["restricted_network"]]
+    restricted = [f for f in scored if f["restricted_network"]]
+
+    # Sort each group by priority desc
+    independent.sort(key=lambda f: (
+        -f["priority_score"],
+        -f["size_score"],
+        -(f.get("adviser_count_vf", 0) or f.get("individual_count", 0) or 0),
+    ))
+    restricted.sort(key=lambda f: (
         -f["priority_score"],
         -f["size_score"],
         -(f.get("adviser_count_vf", 0) or f.get("individual_count", 0) or 0),
     ))
 
-    # Assign ranks
-    for i, firm in enumerate(scored):
+    # Assign ranks within each section
+    for i, firm in enumerate(independent):
         firm["rank"] = i + 1
+    for i, firm in enumerate(restricted):
+        firm["rank"] = i + 1
+
+    # Combined output: independent first, then restricted
+    scored = independent + restricted
+
+    print(f"\nPrimary list (independent/IFA): {len(independent)}")
+    print(f"Restricted network section: {len(restricted)}")
+    print(f"Scored without VouchedFor data: {sum(1 for f in scored if f.get('scored_without_vouchedfor'))}")
 
     # Write JSONL
     with open(OUTPUT_JSONL, "w") as f:
@@ -335,20 +409,23 @@ def main():
     with open(OUTPUT_CSV, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow([
-            "rank", "priority_score", "firm_name", "frn", "size_tier",
+            "section", "rank", "priority_score", "firm_name", "frn", "size_tier",
             "adviser_count", "total_reviews", "top_rated_advisers",
-            "adviser_types", "phone", "postcode", "website",
+            "adviser_types", "phone", "postcode", "website", "city",
             "cities_count", "data_confidence",
             "size_score", "permission_score", "distribution_score",
             "top_mandate_category", "top_mandate_score",
-            "fca_status", "companies_house", "fca_enriched",
+            "fca_status", "companies_house", "has_permissions_data",
             "advises_retail", "pension_transfers", "manages_investments",
+            "restricted_network", "scored_without_vouchedfor",
         ])
         for firm in scored:
             ac = firm.get("adviser_count_vf", 0) or firm.get("individual_count", 0) or 0
             pc = firm.get("postcode", "") or ""
             web = firm.get("website", "") or ""
+            section = "RESTRICTED" if firm.get("restricted_network") else "PRIMARY"
             w.writerow([
+                section,
                 firm["rank"],
                 firm["priority_score"],
                 firm["firm_name"],
@@ -361,6 +438,7 @@ def main():
                 firm.get("phone", ""),
                 pc,
                 web,
+                firm.get("city", ""),
                 len(firm.get("cities") or []),
                 firm["data_confidence"],
                 firm["size_score"],
@@ -374,6 +452,8 @@ def main():
                 firm.get("retail_clients", ""),
                 firm.get("pension_transfers", ""),
                 firm.get("manages_investments", ""),
+                firm.get("restricted_network", False),
+                firm.get("scored_without_vouchedfor", False),
             ])
     print(f"Wrote CSV to {OUTPUT_CSV}")
 
@@ -422,13 +502,18 @@ def main():
     print(f"Wrote report to {OUTPUT_REPORT}")
 
     # Print top 15
-    print(f"\nTop 15:")
-    print(f"{'Rk':<4} {'Score':<6} {'Tier':<7} {'Adv':<5} {'Rev':<6} {'Firm':<38} {'Type':<15}")
-    print("-" * 85)
-    for s in scored[:15]:
-        types = "|".join(s.get("adviser_types", []))[:14]
+    print(f"\nTop 15 PRIMARY (independent IFAs):")
+    print(f"{'Rk':<4} {'Score':<6} {'Tier':<7} {'Adv':<5} {'Rev':<6} {'Firm':<38} {'City':<15} {'Mandate':<20}")
+    print("-" * 100)
+    for s in independent[:15]:
         ac = s.get('adviser_count_vf',0) or s.get('individual_count',0) or 0
-        print(f"{s['rank']:<4} {s['priority_score']:<6} {s['size_tier']:<7} {ac:<5} {s.get('total_reviews',0):<6} {s['firm_name'][:37]:<38} {types:<15}")
+        city = (s.get('city') or '')[:14]
+        print(f"{s['rank']:<4} {s['priority_score']:<6} {s['size_tier']:<7} {ac:<5} {s.get('total_reviews',0):<6} {s['firm_name'][:37]:<38} {city:<15} {s.get('top_mandate_category',''):<20}")
+
+    print(f"\nTop 5 RESTRICTED networks:")
+    for s in restricted[:5]:
+        ac = s.get('adviser_count_vf',0) or s.get('individual_count',0) or 0
+        print(f"  {s['rank']:<4} {s['priority_score']:<6} {ac:<5} {s['firm_name'][:40]}")
 
 
 if __name__ == "__main__":
