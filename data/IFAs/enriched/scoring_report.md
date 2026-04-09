@@ -1,6 +1,6 @@
 # IFA Scoring Report v2
 
-**Date:** 2026-04-08 13:31
+**Date:** 2026-04-09 17:54
 **Total firms scored:** 1663
 **FCA enriched:** 338
 **VouchedFor only:** 1325
