@@ -6,3 +6,9 @@ node_modules
 __pycache__/
 *.pyc
 .DS_Store
+
+# UC2: partial batch files from parallel research agents (intermediate)
+uc2_competitor_intelligence/data/competitor_funds/partials/
+
+# UC4: brief generation checkpoint (intermediate)
+uc4_ifa_prioritisation/data/briefs.checkpoint
