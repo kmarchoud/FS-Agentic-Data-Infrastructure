@@ -32,9 +32,12 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
       {/* Synthesis sentence — hero position above cards */}
       <div
         style={{
-          paddingBottom: "20px",
-          borderBottom: "1px solid var(--border-subtle)",
-          marginBottom: "16px",
+          background: "var(--bg-card)",
+          border: "1px solid var(--border)",
+          borderLeft: "3px solid var(--success)",
+          borderRadius: "8px",
+          padding: "20px 24px",
+          marginBottom: "20px",
         }}
       >
         {synthesisSentence ? (
@@ -43,7 +46,7 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
               fontSize: "18px",
               fontWeight: 600,
               color: "var(--text-primary)",
-              lineHeight: 1.5,
+              lineHeight: 1.6,
               letterSpacing: "-0.01em",
               maxWidth: "900px",
               margin: 0,
@@ -52,15 +55,26 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
             {synthesisSentence}
           </p>
         ) : (
-          <div
-            style={{
-              height: "18px",
-              width: "70%",
-              background: "var(--bg-subtle)",
-              borderRadius: "4px",
-              animation: "skeleton-fade 1.5s ease-in-out infinite",
-            }}
-          />
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div
+              style={{
+                height: "18px",
+                width: "85%",
+                background: "var(--bg-subtle)",
+                borderRadius: "4px",
+                animation: "skeleton-fade 1.5s ease-in-out infinite",
+              }}
+            />
+            <div
+              style={{
+                height: "18px",
+                width: "60%",
+                background: "var(--bg-subtle)",
+                borderRadius: "4px",
+                animation: "skeleton-fade 1.5s ease-in-out infinite",
+              }}
+            />
+          </div>
         )}
       </div>
 
@@ -83,7 +97,7 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
             <MarketCard
               type="topSector"
               data={null}
-              sectorName={topSector?.sector?.replace("IA ", "") || "\u2014"}
+              sectorName={topSector?.sector?.replace("IA ", "") || "—"}
               sectorFlow={topSector?.net_retail_sales_gbpm}
               sectorMonth={topSector ? formatMonth(topSector.month) : ""}
             />
