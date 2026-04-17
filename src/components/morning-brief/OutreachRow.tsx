@@ -7,7 +7,16 @@ interface OutreachRowProps {
   adviserCount: number | null;
   mandate: string;
   whyThisWeek: string;
+  fitScore: number;
+  differentiator: string;
   onViewBrief: () => void;
+}
+
+function getPriorityBarColor(score: number): string {
+  if (score >= 80) return "var(--success-text)";
+  if (score >= 70) return "var(--success)";
+  if (score >= 60) return "rgba(34,197,94,0.40)";
+  return "var(--bg-subtle)";
 }
 
 export function OutreachRow({
@@ -17,8 +26,14 @@ export function OutreachRow({
   adviserCount,
   mandate,
   whyThisWeek,
+  fitScore,
+  differentiator,
   onViewBrief,
 }: OutreachRowProps) {
+  const fullWhyText = differentiator
+    ? `${whyThisWeek} \u00B7 ${differentiator}`
+    : whyThisWeek;
+
   return (
     <tr
       style={{ transition: "background 100ms ease" }}
@@ -53,7 +68,18 @@ export function OutreachRow({
           borderBottom: "1px solid var(--border-subtle)",
         }}
       >
-        {firmName}
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <div
+            style={{
+              width: "4px",
+              height: "32px",
+              borderRadius: "9999px",
+              flexShrink: 0,
+              background: getPriorityBarColor(fitScore),
+            }}
+          />
+          {firmName}
+        </div>
       </td>
       <td
         style={{
@@ -78,7 +104,7 @@ export function OutreachRow({
           borderBottom: "1px solid var(--border-subtle)",
         }}
       >
-        {adviserCount ?? "—"}
+        {adviserCount ?? "\u2014"}
       </td>
       <td
         style={{
@@ -102,6 +128,11 @@ export function OutreachRow({
         }}
       >
         {whyThisWeek}
+        {differentiator && (
+          <span style={{ color: "var(--text-tertiary)" }}>
+            {" "}&middot; {differentiator}
+          </span>
+        )}
       </td>
       <td
         style={{
@@ -132,7 +163,7 @@ export function OutreachRow({
             e.currentTarget.style.textDecoration = "none";
           }}
         >
-          View Brief →
+          View Brief &rarr;
         </button>
       </td>
     </tr>

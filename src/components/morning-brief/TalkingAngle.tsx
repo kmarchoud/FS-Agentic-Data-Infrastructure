@@ -1,25 +1,41 @@
 "use client";
 
-import { useAmber } from "@/lib/contexts/amber-context";
-
 interface TalkingAngleProps {
   text: string;
+  sentiment: "positive" | "neutral" | "negative";
   isHighestSentiment: boolean;
   onFocus: () => void;
 }
 
-export function TalkingAngle({ text, isHighestSentiment, onFocus }: TalkingAngleProps) {
-  const { amberOwner } = useAmber();
-  const isAmber = amberOwner === "impact-card" && isHighestSentiment;
+const SENTIMENT_STYLES = {
+  positive: {
+    bg: "var(--success-subtle)",
+    borderColor: "var(--success-text)",
+    labelColor: "var(--success-text)",
+  },
+  negative: {
+    bg: "var(--danger-subtle)",
+    borderColor: "var(--danger-text)",
+    labelColor: "var(--danger-text)",
+  },
+  neutral: {
+    bg: "var(--bg-raised)",
+    borderColor: "var(--text-tertiary)",
+    labelColor: "var(--text-tertiary)",
+  },
+};
+
+export function TalkingAngle({ text, sentiment, isHighestSentiment, onFocus }: TalkingAngleProps) {
+  const styles = SENTIMENT_STYLES[sentiment];
 
   return (
-    <div style={{ marginTop: "4px" }}>
+    <div style={{ marginTop: "12px" }}>
       <div
         style={{
-          background: isAmber ? "var(--accent-subtle)" : "transparent",
-          border: isAmber ? "1px solid rgba(245, 158, 11, 0.20)" : "1px solid transparent",
+          background: styles.bg,
+          borderLeft: `3px solid ${styles.borderColor}`,
           borderRadius: "6px",
-          padding: "10px 12px",
+          padding: "12px",
         }}
       >
         <div
@@ -28,7 +44,7 @@ export function TalkingAngle({ text, isHighestSentiment, onFocus }: TalkingAngle
             fontWeight: 500,
             textTransform: "uppercase",
             letterSpacing: "0.06em",
-            color: isAmber ? "var(--accent)" : "var(--text-tertiary)",
+            color: styles.labelColor,
             marginBottom: "4px",
           }}
         >
@@ -38,35 +54,40 @@ export function TalkingAngle({ text, isHighestSentiment, onFocus }: TalkingAngle
           style={{
             fontSize: "13px",
             color: "var(--text-secondary)",
-            fontWeight: isAmber ? 500 : 400,
+            fontWeight: 500,
             lineHeight: 1.5,
           }}
         >
           {text}
         </div>
       </div>
-      {!isAmber && (
-        <button
-          onClick={onFocus}
-          style={{
-            background: "none",
-            border: "none",
-            padding: "4px 0",
-            fontSize: "11px",
-            color: "var(--text-tertiary)",
-            cursor: "pointer",
-            transition: "color 120ms ease",
-            marginTop: "4px",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "var(--text-secondary)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "var(--text-tertiary)";
-          }}
-        >
-          Focus this angle
-        </button>
+      {!isHighestSentiment && (
+        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "8px" }}>
+          <button
+            onClick={onFocus}
+            style={{
+              background: "var(--bg-card)",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              padding: "4px 10px",
+              fontSize: "11px",
+              fontWeight: 500,
+              color: "var(--text-secondary)",
+              cursor: "pointer",
+              transition: "all 120ms ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-strong)";
+              e.currentTarget.style.color = "var(--text-primary)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.color = "var(--text-secondary)";
+            }}
+          >
+            Make this today&apos;s angle
+          </button>
+        </div>
       )}
     </div>
   );
