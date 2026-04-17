@@ -20,11 +20,11 @@ from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
-ENRICHED_DIR = BASE_DIR / "enriched"
-INPUT_FILE = ENRICHED_DIR / "base_universe.jsonl"
-OUTPUT_JSONL = ENRICHED_DIR / "keyridge_ranked.jsonl"
-OUTPUT_CSV = ENRICHED_DIR / "keyridge_ranked.csv"
-OUTPUT_REPORT = ENRICHED_DIR / "keyridge_scoring_report.md"
+INPUT_FILE = BASE_DIR.parent / "data" / "base_universe.jsonl"
+DATA_DIR = BASE_DIR.parent / "data"
+OUTPUT_JSONL = DATA_DIR / "keyridge_ranked.jsonl"
+OUTPUT_CSV = DATA_DIR / "keyridge_ranked.csv"
+OUTPUT_REPORT = DATA_DIR / "keyridge_scoring_report.md"
 
 # Only score these firm types
 SCOREABLE_TYPES = {"ifa", "wealth_manager"}
@@ -369,6 +369,22 @@ def main():
         firm["restricted_network"] = is_restricted
 
         scored.append(firm)
+
+    # ── MIN-MAX NORMALISATION ──
+    # Rescale priority_score to 35-88 range for intuitive 0-100 scale
+    raw_scores = [f["priority_score"] for f in scored]
+    raw_min = min(raw_scores)
+    raw_max = max(raw_scores)
+    if raw_max > raw_min:
+        for firm in scored:
+            firm["priority_score_raw"] = firm["priority_score"]
+            firm["priority_score"] = round(
+                35 + (firm["priority_score"] - raw_min) / (raw_max - raw_min) * 53, 1
+            )
+    else:
+        for firm in scored:
+            firm["priority_score_raw"] = firm["priority_score"]
+    print(f"\nScore normalisation: raw {raw_min:.1f}–{raw_max:.1f} → normalised 35.0–88.0")
 
     # ── SORT: independent first, then restricted ──
     independent = [f for f in scored if not f["restricted_network"]]

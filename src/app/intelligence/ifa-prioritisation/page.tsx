@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   CircleDot,
   Clock,
@@ -12,6 +12,7 @@ import {
   FileText,
 } from "lucide-react";
 import { TopBar } from "@/components/dashboard/topbar";
+import { realIFARankings, UNIVERSE_TOTAL } from "@/lib/data/ifa-real-data";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -25,11 +26,11 @@ interface SignalItem {
 }
 
 interface ScoreBreakdown {
-  philosophyMatch: number; // max 30
-  platformOverlap: number; // max 25
-  aumBandFit: number;       // max 20
-  growthTrajectory: number; // max 15
-  signalRecency: number;    // max 10
+  firmScale: number;         // max 30
+  distributionMatch: number; // max 25
+  regulatoryFit: number;     // max 20
+  fundFit: number;           // max 15
+  marketTiming: number;      // max 10
 }
 
 interface IFARanking {
@@ -38,8 +39,6 @@ interface IFARanking {
   firm: string;
   firmType: FirmType;
   region: string;
-  estAUM: string;
-  estAUMValue: number; // in millions, for sorting
   fitScore: number;
   keySignal: string;
   fcaNumber: string;
@@ -50,567 +49,109 @@ interface IFARanking {
   companiesHouseNumber: string;
   signals: SignalItem[];
   scoreBreakdown: ScoreBreakdown;
+  review_count: number | null;
+  adviser_count: number | null;
+  signal_count: number;
+  active_mandate: string;
+  brief_available: boolean;
+  brief_who: string | null;
+  brief_why: string | null;
+  brief_opener: string | null;
 }
 
-// ── Mock data — 25 UK IFA firms ───────────────────────────────────────────────
+// ── Mandate constants ────────────────────────────────────────────────────────
 
-const ifaRankings: IFARanking[] = [
-  {
-    id: "1",
-    rank: 1,
-    firm: "Paradigm Capital Ltd",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£2.1bn",
-    estAUMValue: 2100,
-    fitScore: 91,
-    keySignal: "Investment director Sarah Chen moved from Schroders Global 3 weeks ago — opens relationship door",
-    fcaNumber: "FRN 512847",
-    registrationDate: "14 Mar 2009",
-    permissions: "Advising on investments, arranging deals, managing investments",
-    keyIndividuals: ["James Whitfield (CEO)", "Sarah Chen (Investment Director)", "Rachel Moore (CIO)"],
-    officeAddress: "12 Broadgate Circle, London EC2M 2QS",
-    companiesHouseNumber: "06821934",
-    signals: [
-      { date: "10 Mar 2026", source: "Press", description: "Sarah Chen joins as Investment Director from Schroders Global Equity team" },
-      { date: "28 Feb 2026", source: "Web", description: "Investment philosophy page updated — explicit reference to systematic and factor-based approaches" },
-      { date: "15 Jan 2026", source: "FCA", description: "RMAR filing shows 22% AUM growth year-on-year" },
-    ],
-    scoreBreakdown: { philosophyMatch: 28, platformOverlap: 22, aumBandFit: 18, growthTrajectory: 14, signalRecency: 9 },
-  },
-  {
-    id: "2",
-    rank: 2,
-    firm: "Attivo Group",
-    firmType: "Network",
-    region: "Manchester",
-    estAUM: "£1.1bn",
-    estAUMValue: 1100,
-    fitScore: 87,
-    keySignal: "Added systematic equity strategy to approved list per updated website Q4 2025",
-    fcaNumber: "FRN 488312",
-    registrationDate: "02 Sep 2007",
-    permissions: "Advising on investments, arranging deals in investments",
-    keyIndividuals: ["David Hartley (MD)", "Claire Simmons (Head of Investments)", "Tom Yates (Research Lead)"],
-    officeAddress: "55 Spring Gardens, Manchester M2 2BX",
-    companiesHouseNumber: "05834621",
-    signals: [
-      { date: "18 Nov 2025", source: "Web", description: "Approved list updated — systematic equity strategy category added" },
-      { date: "04 Oct 2025", source: "CH", description: "New board appointment: Claire Simmons joins as Head of Investments" },
-      { date: "22 Aug 2025", source: "FCA", description: "Permissions extended to include collective portfolio management" },
-    ],
-    scoreBreakdown: { philosophyMatch: 26, platformOverlap: 21, aumBandFit: 17, growthTrajectory: 14, signalRecency: 9 },
-  },
-  {
-    id: "3",
-    rank: 3,
-    firm: "Foster Denovo",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£3.2bn",
-    estAUMValue: 3200,
-    fitScore: 84,
-    keySignal: "FCA RMAR shows 28% client growth YoY — scaling fast, may need broader fund range",
-    fcaNumber: "FRN 462654",
-    registrationDate: "11 Jun 2006",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Lee Robertson (CEO)", "Marc Sherland (CIO)", "Jessica Park (Head of Research)"],
-    officeAddress: "1 Minster Court, Mincing Lane, London EC3R 7AA",
-    companiesHouseNumber: "05764923",
-    signals: [
-      { date: "20 Feb 2026", source: "FCA", description: "RMAR shows 28% client growth year-on-year — fastest in three years" },
-      { date: "12 Jan 2026", source: "Web", description: "New institutional proposition page launched targeting systematic mandates" },
-      { date: "30 Nov 2025", source: "Press", description: "Foster Denovo listed in FT Adviser Top 100 Financial Advisers 2025" },
-    ],
-    scoreBreakdown: { philosophyMatch: 25, platformOverlap: 22, aumBandFit: 18, growthTrajectory: 13, signalRecency: 6 },
-  },
-  {
-    id: "4",
-    rank: 4,
-    firm: "Progeny Wealth",
-    firmType: "DA Firm",
-    region: "Leeds",
-    estAUM: "£1.2bn",
-    estAUMValue: 1200,
-    fitScore: 82,
-    keySignal: "Director appointment: new Head of Investments from Jupiter AM (Companies House, 6 weeks ago)",
-    fcaNumber: "FRN 534218",
-    registrationDate: "28 Feb 2011",
-    permissions: "Advising on investments, arranging deals, managing investments",
-    keyIndividuals: ["Neil Moles (CEO)", "Andrew Buchanan (Head of Investments)", "Laura Tesh (CIO)"],
-    officeAddress: "3 Whitehall Quay, Leeds LS1 4HR",
-    companiesHouseNumber: "07512834",
-    signals: [
-      { date: "17 Feb 2026", source: "CH", description: "Andrew Buchanan appointed Head of Investments — previously at Jupiter Asset Management" },
-      { date: "05 Jan 2026", source: "FCA", description: "New MiFID permissions granted for cross-border distribution" },
-      { date: "20 Dec 2025", source: "Web", description: "Investment committee page updated — growth mandate focus added" },
-    ],
-    scoreBreakdown: { philosophyMatch: 24, platformOverlap: 20, aumBandFit: 17, growthTrajectory: 13, signalRecency: 8 },
-  },
-  {
-    id: "5",
-    rank: 5,
-    firm: "Informed Financial Planning",
-    firmType: "DA Firm",
-    region: "Oxford",
-    estAUM: "£890m",
-    estAUMValue: 890,
-    fitScore: 79,
-    keySignal: "Investment philosophy page updated to emphasise systematic and factor-based approaches",
-    fcaNumber: "FRN 497183",
-    registrationDate: "03 Apr 2008",
-    permissions: "Advising on investments, arranging deals in investments",
-    keyIndividuals: ["Philip Dragoumis (MD)", "Helen Watkins (CIO)", "Mark Fairweather (Research)"],
-    officeAddress: "Seacourt Tower, West Way, Oxford OX2 0JJ",
-    companiesHouseNumber: "06384721",
-    signals: [
-      { date: "08 Mar 2026", source: "Web", description: "Philosophy page refresh — systematic factor investing and evidence-based allocation now central" },
-      { date: "14 Feb 2026", source: "Press", description: "Shortlisted for Professional Adviser Awards — Best Client Outcomes category" },
-      { date: "10 Jan 2026", source: "FCA", description: "RMAR filing indicates stable AUM growth of 14% year-on-year" },
-    ],
-    scoreBreakdown: { philosophyMatch: 27, platformOverlap: 18, aumBandFit: 15, growthTrajectory: 11, signalRecency: 8 },
-  },
-  {
-    id: "6",
-    rank: 6,
-    firm: "Atticus Wealth",
-    firmType: "DA Firm",
-    region: "Bristol",
-    estAUM: "£540m",
-    estAUMValue: 540,
-    fitScore: 76,
-    keySignal: "Joined Nucleus platform Q3 — expanding fund access, reviewing panel",
-    fcaNumber: "FRN 521094",
-    registrationDate: "19 Jul 2010",
-    permissions: "Advising on investments, arranging deals, credit broking",
-    keyIndividuals: ["Simon Walsh (CEO)", "Natasha Brennan (Head of Investments)", "Chris Fielding (Research)"],
-    officeAddress: "5 Glass Wharf, Bristol BS2 0FR",
-    companiesHouseNumber: "07234816",
-    signals: [
-      { date: "01 Sep 2025", source: "Web", description: "Nucleus platform integration announced — new fund categories accessible to clients" },
-      { date: "28 Aug 2025", source: "Press", description: "Atticus Wealth completes merger with Williams Financial Planning, AUM doubles" },
-      { date: "12 Jul 2025", source: "FCA", description: "Approved persons update — three new investment advisers authorised" },
-    ],
-    scoreBreakdown: { philosophyMatch: 22, platformOverlap: 21, aumBandFit: 14, growthTrajectory: 12, signalRecency: 7 },
-  },
-  {
-    id: "7",
-    rank: 7,
-    firm: "Perspective Financial Group",
-    firmType: "Network",
-    region: "Bristol",
-    estAUM: "£1.8bn",
-    estAUMValue: 1800,
-    fitScore: 74,
-    keySignal: "New client proposition document mentions 'evidence-based investing' — strong mandate fit",
-    fcaNumber: "FRN 443781",
-    registrationDate: "14 Jan 2005",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Paul Armson (CEO)", "Victoria Clarke (CIO)", "Ben Thomson (Head of Research)"],
-    officeAddress: "Aztec West Business Park, Bristol BS32 4TD",
-    companiesHouseNumber: "05234178",
-    signals: [
-      { date: "22 Feb 2026", source: "Web", description: "Client proposition document updated — 'evidence-based investing' and systematic allocation prominently featured" },
-      { date: "15 Dec 2025", source: "CH", description: "Victoria Clarke appointed CIO — previously at Vanguard UK institutional team" },
-      { date: "04 Nov 2025", source: "FCA", description: "Network permissions expanded — additional AR firms onboarded" },
-    ],
-    scoreBreakdown: { philosophyMatch: 23, platformOverlap: 19, aumBandFit: 16, growthTrajectory: 10, signalRecency: 6 },
-  },
-  {
-    id: "8",
-    rank: 8,
-    firm: "Arbor Asset Management",
-    firmType: "DA Firm",
-    region: "Edinburgh",
-    estAUM: "£680m",
-    estAUMValue: 680,
-    fitScore: 71,
-    keySignal: "RMAR revenue up 41% — growing rapidly, underserved by current AM relationships",
-    fcaNumber: "FRN 508921",
-    registrationDate: "07 Nov 2009",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Alasdair MacLeod (CEO)", "Fiona Reid (CIO)", "Callum Fraser (Research Lead)"],
-    officeAddress: "Quartermile 4, Lauriston Place, Edinburgh EH3 9EN",
-    companiesHouseNumber: "SC384172",
-    signals: [
-      { date: "28 Jan 2026", source: "FCA", description: "RMAR revenue up 41% year-on-year — fastest growth in the firm's history" },
-      { date: "10 Dec 2025", source: "CH", description: "Board expansion — two new non-executive directors appointed" },
-      { date: "03 Oct 2025", source: "Web", description: "Investment team page expanded — global equity section added to core capability" },
-    ],
-    scoreBreakdown: { philosophyMatch: 21, platformOverlap: 18, aumBandFit: 15, growthTrajectory: 12, signalRecency: 5 },
-  },
-  {
-    id: "9",
-    rank: 9,
-    firm: "Equilibrium Asset Management",
-    firmType: "DA Firm",
-    region: "North West",
-    estAUM: "£780m",
-    estAUMValue: 780,
-    fitScore: 68,
-    keySignal: "Published white paper on systematic alpha generation — signals philosophy alignment",
-    fcaNumber: "FRN 452193",
-    registrationDate: "22 May 2006",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Colin Lawson (Founder)", "Gavin Rankin (CIO)", "Sarah Rutherford (Research)"],
-    officeAddress: "Ascot House, Epsom Avenue, Handforth SK9 3RN",
-    companiesHouseNumber: "05812934",
-    signals: [
-      { date: "12 Mar 2026", source: "Web", description: "New white paper published: 'The Case for Systematic Alpha' — strong mandate alignment" },
-      { date: "05 Feb 2026", source: "Press", description: "Equilibrium wins Best Discretionary Manager at Citywire Awards 2025" },
-    ],
-    scoreBreakdown: { philosophyMatch: 22, platformOverlap: 17, aumBandFit: 13, growthTrajectory: 10, signalRecency: 6 },
-  },
-  {
-    id: "10",
-    rank: 10,
-    firm: "Cazenove Capital",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£4.1bn",
-    estAUMValue: 4100,
-    fitScore: 66,
-    keySignal: "New institutional mandate desk opened in Q1 2026 — actively seeking systematic strategies",
-    fcaNumber: "FRN 113955",
-    registrationDate: "01 Jun 1998",
-    permissions: "Advising on investments, managing investments, arranging deals, safeguarding",
-    keyIndividuals: ["Edmund Truell (Chair)", "Gemma Harrington (Head of Mandates)", "Alex Pemberton (CIO)"],
-    officeAddress: "12 Moorgate, London EC2R 6DA",
-    companiesHouseNumber: "01679384",
-    signals: [
-      { date: "03 Mar 2026", source: "Press", description: "Institutional mandate desk launched — targeting systematic and quantitative strategies" },
-      { date: "18 Jan 2026", source: "CH", description: "Gemma Harrington joins as Head of Mandates — previously at BlackRock Institutional" },
-    ],
-    scoreBreakdown: { philosophyMatch: 20, platformOverlap: 19, aumBandFit: 13, growthTrajectory: 9, signalRecency: 5 },
-  },
-  {
-    id: "11",
-    rank: 11,
-    firm: "Thorntons Investments",
-    firmType: "DA Firm",
-    region: "Scotland",
-    estAUM: "£420m",
-    estAUMValue: 420,
-    fitScore: 64,
-    keySignal: "FCA permissions updated — added collective investment undertakings to scope",
-    fcaNumber: "FRN 487234",
-    registrationDate: "15 Apr 2008",
-    permissions: "Advising on investments, managing investments, collective investment undertakings",
-    keyIndividuals: ["Robert Cairns (CEO)", "Moira Sinclair (Investment Director)"],
-    officeAddress: "Whitehall House, 33 Yeaman Shore, Dundee DD1 4BJ",
-    companiesHouseNumber: "SC289471",
-    signals: [
-      { date: "25 Feb 2026", source: "FCA", description: "Permissions updated — collective investment undertakings now in scope" },
-      { date: "10 Nov 2025", source: "Web", description: "Website relaunched with enhanced institutional client focus" },
-    ],
-    scoreBreakdown: { philosophyMatch: 19, platformOverlap: 16, aumBandFit: 13, growthTrajectory: 10, signalRecency: 6 },
-  },
-  {
-    id: "12",
-    rank: 12,
-    firm: "Raymond James Financial Services",
-    firmType: "Network",
-    region: "Midlands",
-    estAUM: "£2.4bn",
-    estAUMValue: 2400,
-    fitScore: 63,
-    keySignal: "Network expanded systematic fund category on approved list November 2025",
-    fcaNumber: "FRN 705062",
-    registrationDate: "12 Feb 2019",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Alan Steel (MD)", "Patrick Thomson (Research Director)", "Sophie Clarke (Compliance)"],
-    officeAddress: "Colmore Gate, 2-6 Colmore Row, Birmingham B3 2QD",
-    companiesHouseNumber: "11823947",
-    signals: [
-      { date: "15 Nov 2025", source: "Web", description: "Approved list expanded — systematic global equity now a recognised strategy category" },
-      { date: "09 Sep 2025", source: "FCA", description: "New AR firms onboarded — network headcount now 340 advisers" },
-    ],
-    scoreBreakdown: { philosophyMatch: 18, platformOverlap: 20, aumBandFit: 12, growthTrajectory: 9, signalRecency: 4 },
-  },
-  {
-    id: "13",
-    rank: 13,
-    firm: "Kingswood Group",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£1.5bn",
-    estAUMValue: 1500,
-    fitScore: 61,
-    keySignal: "New CIO appointment from Vanguard — strong factor investing background signals philosophy shift",
-    fcaNumber: "FRN 578213",
-    registrationDate: "08 Aug 2014",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Gary Wilder (CEO)", "Jonathan Hughes (CIO)", "Rebecca Stone (Research)"],
-    officeAddress: "14 Cornhill, London EC3V 3ND",
-    companiesHouseNumber: "09178234",
-    signals: [
-      { date: "01 Mar 2026", source: "CH", description: "Jonathan Hughes joins as CIO — previously Head of Factor Strategies at Vanguard UK" },
-      { date: "20 Jan 2026", source: "Web", description: "Investment process page updated to include quantitative screening methodology" },
-    ],
-    scoreBreakdown: { philosophyMatch: 20, platformOverlap: 15, aumBandFit: 13, growthTrajectory: 9, signalRecency: 4 },
-  },
-  {
-    id: "14",
-    rank: 14,
-    firm: "Succession Wealth",
-    firmType: "Network",
-    region: "South East",
-    estAUM: "£2.9bn",
-    estAUMValue: 2900,
-    fitScore: 59,
-    keySignal: "Platform consolidation to Transact and Nucleus — fund access broadening significantly",
-    fcaNumber: "FRN 521041",
-    registrationDate: "03 Mar 2010",
-    permissions: "Advising on investments, arranging deals, managing investments",
-    keyIndividuals: ["James Stevenson (CEO)", "Nicholas Crawford (Investment Director)"],
-    officeAddress: "One Valpy, Reading RG1 1AR",
-    companiesHouseNumber: "07134821",
-    signals: [
-      { date: "20 Feb 2026", source: "Press", description: "Platform migration complete — now operating across Transact, Nucleus and Quilter" },
-      { date: "04 Dec 2025", source: "FCA", description: "Regulatory returns filed — AUM stable, client numbers growing" },
-    ],
-    scoreBreakdown: { philosophyMatch: 17, platformOverlap: 21, aumBandFit: 11, growthTrajectory: 7, signalRecency: 3 },
-  },
-  {
-    id: "15",
-    rank: 15,
-    firm: "Beaufort Financial",
-    firmType: "AR Firm",
-    region: "South West",
-    estAUM: "£310m",
-    estAUMValue: 310,
-    fitScore: 57,
-    keySignal: "AR firm recently gaining DA status — independence drive creates fund selection opportunity",
-    fcaNumber: "FRN 478921",
-    registrationDate: "17 Sep 2007",
-    permissions: "Advising on investments, arranging deals in investments",
-    keyIndividuals: ["Michael Beaufort (Principal)", "Sandra Leigh (Head of Client Services)"],
-    officeAddress: "Bath Road, Cheltenham GL53 7LH",
-    companiesHouseNumber: "06234817",
-    signals: [
-      { date: "28 Feb 2026", source: "FCA", description: "Application submitted for direct authorisation — AR status to be relinquished Q3 2026" },
-      { date: "11 Jan 2026", source: "Web", description: "'Our independence' section added to website — signals philosophy shift away from restricted advice" },
-    ],
-    scoreBreakdown: { philosophyMatch: 18, platformOverlap: 15, aumBandFit: 11, growthTrajectory: 9, signalRecency: 4 },
-  },
-  {
-    id: "16",
-    rank: 16,
-    firm: "True Potential Wealth Management",
-    firmType: "Network",
-    region: "North East",
-    estAUM: "£3.8bn",
-    estAUMValue: 3800,
-    fitScore: 55,
-    keySignal: "Network MPS review underway — fund selection committee meeting Q2 2026",
-    fcaNumber: "FRN 529360",
-    registrationDate: "21 Jan 2011",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["David Harrison (CEO)", "Colin Lawson (CIO)", "Jonathan Polin (Investment Director)"],
-    officeAddress: "True Potential House, Newburn Riverside, Newcastle NE15 8NZ",
-    companiesHouseNumber: "07541923",
-    signals: [
-      { date: "15 Mar 2026", source: "Press", description: "MPS annual review announced — fund selection committee to meet April 2026" },
-      { date: "06 Jan 2026", source: "FCA", description: "Network RMAR shows £380m net inflows in 2025 — strong platform growth" },
-    ],
-    scoreBreakdown: { philosophyMatch: 16, platformOverlap: 18, aumBandFit: 10, growthTrajectory: 8, signalRecency: 3 },
-  },
-  {
-    id: "17",
-    rank: 17,
-    firm: "Canaccord Genuity Wealth",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£2.2bn",
-    estAUMValue: 2200,
-    fitScore: 53,
-    keySignal: "Institutional desk expanding — hired two ex-AM distribution professionals in Q4 2025",
-    fcaNumber: "FRN 491044",
-    registrationDate: "14 Dec 2008",
-    permissions: "Advising on investments, managing investments, arranging deals, safeguarding",
-    keyIndividuals: ["David Esfandi (CEO)", "Liz Brayshaw (CIO)", "Tim Giles (Head of Institutional)"],
-    officeAddress: "88 Wood Street, London EC2V 7RS",
-    companiesHouseNumber: "06812347",
-    signals: [
-      { date: "20 Nov 2025", source: "CH", description: "Two new appointments to institutional distribution team — ex-Fidelity and ex-M&G professionals" },
-      { date: "12 Oct 2025", source: "Web", description: "Institutional capabilities section expanded — now covers systematic and quantitative strategies" },
-    ],
-    scoreBreakdown: { philosophyMatch: 17, platformOverlap: 16, aumBandFit: 11, growthTrajectory: 7, signalRecency: 2 },
-  },
-  {
-    id: "18",
-    rank: 18,
-    firm: "Tilney Investment Management",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£5.1bn",
-    estAUMValue: 5100,
-    fitScore: 51,
-    keySignal: "Integration with Smith & Williamson complete — expanded investment committee now reviewing all mandates",
-    fcaNumber: "FRN 121770",
-    registrationDate: "08 Apr 1992",
-    permissions: "Advising on investments, managing investments, arranging deals, safeguarding",
-    keyIndividuals: ["Christopher Woodhouse (CEO)", "Emma Wall (Head of Research)", "Philip Goetz (CIO)"],
-    officeAddress: "1 Gresham Street, London EC2V 7BX",
-    companiesHouseNumber: "01789234",
-    signals: [
-      { date: "28 Jan 2026", source: "Press", description: "Evelyn Partners integration finalised — unified investment committee established" },
-      { date: "15 Nov 2025", source: "Web", description: "Investment philosophy refreshed — systematic approaches now formally part of core framework" },
-    ],
-    scoreBreakdown: { philosophyMatch: 16, platformOverlap: 16, aumBandFit: 10, growthTrajectory: 7, signalRecency: 2 },
-  },
-  {
-    id: "19",
-    rank: 19,
-    firm: "Quilter Financial Planning",
-    firmType: "Network",
-    region: "South East",
-    estAUM: "£6.2bn",
-    estAUMValue: 6200,
-    fitScore: 49,
-    keySignal: "New head of fund research appointed — prior role was at Morningstar covering systematic funds",
-    fcaNumber: "FRN 440703",
-    registrationDate: "17 Jan 2005",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["Steven Levin (CEO)", "Harriet Jenner (Head of Fund Research)", "Paul Harrison (CIO)"],
-    officeAddress: "Senator House, 85 Queen Victoria Street, London EC4V 4AB",
-    companiesHouseNumber: "05341782",
-    signals: [
-      { date: "10 Mar 2026", source: "CH", description: "Harriet Jenner appointed Head of Fund Research — previously Senior Analyst at Morningstar covering systematic equity" },
-      { date: "25 Jan 2026", source: "FCA", description: "RMAR filed — network retains stable 1,200 adviser headcount" },
-    ],
-    scoreBreakdown: { philosophyMatch: 15, platformOverlap: 17, aumBandFit: 9, growthTrajectory: 6, signalRecency: 2 },
-  },
-  {
-    id: "20",
-    rank: 20,
-    firm: "Hargreaves Lansdown Financial Advice",
-    firmType: "DA Firm",
-    region: "South West",
-    estAUM: "£4.7bn",
-    estAUMValue: 4700,
-    fitScore: 47,
-    keySignal: "Advice business strategic review — white label mandates under consideration for first time",
-    fcaNumber: "FRN 115248",
-    registrationDate: "12 Sep 1991",
-    permissions: "Advising on investments, managing investments, arranging deals, safeguarding, deposit taking",
-    keyIndividuals: ["Chris Hill (CEO)", "Lydia Romero (Head of Advice)", "Dan Olley (CTO)"],
-    officeAddress: "One College Square South, Anchor Road, Bristol BS1 5HL",
-    companiesHouseNumber: "02122142",
-    signals: [
-      { date: "05 Mar 2026", source: "Press", description: "Strategic review announced — white label mandate proposition to be piloted in H2 2026" },
-      { date: "12 Feb 2026", source: "Web", description: "Adviser proposition page updated with expanded fund access messaging" },
-    ],
-    scoreBreakdown: { philosophyMatch: 14, platformOverlap: 16, aumBandFit: 9, growthTrajectory: 6, signalRecency: 2 },
-  },
-  {
-    id: "21",
-    rank: 21,
-    firm: "Ascot Lloyd",
-    firmType: "DA Firm",
-    region: "South East",
-    estAUM: "£1.6bn",
-    estAUMValue: 1600,
-    fitScore: 45,
-    keySignal: "Five acquisitions in 12 months — integrating fund panels, creating new selection opportunity",
-    fcaNumber: "FRN 543780",
-    registrationDate: "04 Oct 2012",
-    permissions: "Advising on investments, arranging deals, managing investments",
-    keyIndividuals: ["Andrew Tripp (CEO)", "Mark Walsh (CIO)", "Charlotte Evans (Head of Research)"],
-    officeAddress: "One Bartholomew Lane, London EC2N 2AX",
-    companiesHouseNumber: "08234791",
-    signals: [
-      { date: "22 Feb 2026", source: "Press", description: "Fifth acquisition in 12 months — panel harmonisation project launched" },
-      { date: "30 Jan 2026", source: "CH", description: "Board restructure following acquisitions — investment committee reformed" },
-    ],
-    scoreBreakdown: { philosophyMatch: 14, platformOverlap: 14, aumBandFit: 9, growthTrajectory: 6, signalRecency: 2 },
-  },
-  {
-    id: "22",
-    rank: 22,
-    firm: "Mattioli Woods",
-    firmType: "DA Firm",
-    region: "Midlands",
-    estAUM: "£1.9bn",
-    estAUMValue: 1900,
-    fitScore: 42,
-    keySignal: "Pension consulting division expanding — new systematic mandate category added to investment framework",
-    fcaNumber: "FRN 220687",
-    registrationDate: "18 Nov 2003",
-    permissions: "Advising on investments, managing investments, pension trustee, arranging deals",
-    keyIndividuals: ["Ian Mattioli (CEO)", "Bob Woods (Chairman)", "Philip Spiers (CIO)"],
-    officeAddress: "1 New Walk, Leicester LE1 6TH",
-    companiesHouseNumber: "04462162",
-    signals: [
-      { date: "18 Jan 2026", source: "Web", description: "Pension consulting framework updated — systematic equity now a named category alongside traditional active" },
-      { date: "05 Nov 2025", source: "FCA", description: "New permissions granted for pension trustee advisory services" },
-    ],
-    scoreBreakdown: { philosophyMatch: 13, platformOverlap: 14, aumBandFit: 8, growthTrajectory: 5, signalRecency: 2 },
-  },
-  {
-    id: "23",
-    rank: 23,
-    firm: "Wesleyan Financial Services",
-    firmType: "DA Firm",
-    region: "Midlands",
-    estAUM: "£1.1bn",
-    estAUMValue: 1100,
-    fitScore: 39,
-    keySignal: "Diversifying beyond core professional market — exploring external AM relationships for first time",
-    fcaNumber: "FRN 144467",
-    registrationDate: "14 Jun 1996",
-    permissions: "Advising on investments, arranging deals, insurance mediation",
-    keyIndividuals: ["Craig Errington (CEO)", "Tim Johnson (CIO)", "Emma Bowell (Head of Research)"],
-    officeAddress: "Colmore Circus, Birmingham B4 6AR",
-    companiesHouseNumber: "02761324",
-    signals: [
-      { date: "25 Jan 2026", source: "Press", description: "CEO interview: 'We are exploring external asset management relationships for systematic strategies for the first time'" },
-    ],
-    scoreBreakdown: { philosophyMatch: 12, platformOverlap: 12, aumBandFit: 8, growthTrajectory: 5, signalRecency: 2 },
-  },
-  {
-    id: "24",
-    rank: 24,
-    firm: "Brooks Macdonald",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£3.3bn",
-    estAUMValue: 3300,
-    fitScore: 36,
-    keySignal: "New head of adviser distribution — growing MPS proposition, reviewing fund universe",
-    fcaNumber: "FRN 196822",
-    registrationDate: "22 May 2000",
-    permissions: "Advising on investments, managing investments, arranging deals, safeguarding",
-    keyIndividuals: ["Andrew Shepherd (CEO)", "Caroline Connellan (President)", "Niall O'Shea (CIO)"],
-    officeAddress: "21 Lombard Street, London EC3V 9AH",
-    companiesHouseNumber: "03959023",
-    signals: [
-      { date: "14 Feb 2026", source: "CH", description: "New Head of Adviser Distribution appointed — focus on MPS and institutional mandates" },
-    ],
-    scoreBreakdown: { philosophyMatch: 11, platformOverlap: 13, aumBandFit: 7, growthTrajectory: 4, signalRecency: 1 },
-  },
-  {
-    id: "25",
-    rank: 25,
-    firm: "Premier Miton Investors",
-    firmType: "DA Firm",
-    region: "London",
-    estAUM: "£1.4bn",
-    estAUMValue: 1400,
-    fitScore: 33,
-    keySignal: "Investment committee refresh underway — exploring systematic complementary strategies alongside active core",
-    fcaNumber: "FRN 181083",
-    registrationDate: "03 Feb 1999",
-    permissions: "Advising on investments, managing investments, arranging deals",
-    keyIndividuals: ["David Hambidge (Head of MI)", "Neil Birrell (CIO)", "Amanda Yeoman (Research)"],
-    officeAddress: "Eastgate Court, High Street, Guildford GU1 3DE",
-    companiesHouseNumber: "03639404",
-    signals: [
-      { date: "08 Mar 2026", source: "Web", description: "Investment committee page refreshed — systematic strategies listed as complementary allocation" },
-    ],
-    scoreBreakdown: { philosophyMatch: 10, platformOverlap: 11, aumBandFit: 7, growthTrajectory: 4, signalRecency: 1 },
-  },
+const MANDATE_LABELS: Record<string, string> = {
+  all: "current",
+  cautious_multi_asset: "Cautious Multi-Asset",
+  balanced_multi_asset: "Balanced Multi-Asset",
+  growth_multi_asset: "Growth Multi-Asset",
+  aggressive_multi_asset: "Aggressive Multi-Asset",
+  monthly_income: "Monthly Income",
+  uk_equity_income: "UK Equity Income",
+  global_equity: "Global Equity",
+  uk_equity: "UK Equity",
+  corporate_bond: "Corporate Bond",
+  european_equity: "European Equity",
+  north_american_equity: "North American Equity",
+};
+
+const MANDATE_OPTIONS: { value: string; label: string }[] = [
+  { value: "all", label: "All Mandates" },
+  { value: "cautious_multi_asset", label: "Cautious Multi-Asset \u2014 Portfolio III \u00b7 DRM III" },
+  { value: "balanced_multi_asset", label: "Balanced Multi-Asset \u2014 Portfolio IV \u00b7 DRM IV" },
+  { value: "growth_multi_asset", label: "Growth Multi-Asset \u2014 Portfolio V \u00b7 DRM V \u00b7 Portfolio VI \u00b7 DRM VI" },
+  { value: "aggressive_multi_asset", label: "Aggressive Multi-Asset \u2014 Portfolio VII" },
+  { value: "monthly_income", label: "Monthly Income \u2014 Diversified Monthly Income" },
+  { value: "uk_equity_income", label: "UK Equity Income \u2014 UK Equity Income Fund" },
+  { value: "global_equity", label: "Global Equity \u2014 Global Equity Fund" },
+  { value: "uk_equity", label: "UK Equity \u2014 UK Equity Fund" },
+  { value: "corporate_bond", label: "Corporate Bond \u2014 Corporate Bond Fund" },
+  { value: "european_equity", label: "European Equity \u2014 European Fund" },
+  { value: "north_american_equity", label: "North American Equity \u2014 North American Fund" },
 ];
+
+// ── Market context ───────────────────────────────────────────────────────────
+
+type MarketContext = {
+  text: string;
+  dotColor: "emerald" | "amber";
+};
+
+const MARKET_CONTEXT: Record<string, MarketContext> = {
+  all: {
+    text: "Volatility Managed and Mixed 40-85% saw the strongest inflows in Feb 2026 \u2014 cautious and growth multi-asset remain well-timed.",
+    dotColor: "emerald",
+  },
+  cautious_multi_asset: {
+    text: "IA Volatility Managed: +\u00a3275m net inflows Feb 2026 \u2014 DRM III-IV sits in the top-inflow sector.",
+    dotColor: "emerald",
+  },
+  balanced_multi_asset: {
+    text: "IA Mixed 20-60%: steady inflows \u2014 Portfolio IV well-positioned against Jupiter Merlin Income (\u00a31.68bn sector leader).",
+    dotColor: "emerald",
+  },
+  growth_multi_asset: {
+    text: "IA Mixed 40-85%: +\u00a3250m net inflows Feb 2026 \u2014 Portfolio V-VI in the second strongest inflow sector.",
+    dotColor: "emerald",
+  },
+  aggressive_multi_asset: {
+    text: "IA sector flow data updated Feb 2026. Filter by mandate to see sector-specific context.",
+    dotColor: "amber",
+  },
+  monthly_income: {
+    text: "Safe-haven rotation underway \u2014 multi-asset income seeing consistent \u00a31.3-1.5bn/month inflows per Calastone FFI.",
+    dotColor: "emerald",
+  },
+  uk_equity_income: {
+    text: "IA UK Equity Income: outflows easing \u2014 Keyridge UK Equity Income at \u00a3132m competes in a sector led by Artemis Income (\u00a36.58bn). OCF advantage: 0.84% vs 0.87% sector average.",
+    dotColor: "amber",
+  },
+  global_equity: {
+    text: "IA Global: -\u00a3839m outflows Feb 2026 \u2014 sector under pressure. Timing calls for firms with income or cautious client focus.",
+    dotColor: "amber",
+  },
+  uk_equity: {
+    text: "IA sector flow data updated Feb 2026. Filter by mandate to see sector-specific context.",
+    dotColor: "amber",
+  },
+  corporate_bond: {
+    text: "IA sector flow data updated Feb 2026. Filter by mandate to see sector-specific context.",
+    dotColor: "amber",
+  },
+  european_equity: {
+    text: "IA sector flow data updated Feb 2026. Filter by mandate to see sector-specific context.",
+    dotColor: "amber",
+  },
+  north_american_equity: {
+    text: "IA sector flow data updated Feb 2026. Filter by mandate to see sector-specific context.",
+    dotColor: "amber",
+  },
+};
+
+// ── Real data from keyridge_ranked.csv + keyridge_briefs.json ────────────────
+
+const ifaRankings: IFARanking[] = realIFARankings as IFARanking[];
 
 // ── Fit score colour ──────────────────────────────────────────────────────────
 
@@ -980,11 +521,171 @@ function OutreachDraftModal({
   );
 }
 
+// ── Intelligence Signals Panel ───────────────────────────────────────────────
+
+function IntelligenceSignalsPanel({ ifa }: { ifa: IFARanking }) {
+  if (ifa.signal_count === 0) {
+    // State C — empty state
+    return (
+      <div>
+        <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
+          INTELLIGENCE SIGNALS
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: "100px",
+            textAlign: "center",
+            gap: "8px",
+          }}
+        >
+          <div
+            style={{
+              width: "28px",
+              height: "28px",
+              borderRadius: "50%",
+              border: "1.5px solid var(--border-strong)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "10px",
+                height: "1.5px",
+                background: "var(--text-disabled)",
+                borderRadius: "1px",
+              }}
+            />
+          </div>
+          <span style={{ fontSize: "12px", color: "var(--text-tertiary)" }}>
+            Limited public signals available
+          </span>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              color: "var(--text-tertiary)",
+            }}
+          >
+            Intelligence based on FCA register data only
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  // State A (signal_count >= 3) or State B (signal_count 1-2)
+  return (
+    <div>
+      <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
+        INTELLIGENCE SIGNALS
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {ifa.signals.map((signal, i) => (
+          <div key={i} style={{ display: "flex", gap: "10px" }}>
+            <div
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: "var(--accent)",
+                flexShrink: 0,
+                marginTop: "5px",
+              }}
+            />
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    color: "var(--text-tertiary)",
+                  }}
+                >
+                  {signal.date}
+                </span>
+                <span
+                  style={{
+                    ...getSourceBadgeStyle(signal.source),
+                    padding: "1px 5px",
+                    borderRadius: "4px",
+                    fontSize: "10px",
+                    fontWeight: 600,
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {signal.source}
+                </span>
+              </div>
+              <p style={{ fontSize: "12px", color: "var(--text-secondary)", margin: 0, lineHeight: 1.5 }}>
+                {signal.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      {/* State B — limited signals notice */}
+      {ifa.signal_count >= 1 && ifa.signal_count <= 2 && (
+        <div
+          style={{
+            borderTop: "1px solid var(--border-subtle)",
+            marginTop: "12px",
+            paddingTop: "10px",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              letterSpacing: "0.01em",
+              lineHeight: 1.4,
+              color: "var(--text-tertiary)",
+              margin: 0,
+            }}
+          >
+            Additional public signals limited for this firm.
+            <br />
+            Profile based on FCA register and VouchedFor data.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Detail Panel ──────────────────────────────────────────────────────────────
 
-function DetailPanel({ ifa, onBuildBrief }: { ifa: IFARanking; onBuildBrief: () => void }) {
+function DetailPanel({
+  ifa,
+  onBuildBrief,
+  briefVisible,
+  setBriefVisible,
+}: {
+  ifa: IFARanking;
+  onBuildBrief: () => void;
+  briefVisible: string | null;
+  setBriefVisible: (id: string | null) => void;
+}) {
   const breakdown = ifa.scoreBreakdown;
   const total = Object.values(breakdown).reduce((a, b) => a + b, 0);
+  const prefersReducedMotion = useReducedMotion();
+  const isBriefShown = briefVisible === ifa.id;
+
+  // Determine CTA behaviour
+  const showBrief = ifa.brief_available;
+
+  const handleCTAClick = () => {
+    if (showBrief) {
+      setBriefVisible(isBriefShown ? null : ifa.id);
+    } else {
+      onBuildBrief();
+    }
+  };
 
   return (
     <motion.div
@@ -996,155 +697,258 @@ function DetailPanel({ ifa, onBuildBrief }: { ifa: IFARanking; onBuildBrief: () 
         background: "var(--bg-card)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
-        padding: "20px",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr",
-        gap: "24px",
       }}
     >
-      {/* Column 1 — Firm Profile */}
-      <div>
-        <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
-          FIRM PROFILE
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-          {[
-            { label: "FCA Number", value: ifa.fcaNumber, mono: true },
-            { label: "Registered", value: ifa.registrationDate, mono: true },
-            { label: "Permissions", value: ifa.permissions, mono: false },
-            { label: "Key Individuals", value: ifa.keyIndividuals.join(", "), mono: false },
-            { label: "Office", value: ifa.officeAddress, mono: false },
-            { label: "Companies House", value: ifa.companiesHouseNumber, mono: true },
-          ].map(({ label, value, mono }) => (
-            <div key={label} style={{ display: "flex", gap: "8px" }}>
-              <span style={{ fontSize: "12px", color: "var(--text-tertiary)", minWidth: "110px", flexShrink: 0 }}>{label}</span>
-              <span
-                style={{
-                  fontSize: "12px",
-                  color: "var(--text-primary)",
-                  fontFamily: mono ? "var(--font-mono)" : "var(--font-sans)",
-                  fontVariantNumeric: mono ? "tabular-nums" : undefined,
-                }}
-              >
-                {value}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Column 2 — Intelligence Signals */}
-      <div>
-        <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
-          INTELLIGENCE SIGNALS
-        </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {ifa.signals.map((signal, i) => (
-            <div key={i} style={{ display: "flex", gap: "10px" }}>
-              <div
-                style={{
-                  width: "6px",
-                  height: "6px",
-                  borderRadius: "50%",
-                  background: "var(--accent)",
-                  flexShrink: 0,
-                  marginTop: "5px",
-                }}
-              />
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "6px", marginBottom: "3px" }}>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "11px",
-                      color: "var(--text-tertiary)",
-                    }}
-                  >
-                    {signal.date}
-                  </span>
-                  <span
-                    style={{
-                      ...getSourceBadgeStyle(signal.source),
-                      padding: "1px 5px",
-                      borderRadius: "4px",
-                      fontSize: "10px",
-                      fontWeight: 600,
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {signal.source}
-                  </span>
-                </div>
-                <p style={{ fontSize: "12px", color: "var(--text-secondary)", margin: 0, lineHeight: 1.5 }}>
-                  {signal.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Column 3 — Fit Score Breakdown */}
-      <div>
-        <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
-          FIT SCORE BREAKDOWN
-        </div>
+      <div
+        style={{
+          padding: "20px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          gap: "24px",
+        }}
+      >
+        {/* Column 1 — Firm Profile */}
         <div>
-          <ScoreRow label="Philosophy match" value={breakdown.philosophyMatch} max={30} />
-          <ScoreRow label="Platform overlap" value={breakdown.platformOverlap} max={25} />
-          <ScoreRow label="AUM band fit" value={breakdown.aumBandFit} max={20} />
-          <ScoreRow label="Growth trajectory" value={breakdown.growthTrajectory} max={15} />
-          <ScoreRow label="Signal recency" value={breakdown.signalRecency} max={10} />
-          <div
-            style={{
-              marginTop: "12px",
-              paddingTop: "12px",
-              borderTop: "1px solid var(--border-subtle)",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-secondary)" }}>Total Score</span>
-            <span
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "16px",
-                fontWeight: 600,
-                color: "var(--text-primary)",
-                fontVariantNumeric: "tabular-nums",
-              }}
-            >
-              {total}<span style={{ fontSize: "11px", color: "var(--text-tertiary)", fontWeight: 400 }}>/100</span>
-            </span>
+          <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
+            FIRM PROFILE
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            {[
+              { label: "FCA Number", value: ifa.fcaNumber, mono: true },
+              { label: "Registered", value: ifa.registrationDate, mono: true },
+              { label: "Permissions", value: ifa.permissions, mono: false },
+              { label: "Key Individuals", value: ifa.keyIndividuals.join(", "), mono: false },
+              { label: "Office", value: ifa.officeAddress, mono: false },
+              { label: "Companies House", value: ifa.companiesHouseNumber, mono: true },
+            ].map(({ label, value, mono }) => (
+              <div key={label} style={{ display: "flex", gap: "8px" }}>
+                <span style={{ fontSize: "12px", color: "var(--text-tertiary)", minWidth: "110px", flexShrink: 0 }}>{label}</span>
+                <span
+                  style={{
+                    fontSize: "12px",
+                    color: "var(--text-primary)",
+                    fontFamily: mono ? "var(--font-mono)" : "var(--font-sans)",
+                    fontVariantNumeric: mono ? "tabular-nums" : undefined,
+                  }}
+                >
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
-        <button
-          onClick={onBuildBrief}
-          style={{
-            marginTop: "16px",
-            width: "100%",
-            padding: "8px 16px",
-            background: "var(--accent)",
-            border: "none",
-            borderRadius: "6px",
-            fontSize: "13px",
-            fontWeight: 500,
-            color: "#fff",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "6px",
-            transition: "background 120ms ease",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-hover)")}
-          onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
-        >
-          <FileText size={13} />
-          Build Outreach Brief
-        </button>
+
+        {/* Column 2 — Fit Score Breakdown */}
+        <div>
+          <div style={{ fontSize: "11px", fontWeight: 500, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "12px" }}>
+            FIT SCORE BREAKDOWN
+          </div>
+          <div>
+            <ScoreRow label="Firm Scale" value={breakdown.firmScale} max={30} />
+            <ScoreRow label="Distribution Match" value={breakdown.distributionMatch} max={25} />
+            <ScoreRow label="Regulatory Fit" value={breakdown.regulatoryFit} max={20} />
+            <ScoreRow label="Fund Fit" value={breakdown.fundFit} max={15} />
+            <ScoreRow label="Market Timing" value={breakdown.marketTiming} max={10} />
+            <div
+              style={{
+                marginTop: "12px",
+                paddingTop: "12px",
+                borderTop: "1px solid var(--border-subtle)",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <span style={{ fontSize: "13px", fontWeight: 600, color: "var(--text-secondary)" }}>Total Score</span>
+              <span
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                {ifa.fitScore}<span style={{ fontSize: "11px", color: "var(--text-tertiary)", fontWeight: 400 }}>/100</span>
+              </span>
+            </div>
+          </div>
+          {/* CTA button */}
+          {isBriefShown ? (
+            <button
+              onClick={handleCTAClick}
+              style={{
+                marginTop: "16px",
+                width: "100%",
+                padding: "8px 16px",
+                background: "var(--bg-card)",
+                border: "1px solid var(--border)",
+                borderRadius: "6px",
+                fontSize: "13px",
+                fontWeight: 500,
+                color: "var(--text-secondary)",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "6px",
+                transition: "all 120ms ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--border-strong)";
+                e.currentTarget.style.color = "var(--text-primary)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--border)";
+                e.currentTarget.style.color = "var(--text-secondary)";
+              }}
+            >
+              <FileText size={13} />
+              Hide Brief
+            </button>
+          ) : (
+            <button
+              onClick={handleCTAClick}
+              style={{
+                marginTop: "16px",
+                width: "100%",
+                padding: "8px 16px",
+                background: "var(--accent)",
+                border: "none",
+                borderRadius: "6px",
+                fontSize: "13px",
+                fontWeight: 500,
+                color: "#fff",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "6px",
+                transition: "background 120ms ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-hover)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
+            >
+              <FileText size={13} />
+              {showBrief ? "Show Pre-Call Brief" : "Build Outreach Brief"}
+            </button>
+          )}
+        </div>
+
+        {/* Column 3 — Intelligence Signals */}
+        <IntelligenceSignalsPanel ifa={ifa} />
       </div>
+
+      {/* Brief section */}
+      <AnimatePresence>
+        {isBriefShown && ifa.brief_who && ifa.brief_why && ifa.brief_opener && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{
+              duration: prefersReducedMotion ? 0 : 0.2,
+              ease: [0.25, 0.1, 0.25, 1],
+            }}
+            style={{ overflow: "hidden" }}
+          >
+            <div
+              style={{
+                borderTop: "1px solid var(--border-subtle)",
+                padding: "24px",
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr 1fr",
+                gap: "24px",
+              }}
+            >
+              {/* WHO THEY ARE */}
+              <div>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    color: "var(--text-tertiary)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    marginBottom: "8px",
+                  }}
+                >
+                  WHO THEY ARE
+                </div>
+                <div
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {ifa.brief_who}
+                </div>
+              </div>
+
+              {/* WHY KEYRIDGE FITS */}
+              <div>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    color: "var(--text-tertiary)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    marginBottom: "8px",
+                  }}
+                >
+                  WHY KEYRIDGE FITS
+                </div>
+                <div
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {ifa.brief_why}
+                </div>
+              </div>
+
+              {/* OPENING LINE */}
+              <div
+                style={{
+                  background: "rgba(245, 158, 11, 0.08)",
+                  border: "1px solid rgba(245, 158, 11, 0.20)",
+                  borderRadius: "8px",
+                  padding: "16px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    color: "var(--accent)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    marginBottom: "8px",
+                  }}
+                >
+                  OPENING LINE
+                </div>
+                <div
+                  style={{
+                    fontSize: "14px",
+                    fontWeight: 500,
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {ifa.brief_opener}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -1165,6 +969,8 @@ function Layer1({
   expandedRow,
   setExpandedRow,
   onBuildBrief,
+  briefVisible,
+  setBriefVisible,
 }: {
   selectedMandate: string;
   setSelectedMandate: (v: string) => void;
@@ -1179,19 +985,13 @@ function Layer1({
   expandedRow: string | null;
   setExpandedRow: (id: string | null) => void;
   onBuildBrief: (ifa: IFARanking) => void;
+  briefVisible: string | null;
+  setBriefVisible: (id: string | null) => void;
 }) {
-  const aumBandMin: Record<string, number> = {
-    Any: 0,
-    "£50m+": 50,
-    "£250m+": 250,
-    "£500m+": 500,
-    "£1bn+": 1000,
-  };
-
   const filteredData = ifaRankings.filter((ifa) => {
+    if (selectedMandate !== "all" && ifa.active_mandate !== selectedMandate) return false;
     if (selectedRegion !== "All UK" && ifa.region !== selectedRegion) return false;
     if (selectedFirmType !== "All" && ifa.firmType !== selectedFirmType) return false;
-    if (ifa.estAUMValue < (aumBandMin[selectedAUMBand] ?? 0)) return false;
     return true;
   });
 
@@ -1212,7 +1012,25 @@ function Layer1({
     backgroundPosition: "right 8px center",
   };
 
-  const colHeaders = ["#", "IFA Firm", "Region", "Est. AUM", "Fit Score", "Key Signal", "FCA Status", "Action"];
+  const mandateSelectStyle: React.CSSProperties = {
+    ...selectStyle,
+    minWidth: "280px",
+  };
+
+  const colHeaders = ["#", "IFA Firm", "Region", "Score", "Key Signal", "FCA Status", "Action"];
+
+  const handleRowClick = (id: string) => {
+    setExpandedRow(expandedRow === id ? null : id);
+    setBriefVisible(null);
+  };
+
+  // Market context
+  const context = MARKET_CONTEXT[selectedMandate] || MARKET_CONTEXT["all"];
+  const dotStyle = context.dotColor === "emerald"
+    ? { background: "var(--success)", animation: "pulse-dot 2.2s ease-in-out infinite" }
+    : (briefVisible !== null
+        ? { background: "var(--text-tertiary)" }
+        : { background: "var(--warning)", animation: "pulse-dot 2.2s ease-in-out infinite" });
 
   return (
     <div>
@@ -1229,12 +1047,10 @@ function Layer1({
           flexWrap: "wrap",
         }}
       >
-        <select style={selectStyle} value={selectedMandate} onChange={(e) => setSelectedMandate(e.target.value)}>
-          <option>Global Systematic</option>
-          <option>UK Balanced</option>
-          <option>Diversified Income</option>
-          <option>Absolute Return</option>
-          <option>Strategic Bond</option>
+        <select style={mandateSelectStyle} value={selectedMandate} onChange={(e) => setSelectedMandate(e.target.value)}>
+          {MANDATE_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>{opt.label}</option>
+          ))}
         </select>
         <select style={selectStyle} value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}>
           <option>All UK</option>
@@ -1250,13 +1066,6 @@ function Layer1({
           <option>DA Firm</option>
           <option>AR Firm</option>
           <option>Network</option>
-        </select>
-        <select style={selectStyle} value={selectedAUMBand} onChange={(e) => setSelectedAUMBand(e.target.value)}>
-          <option>Any</option>
-          <option>£50m+</option>
-          <option>£250m+</option>
-          <option>£500m+</option>
-          <option>£1bn+</option>
         </select>
         <select style={selectStyle} value={selectedSignalFilter} onChange={(e) => setSelectedSignalFilter(e.target.value)}>
           <option>All</option>
@@ -1277,12 +1086,58 @@ function Layer1({
           flexWrap: "wrap",
         }}
       >
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>10,847</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>{UNIVERSE_TOTAL.toLocaleString("en-GB")}</span>
         <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> IFAs in universe · </span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>847</span>
-        <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> match {selectedMandate} criteria · </span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--accent)", fontVariantNumeric: "tabular-nums" }}>23</span>
-        <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> have new signals this week</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>{ifaRankings.filter(f => !(f as any).restricted_network).length.toLocaleString("en-GB")}</span>
+        <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> independent firms · </span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--accent)", fontVariantNumeric: "tabular-nums" }}>{ifaRankings.filter(f => (f.review_count ?? 0) > 0).length.toLocaleString("en-GB")}</span>
+        <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> have VouchedFor intelligence</span>
+      </div>
+
+      {/* Market context strip */}
+      <div
+        style={{
+          background: "var(--bg-raised)",
+          border: "1px solid var(--border)",
+          borderRadius: "6px",
+          padding: "8px 12px",
+          marginBottom: "16px",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+        }}
+      >
+        <div
+          style={{
+            width: "6px",
+            height: "6px",
+            borderRadius: "50%",
+            flexShrink: 0,
+            ...dotStyle,
+          }}
+        />
+        <span
+          style={{
+            fontSize: "13px",
+            color: "var(--text-secondary)",
+            flex: 1,
+            lineHeight: 1.5,
+          }}
+        >
+          {context.text}
+        </span>
+        <span
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "11px",
+            color: "var(--text-tertiary)",
+            fontVariantNumeric: "tabular-nums",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
+          }}
+        >
+          Feb 2026 data
+        </span>
       </div>
 
       {/* Ranked table */}
@@ -1298,13 +1153,13 @@ function Layer1({
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "40px 220px 100px 90px 130px 1fr 90px 100px",
+            gridTemplateColumns: "40px 220px 100px 180px 1fr 90px 100px",
             padding: "0 12px",
             borderBottom: "1px solid var(--border-strong)",
             background: "var(--bg-raised)",
           }}
         >
-          {colHeaders.map((h, i) => (
+          {colHeaders.map((h) => (
             <div
               key={h}
               style={{
@@ -1314,7 +1169,6 @@ function Layer1({
                 color: "var(--text-tertiary)",
                 textTransform: "uppercase",
                 letterSpacing: "0.06em",
-                textAlign: i === 3 ? "right" : "left",
               }}
             >
               {h}
@@ -1328,10 +1182,10 @@ function Layer1({
           return (
             <div key={ifa.id}>
               <div
-                onClick={() => setExpandedRow(isExpanded ? null : ifa.id)}
+                onClick={() => handleRowClick(ifa.id)}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "40px 220px 100px 90px 130px 1fr 90px 100px",
+                  gridTemplateColumns: "40px 220px 100px 180px 1fr 90px 100px",
                   padding: "0 12px",
                   borderBottom: "1px solid var(--border-subtle)",
                   alignItems: "center",
@@ -1395,23 +1249,27 @@ function Layer1({
                   {ifa.region}
                 </div>
 
-                {/* Est AUM */}
-                <div
-                  style={{
-                    padding: "10px 0",
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "12px",
-                    color: "var(--text-primary)",
-                    textAlign: "right",
-                    fontVariantNumeric: "tabular-nums",
-                  }}
-                >
-                  {ifa.estAUM}
-                </div>
-
-                {/* Fit Score */}
+                {/* Score (stacked: context line + FitBar) */}
                 <div style={{ padding: "10px 0 10px 8px" }}>
-                  <FitBar score={ifa.fitScore} />
+                  {(() => {
+                    const contextLine =
+                      ifa.review_count && ifa.review_count > 0
+                        ? { num: ifa.review_count.toLocaleString("en-GB"), label: "reviews" }
+                        : ifa.adviser_count && ifa.adviser_count > 0
+                          ? { num: String(ifa.adviser_count), label: "advisers" }
+                          : null;
+                    return (
+                      <>
+                        {contextLine && (
+                          <div style={{ fontSize: "12px", color: "var(--text-tertiary)", marginBottom: "4px" }}>
+                            <span style={{ fontFamily: "var(--font-mono)", fontVariantNumeric: "tabular-nums" }}>{contextLine.num}</span>
+                            <span style={{ fontFamily: "var(--font-sans)" }}> {contextLine.label}</span>
+                          </div>
+                        )}
+                        <FitBar score={ifa.fitScore} />
+                      </>
+                    );
+                  })()}
                 </div>
 
                 {/* Key Signal */}
@@ -1457,7 +1315,15 @@ function Layer1({
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      onBuildBrief(ifa);
+                      if (ifa.brief_available) {
+                        // Expand the row if not already expanded, then show brief
+                        if (!isExpanded) {
+                          setExpandedRow(ifa.id);
+                        }
+                        setBriefVisible(briefVisible === ifa.id ? null : ifa.id);
+                      } else {
+                        onBuildBrief(ifa);
+                      }
                     }}
                     style={{
                       padding: "5px 10px",
@@ -1479,7 +1345,7 @@ function Layer1({
                       e.currentTarget.style.color = "var(--text-secondary)";
                     }}
                   >
-                    Build Brief
+                    {ifa.brief_available ? "Show Brief" : "Build Brief"}
                   </button>
                 </div>
               </div>
@@ -1490,6 +1356,8 @@ function Layer1({
                   <DetailPanel
                     ifa={ifa}
                     onBuildBrief={() => onBuildBrief(ifa)}
+                    briefVisible={briefVisible}
+                    setBriefVisible={setBriefVisible}
                   />
                 )}
               </AnimatePresence>
@@ -1631,7 +1499,7 @@ function Layer3() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function IFAPrioritisationPage() {
-  const [selectedMandate, setSelectedMandate] = useState("Global Systematic");
+  const [selectedMandate, setSelectedMandate] = useState("all");
   const [selectedRegion, setSelectedRegion] = useState("All UK");
   const [selectedFirmType, setSelectedFirmType] = useState("All");
   const [selectedAUMBand, setSelectedAUMBand] = useState("Any");
@@ -1640,6 +1508,7 @@ export default function IFAPrioritisationPage() {
   const [activeLayer, setActiveLayer] = useState<1 | 2 | 3>(1);
   const [isDraftOpen, setIsDraftOpen] = useState(false);
   const [draftContext, setDraftContext] = useState<IFARanking | null>(null);
+  const [briefVisible, setBriefVisible] = useState<string | null>(null);
 
   const layers: {
     id: 1 | 2 | 3;
@@ -1810,6 +1679,8 @@ export default function IFAPrioritisationPage() {
             expandedRow={expandedRow}
             setExpandedRow={setExpandedRow}
             onBuildBrief={handleBuildBrief}
+            briefVisible={briefVisible}
+            setBriefVisible={setBriefVisible}
           />
         )}
 
