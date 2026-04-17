@@ -769,7 +769,7 @@ function DetailPanel({
                   fontVariantNumeric: "tabular-nums",
                 }}
               >
-                {total}<span style={{ fontSize: "11px", color: "var(--text-tertiary)", fontWeight: 400 }}>/100</span>
+                {ifa.fitScore}<span style={{ fontSize: "11px", color: "var(--text-tertiary)", fontWeight: 400 }}>/100</span>
               </span>
             </div>
           </div>
