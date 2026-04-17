@@ -29,6 +29,41 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
 
   return (
     <div>
+      {/* Synthesis sentence — hero position above cards */}
+      <div
+        style={{
+          paddingBottom: "20px",
+          borderBottom: "1px solid var(--border-subtle)",
+          marginBottom: "16px",
+        }}
+      >
+        {synthesisSentence ? (
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: 600,
+              color: "var(--text-primary)",
+              lineHeight: 1.5,
+              letterSpacing: "-0.01em",
+              maxWidth: "900px",
+              margin: 0,
+            }}
+          >
+            {synthesisSentence}
+          </p>
+        ) : (
+          <div
+            style={{
+              height: "18px",
+              width: "70%",
+              background: "var(--bg-subtle)",
+              borderRadius: "4px",
+              animation: "skeleton-fade 1.5s ease-in-out infinite",
+            }}
+          />
+        )}
+      </div>
+
       {/* Cards grid */}
       <div
         style={{
@@ -48,45 +83,11 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
             <MarketCard
               type="topSector"
               data={null}
-              sectorName={topSector?.sector?.replace("IA ", "") || "—"}
+              sectorName={topSector?.sector?.replace("IA ", "") || "\u2014"}
               sectorFlow={topSector?.net_retail_sales_gbpm}
               sectorMonth={topSector ? formatMonth(topSector.month) : ""}
             />
           </>
-        )}
-      </div>
-
-      {/* Synthesis sentence */}
-      <div
-        style={{
-          marginTop: "16px",
-          paddingBottom: "16px",
-          borderBottom: "1px solid var(--border-subtle)",
-        }}
-      >
-        {synthesisSentence ? (
-          <p
-            style={{
-              fontSize: "16px",
-              fontWeight: 500,
-              color: "var(--text-primary)",
-              lineHeight: 1.6,
-              maxWidth: "900px",
-              margin: 0,
-            }}
-          >
-            {synthesisSentence}
-          </p>
-        ) : (
-          <div
-            style={{
-              height: "16px",
-              width: "60%",
-              background: "var(--bg-subtle)",
-              borderRadius: "4px",
-              animation: "skeleton-fade 1.5s ease-in-out infinite",
-            }}
-          />
         )}
       </div>
 

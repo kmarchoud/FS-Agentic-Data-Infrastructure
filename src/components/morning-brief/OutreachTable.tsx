@@ -23,25 +23,25 @@ interface OutreachTableProps {
 }
 
 const WHY_THIS_WEEK: Record<string, string> = {
-  multi_asset_cautious: "Gilt yield story — cautious drawdown clients",
-  cautious_multi_asset: "Gilt yield story — cautious drawdown clients",
-  multi_asset_balanced: "Mixed asset inflows — balanced portfolio demand",
-  balanced_multi_asset: "Mixed asset inflows — balanced portfolio demand",
-  multi_asset_growth: "Growth mandate timing — equity positioning",
-  growth_multi_asset: "Growth mandate timing — equity positioning",
-  multi_asset_aggressive: "Risk-on signals — growth-seeking clients",
-  aggressive_multi_asset: "Risk-on signals — growth-seeking clients",
-  multi_asset_aggressive_plus: "High growth mandate — equity-focused clients",
-  multi_asset_income: "Safe-haven rotation — income mandate timing",
-  monthly_income: "Safe-haven rotation — income mandate timing",
-  uk_equity_income: "UK equity pressure — income alternative angle",
-  uk_equity: "UK equity — domestic allocation conversation",
-  global_equity: "Global diversification — international mandate",
-  european_equity: "European allocation — continental positioning",
-  north_american_equity: "US market signals — North America mandate",
-  corporate_bond: "Credit spreads — fixed income conversation",
-  global_macro_bond: "Macro bond timing — global fixed income",
-  money_market: "Rate environment — liquidity positioning",
+  multi_asset_cautious: "Gilt yield story \u2014 cautious drawdown clients",
+  cautious_multi_asset: "Gilt yield story \u2014 cautious drawdown clients",
+  multi_asset_balanced: "Mixed asset inflows \u2014 balanced portfolio demand",
+  balanced_multi_asset: "Mixed asset inflows \u2014 balanced portfolio demand",
+  multi_asset_growth: "Growth mandate timing \u2014 equity positioning",
+  growth_multi_asset: "Growth mandate timing \u2014 equity positioning",
+  multi_asset_aggressive: "Risk-on signals \u2014 growth-seeking clients",
+  aggressive_multi_asset: "Risk-on signals \u2014 growth-seeking clients",
+  multi_asset_aggressive_plus: "High growth mandate \u2014 equity-focused clients",
+  multi_asset_income: "Safe-haven rotation \u2014 income mandate timing",
+  monthly_income: "Safe-haven rotation \u2014 income mandate timing",
+  uk_equity_income: "UK equity pressure \u2014 income alternative angle",
+  uk_equity: "UK equity \u2014 domestic allocation conversation",
+  global_equity: "Global diversification \u2014 international mandate",
+  european_equity: "European allocation \u2014 continental positioning",
+  north_american_equity: "US market signals \u2014 North America mandate",
+  corporate_bond: "Credit spreads \u2014 fixed income conversation",
+  global_macro_bond: "Macro bond timing \u2014 global fixed income",
+  money_market: "Rate environment \u2014 liquidity positioning",
 };
 
 const MANDATE_DISPLAY: Record<string, string> = {
@@ -65,6 +65,19 @@ const MANDATE_DISPLAY: Record<string, string> = {
   global_macro_bond: "Global Bond",
   money_market: "Money Market",
 };
+
+function getSecondaryDifferentiator(firm: RealIFAFirm): string {
+  if (firm.brief_available && (firm as any).pension_transfers) {
+    return "pension transfer specialists";
+  }
+  if (firm.brief_available && (firm as any).manages_investments) {
+    return "runs in-house DFM";
+  }
+  if ((firm.review_count ?? 0) > 1000) {
+    return "high VouchedFor presence";
+  }
+  return "";
+}
 
 function selectOutreachFirms(
   rankedFirms: RealIFAFirm[],
@@ -147,7 +160,7 @@ export function OutreachTable({ rankedFirms, briefs, impactCards, loading }: Out
             marginTop: "8px",
           }}
         >
-          Based on the public IFA universe · Not your existing client relationships
+          Based on the public IFA universe &middot; Not your existing client relationships
         </div>
       </div>
 
@@ -170,7 +183,7 @@ export function OutreachTable({ rankedFirms, briefs, impactCards, loading }: Out
               }}
             >
               {["#", "FIRM", "TOWN", "ADVISERS", "MANDATE", "WHY THIS WEEK", "ACTION"].map(
-                (col, i) => (
+                (col) => (
                   <th
                     key={col}
                     style={{
@@ -236,6 +249,8 @@ export function OutreachTable({ rankedFirms, briefs, impactCards, loading }: Out
                     WHY_THIS_WEEK[firm.active_mandate] ||
                     "Distribution opportunity identified"
                   }
+                  fitScore={firm.fitScore}
+                  differentiator={getSecondaryDifferentiator(firm)}
                   onViewBrief={() => setSlideOverFirm(firm)}
                 />
               ))

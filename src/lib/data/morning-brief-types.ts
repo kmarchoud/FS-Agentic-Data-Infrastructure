@@ -7,6 +7,7 @@ export interface MarketDataPoint {
   delta: number;
   deltaPercent: number;
   timestamp: string;
+  sparklineData: Array<{ time: number; value: number }> | null;
 }
 
 export interface MarketDataResponse {

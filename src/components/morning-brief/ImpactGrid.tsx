@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import type { ImpactCard as ImpactCardType } from "@/lib/data/morning-brief-types";
+import type { ImpactCard as ImpactCardType, SectorFlow } from "@/lib/data/morning-brief-types";
 import { ImpactCard } from "./ImpactCard";
 import { SkeletonCard } from "./SkeletonCard";
 
 interface ImpactGridProps {
   cards: ImpactCardType[];
   loading: boolean;
+  sectorFlows: SectorFlow[];
 }
 
-export function ImpactGrid({ cards, loading }: ImpactGridProps) {
+export function ImpactGrid({ cards, loading, sectorFlows }: ImpactGridProps) {
   // Track which card index has the "focused" amber angle
   const [focusedIdx, setFocusedIdx] = useState<number>(() => {
     // Default: first positive, or first neutral if no positive
@@ -102,6 +103,7 @@ export function ImpactGrid({ cards, loading }: ImpactGridProps) {
               card={card}
               isHighestSentiment={i === effectiveFocused}
               onFocusAngle={() => setFocusedIdx(i)}
+              sectorFlows={sectorFlows}
             />
           ))
         )}

@@ -1,12 +1,14 @@
 "use client";
 
-import type { ImpactCard as ImpactCardType } from "@/lib/data/morning-brief-types";
+import type { ImpactCard as ImpactCardType, SectorFlow } from "@/lib/data/morning-brief-types";
 import { TalkingAngle } from "./TalkingAngle";
+import { SectorFlowBar } from "./SectorFlowBar";
 
 interface ImpactCardProps {
   card: ImpactCardType;
   isHighestSentiment: boolean;
   onFocusAngle: () => void;
+  sectorFlows: SectorFlow[];
 }
 
 const MANDATE_DISPLAY: Record<string, string> = {
@@ -25,6 +27,12 @@ const MANDATE_DISPLAY: Record<string, string> = {
   money_market: "Money Market",
 };
 
+const SENTIMENT_BORDER: Record<string, string> = {
+  positive: "var(--success-text)",
+  neutral: "var(--text-tertiary)",
+  negative: "var(--danger-text)",
+};
+
 function SentimentBadge({ sentiment }: { sentiment: "positive" | "neutral" | "negative" }) {
   const config = {
     positive: {
@@ -37,7 +45,7 @@ function SentimentBadge({ sentiment }: { sentiment: "positive" | "neutral" | "ne
       bg: "var(--bg-subtle)",
       border: "var(--border)",
       color: "var(--text-secondary)",
-      label: "→ Neutral",
+      label: "\u2192 Neutral",
     },
     negative: {
       bg: "var(--danger-subtle)",
@@ -69,12 +77,20 @@ function SentimentBadge({ sentiment }: { sentiment: "positive" | "neutral" | "ne
   );
 }
 
-export function ImpactCard({ card, isHighestSentiment, onFocusAngle }: ImpactCardProps) {
+export function ImpactCard({ card, isHighestSentiment, onFocusAngle, sectorFlows }: ImpactCardProps) {
+  // Find matching sector flow for this card
+  const matchingFlow = sectorFlows.find((f) => {
+    const sectorNorm = f.sector.replace("IA ", "").toLowerCase();
+    const cardSectorNorm = card.ia_sector.replace("IA ", "").toLowerCase();
+    return sectorNorm === cardSectorNorm;
+  });
+
   return (
     <div
       style={{
         background: "var(--bg-card)",
         border: "1px solid var(--border)",
+        borderLeft: `3px solid ${SENTIMENT_BORDER[card.sentiment]}`,
         borderRadius: "8px",
         padding: "20px",
         transition: "border-color 150ms ease",
@@ -82,9 +98,11 @@ export function ImpactCard({ card, isHighestSentiment, onFocusAngle }: ImpactCar
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = "var(--border-strong)";
+        e.currentTarget.style.borderLeftColor = SENTIMENT_BORDER[card.sentiment];
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.borderColor = "var(--border)";
+        e.currentTarget.style.borderLeftColor = SENTIMENT_BORDER[card.sentiment];
       }}
     >
       {/* Header row 1 */}
@@ -126,12 +144,18 @@ export function ImpactCard({ card, isHighestSentiment, onFocusAngle }: ImpactCar
         </span>
       </div>
 
-      {/* Divider */}
-      <div style={{ borderBottom: "1px solid var(--border-subtle)", margin: "12px 0" }} />
-
-      {/* Card body */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        {/* What happened */}
+      {/* Context block — 2-column grid */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "16px",
+          background: "var(--bg-raised)",
+          borderRadius: "8px",
+          padding: "12px",
+          marginTop: "12px",
+        }}
+      >
         <div>
           <div
             style={{
@@ -149,8 +173,6 @@ export function ImpactCard({ card, isHighestSentiment, onFocusAngle }: ImpactCar
             {card.what_happened}
           </div>
         </div>
-
-        {/* Why it matters */}
         <div>
           <div
             style={{
@@ -168,14 +190,23 @@ export function ImpactCard({ card, isHighestSentiment, onFocusAngle }: ImpactCar
             {card.why_it_matters}
           </div>
         </div>
-
-        {/* Talking angle */}
-        <TalkingAngle
-          text={card.talking_angle}
-          isHighestSentiment={isHighestSentiment}
-          onFocus={onFocusAngle}
-        />
       </div>
+
+      {/* Talking angle — hero row */}
+      <TalkingAngle
+        text={card.talking_angle}
+        sentiment={card.sentiment}
+        isHighestSentiment={isHighestSentiment}
+        onFocus={onFocusAngle}
+      />
+
+      {/* Sector flow bar */}
+      {matchingFlow && (
+        <SectorFlowBar
+          flow={matchingFlow.net_retail_sales_gbpm}
+          month={matchingFlow.month}
+        />
+      )}
     </div>
   );
 }

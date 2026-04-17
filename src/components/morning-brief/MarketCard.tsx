@@ -2,6 +2,7 @@
 
 import { TrendingUp, Percent, PoundSterling, Activity, ArrowUpRight } from "lucide-react";
 import type { MarketDataPoint } from "@/lib/data/morning-brief-types";
+import { SparklineChart } from "./SparklineChart";
 
 type CardType = "ftse" | "gilt" | "sterling" | "volatility" | "topSector";
 
@@ -31,7 +32,7 @@ const LABELS: Record<CardType, string> = {
 };
 
 function formatValue(type: CardType, data: MarketDataPoint | null): string {
-  if (!data) return "—";
+  if (!data) return "\u2014";
   switch (type) {
     case "ftse":
       return data.value.toLocaleString("en-GB", { maximumFractionDigits: 0 });
@@ -42,7 +43,7 @@ function formatValue(type: CardType, data: MarketDataPoint | null): string {
     case "volatility":
       return data.value.toFixed(1);
     default:
-      return "—";
+      return "\u2014";
   }
 }
 
@@ -74,6 +75,15 @@ function formatDelta(type: CardType, data: MarketDataPoint | null): { text: stri
   return { text: `${sign}${delta.toFixed(1)} (${sign}${deltaPercent.toFixed(1)}%)`, color, prefix };
 }
 
+function getSparklineColor(data: MarketDataPoint | null): "emerald" | "red" | "neutral" {
+  if (!data?.sparklineData || data.sparklineData.length < 2) return "neutral";
+  const firstValue = data.sparklineData[0]?.value ?? 0;
+  const lastValue = data.sparklineData[data.sparklineData.length - 1]?.value ?? 0;
+  if (lastValue > firstValue) return "emerald";
+  if (lastValue < firstValue) return "red";
+  return "neutral";
+}
+
 export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: MarketCardProps) {
   const Icon = ICONS[type];
   const label = LABELS[type];
@@ -81,6 +91,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
   const highVol = type === "volatility" && data != null && data.value > 25;
 
   const deltaInfo = !isTopSector ? formatDelta(type, data) : null;
+  const sparklineColor = getSparklineColor(data);
 
   return (
     <div
@@ -132,7 +143,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
               marginTop: "8px",
             }}
           >
-            {sectorName || "—"}
+            {sectorName || "\u2014"}
           </div>
           <div
             style={{
@@ -144,7 +155,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
             }}
           >
             {sectorFlow != null
-              ? `${sectorFlow >= 0 ? "+" : ""}£${Math.abs(sectorFlow)}m · ${sectorMonth || ""}`
+              ? `${sectorFlow >= 0 ? "+" : ""}\u00A3${Math.abs(sectorFlow)}m \u00B7 ${sectorMonth || ""}`
               : ""}
           </div>
         </>
@@ -164,7 +175,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
           >
             {type === "sterling" && data ? (
               <>
-                <span style={{ color: "var(--text-tertiary)" }}>£1 = </span>
+                <span style={{ color: "var(--text-tertiary)" }}>{"\u00A3"}1 = </span>
                 {formatValue(type, data)}
               </>
             ) : (
@@ -200,6 +211,9 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
               Live prices unavailable
             </div>
           ) : null}
+
+          {/* Sparkline — only for non-topSector cards */}
+          <SparklineChart data={data?.sparklineData ?? null} color={sparklineColor} />
         </>
       )}
     </div>

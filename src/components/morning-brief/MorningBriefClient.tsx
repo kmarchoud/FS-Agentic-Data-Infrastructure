@@ -204,6 +204,7 @@ export function MorningBriefClient({ staticData }: { staticData: StaticData }) {
           <ImpactGrid
             cards={synthesis?.impact_cards ?? []}
             loading={loadingPhase !== "complete" && loadingPhase !== "error"}
+            sectorFlows={staticData.sectorFlows}
           />
 
           <OutreachTable

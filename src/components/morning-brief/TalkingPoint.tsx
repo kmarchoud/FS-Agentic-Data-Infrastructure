@@ -38,7 +38,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
   const handleEmail = () => {
     if (!talkingPoint) return;
     const subject = encodeURIComponent(
-      `This week's distribution talking point — ${dateStr}`
+      `Today's distribution talking point \u2014 ${dateStr}`
     );
     const body = encodeURIComponent(talkingPoint);
     window.open(`mailto:?subject=${subject}&body=${body}`);
@@ -56,7 +56,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
             margin: 0,
           }}
         >
-          This Week&apos;s Talking Point
+          Today&apos;s Talking Point
         </h2>
         <p
           style={{
@@ -66,7 +66,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
             marginBottom: 0,
           }}
         >
-          Ready to share with your team
+          Updated daily &middot; Ready to share
         </p>
       </div>
 
@@ -87,11 +87,32 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
           style={{
             background: "var(--bg-card)",
             border: "1px solid var(--border)",
+            borderLeft: "3px solid var(--accent)",
             borderRadius: "8px",
             padding: "24px",
             marginTop: "16px",
+            position: "relative",
           }}
         >
+          {/* Decorative quotation mark */}
+          <span
+            style={{
+              position: "absolute",
+              top: "16px",
+              left: "20px",
+              fontSize: "48px",
+              fontFamily: "Georgia, serif",
+              color: "var(--accent)",
+              opacity: 0.2,
+              lineHeight: 1,
+              pointerEvents: "none",
+              userSelect: "none",
+            }}
+            aria-hidden="true"
+          >
+            {"\u201C"}
+          </span>
+
           <p
             style={{
               fontSize: "16px",
@@ -100,6 +121,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
               lineHeight: 1.7,
               maxWidth: "800px",
               margin: 0,
+              paddingLeft: "16px",
             }}
           >
             {talkingPoint}
@@ -122,7 +144,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
               fontVariantNumeric: "tabular-nums",
             }}
           >
-            Generated {dateStr} {timeStr} · Based on {newsCount} news signals
+            Updated {dateStr} {timeStr} &middot; Based on {newsCount} news signals
             and IA sector flow data
           </div>
 
@@ -148,7 +170,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
                 e.currentTarget.style.background = "var(--accent)";
               }}
             >
-              {copied ? "Copied \u2713" : "Copy"}
+              {copied ? "Copied to clipboard \u2713" : "Copy talking point"}
             </button>
             <button
               onClick={handleEmail}
@@ -186,7 +208,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
             marginTop: "16px",
           }}
         >
-          Synthesis unavailable · Refresh to retry
+          Synthesis unavailable &middot; Refresh to retry
         </div>
       )}
     </div>
