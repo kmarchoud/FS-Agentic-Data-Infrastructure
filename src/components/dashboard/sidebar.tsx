@@ -16,6 +16,7 @@ import {
   GitBranch,
   Search,
   Database,
+  Newspaper,
 } from "lucide-react";
 
 interface NavItem {
@@ -46,7 +47,8 @@ const NAV_SECTIONS: NavSection[] = [
     sectionLabel: "INTELLIGENCE",
     badge: "BETA",
     items: [
-      { label: "Overview", href: "/intelligence", icon: LayoutDashboard },
+      { label: "Morning Brief", href: "/intelligence/morning-brief", icon: Newspaper },
+      // { label: "Overview", href: "/intelligence", icon: LayoutDashboard },
       { label: "IFA Prioritisation", href: "/intelligence/ifa-prioritisation", icon: Target },
       { label: "Competitive Positioning", href: "/intelligence/competitive-positioning", icon: BarChart2 },
       { label: "Partnership Intelligence", href: "/intelligence/partnership-intelligence", icon: LinkIcon },
