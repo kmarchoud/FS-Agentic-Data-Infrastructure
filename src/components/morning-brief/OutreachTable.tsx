@@ -23,28 +23,48 @@ interface OutreachTableProps {
 }
 
 const WHY_THIS_WEEK: Record<string, string> = {
-  multi_asset_cautious: "Gilt yield story \u2014 cautious drawdown clients",
-  multi_asset_balanced: "Mixed asset inflows \u2014 balanced portfolio demand",
-  multi_asset_growth: "Growth mandate timing \u2014 equity positioning",
-  multi_asset_aggressive: "Risk-on signals \u2014 growth-seeking clients",
-  multi_asset_income: "Safe-haven rotation \u2014 income mandate timing",
-  uk_equity_income: "UK equity pressure \u2014 income alternative angle",
-  uk_equity: "UK equity \u2014 domestic allocation conversation",
-  global_equity: "Global diversification \u2014 international mandate",
-  european_equity: "European allocation \u2014 continental positioning",
-  north_american_equity: "US market signals \u2014 North America mandate",
-  corporate_bond: "Credit spreads \u2014 fixed income conversation",
-  global_macro_bond: "Macro bond timing \u2014 global fixed income",
-  money_market: "Rate environment \u2014 liquidity positioning",
+  multi_asset_cautious: "Gilt yield story — cautious drawdown clients",
+  cautious_multi_asset: "Gilt yield story — cautious drawdown clients",
+  multi_asset_balanced: "Mixed asset inflows — balanced portfolio demand",
+  balanced_multi_asset: "Mixed asset inflows — balanced portfolio demand",
+  multi_asset_growth: "Growth mandate timing — equity positioning",
+  growth_multi_asset: "Growth mandate timing — equity positioning",
+  multi_asset_aggressive: "Risk-on signals — growth-seeking clients",
+  aggressive_multi_asset: "Risk-on signals — growth-seeking clients",
+  multi_asset_aggressive_plus: "High growth mandate — equity-focused clients",
+  multi_asset_income: "Safe-haven rotation — income mandate timing",
+  monthly_income: "Safe-haven rotation — income mandate timing",
+  uk_equity_income: "UK equity pressure — income alternative angle",
+  uk_equity: "UK equity — domestic allocation conversation",
+  global_equity: "Global diversification — international mandate",
+  european_equity: "European allocation — continental positioning",
+  north_american_equity: "US market signals — North America mandate",
+  corporate_bond: "Credit spreads — fixed income conversation",
+  global_macro_bond: "Macro bond timing — global fixed income",
+  money_market: "Rate environment — liquidity positioning",
 };
 
-// Map active_mandate from IFA data to mandate_category format
-function normalizeMandateKey(mandate: string): string {
-  // Already in snake_case
-  if (mandate.includes("_")) return mandate;
-  // Convert e.g. "cautious_multi_asset" to "multi_asset_cautious"
-  return mandate;
-}
+const MANDATE_DISPLAY: Record<string, string> = {
+  multi_asset_cautious: "Cautious MA",
+  cautious_multi_asset: "Cautious MA",
+  multi_asset_balanced: "Balanced MA",
+  balanced_multi_asset: "Balanced MA",
+  multi_asset_growth: "Growth MA",
+  growth_multi_asset: "Growth MA",
+  multi_asset_aggressive: "Growth MA",
+  aggressive_multi_asset: "Aggressive MA",
+  multi_asset_aggressive_plus: "Aggressive MA",
+  multi_asset_income: "Income",
+  monthly_income: "Income",
+  uk_equity_income: "UK Equity Inc",
+  uk_equity: "UK Equity",
+  global_equity: "Global Equity",
+  european_equity: "European Eq",
+  north_american_equity: "N. American",
+  corporate_bond: "Corp Bond",
+  global_macro_bond: "Global Bond",
+  money_market: "Money Market",
+};
 
 function selectOutreachFirms(
   rankedFirms: RealIFAFirm[],
@@ -58,7 +78,7 @@ function selectOutreachFirms(
 
   // Filter firms matching active mandates
   const matching = rankedFirms.filter((f) =>
-    activeMandates.has(normalizeMandateKey(f.active_mandate))
+    activeMandates.has(f.active_mandate)
   );
 
   // Sort by fitScore descending
@@ -127,7 +147,7 @@ export function OutreachTable({ rankedFirms, briefs, impactCards, loading }: Out
             marginTop: "8px",
           }}
         >
-          Based on the public IFA universe \u00B7 Not your existing client relationships
+          Based on the public IFA universe · Not your existing client relationships
         </div>
       </div>
 
@@ -211,9 +231,9 @@ export function OutreachTable({ rankedFirms, briefs, impactCards, loading }: Out
                   firmName={firm.firm}
                   town={firm.region}
                   adviserCount={firm.adviser_count}
-                  mandate={normalizeMandateKey(firm.active_mandate).replace(/_/g, " ")}
+                  mandate={MANDATE_DISPLAY[firm.active_mandate] || firm.active_mandate.replace(/_/g, " ")}
                   whyThisWeek={
-                    WHY_THIS_WEEK[normalizeMandateKey(firm.active_mandate)] ||
+                    WHY_THIS_WEEK[firm.active_mandate] ||
                     "Distribution opportunity identified"
                   }
                   onViewBrief={() => setSlideOverFirm(firm)}

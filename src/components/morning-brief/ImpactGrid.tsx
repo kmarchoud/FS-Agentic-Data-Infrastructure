@@ -93,7 +93,7 @@ export function ImpactGrid({ cards, loading }: ImpactGridProps) {
               color: "var(--text-tertiary)",
             }}
           >
-            Synthesis unavailable \u00B7 Refresh to retry
+            Synthesis unavailable · Refresh to retry
           </div>
         ) : (
           cards.map((card, i) => (

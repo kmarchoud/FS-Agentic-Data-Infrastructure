@@ -38,7 +38,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
   const handleEmail = () => {
     if (!talkingPoint) return;
     const subject = encodeURIComponent(
-      `This week's distribution talking point \u2014 ${dateStr}`
+      `This week's distribution talking point — ${dateStr}`
     );
     const body = encodeURIComponent(talkingPoint);
     window.open(`mailto:?subject=${subject}&body=${body}`);
@@ -122,7 +122,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
               fontVariantNumeric: "tabular-nums",
             }}
           >
-            Generated {dateStr} {timeStr} \u00B7 Based on {newsCount} news signals
+            Generated {dateStr} {timeStr} · Based on {newsCount} news signals
             and IA sector flow data
           </div>
 
@@ -186,7 +186,7 @@ export function TalkingPoint({ talkingPoint, newsCount, loading }: TalkingPointP
             marginTop: "16px",
           }}
         >
-          Synthesis unavailable \u00B7 Refresh to retry
+          Synthesis unavailable · Refresh to retry
         </div>
       )}
     </div>

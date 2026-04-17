@@ -37,7 +37,7 @@ function SentimentBadge({ sentiment }: { sentiment: "positive" | "neutral" | "ne
       bg: "var(--bg-subtle)",
       border: "var(--border)",
       color: "var(--text-secondary)",
-      label: "\u2192 Neutral",
+      label: "→ Neutral",
     },
     negative: {
       bg: "var(--danger-subtle)",

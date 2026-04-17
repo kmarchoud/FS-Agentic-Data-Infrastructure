@@ -83,7 +83,7 @@ Rules:
     const message = await client.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 1000,
-      system: "You are a distribution intelligence analyst for a UK asset manager selling OEICs and unit trusts through the IFA channel. You write concise, specific, actionable morning intelligence for distribution teams. Every sentence must contain a specific data point \u2014 a number, a fund type, a named market event, or a named sector. Never write generic statements. Write as a knowledgeable colleague, not a marketing document. Respond only with valid JSON.",
+      system: "You are a distribution intelligence analyst for a UK asset manager selling OEICs and unit trusts through the IFA channel. You write concise, specific, actionable morning intelligence for distribution teams. Every sentence must contain a specific data point — a number, a fund type, a named market event, or a named sector. Never write generic statements. Write as a knowledgeable colleague, not a marketing document. Respond only with valid JSON.",
       messages: [{ role: "user", content: userPrompt }],
     });
 
@@ -108,7 +108,7 @@ Rules:
 
 function fallbackResponse(reason: string): SynthesisResponse {
   return {
-    synthesis_sentence: "Market data unavailable \u2014 showing intelligence based on recent signals.",
+    synthesis_sentence: "Market data unavailable — showing intelligence based on recent signals.",
     impact_cards: [],
     talking_point: "Synthesis currently unavailable. Please refresh to retry.",
     error: true,

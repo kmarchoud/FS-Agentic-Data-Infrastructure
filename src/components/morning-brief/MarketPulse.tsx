@@ -48,7 +48,7 @@ export function MarketPulse({ marketData, sectorFlows, synthesisSentence, loadin
             <MarketCard
               type="topSector"
               data={null}
-              sectorName={topSector?.sector?.replace("IA ", "") || "\u2014"}
+              sectorName={topSector?.sector?.replace("IA ", "") || "—"}
               sectorFlow={topSector?.net_retail_sales_gbpm}
               sectorMonth={topSector ? formatMonth(topSector.month) : ""}
             />

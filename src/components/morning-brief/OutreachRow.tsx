@@ -78,7 +78,7 @@ export function OutreachRow({
           borderBottom: "1px solid var(--border-subtle)",
         }}
       >
-        {adviserCount ?? "\u2014"}
+        {adviserCount ?? "—"}
       </td>
       <td
         style={{
@@ -132,7 +132,7 @@ export function OutreachRow({
             e.currentTarget.style.textDecoration = "none";
           }}
         >
-          View Brief \u2192
+          View Brief →
         </button>
       </td>
     </tr>

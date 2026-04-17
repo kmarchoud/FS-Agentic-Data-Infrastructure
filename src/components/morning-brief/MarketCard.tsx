@@ -31,7 +31,7 @@ const LABELS: Record<CardType, string> = {
 };
 
 function formatValue(type: CardType, data: MarketDataPoint | null): string {
-  if (!data) return "\u2014";
+  if (!data) return "—";
   switch (type) {
     case "ftse":
       return data.value.toLocaleString("en-GB", { maximumFractionDigits: 0 });
@@ -42,7 +42,7 @@ function formatValue(type: CardType, data: MarketDataPoint | null): string {
     case "volatility":
       return data.value.toFixed(1);
     default:
-      return "\u2014";
+      return "—";
   }
 }
 
@@ -78,7 +78,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
   const Icon = ICONS[type];
   const label = LABELS[type];
   const isTopSector = type === "topSector";
-  const highVol = type === "volatility" && data && data.value > 25;
+  const highVol = type === "volatility" && data != null && data.value > 25;
 
   const deltaInfo = !isTopSector ? formatDelta(type, data) : null;
 
@@ -132,7 +132,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
               marginTop: "8px",
             }}
           >
-            {sectorName || "\u2014"}
+            {sectorName || "—"}
           </div>
           <div
             style={{
@@ -144,7 +144,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
             }}
           >
             {sectorFlow != null
-              ? `${sectorFlow >= 0 ? "+" : ""}\u00A3${Math.abs(sectorFlow)}m \u00B7 ${sectorMonth || ""}`
+              ? `${sectorFlow >= 0 ? "+" : ""}£${Math.abs(sectorFlow)}m · ${sectorMonth || ""}`
               : ""}
           </div>
         </>
@@ -164,7 +164,7 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
           >
             {type === "sterling" && data ? (
               <>
-                <span style={{ color: "var(--text-tertiary)" }}>\u00A31 = </span>
+                <span style={{ color: "var(--text-tertiary)" }}>£1 = </span>
                 {formatValue(type, data)}
               </>
             ) : (
@@ -190,12 +190,10 @@ export function MarketCard({ type, data, sectorName, sectorFlow, sectorMonth }: 
           ) : !data ? (
             <div
               style={{
-                display: "inline-flex",
-                background: "var(--warning-subtle)",
-                color: "var(--warning-text)",
                 fontSize: "11px",
-                padding: "2px 6px",
-                borderRadius: "4px",
+                color: "var(--text-tertiary)",
+                fontFamily: "var(--font-mono)",
+                fontVariantNumeric: "tabular-nums",
                 marginTop: "4px",
               }}
             >
