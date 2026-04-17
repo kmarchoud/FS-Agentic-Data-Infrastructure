@@ -82,8 +82,8 @@ Rules:
 
     const message = await client.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 1000,
-      system: "You are a distribution intelligence analyst for a UK asset manager selling OEICs and unit trusts through the IFA channel. You write concise, specific, actionable morning intelligence for distribution teams. Every sentence must contain a specific data point — a number, a fund type, a named market event, or a named sector. Never write generic statements. Write as a knowledgeable colleague, not a marketing document. Respond only with valid JSON.",
+      max_tokens: 4096,
+      system: "You are a distribution intelligence analyst for a UK asset manager selling OEICs and unit trusts through the IFA channel. You write concise, specific, actionable morning intelligence for distribution teams. Every sentence must contain a specific data point — a number, a fund type, a named market event, or a named sector. Never write generic statements. Write as a knowledgeable colleague, not a marketing document. Respond ONLY with valid JSON — no markdown, no code blocks, no preamble.",
       messages: [{ role: "user", content: userPrompt }],
     });
 
@@ -96,6 +96,12 @@ Rules:
     let jsonStr = textBlock.text.trim();
     if (jsonStr.startsWith("```")) {
       jsonStr = jsonStr.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "");
+    }
+
+    // Check for truncated response (stop_reason !== "end_turn")
+    if (message.stop_reason !== "end_turn") {
+      console.error("Claude response truncated, stop_reason:", message.stop_reason);
+      return NextResponse.json(fallbackResponse("Response truncated"));
     }
 
     const parsed: SynthesisResponse = JSON.parse(jsonStr);
