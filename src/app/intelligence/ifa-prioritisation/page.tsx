@@ -1088,9 +1088,9 @@ function Layer1({
       >
         <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>{UNIVERSE_TOTAL.toLocaleString("en-GB")}</span>
         <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> IFAs in universe · </span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>{filteredData.length}</span>
-        <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> match {MANDATE_LABELS[selectedMandate] || "current"} criteria · </span>
-        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--accent)", fontVariantNumeric: "tabular-nums" }}>{filteredData.filter(f => f.signal_count > 0).length}</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--text-primary)", fontVariantNumeric: "tabular-nums" }}>{ifaRankings.filter(f => !(f as any).restricted_network).length.toLocaleString("en-GB")}</span>
+        <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> independent firms · </span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: "14px", fontWeight: 500, color: "var(--accent)", fontVariantNumeric: "tabular-nums" }}>{ifaRankings.filter(f => (f.review_count ?? 0) > 0).length.toLocaleString("en-GB")}</span>
         <span style={{ fontSize: "13px", color: "var(--text-secondary)" }}> have VouchedFor intelligence</span>
       </div>
 
